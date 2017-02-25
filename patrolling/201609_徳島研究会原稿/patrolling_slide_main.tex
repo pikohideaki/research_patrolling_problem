@@ -1,0 +1,108 @@
+%%%%% documentclass %%%%%
+	% \documentclass[a4paper,11pt]{jsarticle}
+	% \documentclass[a4paper]{jsarticle}
+	% \documentclass[12pt, unicode]{beamer}
+	\documentclass[dvipdfmx,11pt]{beamer}
+	% \documentclass[dvipdfmx,11pt,handout]{beamer} % アニメーションなし
+	% \documentclass[dvipdfmx,11pt,notheorems]{beamer}
+
+\usepackage{etex}    % when use many packages (i.e. xy-pic)
+\reserveinserts{28}
+
+%%%%% 和文用 %%%%%
+	\usepackage{bxdpx-beamer}
+	\usepackage{pxjahyper}
+	\usepackage{minijs}%和文用
+	\renewcommand{\kanjifamilydefault}{\gtdefault}%和文用
+
+%%%%% スライドの見た目 %%%%%
+	%% theme
+		\usetheme{Antibes}
+		% \usetheme{CambridgeUS}
+		% \usetheme{Madrid}
+	\usefonttheme{professionalfonts} % 数式の文字を通常の LaTeX と同じにする
+	\setbeamertemplate{frametitle}[default][left] % タイトルを左寄せに
+	\setbeamertemplate{navigation symbols}{} % 下のスイッチを消す
+	\setbeamercovered{transparent}%好みに応じてどうぞ）
+	\setbeamertemplate{footline}[page number] % ページ番号
+	\setbeamerfont{footline}{size=\normalsize,series=\bfseries}
+	\setbeamercolor{footline}{fg=black,bg=black}
+\setcounter{tocdepth}{4}
+
+
+%%%%% フォント基本設定 %%%%%
+	% \usepackage[T1]{fontenc}%8bit フォント
+	% \usepackage{textcomp}%欧文フォントの追加
+	% \usepackage[utf8]{inputenc}%文字コードをUTF-8
+	% \usepackage{otf}%otfパッケージ
+	% \usepackage{lxfonts}%数式・英文ローマン体を Lxfont にする
+	% \usepackage{bm}%数式太字
+
+%%%%% color %%%%%
+	\newcommand{\black}[1]  {{\color{black}#1}}
+	\newcommand{\red}  [1]  {{\color{red}#1}}
+	\newcommand{\blue} [1]  {{\color{blue}#1}}
+	\newcommand{\gray} [1]  {{\color{gray}#1}}
+	\newcommand{\lightgray} [1] {{\color{lightgray}#1}}
+	\definecolor{mygreen}{rgb}{0, 0.6, 0} % R(赤),G(緑),B(青)
+	\definecolor{myorange}{rgb}{0.8, 0.4, 0} % R(赤),G(緑),B(青)
+	\newcommand{\green} [1] {{\color{mygreen}#1}}
+	\newcommand{\orange}[1] {{\color{myorange}#1}}
+
+%%% セクションの後に目次スライドを入れる
+	\AtBeginSection[]{
+		\frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+	}
+
+
+%%%%% my settings %%%%%
+	\input{macros.tex}
+	\usepackage{pxrubrica} % ルビ
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+	複数の巡査による指定地点の警邏について
+}
+\author{
+	% 東京大学 総合文化研究科 修士1年 \\
+	河村研究室\\
+	能城 秀彬 \\
+}
+\date[\today]{\today}
+\institute[東京大学]{東京大学}
+% [..]に省略名が書ける
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%\setcounter{section}{4}
+
+
+% \frame{\maketitle}
+
+\begin{frame}[plain]\frametitle{}
+\titlepage %表紙
+\end{frame}
+
+\begin{frame}[allowframebreaks]\frametitle{Contents}
+\tableofcontents %目次
+\end{frame}
+
+
+%%% input
+% \setcounter{section}{-1}
+\input{./patrolling_slide_body.tex}
+
+
+%%% 参考文献 %%%
+%\newpage
+%\section*{references}
+%\begin{frame}[allowframebreaks]{References}
+%  \scriptsize
+%  \bibliographystyle{jplain}
+%  \bibliography{bibsample}
+%\end{frame}
+
+
+\end{document}

@@ -1,0 +1,114 @@
+
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+\newcommand{\optpp}      {O{\scriptsize PTIMIZE}PP}
+\newcommand{\decisionpp} {D{\scriptsize ECISION}PP}
+\newcommand{\timelimit}  {放置可能時間}
+\newcommand{\period}     {周期}
+
+
+
+
+
+%%%%% 定義環境 %%%%%
+	\theoremstyle{definition}
+	\newtheorem {theo}          {定理}[section]
+	\newtheorem {defi}[theo]    {定義}
+	\newtheorem {prop}[theo]    {命題}
+	\newtheorem {lemm}[theo]    {補題}
+	\newtheorem {coro}[theo]    {系} % corollary
+	\newtheorem {conj}[theo]    {予想} % conjecture
+	% \newtheorem*{note}          {注意}
+	\newtheorem*{rema}          {Remark}
+	\newtheorem*{exam}          {例}
+	\newtheorem*{exer}          {例題}
+	\newtheorem*{memo}          {メモ}
+	\newtheorem*{property}      {性質}
+
+
+%%% newcommand
+	\newcommand{\Ref}        [1]{{(\ref{#1})}}
+	\newcommand{\wc}            {{}\cdot{}}
+
+	\newcommand{\dbigcup}       {\bigcup\limits}
+	\newcommand{\dbigcap}       {\bigcap\limits}
+	\newcommand{\dsum}          {\sum\limits}
+	\newcommand{\dmax}          {\max\limits}
+	\newcommand{\dmin}          {\min\limits}
+	\newcommand{\dsup}          {\sup\limits}
+	\newcommand{\dinf}          {\inf\limits}
+	\newcommand{\dprod}         {\prod\limits}
+
+	\newcommand{\set}        [1]{\left\{{#1}\right\}}
+	\newcommand{\setmid}     [2]{\left\{{#1}\;\middle|\;{#2}\right\}}  %% intension
+	\newcommand{\frc}        [1]{\frac{1}{#1}}
+	\newcommand{\sforall}       {{}^\forall}
+	\newcommand{\sexists}       {{}^\exists}
+	\newcommand{\N}             {\mathbb{N}}
+	\newcommand{\Z}             {\mathbb{Z}}
+	\newcommand{\R}             {\mathbb{R}}
+	\newcommand{\bigland}       {\bigwedge}
+	\newcommand{\biglor}        {\bigvee}
+	\newcommand{\AND}           {\quad\text{and}\quad}
+	\newcommand{\OR}            {\quad\text{or}\quad}
+	\newcommand{\IF}            {\quad\text{if}\quad}
+	\newcommand{\ELSE}          {\quad\text{else}\quad}
+	\newcommand{\OTHERWISE}     {\quad\text{otherwise}\quad}
+%%% 矢印 %%%
+	\newcommand{\To}            {{\;\Rightarrow\;}}
+	\newcommand{\Gets}          {{\;\Leftarrow\;}}
+	\newcommand{\Iff}           {{\;\Leftrightarrow\;}}
+ % (x)
+	\newcommand{\lr}         [1]{\left(#1\right)}
+	\newcommand{\bigkakko}   [1]{\bigl(#1\bigr)}
+	\newcommand{\Bigkakko}   [1]{\Bigl(#1\Bigr)}
+	\newcommand{\biggkakko}  [1]{\biggl(#1\biggr)}
+	\newcommand{\Biggkakko}  [1]{\Biggl(#1\Biggr)}
+ % {x}
+	\newcommand{\lrbrace}    [1]{\left\{#1\right\}}
+	\newcommand{\bigbrace}   [1]{\bigl\{#1\bigr\}}
+	\newcommand{\Bigbrace}   [1]{\Bigl\{#1\Bigr\}}
+	\newcommand{\biggbrace}  [1]{\biggl\{#1\biggr\}}
+	\newcommand{\Biggbrace}  [1]{\Biggl\{#1\Biggr\}}
+ % [x]
+	\newcommand{\lrbrack}    [1]{\left[{#1}\right]}
+	\newcommand{\bigbrack}   [1]{\bigl[{#1}\bigr]}
+	\newcommand{\Bigbrack}   [1]{\Bigl[{#1}\Bigr]}
+	\newcommand{\biggbrack}  [1]{\biggl[{#1}\biggr]}
+	\newcommand{\Biggbrack}  [1]{\Biggl[{#1}\Biggr]}
+ % |x|
+	\newcommand{\abs}        [1]{|{#1}|}
+	\newcommand{\lrabs}      [1]{\left|{#1}\right|}
+	\newcommand{\bigabs}     [1]{\bigl|{#1}\bigr|}
+	\newcommand{\Bigabs}     [1]{\Bigl|{#1}\Bigr|}
+	\newcommand{\biggabs}    [1]{\biggl|{#1}\biggr|}
+	\newcommand{\Biggabs}    [1]{\Biggl|{#1}\Biggr|}
+ % <x>
+	\newcommand{\nangle}     [1]{\langle{#1}\rangle}
+	\newcommand{\lrangle}    [1]{\left\langle{#1}\right\rangle}
+	\newcommand{\bigangle}   [1]{\bigl\langle{#1}\bigr\rangle}
+	\newcommand{\Bigangle}   [1]{\Bigl\langle{#1}\Bigr\rangle}
+	\newcommand{\biggangle}  [1]{\biggl\langle{#1}\biggr\rangle}
+	\newcommand{\Biggangle}  [1]{\Biggl\langle{#1}\Biggr\rangle}
+ % ||x||
+	\newcommand{\norm}       [1]{\lVert{#1}\rVert}
+	\newcommand{\lrnorm}     [1]{\left\lVert{#1}\right\rVert}
+	\newcommand{\bignorm}    [1]{\bigl\lVert{#1}\bigr\rVert}
+	\newcommand{\Bignorm}    [1]{\Bigl\lVert{#1}\Bigr\rVert}
+	\newcommand{\biggnorm}   [1]{\biggl\lVert{#1}\biggr\rVert}
+	\newcommand{\Biggnorm}   [1]{\Biggl\lVert{#1}\Biggr\rVert}
+ % \lceil x \rceil
+	\newcommand{\lrceil}     [1]{\left\lceil{#1}\right\rceil}
+	\newcommand{\ceil}       [1]{\lceil{#1}\rceil}
+	\newcommand{\bigceil}    [1]{\bigl\lceil{#1}\bigr\rceil}
+	\newcommand{\Bigceil}    [1]{\Bigl\lceil{#1}\Bigr\rceil}
+	\newcommand{\biggceil}   [1]{\biggl\ceil{#1}\biggr\rceil}
+	\newcommand{\Biggceil}   [1]{\Biggl\ceil{#1}\Biggr\rceil}
+ % \lfloor x \rfloor
+	\newcommand{\lrfloor}    [1]{\left\lfloor{#1}\right\rfloor}
+	\newcommand{\floor}      [1]{\lfloor{#1}\rfloor}
+	\newcommand{\bigfloor}   [1]{\bigl\lfloor{#1}\bigr\rfloor}
+	\newcommand{\Bigfloor}   [1]{\Bigl\lfloor{#1}\Bigr\rfloor}
+	\newcommand{\biggfloor}  [1]{\biggl\floor{#1}\biggr\rfloor}
+	\newcommand{\Biggfloor}  [1]{\Biggl\floor{#1}\Biggr\rfloor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

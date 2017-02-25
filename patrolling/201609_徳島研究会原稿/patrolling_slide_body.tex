@@ -1,0 +1,188 @@
+
+\section{Introduction}
+
+
+
+
+\begin{frame}
+\ruby{警邏}{けい|ら}(patrolling)とは
+\begin{itemize}
+	\item 1人または複数の巡査により
+	\item 領域内のあらゆる場所を十分な頻度で訪問
+\end{itemize}
+警邏する対象
+\begin{itemize}
+	\item グラフの頂点
+	\item 線分や閉路などの全体
+	\item 二次元の領域
+\end{itemize}
+% 図など追加
+今回は，グラフの頂点の警邏を考える．
+\end{frame}
+
+
+
+
+\begin{frame}{問題設定}
+\begin{itemize}
+	\item 入力
+	\begin{itemize}
+		\item グラフ
+		\item 各頂点の{\alert {\timelimit} }
+		% \begin{itemize}
+		% 	\item 点 $v_i$ を警備するためには
+		% 	連続した2回の訪問の間隔を{\timelimit} $q_i$ 以内にしなければならない
+		% \end{itemize}
+		\item 各頂点の利得
+		\item 巡査の数
+	\end{itemize}
+	\item 目的
+	\begin{itemize}
+		\item グラフの全頂点を警邏できるかどうか判定(\decisionpp)
+		\item 警邏できる頂点部分集合で利得の和が最大のものを求める(\optpp)
+		\item \optpp は \decisionpp の一般化
+		（\optpp の出力が全頂点の利得の和と等しいか比べれば
+		\decisionpp の解となる）
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{既存の結果}
+\begin{itemize}
+	\item 図形（図使用）
+	\item 簡単な場合 （{\timelimit}が全て等しい場合など）
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{既存の結果}
+% ・）：巡査が1人の場合はP，複数の場合は未解決 \\
+% ・：巡査が1人で各頂点の{\timelimit}・利得が全て等しい場合のみP, 
+% それ以外の巡査が複数である場合や利得・{\timelimit}のいずれかが一般の場合はいずれもNP困難 \\
+% 一般のグラフ：巡査が1人で各頂点の{\timelimit}・利得が全て等しい場合でもNP困難
+
+\begin{table}
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline       & \multicolumn{2}{|c|}{{\timelimit}が全て等しい場合}
+	             & \multicolumn{2}{|c|}{{\timelimit}が一般の場合} \\
+	\hline       & 巡査1人      & 巡査複数 & 巡査1人 & 巡査複数 \\
+	\hline 線分  & P            & 未解決   & P       & 未解決   \\
+	\hline 閉路  & P            & 未解決   & P       & 未解決   \\
+	\hline 星    & NP困難（※） & NP困難   & NP困難  & NP困難   \\
+	\hline 木    & NP困難（※） & NP困難   & NP困難  & NP困難   \\
+	\hline 一般  & NP困難       & NP困難   & NP困難  & NP困難   \\
+	\hline
+	\end{tabular}
+\end{table}
+
+Coene : "Charlemagne's challenge: the periodic latency problem".
+\end{frame}
+
+
+
+
+\begin{frame}{既存の結果＋本研究の結果}
+\begin{itemize}
+	\item Lineの複数のところ
+	\item UStar
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\section{Line}
+
+
+\subsection{{\timelimit}がすべて等しい場合}
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+\subsection{{\timelimit}が一般の場合}
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+\subsubsection{最初の訪問時刻指定，周期ちょうど毎に訪問}
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+
+
+\section{UStar}
+
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+
+\subsection{{\timelimit}がすべて等しい場合}
+
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+\subsection{{\timelimit}が一般の場合}
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+\subsubsection{最初の訪問時刻指定，周期ちょうど毎に訪問}
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+
+\subsubsection{周期ちょうど毎に訪問}
+
+
+\begin{frame}{}
+	
+\end{frame}
+
+
+
+

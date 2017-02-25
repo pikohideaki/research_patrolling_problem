@@ -1,0 +1,262 @@
+
+%%% documentclass %%%
+	\documentclass[a4paper]{jsarticle}
+
+
+
+
+%%%%% usepackages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\usepackage{amsmath,amssymb}
+
+ % 画像
+ 	\usepackage[dvipdfmx]{graphicx}
+
+ % enumの設定拡張
+	% \usepackage{enumitem}
+
+	% \usepackage{newtxmath}
+
+	\usepackage{cases}
+		% coloneq
+
+	\usepackage{enumerate}
+
+ % 文字の上に斜線
+	\usepackage{cancel}
+		% cancel ／
+		% bcancel ＼
+		% xcancel ×
+		% cancelto ／{文字}
+
+ % 疑似コード
+	\usepackage{algpseudocode}
+	\usepackage{algorithm}
+
+ % 花文字
+	\usepackage{mathrsfs}
+
+ % url
+	\usepackage{url}
+
+ % Tikz
+	\usepackage[dvipdfmx,svgnames]{xcolor}%tikzパッケージよりも前に読み込みます。
+	\usepackage{tikz}%（これで，pgf と pgffor も読み込まれます。）
+
+ % 行列のセルに色付け
+	% \usepackage{colortbl}
+
+ % screen, itembox
+	% \usepackage{ascmac}  % algorithmicの\Returnが化ける
+
+ % 自作フロート環境
+	% \usepackage{float}
+		% \floatstyle{boxed}
+		% \newfloat{File}{H}{lop}[section]
+
+%%%%% 定義環境 %%%%%
+	\usepackage{amsmath,amssymb}
+	\usepackage{amsthm}
+	\theoremstyle{definition}
+	\newtheorem {theo}          {定理}[section]
+	\newtheorem {defi}[theo]    {定義}
+	\newtheorem {prop}[theo]    {命題}
+	\newtheorem {lemm}[theo]    {補題}
+	\newtheorem {coro}[theo]    {系} % corollary
+	\newtheorem {conj}[theo]    {予想} % conjecture
+	\newtheorem*{note}          {注意}
+	\newtheorem*{rema}          {Remark}
+	\newtheorem*{exam}          {例}
+	\newtheorem*{exer}          {例題}
+	\newtheorem*{memo}          {メモ}
+	\newtheorem*{property}      {性質}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% math %%%
+	\newcommand{\argmax}        {{\operatornamewithlimits{\mathrm{arg\,max}}}}
+	\newcommand{\argmin}        {{\operatornamewithlimits{\mathrm{arg\,min}}}}
+	% \newcommand{\defiff}          {{ \; \xLongleftrightarrow{{\mathrm{def}}} \; }}
+	% \newcommand{\vect}[1]         {{\mbox{\boldmath $#1$}}}
+%%% logic %%%
+	\newcommand{\infer}      [2]{{\frac{\displaystyle #2}{\displaystyle #1}}}
+	\newcommand{\deduce}     [2]{{\frac{\displaystyle #1}{\displaystyle #2}}}
+	\newcommand{\derive}     [2]{{\frac{\displaystyle #1}{\displaystyle #2}}}
+%%% etc %%%
+	\newcommand{\marusuji}   [1]{{\textcircled{\scriptsize #1}}}  % ① (scriptsize=文字サイズを70%に)
+	\newcommand{\Ref}        [1]{{(\ref{#1})}}
+
+%%%%% newcommands (mathjax) %%%%%
+%%% displaystyle %%%
+	\newcommand{\dlim}          {\lim\limits}
+	\newcommand{\dbigcup}       {\bigcup\limits}
+	\newcommand{\dbigcap}       {\bigcap\limits}
+	\newcommand{\dbigland}      {\bigwedge\limits}
+	\newcommand{\dbiglor}       {\bigvee\limits}
+	\newcommand{\dsum}          {\sum\limits}
+	\newcommand{\dmax}          {\max\limits}
+	\newcommand{\dmin}          {\min\limits}
+	\newcommand{\dsup}          {\sup\limits}
+	\newcommand{\dinf}          {\inf\limits}
+	\newcommand{\dprod}         {\prod\limits}
+	\newcommand{\dff}           {\mathrm{d}}
+	\newcommand{\diff}       [2]{\dfrac{\mathrm{d} #1}{\mathrm{d} #2}}
+	\newcommand{\dfrc}       [1]{\dfrac{1}{#1}}
+%%% math %%%
+	\newcommand{\st}            {\;\mathrm{s.t.}\;}
+	\newcommand{\wildcard}      {{}\cdot{}}
+	\newcommand{\wc}            {{}\cdot{}}
+	\newcommand{\dist}          {\mathrm{dist}}
+	\newcommand{\prob}       [1]{\mathrm{Pr}\left({#1}\right)}
+	\newcommand{\set}        [1]{\left\{{#1}\right\}}
+	\newcommand{\setmid}     [2]{\left\{{#1}\;\middle|\;{#2}\right\}}  %% intension
+	\newcommand{\partialdiff}[2]{\dfrac{\partial #1}{\partial #2}}
+	\newcommand{\frc}        [1]{\frac{1}{#1}}
+	\newcommand{\defeq}         {\;\overset{\mathrm{def}}{=}\;}
+	\newcommand{\vect}       [1]{\boldsymbol{#1}}
+	\newcommand{\inv}           {{}^{-1}}
+	\newcommand{\inverse}       {{}^{-1}}
+	\newcommand{\inversemap}    {{}^{-1}}
+	\newcommand{\sforall}       {{}^\forall}
+	\newcommand{\sexists}       {{}^\exists}
+	\newcommand{\powerset}   [1]{\mathfrak{B}\!\left(#1\right)}
+	\newcommand{\ol}         [1]{\overline{#1}}
+	\newcommand{\ob}         [2]{\overbrace{#1}^{#2}}
+	\newcommand{\ub}         [2]{\underbrace{#1}_{#2}}
+	\newcommand{\ubracket}   [2]{\underbracket{#1}_{#2}}
+	\newcommand{\ul}         [2]{\mathop{\underline{#1}}_{#2}}
+%	\newcommand{\ul}         [1]{{\underline{#1}}}
+	\newcommand{\bful}       [1]{\textbf{\ul{#1}}}
+	\newcommand{\oueq}       [3]{\overset{#1}{\underset{#2}{#3}}}
+	\newcommand{\vecto}      [1]{\overrightarrow{#1}}
+%%% math set %%%
+	\newcommand{\N}             {\mathbb{N}}
+	\newcommand{\Z}             {\mathbb{Z}}
+	\newcommand{\Q}             {\mathbb{Q}}
+	\newcommand{\R}             {\mathbb{R}}
+	\newcommand{\C}             {\mathbb{C}}
+%%% logic (\land, \lor, \supset, \lnot)
+	\newcommand{\bigland}       {\bigwedge}
+	\newcommand{\biglor}        {\bigvee}
+	\newcommand{\lxor}          {\veebar}  % xor
+	\newcommand{\valueof}    [1]{[\![#1]\!]}
+	\newcommand{\valuev}     [1]{\valueof{#1}_v}
+	\newcommand{\valuea}     [1]{\valueof{#1}_\mathfrak{A}}
+	\newcommand{\lrvalueof}  [1]{\left[\!\left[{#1}\right]\!\right]}
+	\newcommand{\lrvaluev}   [1]{\lrvalueof{#1}_v}
+	\newcommand{\lrvaluea}   [1]{\lrvalueof{#1}_\mathfrak{A}}
+	\newcommand{\True}          {\rm t\!t}
+	\newcommand{\False}         {\rm f\!f}
+	\newcommand{\AND}           {\quad\text{and}\quad}
+	\newcommand{\OR}            {\quad\text{or}\quad}
+	\newcommand{\IF}            {\quad\text{if}\quad}
+	\newcommand{\ELSE}          {\quad\text{else}\quad}
+	\newcommand{\OTHERWISE}     {\quad\text{otherwise}\quad}
+%%% probability
+	\newcommand{\Borel}         {\mathfrak{B}}
+	\newcommand{\E}             {\mathrm{E}}
+	\newcommand{\Var}           {\mathrm{Var}}
+	\newcommand{\Cov}           {\mathrm{Cov}}
+%%% 矢印 %%%
+	\newcommand{\To}            {{\;\Rightarrow\;}}
+	\newcommand{\Gets}          {{\;\Leftarrow\;}}
+	\newcommand{\Iff}           {{\;\Leftrightarrow\;}}
+	\newcommand{\Ifff}          {{\;\Leftrightarrow\;}}
+	\newcommand{\Tooo}          {{\;\Longrightarrow\;}}
+	\newcommand{\defIff}        {{\;\overset{\mathrm{def}}{\Longleftrightarrow}\;}}
+	\renewcommand{\iff}         {\leftrightarrow}
+ % (x)
+	\newcommand{\lr}         [1]{\left(#1\right)}
+	\newcommand{\bigkakko}   [1]{\bigl(#1\bigr)}
+	\newcommand{\Bigkakko}   [1]{\Bigl(#1\Bigr)}
+	\newcommand{\biggkakko}  [1]{\biggl(#1\biggr)}
+	\newcommand{\Biggkakko}  [1]{\Biggl(#1\Biggr)}
+ % {x}
+	\newcommand{\lrbrace}    [1]{\left\{#1\right\}}
+	\newcommand{\bigbrace}   [1]{\bigl\{#1\bigr\}}
+	\newcommand{\Bigbrace}   [1]{\Bigl\{#1\Bigr\}}
+	\newcommand{\biggbrace}  [1]{\biggl\{#1\biggr\}}
+	\newcommand{\Biggbrace}  [1]{\Biggl\{#1\Biggr\}}
+ % [x]
+	\newcommand{\lrbrack}    [1]{\left[{#1}\right]}
+	\newcommand{\bigbrack}   [1]{\bigl[{#1}\bigr]}
+	\newcommand{\Bigbrack}   [1]{\Bigl[{#1}\Bigr]}
+	\newcommand{\biggbrack}  [1]{\biggl[{#1}\biggr]}
+	\newcommand{\Biggbrack}  [1]{\Biggl[{#1}\Biggr]}
+ % |x|
+	\newcommand{\abs}        [1]{|{#1}|}
+	\newcommand{\lrabs}      [1]{\left|{#1}\right|}
+	\newcommand{\bigabs}     [1]{\bigl|{#1}\bigr|}
+	\newcommand{\Bigabs}     [1]{\Bigl|{#1}\Bigr|}
+	\newcommand{\biggabs}    [1]{\biggl|{#1}\biggr|}
+	\newcommand{\Biggabs}    [1]{\Biggl|{#1}\Biggr|}
+ % <x>
+	\newcommand{\nangle}     [1]{\langle{#1}\rangle}
+	\newcommand{\lrangle}    [1]{\left\langle{#1}\right\rangle}
+	\newcommand{\bigangle}   [1]{\bigl\langle{#1}\bigr\rangle}
+	\newcommand{\Bigangle}   [1]{\Bigl\langle{#1}\Bigr\rangle}
+	\newcommand{\biggangle}  [1]{\biggl\langle{#1}\biggr\rangle}
+	\newcommand{\Biggangle}  [1]{\Biggl\langle{#1}\Biggr\rangle}
+ % ||x||
+	\newcommand{\norm}       [1]{\lVert{#1}\rVert}
+	\newcommand{\lrnorm}     [1]{\left\lVert{#1}\right\rVert}
+	\newcommand{\bignorm}    [1]{\bigl\lVert{#1}\bigr\rVert}
+	\newcommand{\Bignorm}    [1]{\Bigl\lVert{#1}\Bigr\rVert}
+	\newcommand{\biggnorm}   [1]{\biggl\lVert{#1}\biggr\rVert}
+	\newcommand{\Biggnorm}   [1]{\Biggl\lVert{#1}\Biggr\rVert}
+ % \lceil x \rceil
+	\newcommand{\lrceil}     [1]{\left\lceil{#1}\right\rceil}
+	\newcommand{\ceil}       [1]{\lceil{#1}\rceil}
+	\newcommand{\bigceil}    [1]{\bigl\lceil{#1}\bigr\rceil}
+	\newcommand{\Bigceil}    [1]{\Bigl\lceil{#1}\Bigr\rceil}
+	\newcommand{\biggceil}   [1]{\biggl\ceil{#1}\biggr\rceil}
+	\newcommand{\Biggceil}   [1]{\Biggl\ceil{#1}\Biggr\rceil}
+ % \lfloor x \rfloor
+	\newcommand{\lrfloor}    [1]{\left\lfloor{#1}\right\rfloor}
+	\newcommand{\floor}      [1]{\lfloor{#1}\rfloor}
+	\newcommand{\bigfloor}   [1]{\bigl\lfloor{#1}\bigr\rfloor}
+	\newcommand{\Bigfloor}   [1]{\Bigl\lfloor{#1}\Bigr\rfloor}
+	\newcommand{\biggfloor}  [1]{\biggl\floor{#1}\biggr\rfloor}
+	\newcommand{\Biggfloor}  [1]{\Biggl\floor{#1}\Biggr\rfloor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+%%%%% title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+	Periodic Latency Problem with Profits
+}
+\author{
+	東京大学 総合文化研究科 広域科学専攻 広域システム科学系 河村研究室 修士1年 \\
+	能城 秀彬 \\
+}
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%%% 表紙 %%%
+	 \maketitle
+	 % \newpage
+
+%%% 目次 %%%
+	% \tableofcontents
+%	\listoftables
+%	\listoffigures
+	% \newpage
+
+%%% input %%%
+%\setcounter{section}{0}
+	\input{./PLP.tex}
+	% \newpage
+
+%%% 参考文献 %%%
+%\newpage
+\bibliographystyle{jplain}
+\bibliography{bunken}
+
+\end{document}

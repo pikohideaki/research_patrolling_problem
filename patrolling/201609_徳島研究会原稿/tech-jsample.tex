@@ -1,0 +1,131 @@
+%%
+%% 研究報告用スイッチ
+%% [techrep]
+%%
+%% 欧文表記無しのスイッチ(etitle,jkeyword,eabstract,ekeywordは任意)
+%% [noauthor]
+%%
+
+\documentclass[submit,techrep]{ipsj}
+%\documentclass[submit,techrep,noauthor]{ipsj}
+
+\usepackage[T1]{fontenc}
+
+	\usepackage[dvipdfmx]{graphicx}
+
+%\usepackage[dvips]{graphicx}
+\usepackage{latexsym}
+
+
+	\usepackage{enumerate}
+
+% theorem
+	\usepackage{amsmath,amssymb}
+	\usepackage{amsthm}
+
+ % Tikz
+	\usepackage[dvipdfmx,svgnames]{xcolor}%tikzパッケージよりも前に読み込みます。
+	\usepackage{tikz}%（これで，pgf と pgffor も読み込まれます。）
+%%% color %%%
+	% \usepackage[dvipdfmx]{color}    % 色付き文字
+	\definecolor{mygreen}{rgb}{0, 0.6, 0} % R(赤),G(緑),B(青)
+	\definecolor{myorange}{rgb}{0.8, 0.4, 0} % R(赤),G(緑),B(青)
+	\newcommand{\black}      [1] {{\textcolor{black}{#1}}}
+	\newcommand{\red}        [1] {{\textcolor{red}{#1}}}
+	\newcommand{\blue}       [1] {{\textcolor{blue}{#1}}}
+	\newcommand{\green}      [1] {{\textcolor{mygreen}{#1}}}
+	\newcommand{\orange}     [1] {{\textcolor{myorange}{#1}}}
+
+
+
+
+\def\Underline{\setbox0\hbox\bgroup\let\\\endUnderline}
+\def\endUnderline{\vphantom{y}\egroup\smash{\underline{\box0}}\\}
+\def\|{\verb|}
+
+\setcounter{巻数}{57
+}%vol53=2012
+\setcounter{号数}{10}
+\setcounter{page}{1}
+
+
+	\input{macros.tex}
+
+
+\begin{document}
+
+\title{複数の巡査による指定地点の警邏について}
+
+
+\etitle{Patrolling designated points on graphs}
+
+\affiliate{UT}{東京大学}
+
+
+%\paffiliate{UT}{東京大学\\
+%University of Tokyo}
+
+\author{河村 彰星}{Akitoshi Kawamura}{UT}[kawamura@graco.c.u-tokyo.ac.jp]
+\author{能城 秀彬}{Hideaki Noshiro}{UT}[noshiro.pf@gmail.com]
+
+
+\input{abstract_jp.tex}
+
+
+
+\maketitle
+
+
+\input{body.tex}
+\input{memo.tex}
+
+\begin{acknowledgment}
+  本研究は旭硝子財団および科研費新学術領域「計算限界解明」の助成を受けて行われた。
+\end{acknowledgment}
+
+% \bibliographystyle{jplain}
+% \bibliography{bibsample}
+
+\begin{thebibliography}{1}
+
+\bibitem{agrawal2004primes}
+M. Agrawal, N. Kayal, and N. Saxena.
+\newblock Primes is in P.
+\newblock {\em Annals of Mathematics}, 160(2), pp. 781--793, 2004.
+
+\bibitem{chen2013fence}
+K.~Chen, A.~Dumitrescu, and A.~Ghosh.
+\newblock On fence patrolling by mobile agents.
+\newblock In {\em CCCG}, 2013.
+
+\bibitem{coene2013balancing}
+S.~Coene, C.~Filippi, F.\,C.\,R. Spieksma, and E.~Stevanato.
+\newblock Balancing profits and costs on trees.
+\newblock {\em Networks}, 61(3), pp.~200--211, 2013.
+
+\bibitem{coene2011charlemagne}
+S.~Coene, F.\,C.\,R.~Spieksma, and G.\,J. Woeginger.
+\newblock Charlemagne's challenge: the periodic latency problem.
+\newblock {\em Operations research}, 59(3), pp.~674--683, 2011.
+
+\bibitem{czyzowicz2011boundary}
+J.~Czyzowicz, L.~G{\k{a}}sieniec, A.~Kosowski, and E.~Kranakis.
+\newblock Boundary patrolling by mobile agents with distinct maximal speeds.
+\newblock In {\em European Symposium on Algorithms}, pp.~701--712. Springer,
+  2011.
+
+\bibitem{dusart1999k}
+P.~Dusart.
+\newblock The $k$th prime is greater than $k (\ln k + \ln \ln k - 1)$ for $k \geq 2$.
+\newblock {\em Mathematics of Computation}, 68, pp.~411--415, 1999.
+
+\bibitem{kawamura2015simple}
+A.~Kawamura and M.~Soejima.
+\newblock Simple strategies versus optimal schedules in multi-agent patrolling.
+\newblock In {\em International Conference on Algorithms and Complexity}, pp.
+  261--273. Springer, 2015.
+
+\end{thebibliography}
+
+
+\end{document}
