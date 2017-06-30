@@ -1,16 +1,12 @@
 
 \def\newblock{\hskip .11em plus .33em minus .07em}
 
-% \newcommand{\optpp}{O{\scriptsize PTIMIZE}PP}
-\newcommand{\decisionpp}{D{\scriptsize ECISION}PP}
-\newcommand{\timelimit}{許容訪問間隔}
-\newcommand{\interval}{厳密訪問間隔}
-% \newcommand{\comp}{Comp}
-\newcommand{\unit}{Unit}
-\newcommand{\Rset}{\mathbf R}
-\newcommand{\Nset}{\mathbf N}
-\newcommand{\patrolling}{協力警邏問題}
-\newcommand{\orderedrun}{順序保存運行}
+\newcommand{\optpp}      {O{\scriptsize PTIMIZE}PP}
+\newcommand{\decisionpp} {D{\scriptsize ECISION}PP}
+\newcommand{\timelimit}  {許容訪問間隔}
+\newcommand{\period}     {厳密訪問間隔}
+\newcommand{\comp}       {Comp}
+
 
 
 
@@ -26,6 +22,8 @@
 	% \newtheorem*{note}          {注意}
 	\newtheorem*{rema}          {Remark}
 	\newtheorem*{exam}          {例}
+	\newtheorem*{exer}          {例題}
+	\newtheorem*{memo}          {メモ}
 	\newtheorem*{property}      {性質}
 
 
@@ -42,8 +40,8 @@
 	\newcommand{\dinf}          {\inf\limits}
 	\newcommand{\dprod}         {\prod\limits}
 
-	\newcommand{\mathset}        [1]{\left\{{#1}\right\}}
-	\newcommand{\mathsetmid}     [2]{\left\{{#1}\;\middle|\;{#2}\right\}}  %% intension
+	\newcommand{\set}        [1]{\left\{{#1}\right\}}
+	\newcommand{\setmid}     [2]{\left\{{#1}\;\middle|\;{#2}\right\}}  %% intension
 	\newcommand{\frc}        [1]{\frac{1}{#1}}
 	\newcommand{\sforall}       {{}^\forall}
 	\newcommand{\sexists}       {{}^\exists}
@@ -52,6 +50,11 @@
 	\newcommand{\R}             {\mathbb{R}}
 	\newcommand{\bigland}       {\bigwedge}
 	\newcommand{\biglor}        {\bigvee}
+	\newcommand{\AND}           {\quad\text{and}\quad}
+	\newcommand{\OR}            {\quad\text{or}\quad}
+	\newcommand{\IF}            {\quad\text{if}\quad}
+	\newcommand{\ELSE}          {\quad\text{else}\quad}
+	\newcommand{\OTHERWISE}     {\quad\text{otherwise}\quad}
 %%% 矢印 %%%
 	\newcommand{\To}            {{\;\Rightarrow\;}}
 	\newcommand{\Gets}          {{\;\Leftarrow\;}}
@@ -75,7 +78,7 @@
 	\newcommand{\biggbrack}  [1]{\biggl[{#1}\biggr]}
 	\newcommand{\Biggbrack}  [1]{\Biggl[{#1}\Biggr]}
  % |x|
-	\newcommand{\abs}        [1]{\lvert{#1}\rvert}
+	\newcommand{\abs}        [1]{|{#1}|}
 	\newcommand{\lrabs}      [1]{\left|{#1}\right|}
 	\newcommand{\bigabs}     [1]{\bigl|{#1}\bigr|}
 	\newcommand{\Bigabs}     [1]{\Bigl|{#1}\Bigr|}
@@ -109,3 +112,4 @@
 	\newcommand{\Bigfloor}   [1]{\Bigl\lfloor{#1}\Bigr\rfloor}
 	\newcommand{\biggfloor}  [1]{\biggl\floor{#1}\biggr\rfloor}
 	\newcommand{\Biggfloor}  [1]{\Biggl\floor{#1}\Biggr\rfloor}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
