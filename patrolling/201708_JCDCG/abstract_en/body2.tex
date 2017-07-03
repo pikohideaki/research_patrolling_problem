@@ -1,26 +1,34 @@
-\section{Introduction}
+\newcommand{\kcomment}[1]{{\color{blue}{#1}}}
 
-We consider the problem of {\it patrolling} --- i.e. to defend and supervise a given area by one or more agents moving around this and visiting a designated place within the area at a sufficient frequency.~\cite{czyzowicz2011boundary}
+\section{The problem}
 
-Here we consider the following problem. 
-One or more agents patrol over an undirected graph with edge lengths by moving on the edges with speed 1 or less. Each point has an {\it allowable visiting interval} and should not be left over that time (conditions of security). Determine if this is possible.
+In \emph{patrolling} problems, one or more agents move around a given terrain to defend or supervise it by visiting designated places in the terrain with sufficient frequency~\cite{czyzowicz2011boundary}. 
 
-Coene et al.~\cite{coene2011charlemagne} showed several polynomial time algorithms and NP-hardness for some graphs under the assumption that at most one agent who guards each point (uncooperative).
-In this research we consider the case of losing constraints of non-cooperation (it may be that there is a point where two or more agents cooperate to guard).
+Here we consider the problem where the terrain is represented by an undirected graph with specified edge lengths, on which agents move with speed $1$ or less.  Each vertex has an \emph{idle time}, and is said to be \emph{guarded} by a set of moving agents if it is visited at least once in every time period of that length.  We are interested in deciding whether there is a schedule for a given number of agents to guard all vertices. 
 
+Since the problem for general graphs is NP-hard even for a single agent, we consider the following special graphs: \emph{lines} (paths), \emph{stars} and \emph{unit-length cliques}. 
+A star is a graph where there is a special vertex called the \emph{centre}, 
+which does not need to be guarded,
+and all other vertices are adjacent only to the centre. 
+A unit-length clique is a complete graph with all edges equal in length. 
+Since all that matters for patrolling is the time it takes to travel between each pair of nodes, a unit-length clique can be regarded as a special case of a star with all edges equal in length. 
 
-% graph shapes
-\section{Shapes of graphs and its complexity}
+\section{Previous work with no cooperation}
 
-Since it is NP-hard in the general graph for even a single agent, we picked up Line, Star, Unit as graph shapes.
-Line is a graph composed of a series of line segments, Star is a graph whose center point is one end point of all edges and Unit is a complete graph with all edges equal in length.
-We assume that the center point of a Star is not a subject to be guarded.
-In the patrolling problem, only the distance traveled between the points of the graph is important, so a Unit is equivalent to a Star with all edges equal in length and can be regarded as a special case of Star.
+Coene et al.~\cite{coene2011charlemagne} studied a slightly different version of the problem which require that each vertex be guarded already by one agent alone.  In this setting, they showed polynomial time algorithms and NP-hardness results for some graph classes. 
+We remove this requirement and study the problem where a vertex can be guarded by several agents in cooperation.
 
+%% (conditions of security)
+%% (uncooperative) \kcomment{←これらの言葉を使うなら単に括弧内に記すのではなく説明せよ。でも結局この原稿中では後で使うわけではないようですね（？？？最後の節で前者が出てきているが）。}
 
-According to Coene et al.~\cite{coene2011charlemagne}, for cases where there is only one agent, polynomial time algorithms are known for Tree with uniform allowable visit intervals or for Line,
-and Star with arbitrary allowable visiting intervals is NP-hard.
-We aim to give evaluations of the complexity class except in cases where it is already NP-hard for single agent, that is, in the case of (1) Line, (2) Unit, (3) Star with uniform allowable visiting intervals, (4) Tree with uniform allowable visiting intervals.
+%% \kcomment{↓「Unit」などはグラフの名なのか、グラフの集合の名なのか、入力をそれに制限した問題の名なのか。どれでもよいがはっきりさせよう。}
+
+The two versions of the problem come to the same thing when there is only one agent.
+For this setting, Coene et al.~\cite{coene2011charlemagne} gave 
+polynomial time algorithms for trees with uniform idle times and for lines, 
+and proved that the problem is NP-hard for stars with arbitrary idle times.
+Thus, our study of the cooperating agents will focus on the cases where the problem is not already known to be NP-hard for single agent, that is, for (1) lines, (2) unit-length cliques, (3) stars with uniform idle times.
+% , and (4) trees with uniform idle times.
 
 \begin{figure}[htbp]
   \begin{tabular}{cc}
@@ -33,31 +41,33 @@ We aim to give evaluations of the complexity class except in cases where it is a
       \includegraphics[width=\hsize]{../fig2_adjust.pdf}
     \end{minipage}
   \end{tabular}
-  \caption{Shapes of graphs and its complexity.
-  The left side of the slash represents the case of uniform allowable visiting intervals, and the right side represents the case of arbitrary allowable visiting intervals}
+  \caption{Classes of graphs and the complexity of the patrolling problem.
+  The left figure is for a single agent and the right figure is for multiple agents in cooperation.
+  The left side of the slash represents the case of uniform idle times, and the right side represents the case of arbitrary idle times.}
   \label{fig:shapeandcomplexity}
 \end{figure}
 
 
 
 
-\section{Uniform allowable visiting intervals}
-For each graph, we first considered the case where the allowable visiting intervals of all points are equal, and we obtained the result that all of them can be calculated in polynomial time.
+\section{Uniform idle time}
+%% For each graph, we first considered the case where all vertices have the same idle time.  We proved that all of them \kcomment{（←何を指す？「lineでもstarでも」という意味？）} can be calculated in polynomial time.
+We first considered the case where all vertices have the same idle time.  We proved that our problem can be solved in polynomial time both for lines and for stars, because in these cases the situation is simplified in the following way: 
+For lines, we showed that if patrolling is possible at all, then there is a patrolling schedule where each vertex is guarded by one agent alone. 
+For stars, there is a schedule where the only form of cooperation is for several agents to periodically visit a subset of vertices in the same order at a certain time interval.
 
-In the case of Line, it is shown that an optimal strategy for each agent
-is a reciprocating motion in some section regardless of other agents' movements.
-In the case of Star, it is shown that an optimal strategy is that
-each agent resides at a point more than a certain distance from the center point,
-and the rest agents move in line at equal intervals of the allowable visiting intervals and visit the remaining points in order.
-In this way, it was found that if the cooperation of the agents is unnecessary or when the cooperation method becomes extremely simple due to all equal allowable visiting intervals, it can be easily solved.
-In addition, they can also be applied to a problem extended to find a point subset where gains are set for points and the sum of gains is maximized.
+% In this way, it was found that if the cooperation of the agents is unnecessary or when the cooperation method becomes extremely simple due to all equal allowable visiting intervals, it \kcomment{（←何を指す？）} can be easily solved.
+% ↑節の冒頭第二文で述べたことにしました。
+For these graphs, we can also efficiently solve the optimization problem where each vertex has a profit and we want to maximize the sum of the profit of the guarded vertices. 
 
+\section{Arbitrary idle times}
 
-
-\section{Arbitrary allowable visiting intervals}
-
-On the other hand, because it was difficult to evaluate when the allowable visit interval was general in the line segment, Unit, we evaluated the computational complexity class by considering the case of visit time designation as a condition instead of the allowable visit interval defined as the condition of security at each point.
-As a result, there are algorithms that greedily determine the motion of the agent in Line
-(Figure \ref{fig:shapeandcomplexity}-*2 ),
-and in Unit it was shown that it is NP-hard even if there is only one agent by a reduction from the maximum independent set problem
+On the other hand, because it was difficult to evaluate the complexity class of lines and unit-length cliques when idle time was general, we considered
+% \emph{visit time designation} as a condition instead of idle time.
+another condition different from idle time for being guarded.
+% \kcomment{←どういう意味？（複数の文が途中で混ざっている？）「訪問時刻指定」の説明をしようとしている？}
+As a result, we found an algorithms that greedily determine the motion of the agent in lines (Figure \ref{fig:shapeandcomplexity}-*2 ).
+% \kcomment{（ここの間に「一方で利得最大化問題を考えると」という説明が要りますよね？）}
+Furthermore, it was shown that
+the optimization problem also mentioned at the end of section 3 for unit-length cliques is NP-hard by a reduction from the maximum independent set problem
 (Figure \ref{fig:shapeandcomplexity}-*1 ).
