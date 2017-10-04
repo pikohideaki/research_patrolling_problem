@@ -18,9 +18,9 @@
 $a _i (s)$と$a _i (t)$の間の$G$上での距離は$\abs{s - t}$を超えない．
 
 
-$G$の各頂点には利得および{\timelimit}と呼ばれる非負整数が与えられている．
+$G$の各頂点には利得および{\idletime}と呼ばれる非負整数が与えられている．
 ある運行によって頂点$v$が警備されるとは，
-$v$の{\timelimit}を$q$とするとき，
+$v$の{\idletime}を$q$とするとき，
 長さ$q$のどの時間区間を見ても，
 いずれかの巡査が$v$を少くとも一度は訪問する
 （すなわち任意の時刻$t \in \Rset$に対して
@@ -34,13 +34,13 @@ $W$を警邏する巡査$m$人による運行が存在することをいう．
 本稿では次の問題を考える．
 
 \begin{cooperativepatrollingproblem}
-	巡査の人数$m$とグラフ$G$（辺の長さ，頂点の利得と{\timelimit}を含む）が
+	巡査の人数$m$とグラフ$G$（辺の長さ，頂点の利得と{\idletime}を含む）が
 	与えられたとき，
 	警邏可能な頂点集合のうち利得の和が最大となるものを求めよ．
 \end{cooperativepatrollingproblem}
 
 この問題は，巡査が一人かつ
-全頂点の利得と{\timelimit}が等しい場合に限っても，
+全頂点の利得と{\idletime}が等しい場合に限っても，
 ハミルトン路問題からの帰着により
 NP困難である\cite[Theorem~8]{coene2011charlemagne}．
 そこでグラフの形状を限ったときにどのようになるかを調べる．
@@ -54,7 +54,7 @@ Coeneら\cite{coene2011charlemagne}は似た問題を扱っているが，
 各頂点を専ら一人の巡査が「担当」することを要求している．
 つまり，各頂点$v \in W$が単独警備されること，すなわち
 $v$によって決るある一人の巡査が，
-$v$の{\timelimit}以上の長さのどの時間区間においても
+$v$の{\idletime}以上の長さのどの時間区間においても
 $v$を訪問することを要求しているのである．
 対比のため本稿ではこの問題を非協力警備問題と呼ぶことにする
 （\cite{coene2011charlemagne}ではMPLPPと称している）．
@@ -65,7 +65,7 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 
 %% 複数の巡査の協力を考える本稿の問題においては，
 %% 巡査が1人の場合でNP困難性が示されていない
-%% 線分・閉路の場合と星・木で全頂点の利得と{\timelimit}が等しい場合
+%% 線分・閉路の場合と星・木で全頂点の利得と{\idletime}が等しい場合
 %% が未解決である．
 
 本稿ではグラフ$G$の形状として
@@ -75,7 +75,7 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 {\unit}は，その各辺の長さを$d$とすると，
 同じ頂点数で辺の長さがすべて$d/2$というStarの特別な場合と考えることができる．
 
-% 頂点の警備にかかるコストにはその頂点の{\timelimit}とその頂点までの移動距離という2種類の制約があるが，
+% 頂点の警備にかかるコストにはその頂点の{\idletime}とその頂点までの移動距離という2種類の制約があるが，
 % {\unit}はそのうち頂点までの移動距離が全頂点で等しいという場合となる．
 
 %% 頂点の警邏を考える今回の問題においては，グラフの形状は頂点間の移動距離の性質としてのみ意味を持つ．
@@ -89,30 +89,30 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 \begin{itemize}
 \item 
 Lineでは，
-非協力警邏問題は%巡査数・利得・{\timelimit}がすべて一般の場合であっても
+非協力警邏問題は%巡査数・利得・{\idletime}がすべて一般の場合であっても
 動的計画法により多項式時間で解けることが
 示されていた\cite[Theorem~11]{coene2011charlemagne}が，
 その正しさは非協力の設定に強く依存している．
 本稿では協力警邏問題について，
-全頂点の{\timelimit}が等しい場合にはPであることを示す（定理\ref{theo:LineEqualTimelimit}）．
+全頂点の{\idletime}が等しい場合にはPであることを示す（定理\ref{theo:LineEqualTimelimit}）．
 \item
 Starでは，
-全頂点の利得と{\timelimit}がすべて等しい場合に限っても，
+全頂点の利得と{\idletime}がすべて等しい場合に限っても，
 非協力警邏問題はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
 本稿では，この場合の協力警邏問題はPとなるという興味深い結果を得る（定理＊＊）．
-なお利得または{\timelimit}を一般にすると，
+なお利得または{\idletime}を一般にすると，
 巡査が一人であっても（したがって協力・非協力に関わらず）
 NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
 \item 
 {\unit}では，
-全頂点の{\timelimit}が等しい場合は\patrolling がPであることを示す（定理＊＊）．
-Starでは全頂点の{\timelimit}が等しくても利得が一般だとNP困難になるので，
+全頂点の{\idletime}が等しい場合は\patrolling がPであることを示す（定理＊＊）．
+Starでは全頂点の{\idletime}が等しくても利得が一般だとNP困難になるので，
 これにより{\unit}はStarよりも簡単に解ける場合となっていることが分かる．
 \end{itemize}
 
 Lineと{\unit}については
-{\timelimit}が一般の場合については多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
-{\timelimit}の代わりに「{\interval}」というものを考え，
+{\idletime}が一般の場合については多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
+{\idletime}の代わりに「{\interval}」というものを考え，
 最初の訪問時刻から{\interval}ごとの時刻ちょうどに訪問し続けること
 を警備の条件とする問題も考えた．
 
@@ -189,7 +189,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 「一番左の巡査をなるべく右に動かす」で解決できる場合とできない場合、という説明ができる。}
 
 
-\subsection{{\timelimit}がすべて等しい場合}
+\subsection{{\idletime}がすべて等しい場合}
 \label{subsec:LineUnaryTimelimit}
 
 \red{この設定に関しては、やはりCollins et al.との関係を述べるべきではないか？}
@@ -197,13 +197,13 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 
 
 本節では次のことを示す．
-% まず，{\timelimit}がすべて等しい場合は{\patrolling}は多項式時間で解くことができる．
+% まず，{\idletime}がすべて等しい場合は{\patrolling}は多項式時間で解くことができる．
 % \red{←定理以上の情報を何も与えていない。こう書くくらいなら「本節では次のことを示す」などの方が良い。
 % 他の可能性としては、何か全体の方向性を示す言葉、例えば現状2.2節冒頭に書いてある「この場合は協力が関係なくなるので」的なことを（うまく一言で言えそうなら）書くとか。}
 
 \begin{theo}
 	\label{theo:LineEqualTimelimit}
-	グラフの形状がLineで{\timelimit}がすべて等しい場合，
+	グラフの形状がLineで{\idletime}がすべて等しい場合，
 	{\patrolling}は多項式時間で解くことができる．
 \end{theo}
 
@@ -231,7 +231,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 	% 時刻$\tau \in [t, t + q)$が存在し
 	% $a _s (\tau) = v_i$）
 	，
-	{\timelimit}を$q_i$として，
+	{\idletime}を$q_i$として，
 		$s$は常に区間$[v_i - q_i/2, v_i + q_i/2]$にいる．
 \end{lemm}
 \red{↑「単独警備」はCoeneらの非協力警邏問題の定義に出て来たものであることを述べる。
@@ -258,7 +258,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 
 \begin{lemm}
 	\label{lemm:LineEqualTimelimitIndependentInterval}
-	グラフの形状がLineで，全頂点の{\timelimit}がすべて$Q$であるとする．
+	グラフの形状がLineで，全頂点の{\idletime}がすべて$Q$であるとする．
 	頂点集合$W$が警邏可能であるとする．
 	このとき，
 	$W$を警邏する
@@ -304,7 +304,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 		\leq 2(\leftmostpoint + Q/2 - \leftmostpoint) = Q
 	\]
 	より，$[\leftmostpoint, \leftmostpoint + Q/2]$に含まれるどの頂点も
-	{\timelimit}を超えずに訪問できていることが分かる．
+	{\idletime}を超えずに訪問できていることが分かる．
 
 	したがって，
 	補題\ref{lemm:movableAreaofPatrolleronLine}より
@@ -368,29 +368,29 @@ $OPT(m,n)$が求めたい利得の最大値となる．
 
 
 
-\subsection{{\timelimit}が一般の場合}
+\subsection{{\idletime}が一般の場合}
 \label{subsec:LineDifferentTimelimit}
 
-% {\timelimit}が一般の場合
-{\timelimit}がすべて等しい場合は結局
+% {\idletime}が一般の場合
+{\idletime}がすべて等しい場合は結局
 どの頂点も複数の巡査の協力で警備する必要がないので単純になっていたが，
 %
-{\timelimit}が一般の場合は，
-ある{\timelimit}が短い頂点を複数の巡査が交代で訪問することで警備すると
+{\idletime}が一般の場合は，
+ある{\idletime}が短い頂点を複数の巡査が交代で訪問することで警備すると
 最大の利得が得られる例が存在する．
 %
 図\ref{tikz:multiAgentExample2}は
 横軸を頂点の座標，縦軸を時刻として$t$-$x$平面に巡査の軌跡を書いたものであるが，
 %
-左から{\timelimit}が$8,2,2,3,6$である5つの頂点
+左から{\idletime}が$8,2,2,3,6$である5つの頂点
 が存在するとき，
 左図のような動きを繰り返せば
-中央の{\timelimit}の短い頂点を協力して警備することで全点を警備できる．
-左の巡査は{\timelimit}が$8$である頂点をより短い時間$6$ごとに訪問しているが，
+中央の{\idletime}の短い頂点を協力して警備することで全点を警備できる．
+左の巡査は{\idletime}が$8$である頂点をより短い時間$6$ごとに訪問しているが，
 このようにあえて早めに戻る動きをすることで右の巡査との協力が効率よくなっており，
 右図のように仮に左の巡査が
-{\timelimit}ぎりぎりまで右の方へ動き頂点をなるべく多く訪問して左端へ帰る動き方をすると
-右の巡査がどのような動き方をしても訪問間隔が{\timelimit}を超え警備できない頂点が生まれてしまう．
+{\idletime}ぎりぎりまで右の方へ動き頂点をなるべく多く訪問して左端へ帰る動き方をすると
+右の巡査がどのような動き方をしても訪問間隔が{\idletime}を超え警備できない頂点が生まれてしまう．
 %
 この例は，協力が発生する場合巡査の動きを個別に決定するのは難しいということを示唆している．
 %
@@ -456,7 +456,7 @@ $OPT(m,n)$が求めたい利得の最大値となる．
 
 
 \red{ここでは「間隔は厳密だが剰余の指定なし」に関する結果はないのだから、二段階に分けて説明する必要がないのでは。つまり、いきなり「間隔は厳密で、剰余の指定あり」の状況、あるいは更に定理2.4の状況に飛んだ方がすっきりするのでは。→}そこで我々は
-{\timelimit}の代わりに「{\interval}」というものを考え，
+{\idletime}の代わりに「{\interval}」というものを考え，
 各頂点を警備するにはその点の{\interval}ちょうどごとの時刻には訪問しなければならないという問題も考えた．
 この「あえて短い間隔で訪問する」ことで得をしにくいような設定では，
 さらに各頂点を訪問しなければならない最初の時刻も指定されるならば，
@@ -557,10 +557,10 @@ $s_1$のときと同様に決めていくことで$A$での動きを改善でき
 
 \section{Star}
 グラフの形状がStarの場合については，
-利得か{\timelimit}のいずれかが一般であれば，
+利得か{\idletime}のいずれかが一般であれば，
 {\patrolling}は巡査が1人であってもNP困難であることがわかっている\cite{coene2011charlemagne}．
 そこで，ここでは巡査数が一般であって，
-利得と{\timelimit}がすべて等しい場合を考える．
+利得と{\idletime}がすべて等しい場合を考える．
 巡査同士が協力をしない設定では，
 {\decisionpp}に相当する問題\red{←定義？}でこの場合がNP困難になることが
 Coeneら\cite{coene2011charlemagne}により示されているが，
@@ -568,7 +568,7 @@ Coeneら\cite{coene2011charlemagne}により示されているが，
 
 \begin{theo}
 	\label{theo:StarEqualProfitTimelimit}
-	グラフの形状がStarで利得と{\timelimit}がすべて等しい場合，
+	グラフの形状がStarで利得と{\idletime}がすべて等しい場合，
 	{\patrolling}は多項式時間で解くことができる．
 \end{theo}
 
@@ -576,7 +576,7 @@ Coeneら\cite{coene2011charlemagne}により示されているが，
 \begin{proof}[証明]
 	\red{編集中}
 
-	巡査数を$m$, 全頂点の{\timelimit}を$Q$, 頂点$v_i$に接続する枝を$e_i$, その長さを$d_i$とする．
+	巡査数を$m$, 全頂点の{\idletime}を$Q$, 頂点$v_i$に接続する枝を$e_i$, その長さを$d_i$とする．
 
 	まず，$d_i > Q/2$であるような頂点$v_i$は，警備するならば巡査が1人常駐するとしてよい．
 	これは次のように示される．
@@ -602,7 +602,7 @@ Coeneら\cite{coene2011charlemagne}により示されているが，
 	$v_i$は$s$のみにより警備できており，$s$も$v_i$以外を警備していない動きとなる．
 
 
-	また，全頂点は利得と{\timelimit}がすべて等しいので，
+	また，全頂点は利得と{\idletime}がすべて等しいので，
 	枝の短い頂点から選んでよい．
 	実際，ある警邏において警備している頂点$v_i$と警備していない頂点$v_j$であって
 	枝の長さが$d_i > d_j$となっているようなものがあったとき，
@@ -638,25 +638,25 @@ Coeneら\cite{coene2011charlemagne}により示されているが，
 
 % 完全グラフの場合は巡査が1人でもNP困難であることが示されていたので
 定理\ref{theo:StarEqualProfitTimelimit}からStarの特殊な場合とみなせる{\unit}も
-巡査1人で利得と{\timelimit}がすべて等しい場合は{\patrolling}がPであることがすぐに分かるが，
-{\timelimit}さえすべて等しければ巡査数と利得が一般の場合でも{\patrolling}がPとなる．
+巡査1人で利得と{\idletime}がすべて等しい場合は{\patrolling}がPであることがすぐに分かるが，
+{\idletime}さえすべて等しければ巡査数と利得が一般の場合でも{\patrolling}がPとなる．
 %
-これは，警備のコストとなる辺の長さと{\timelimit}の両方が全点で等しいことによって
+これは，警備のコストとなる辺の長さと{\idletime}の両方が全点で等しいことによって
 単純に利得の大きい頂点から選べばよいためである．
 
 
 
-\subsection{{\timelimit}がすべて等しい場合}
+\subsection{{\idletime}がすべて等しい場合}
 
 
 
 
-\subsection{{\timelimit}が一般の場合}
+\subsection{{\idletime}が一般の場合}
 
 
 
-{\unit}で{\timelimit}がすべて等しい場合はPであることを示せたが，
-{\timelimit}が一般の場合は多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
+{\unit}で{\idletime}がすべて等しい場合はPであることを示せたが，
+{\idletime}が一般の場合は多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
 ここでもLineのときのように，
 最初の訪問時刻からその{\interval}ごとの時刻は必ず訪問しなければならないという問題をここでも考えてみる．
 
@@ -674,7 +674,7 @@ Coeneら\cite{coene2011charlemagne}により示されているが，
 
 
 \subsubsection{{\interval}の場合}
-{\timelimit}を{\interval}に替えた問題では
+{\idletime}を{\interval}に替えた問題では
 巡査が1人の場合でも{\unit}上での{\decisionpp}がNP困難となる．
 
 \begin{theo}
