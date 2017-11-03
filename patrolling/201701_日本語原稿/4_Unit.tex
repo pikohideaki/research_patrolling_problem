@@ -1,19 +1,16 @@
-
 \section{{\unit}}
 第1章で述べた通り，{\unit}はStarの特殊な場合とみなせるため，
 定理\ref{theo:StarEqualProfitTimelimit}から
 全点の利得と{\idletime}が等しい場合は
-協力警邏問題を多項式時間で解くことができる．
-{\unit}は一般的なStarよりすべての枝の長さが等しいより簡単な図形であるため，
-定理\ref{theo:StarEqualProfitTimelimit}が
-全点の利得が等しいという条件が無くても成り立つ
-（すなわち，全点の{\idletime}が等しい場合は協力警邏問題を多項式時間で解ける）
-ことを示す（定理\ref{theo:UnitEqualTimelimit}）．
+協力警邏問題を多項式時間で解くことができるが，
+{\unit}の場合は全点の{\idletime}だけが等しければ協力警邏問題を多項式時間で解ける
+（定理\ref{theo:UnitEqualTimelimit}）．
 
 {\idletime}が一般の場合については
 多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
-第2章で扱った「訪問時刻指定問題」を再び考える．
-グラフが{\unit}の場合は「訪問時刻指定問題」がNP困難になることを示す（定理\ref{}）．
+第2章で扱った時刻指定協力警邏問題を再び考える．
+グラフが{\unit}の場合は時刻指定協力警邏問題がNP困難になることを示す
+（定理\ref{theo:unit_exacttime_NPhard}）．
 
 
 
@@ -48,68 +45,74 @@
 
 
 
-\subsection{{\idletime}が一般の場合：訪問時刻指定問題}
-\red{
-    1. 最初の訪問時刻も指定されるときの{\patrolling}は独立点集合問題からの帰着でNP困難． \\
-    2. 全点警備可能性判定なら1人のときはP（おまけ）. \\
-    3. 最初の訪問時刻が指定されず自由度がある場合は
-       Disjoint Residue Class Problem と同じ問題になるのでNP困難（おまけ）.
-}
+\subsection{{\idletime}が一般の場合：時刻指定協力警邏問題}
 
 
 \begin{theo}
   \label{theo:unit_exacttime_NPhard}
-  グラフの形状が{\unit}で，利得が一般のとき
-  協力警邏問題（訪問時刻指定）はNP困難である．
+  グラフの形状が{\unit}のとき，
+  時刻指定協力警邏問題は巡査が1人で全点の利得が等しくてもNP困難である．
 \end{theo}
 
+% 最大独立集合問題において，
+% 無向グラフが与えられたときに独立点集合で最大のものを求めるが，
+% 間に辺の存在する2頂点の両方を選ぶことはできないという制約を，
+% 協力警邏問題において2頂点のどちらか一方しか警備できないという制約に変換する．
 
 \begin{proof}[証明]
-  最大独立点集合問題からの帰着による．
+  最大独立集合問題からの帰着による．
 
-  最大独立点集合問題は，
-  無向グラフが与えられたときに独立点集合で最大のものを求めるというNP完全問題である．
-  この問題において，間に辺の存在する2頂点の両方を選ぶことはできないという制約を，
-  協力警邏問題において2頂点のどちらか一方しか警備できないという制約に帰着する．
+  最大独立集合問題の入力のグラフが$G = (V, E)$のとき，
+  時刻指定協力警邏問題に対して，
+  巡査の人数$1$と{\unit}のグラフ$G' = (V', E')$を入力として与える．
+  $G'$は以下のように定める．
+  $V' = V$とし，全点の利得は$1$，辺の長さはすべて$1$とする．
+  各点の訪問指定時刻は次のように定める．
+  %
+  まず，${}_n C_2$ 個の相異なる素数 $p_{i,j} (1 \leq i < j \leq n)$ を用意し，
+  $q_i := \prod_{k = 1}^{i - 1} p_{1,k} \prod_{k = i + 1}^n p_{k,n}$
+  とする．
+  次に，$r_i (i \in \{1, \ldots, n\})$を，
+  $G$のすべての2点$v_i, v_j (1 \leq i < j \leq n)$に対して，
+  $(v_i, v_j) \in E$     ならば $r_i \equiv    r_j \equiv 0 \mod p_{i,j}$,
+  $(v_i, v_j) \not\in E$ ならば $r_i \equiv 0, r_j \equiv 1 \mod p_{i,j}$,
+  さらに$0 \leq r_i < q_i$
+  を満たすように定める．
+  各$r_i$に対して相異なる$n - 1$個の素数で割ったときの余りが与えられているので，
+  中国剰余定理からそのような$r_i$がその$n - 1$個の素数の積$q_i$を法として一意に存在する．
+  %
+  以上のようにして得た$q_i, r_i (i \in \{ 1, \ldots, n\})$から，
+  各点$v_i (i \in \{1, \ldots, n\})$の訪問指定時刻を$q_i k + r_i (k \in \Nset)$
+  と定めると，
+  時刻指定協力警邏問題の解は$G$の最大独立集合となる．
 
-  % $G = (V, E)$
-  グラフが{\unit}で巡査が一人，辺の長さが$1$である場合の訪問時刻指定の協力警邏問題を考える．
-
-
-  辺の長さが$1$なので巡査の速さを$1$であれば2点間の移動にかかる時間は$1$となり，
-  すべての整数の時刻にどれか1点を訪問できる．
-  その上で，{\interval} $q_i$, 最初の訪問時刻 $r_i$ は整数，利得はすべて1とする．
-  {\unit}の頂点集合は$V$とする．
-  頂点$v_i$を警備するために訪問しなければならない時刻の列は
-  $q_i k + r_i \; (k \in \N)$ で表される．
-  すると，$v_i$ と $v_j$ の両方を警備できる必要十分条件は
-  \[ q_i k + r_i = q_j l + r_j \]
+  実際，
+  $G'$の任意の2点$v_i$, $v_j$（$i < j$としてよい）に対し，
+  この両方を警備できるための必要十分条件は，
+  2点間の移動時間が$1$以上かかることから，
+  訪問しなければならない時刻同士がすべて$1$以上離れていること，すなわち，
+  任意の整数$k, l$に対し$|(k q_i + r_i) - (l q_j + r_j)| \geq 1$
+  が成り立つこととなる．
+  $q_i, r_i, q_j, r_j$がすべて整数のとき，これは
+  $q_i k + r_i \neq q_j l + r_j$, 
   すなわち
-  \[ r_i - r_j = q_j l - q_i k \]
-  となる自然数 $k, l$ が存在しないこととなるが，
-  これは $r_i - r_j = gcd(q_i,q_j) n$ となる整数 $n$ が存在しないことと同値である．
+  $r_i - r_j \neq q_j l - q_i k$
+  が任意の整数$k, l$で成り立つこと同値である．
+  $gcd(x,y)$を$x$と$y$の最大公約数とすると，
+  $r_i - r_j \neq gcd(q_i,q_j) n$が任意の整数$n$で成り立つこと，
+  つまり$r_i \not\equiv r_j \mod gcd(q_i, q_j) = p_{i,j}$と同値である．
   よって，
   $v_i$ と $v_j$ の両方を警備できる必要十分条件は
-  $r_i \not\equiv r_j \mod gcd(q_i, q_j)$
+  $r_i \not\equiv r_j \mod p_{i, j}$
   となる．
-
-  ここで，${}_n C_2$ 個の相異なる素数 $p_{ij} (1 \leq i < j \leq n)$ を用意し，
-  各頂点の{\interval}を
-  $q_i = p_{1i} p_{2i} \cdots p_{(i - 1)i} p_{i(i + 1)} \cdots p_{in}$
-  とすると，$gcd(q_i,q_j) = p_{ij}$ （$i < j$ のとき）となり，
-  先ほどの条件は
-  $r_i \not\equiv r_j \mod p_{ij}$
-  となる．
-
-  $G$ において
-  $(v_i, v_j) \in E$     ならば $r_i \equiv r_j \equiv 0 \mod p_{ij}$,
-  $(v_i, v_j) \not\in E$ ならば $r_i \equiv 0, r_j \equiv 1 \mod p_{ij}$
-  と定めると，
-  各 $r_k$ に対して相異なる $n - 1$ 個の素数で割ったときの余りが与えられるので，
-  中国剰余定理からそのような $r_k$ がその $n - 1$ 個の素数の積 $q_k$ を法として一意に存在することが言え，
-  これにより，$(v_i, v_j) \in E$ ならば $r_i \equiv r_j \mod p_{ij}$
-  $(v_i, v_j) \not\in E$ ならば $r_i \not\equiv r_j \mod p_{ij}$
-  を満たすように各 $r_k$ を定めることができる
+  $r_i$の決め方から，
+  \[
+    (v_i, v_j) \in E \iff \text{$G'$の2点$v_i, v_j$を両方警備することができない}
+  \]
+  が成り立つため，
+  $G'$の点部分集合であって同時に警備できない2点のうち少なくとも一方は含まないようなもののうち
+  最大のものを選ぶと，
+  これは$G$の最大独立集合となる．
 
   最後に，${}_n C_2$ 個の相異なる素数を用意する計算量も確かめる必要がある．
   $k$ 番目に小さい素数を $P_k$ と書くと，$k \geq 6$ のときは
@@ -118,81 +121,89 @@
   $k$ 個以上の素数を得ることができる．
   ある数が素数であるかどうかを判定する多項式時間アルゴリズムは存在するので~\cite{agrawal2004primes}，
   ${}_n C_2$ 個の素数の列挙は$n$の多項式時間でできる．
-
-  以上の手順で $q_k$ と $r_k$ を設定することにより，
-  $G$ において最大の独立点集合を求める問題を，
-  最初の訪問時刻が指定され周期ちょうど毎に訪問しなければならない問題で
-  巡査が1人で全点の利得が等しい場合の{\patrolling}に帰着できた．
 \end{proof}
 
 
 
+定理\ref{theo:unit_exacttime_NPhard}では，
+各点の訪問指定時刻といっても訪問間隔$q_i$と剰余$r_i$が与えられる場合について
+NP困難性が示したが，
+各点に訪問間隔$q_i$のみが指定されている問題も考えることができる．
+この訪問間隔指定の協力警邏問題は，
+全点警邏可能性判定であってもNP困難であることを示すことができる．
 
 
 
-% \subsubsection{{\interval}の場合}
-
-% \begin{proof}[証明]
-%     Disjoint Residue Class Problem~\cite{kawamura2015simple}からの帰着による．
-
-%     ある整数のペアの集合 $\mathset{ (m_1, r_1), \ldots, (m_n, r_n) }$ が
-%     Disjoint Residue Class であるとは，
-%     任意の整数 $x$ に対して $x \equiv r_i \mod m_i$ となるような $i$ が
-%     高々1つ存在することと定義される．
-%     Disjoint Residue Class Problem とは
-%     整数の組 $(m_1, \ldots, m_n)$ が与えられたときに，
-%     $\mathset{ (m_1, r_1), \ldots, (m_n, r_n) }$ が
-%     Disjoint Residue Class となるような組 $(r_1, \ldots, r_n)$ が
-%     存在するかを判定する問題であり，
-%     これはNP困難であることが知られている~\cite{kawamura2015simple}．
-
-%     Disjoint Residue Class Problem は，
-%     巡査1人，グラフの形状が{\unit}で
-%     {\interval}ごとの時刻は必ず訪問しなければならないという制約での{\decisionpp}に多項式時間帰着できる．
-%     Disjoint Residue Class Problem の入力が $(m_1, \ldots, m_n)$ のとき，
-%     {\unit}で頂点を$V = \mathset{ v_1, \ldots, v_n }$, {\interval}を$q_i = m_i$, 辺の長さを$d = 1$ とする．
-%     $d = 1$ より整数の時刻にいずれかの点を訪問できるようにする．
-%     各頂点 $v_i$ の最初の訪問時刻を $r_i$ とすると，
-%     この点を警備するために訪問しなければならない時刻の列は
-%     $q_i k + r_i (k \in \N)$ で与えられるが，
-%     全点を警備するためには任意の2点 $v_i, v_j \in V$ , 任意の整数 $k,l$ について
-%     $q_i k + r_i \neq q_j l + r_j$
-%     である必要がある．
-
-%     % Disjoint Residue Class Problem が Yes ならば \decisionpp も Yes
-%     Disjoint Residue Class Problem の解 $(r_1, \ldots, r_n)$ が存在するならば，
-%     これにより任意の時刻 $t \in \Z$ に対して $t \equiv r_i \mod q_i$, 
-%     すなわち $t = r_i + q_i k$ となる $k \in \Z$ が存在するような $i$ は高々1つであり，
-%     任意の $k,l \in \Z$ に対して $q_i k + r_i \neq q_j l + r_j$ が成り立つので，
-%     巡査は全点を警備できる．
-
-%     % \decisionpp が Yes ならば Disjoint Residue Class Problem も Yes
-%     逆に{\decisionpp}の解が存在するとき，
-%     全点を警備できるのでその警邏において各頂点$v_i$を最初に訪問する時刻を $r_i$ とすると，
-%     任意の $v_i,v_j \in V$, $k,l \in \Z$ に対し
-%     \begin{equation}
-%         \label{eq:patrollDisjoint}
-%         q_i k + r_i \neq q_j l + r_j
-%     \end{equation}
-%     が成り立つ．すると，任意の時刻 $t \in \Z$ に対して
-%     $t \equiv r_i \mod q_i$ となるような $i$ が2つ存在するとすると，
-%     それを $i$, $j$ として
-%     $t \equiv r_i \mod q_i$, $t \equiv r_j \mod q_j$
-%     すなわち，ある整数 $k,l$ が存在して
-%     $t = q_i k + r_i$, $t = q_j l + r_j$
-%     となり，この $k,l$ によって
-%     $q_i k + r_i = q_j l + r_j$ となり，式\ref{eq:patrollDisjoint} に矛盾する．
-%     よって，任意の整数 $t$ に対して $t \equiv r_i \mod q_i$ を満たす
-%     $i$ は高々1つであるような $r_i$ が与えられたので，
-%     {\decisionpp}の解が存在するとき，
-%     Disjoint Residue Class Problemにも解が存在する．
-
-%     以上よりDisjoint Residue Class Problemを帰着できた．
-% \end{proof}
+\begin{theo}
+  \label{theo:NPhard_disjoint_residue_class_problem}
+  グラフの形状が{\unit}のとき，
+  訪問間隔指定の協力警邏問題は巡査が1人で全点警邏可能性判定であってもNP困難である．
+\end{theo}
 
 
+\begin{proof}[証明]
+  Disjoint Residue Class Problem~\cite{kawamura2015simple}からの帰着による．
 
+  ある整数の組の集合 $\mathset{ (m_1, r_1), \ldots, (m_n, r_n) }$ が
+  Disjoint Residue Class であるとは，
+  任意の整数 $x$ に対して $x \equiv r_i \mod m_i$ となるような $i$ が
+  高々1つ存在することと定義される．
+  Disjoint Residue Class Problem とは
+  整数の組 $(m_1, \ldots, m_n)$ が与えられたときに，
+  $\mathset{ (m_1, r_1), \ldots, (m_n, r_n) }$ が
+  Disjoint Residue Class となるような組 $(r_1, \ldots, r_n)$ が
+  存在するかを判定する問題であり，
+  NP困難であることが知られている~\cite{kawamura2015simple}．
 
+  Disjoint Residue Class Problem の入力が $(m_1, \ldots, m_n)$ のとき，
+  訪問間隔指定協力警邏問題に対して
+  巡査の人数$1$と$n$点からなる{\unit}のグラフで
+  各点の訪問間隔を$q_i = m_i$となるように定め，辺の長さはすべて$1$としたものを
+  入力として与えることで
+  Disjoint Residue Class Problemを解くことができる．
+
+  辺の長さが$1$であるから，すべての整数の時刻にいずれかの1点を訪問できる．
+  各頂点$v_i$の最初の訪問時刻を$r_i$とすると，
+  この点を警備するために訪問しなければならない時刻の列は
+  $q_i k + r_i (k \in \N)$で与えられるが，
+  全点を警備するためには任意の2点$v_i, v_j \in V$, 任意の整数$k,l$について
+  $q_i k + r_i \neq q_j l + r_j$
+  である必要がある．
+
+  % Disjoint Residue Class Problem が Yes ならば \decisionpp も Yes
+  Disjoint Residue Class Problem の解 $(r_1, \ldots, r_n)$ が存在するならば，
+  任意の時刻 $t \in \Z$ に対して $t \equiv r_i \mod q_i$, 
+  すなわち $t = r_i + q_i k$ となる $k \in \Z$ が存在するような $i$ は高々1つであり，
+  任意の $k,l \in \Z$ に対して $q_i k + r_i \neq q_j l + r_j$ が成り立つので，
+  巡査は全点を警備でき，
+  解が存在しなければ
+  あるの整数$x$に対して $x \equiv r_i \mod m_i$, $x \equiv r_j \mod m_j$
+  となる$i, j$が存在するので，
+  $v_i, v_j$を両方警備することができず，したがって全点を警備できない．
+
+  % % \decisionpp が Yes ならば Disjoint Residue Class Problem も Yes
+  % 逆に{\decisionpp}の解が存在するとき，
+  % 全点を警備できるのでその警邏において各頂点$v_i$を最初に訪問する時刻を $r_i$ とすると，
+  % 任意の $v_i,v_j \in V$, $k,l \in \Z$ に対し
+  % \begin{equation}
+  %     \label{eq:patrollDisjoint}
+  %     q_i k + r_i \neq q_j l + r_j
+  % \end{equation}
+  % が成り立つ．すると，任意の時刻 $t \in \Z$ に対して
+  % $t \equiv r_i \mod q_i$ となるような $i$ が2つ存在するとすると，
+  % それを $i$, $j$ として
+  % $t \equiv r_i \mod q_i$, $t \equiv r_j \mod q_j$
+  % すなわち，ある整数 $k,l$ が存在して
+  % $t = q_i k + r_i$, $t = q_j l + r_j$
+  % となり，この $k,l$ によって
+  % $q_i k + r_i = q_j l + r_j$ となり，式\ref{eq:patrollDisjoint} に矛盾する．
+  % よって，任意の整数 $t$ に対して $t \equiv r_i \mod q_i$ を満たす
+  % $i$ は高々1つであるような $r_i$ が与えられたので，
+  % {\decisionpp}の解が存在するとき，
+  % Disjoint Residue Class Problemにも解が存在する．
+
+  % 以上よりDisjoint Residue Class Problemを帰着できた．
+\end{proof}
 
 
 
@@ -229,21 +240,5 @@
 % \end{proof}
 
 
-
-
 % {\decisionpp}で巡査を複数とすると，$T$ に差が $d$ 未満の整数が含まれていても
 % 複数の巡査によりそれぞれ訪問できる場合が生じるため難しい．
-
-
-
-% {\decisionpp}では巡査が1人ならば多項式時間アルゴリズムが存在したが，
-% 一方{\patrolling}は巡査が1人でも（複数人でも）NP困難となる．
-
-% \begin{theo}
-%     \label{theo:UnitExactStarttimeNPhard}
-%     グラフの形状が{\unit}で，
-%     最初の訪問時刻と{\interval}が与えられたときに，
-%     最初の訪問時刻からその{\interval}ごとの時刻は必ず訪問しなければならないという問題の場合，
-%     巡査が1人で全点の利得が等しい場合でも{\patrolling}はNP困難である．
-% \end{theo}
-
