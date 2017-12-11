@@ -1,6 +1,4 @@
-
 \section{はじめに}
-% 警邏とは
 所与の領域を1人または複数の巡査が動き回り，
 その領域内の指定された場所を十分な頻度で訪れることを
 警邏(patrolling)という\cite{chen2013fence, coene2011charlemagne, czyzowicz2011boundary}．
@@ -12,13 +10,12 @@
 
 巡査$i \in \{1, \ldots, m\}$の$U$上の運行$a _i \colon \Rset \to U$とは，
 各時刻$t \in \Rset$における位置$a _i (t) \in U$を定めるものであって，
-任意の時刻$s$，$t \in \Rset$に対し$a _i (s)$と$a _i (t)$の距離が$\lvert s - t \rvert$を超えないものをいう．
+任意の時刻$s$，$t \in \Rset$に対し$a _i (s)$と$a _i (t)$の距離が$\abs{s - t}$を超えないものをいう．
 巡査$m$人による$U$上の運行とは，
 全巡査の運行を定めた組
 $A = (a _1, \dots, a _m)$をいう．
-運行$A$%
-% $A = (a _i) _{i \in \{1, \ldots, m\}}$
-が点$v \in U$を間隔$q \geq 0$で警備するとは，
+運行$A = (a _1, \dots, a _m)$
+が点$v \in U$を{\idletime}$q \geq 0$で警備するとは，
 長さ$q$のどの時間区間にも
 いずれかの巡査が$v$を少くとも一度は訪れる
 （任意の時刻$t \in \Rset$に対して
@@ -27,8 +24,8 @@ $a _i (\tau) = v$）ことをいう．
 \red{（←$q = 0$のときおかしい？）}
 
 $U$の有限な部分集合$V$があり，$V$の各点には利得および{\idletime}と呼ばれる非負整数が定まっている．
-運行$A$が点集合$W \subseteq V$を警邏するとは，各点$v \in W$に対し，
-$A$が$v$をその{\idletime}以下の間隔で警備することをいう．
+運行$A$が点集合$W \subseteq V$を警邏するとは，
+各点$v \in W$に対し$A$が$v$を警備することをいう．
 そのような運行が存在するとき$W$は$m$人により警邏可能であるという．
 
 \begin{cooperativepatrollingproblem}
@@ -36,9 +33,8 @@ $A$が$v$をその{\idletime}以下の間隔で警備することをいう．
   $V$の各点の利得と{\idletime}が与えられたとき，
   $m$人の巡査により警邏可能な頂点集合のうち利得の和が最大となるものを求めよ．
 \end{cooperativepatrollingproblem}
-\red{具体的な運行も求める問題としてもよさそう？}
 
-距離空間$U$といっても，$V$の点どうしの測地距離のみが重要である．
+距離空間$U$といっても，$V$の点同士の測地距離のみが重要である．
 そこでこの問題の入力は，
 $V$を頂点集合とし辺に非負整数の長さがついた無向グラフと考えることにする．
 
@@ -75,22 +71,22 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 多項式時間算法の設計にも困難性の証明にも重要な役割を果している．
 この限定を外したときの様子を調べるのが本稿の目的である．
 
-本稿ではグラフ$G$の形状として
+本稿ではグラフの形状として
 線分，星と，すべての枝の長さが等しい完全グラフの3種類を扱うこととし
 （図\ref{figure: graph_classes}），
-以降はそれぞれを Line, Star, {\unit}と呼ぶ．
+以降はそれぞれを {\graphLine}, {\graphStar}, {\graphUnit}と呼ぶ．
 \begin{figure}
   \begin{center}
     \includegraphics[scale=1.0]{\figdir/graph_classes.pdf}
-    \caption{本論文ではLine（左），Star（中），{\unit}（右，但し各辺の長さが等しい）を扱う．Starは葉のみを警備の対象とする（中央の点は移動の途中で使うのみであり，訪問間隔は定められていない）．}
+    \caption{本論文では{\graphLine}（左），{\graphStar}（中），{\graphUnit}（右，但し各辺の長さが等しい）を扱う．{\graphStar}は葉のみを警備の対象とする（中央の点は移動の途中で使うのみであり，{\idletime}は定められていない）．}
     \label{figure: graph_classes}
   \end{center}
 \end{figure}
-Starでは葉のみに{\idletime}が定められている（中心は警備の対象としない）．
-{\patProb}においては，
-{\unit}は，その各辺の長さを$d$とすると，
-同じ頂点数で辺の長さがすべて$d/2$であるStarと同一視できることから，
-UnitはStarの特殊な場合である．
+{\graphStar}では葉のみに{\idletime}が定められている（中心は警備の対象としない）．
+{\patProb}においては前述のとおり頂点同士の測地距離のみが重要であるため，
+{\graphUnit}は，その各辺の長さを$d$とすると，
+同じ頂点数で辺の長さがすべて$d/2$である{\graphStar}と同一視できることから，
+{\graphUnit}は{\graphStar}の特殊な場合である．
 
 
 % 巡査協力なしの結果との比較
@@ -100,7 +96,7 @@ UnitはStarの特殊な場合である．
 それぞれ\ref{section: line}，\ref{section: star}，\ref{section: unit}節で述べる．
 \begin{itemize}
   \item 
-    Lineでは，
+    グラフが{\graphLine}の場合は，
     {\assignedPatProb}は動的計画法により多項式時間で解けることが
     示されていた\cite[Theorem~11]{coene2011charlemagne}が，
     その正しさは非協力の設定に強く依存している．
@@ -108,28 +104,28 @@ UnitはStarの特殊な場合である．
     全点の{\idletime}が等しい場合には多項式時間で解ける
     （定理\ref{theo:LineEqualTimelimit}）．
   \item
-    Starでは，
+    グラフが{\graphStar}の場合は，
     全点の利得と{\idletime}が等しい場合に限っても，
     {\assignedPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
-    本稿では，この場合の{\patProb}はPとなるという興味深い結果を得る（定理＊＊）．
+    本稿では，この場合の{\patProb}は多項式時間で解けるという興味深い結果を得る（定理＊＊）．
     なお利得または{\idletime}を一般にすると，
-    巡査が一人であっても（したがって協力・非協力に関わらず）
+    巡査が一人であっても（したがって担当の有無に関わらず）
     NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
   \item 
-    {\unit}では，
-    全点の{\idletime}が等しい場合は\patprob がPであることを示す（定理＊＊）．
-    Starでは全点の{\idletime}が等しくても利得が一般だとNP困難になるので，
-    これにより{\unit}はStarよりも簡単に解ける場合となっていることが分かる．
+    グラフが{\graphUnit}の場合は，
+    全点の{\idletime}が等しい場合は{\patProb}が多項式時間で解けることを示す（定理＊＊）．
+    グラフが{\graphStar}の場合は全点の{\idletime}が等しくても利得が一般だとNP困難になるので，
+    これにより{\graphUnit}は{\graphStar}よりも簡単に解ける場合となっていることが分かる．
 \end{itemize}
 
 
-Lineと{\unit}については
+{\graphLine}と{\graphUnit}については
 {\idletime}が一般の場合については多項式時間アルゴリズムやNP困難性を示すのが難しく未解決である．
 これらの未解決な状況については，
 {\idletime}の代わりに以下に定義する{\exactidletime}を警備の条件とする問題も考えた．
 
 \begin{defi}
-  運行$A = (a _i) _{i \in \{1, \ldots, m\}}$が
+  運行$A = (a _1, \ldots, a _m)$が
   点$v \in U$を{\exactidletime}$(q, r)$で警備するとは，
   任意の時刻$t := q k + r (k \in \Zset)$に対し
   巡査$i$が存在し
@@ -154,8 +150,8 @@ Lineと{\unit}については
 \end{timeSpecifiedCooperativePatrollingProblemDecision}
 
 
-Lineについては時刻指定協力警邏判定問題を解く貪欲アルゴリズムを示す（定理\ref{}）．
-Unitについては時刻指定{\patProb}がNP困難であることを示す（定理\ref{}）．
+{\graphLine}については{\timeSpecifiedPatProbDecision}を解く貪欲アルゴリズムを示す（定理\ref{}）．
+{\graphUnit}については{\timeSpecifiedPatProbDecision}がNP困難であることを示す（定理\ref{}）．
 
 
 
@@ -174,4 +170,4 @@ Unitについては時刻指定{\patProb}がNP困難であることを示す（�
 % なども考えられている．
 % \red{（加筆予定）}
 
-また，LineやStarは木の特別な場合である．
+また，{\graphLine}や{\graphStar}は木の特別な場合である．

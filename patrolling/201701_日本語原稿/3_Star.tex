@@ -1,27 +1,27 @@
-\section{Star}
+\section{{\graphStar}}
 \label{section: star}
 
-グラフの形状がStarの場合については，
+グラフの形状が{\graphStar}の場合については，
 利得か{\idletime}のいずれかが一般であれば，
 {\patProb}は巡査が1人であってもNP困難であることが分かっている~\cite{coene2011charlemagne}．
 よって，本稿の{\patProb}については，巡査数が一般であって，
 全点の利得と{\idletime}が等しい場合を調べる．
 
-{\assignedPatProb}においては，グラフがStarで巡査数が一般の場合は
+{\assignedPatProb}においては，グラフが{\graphStar}で巡査数が一般の場合は
 利得と{\idletime}がすべて等しくてもNP困難になることが
 Coeneら~\cite{coene2011charlemagne}により示されているが，
 一方で同じ条件における{\patProb}の場合は次が成り立つ．
 
 \begin{theo}
   \label{theo:StarEqualProfitTimelimit}
-  グラフの形状がStarで全点の利得と{\idletime}が等しい場合，
+  グラフの形状が{\graphStar}で全点の利得と{\idletime}が等しい場合，
   {\patProb}は（巡査数が一般であっても）多項式時間で解くことができる．
 \end{theo}
 
 
-Lineの場合では協力の発生によって複雑な運行による警邏が発生した状況から考えると，
+{\graphLine}の場合では協力の発生によって複雑な運行による警邏が発生した状況から考えると，
 協力無しの場合より協力有りの場合の方が簡単に解けるというのは意外な結果に思われるが，
-Starの場合には逆に，
+{\graphStar}の場合には逆に，
 協力無しの問題では協力をせずにうまく分担する方法を見つけるのが難しいためNP困難になるのに対し，
 協力有りの問題ではある単純な協力の仕方による警邏のみ考えればよいため簡単に解くことができる．
 
@@ -30,7 +30,7 @@ Starの場合には逆に，
 
 \begin{lemm}
   \label{lemm:condition_of_guarding_star}
-  Star上の{\patProb}で全点の{\idletime}が$Q$のとき，
+  {\graphStar}上の{\patProb}で全点の{\idletime}が$Q$のとき，
   点集合$V$の任意の部分集合$W$について
   $$
     \sum_{v \in W} \min(2d_v, Q) \leq mQ
@@ -121,7 +121,7 @@ Starの場合には逆に，
       (b3) $[t, t + d_v)$に1度も訪問されないとき，
         $(t + Q - d_v, t + Q]$に含まれる最初の訪問時刻とその1つ前の訪問時刻を考えると
         (b2)と同様に巡査の滞在時間の和は$2d_v$以上となる．
-        
+
   % comment : 非存在時間の上限から示す方が楽かと考えたが，
   %           訪問はしないが辺上に一瞬だけ存在するような巡査を省く必要があるので面倒
   %
@@ -132,7 +132,7 @@ Starの場合には逆に，
 
 
 補題\ref{lemm:condition_of_guarding_star}より
-Starの任意の点部分集合$W$が警邏可能であるかを
+{\graphStar}の任意の点部分集合$W$が警邏可能であるかを
 $W$の点の隣接辺の長さだけから簡単に計算できることが分かった．
 定理\ref{theo:StarEqualProfitTimelimit}では，
 全点の利得と{\idletime}が等しい場合を考えているので
@@ -141,4 +141,3 @@ $W$の点の隣接辺の長さだけから簡単に計算できることが分�
 $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる），
 警邏できる最大の部分集合は$n$を点の数として$O(n \log n)$で計算できる．
 以上から定理\ref{theo:StarEqualProfitTimelimit}が示された．
-
