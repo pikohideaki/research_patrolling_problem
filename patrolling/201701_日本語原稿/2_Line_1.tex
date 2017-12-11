@@ -1,0 +1,213 @@
+\section{Line}
+\label{section: line}
+
+グラフがLineの場合，
+グラフの全体（頂点と辺）をすべて実直線上におくことができる．
+以降，頂点の名前$v_1, v_2, \ldots, v_n$はその位置を表す実数値も表すことにする．
+
+まず，Lineの場合における順序保存運行という特別な運行を定義する．
+運行$A$が順序保存であるとは，
+$A$が定める巡査の位置$a_1, a_2, \ldots, a_m$が，
+任意の時刻$t \in \Rset$において
+$a_1(t) \leq a_2(t) \leq \cdots \leq a_m(t)$を満すことである．
+
+Line上の任意の運行$A$は，$A$と同じ数の巡査でかつ警邏する点集合を保ったまま，
+順序保存運行$A'$に以下のように変換することができる．
+%
+まず，$A$が定める各巡査の運行を$a_1, a_2, \ldots, a_m$とする．
+これに対し，
+$a'_i (i \in \mathset{1, \ldots, m})$を
+各時刻$t \in \Rset$において$a' _i(t)$が
+$a_1(t), a_2(t), \ldots, a_m(t)$のうち$i$番目に小さいものとなるように定める．
+すると，各$a' _i$は運行となっており，
+$A' = (a' _i)_{ i \in \mathset{1,\ldots, m} }$とすると
+$A'$と$A$の運行の軌跡の集合は等しい
+（すなわち，任意の時刻$t \in \Rset$において
+$\mathset{a_1(t), \ldots, a_m(t)} = \mathset{a'_1(t), \ldots, a'_m(t)}$）
+ので，
+$A$で警邏していた点集合を$A'$も警邏している．
+これにより順序保存運行$A'$が得られる．
+%
+順序保存運行$A'$は$A$において巡査がすれ違う時に代わりに
+互いの動きを交換することにより順序を保ったものとみなすことができる．
+
+以上から，
+巡査$m$人により警邏可能な任意の頂点集合$W$は，
+巡査$m$人による或る順序保存運行$A'$によって警邏されることが分かる．
+
+
+
+
+%%%%% section 2.1 %%%%%
+
+\subsection{全点の{\idletime}が等しい場合}
+\label{subsec:LineUnaryTimelimit}
+
+
+
+
+本節では次のことを示す．
+
+\begin{theo}
+  \label{theo:LineEqualTimelimit}
+  グラフの形状がLineで全点の{\idletime}が等しい場合，
+  {\patProb}は多項式時間で解くことができる．
+\end{theo}
+
+この問題は，～～な場合については Collinsら~\ref{}の問題の特殊な場合として既に示されているが，
+ここでは全点の{\idletime}が等しいという条件のみでも成り立つことを示す．
+
+
+以降では，
+グラフの形状がLineで全点の{\idletime}が等しい場合，
+警邏可能な頂点集合のうち利得の和が最大となるものは
+次に定義する個別往復運行という運行によって警邏可能であるということを示す．
+Lineで全点の{\idletime}が等しい場合に用いることができる
+個別往復運行という戦略では
+巡査の協力が不要になるため（補題\ref{lemm:LineEqualTimelimitIndependentInterval}），
+全点の{\idletime}が等しいという条件が問題を簡単にしているといえる．
+
+
+\begin{defi}
+  $V$を頂点集合，$Q$を各頂点の{\idletime}とする．
+  % $m$人の巡査による運行であって，
+  % 各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を
+  % $m$人の巡査による$V$上の個別往復運行と呼ぶ．
+  各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を個別往復運行と呼ぶ．
+  $m$人の巡査による運行$A$において各巡査が個別往復運行をしているとき，
+  $A$を単に$m$人の巡査による個別往復運行と呼ぶ．
+\end{defi}
+
+
+
+まず次の補題を示す．
+
+\begin{lemm}
+  \label{lemm:RangeOfPatrollerOnLine}
+  頂点$v_i$がある1人の巡査$s$により単独警備されているとき，
+  {\idletime}を$q_i$として，
+  $s$は常に区間$[v_i - q_i/2, v_i + q_i/2]$にいる．
+\end{lemm}
+
+\begin{proof}[証明]
+  \newcommand{\vout}{v_{\mathrm{out}}}
+  この区間にない或る座標$\vout \notin [v_i - q_i/2, v_i + q_i/2]$を$s$が
+  時刻$t_0$に訪問するとする．
+  $\vout$と$v_i$の間の移動には
+  少くとも時間$\lvert v_i - \vout \rvert > q _i / 2$を要するから，
+  $s$は区間$[t_0 - q _i / 2, t_0 + q _i / 2]$に属する時刻に$v_i$を訪問できない．
+  この区間の長さは$
+    q_i
+  $であるので，$s$が$v _i$を単独警備していることに反する．
+\end{proof}
+
+
+
+これにより次の補題が成り立つ．
+
+
+\begin{lemm}
+ \label{lemm:LineEqualTimelimitIndependentInterval}
+  グラフの形状がLineで，頂点の{\idletime}がすべて$Q$であるとする．
+  頂点集合$W$が$m$人の巡査により警邏可能であるとする．
+  このとき，
+  $W$を警邏する$m$人の巡査による個別往復運行が存在する．
+\end{lemm}
+
+
+\begin{proof}[証明]
+
+  \newcommand{\leftmostpoint}{b}  % v以外の記号
+  \newcommand{\newpatroller}{l}
+  \newcommand{\leftmostpatroller}{a_1}
+
+  巡査数$m$に関する帰納法で示す．
+  $m = 0$のときは明らかなので，以下$m > 0$とする．
+
+  $W$は$m$人の巡査により警邏可能であるので，2章始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
+  このような運行を任意に一つ選び
+  $A = (a _i) _{i \in \{1, \ldots, m\}}$
+  とする．
+
+  $W$の点のうち最も左にあるものを$\leftmostpoint$とする．
+  まず，各巡査は
+  $\leftmostpoint$より左に存在する時間
+  $\leftmostpoint$で停止するように変換する．
+  このようにしても$W$は警邏されたままであり，
+  また，これによりすべての巡査は
+  $[\leftmostpoint, +\infty)$に存在することになる．
+
+  ここで，最も左の巡査$\leftmostpatroller$に注目する．
+  $\leftmostpoint$が$A$により訪問されるすべての時刻に
+  $\leftmostpatroller$は$\leftmostpoint$を訪問しているので，
+  $\leftmostpoint$は$\leftmostpatroller$により単独警備されている．
+  %
+  すると，
+  補題\ref{lemm:RangeOfPatrollerOnLine}より，
+  任意の時刻$t \in \Rset$に対し
+  $\leftmostpatroller(t) \leq \leftmostpoint + Q/2$
+  であるが，
+  %
+  一方，$\leftmostpatroller$は区間$[b, b + Q/2]$を速さ$1$で往復することで
+  この区間に含まれるすべての頂点を警備することができる．
+  実際，$\leftmostpatroller$がこのような往復をするとき
+  $\leftmostpoint \leq x \leq \leftmostpoint + Q/2$
+  である位置$x$に存在する時刻の間隔の最大値は
+  \[
+    \max( 2(x - \leftmostpoint), 2(\leftmostpoint + Q/2 - x) )
+    \leq 2(\leftmostpoint + Q/2 - \leftmostpoint) = Q
+  \]
+  より，$[\leftmostpoint, \leftmostpoint + Q/2]$に含まれるどの頂点も
+  {\idletime}を超えずに訪問できていることが分かる．
+  これにより$\leftmostpatroller$の運行は個別往復運行となる．
+  %
+  一方，$W^- := \mathsetmid{ v \in W }{ \leftmostpoint + Q/2 < v }$は
+  $\leftmostpatroller$以外の$m - 1$人の巡査により警備されているので，帰納法の仮定から
+  残る$m - 1$人の巡査も個別往復運行に変換することができる．
+  以上により$W$を警邏する$m$人の巡査による個別往復運行が得られた．
+\end{proof}
+
+
+補題\ref{lemm:LineEqualTimelimitIndependentInterval}により，
+個別往復運行を行う場合のみを考えればよいため，
+$m$人の巡査がそれぞれ担当する$m$個の区間を求めればよい．
+以下のアルゴリズムにより利得の和が最大となる$m$個の区間を求めることができる．
+
+初めにLine上の頂点をソートしておき，左側から順に$v_1,v_2,\ldots,v_n$とする．
+頂点$v_i$を左端とする区間を$I_i := [v_i, v_i + Q/2]$と書く．
+
+まず，
+$n$個の区間$I_i (i = 1,2,\ldots, n)$について
+各区間に含まれる点から得られる利得の合計$P_i$を求める．
+$P_i$は$v_1,v_2,\ldots,v_n$がソートしてあるので$O(n)$で求めることができる．
+
+あとは$m$個（$m$は巡査の人数）の区間を選び利得の合計を最大化すればよいが，
+以下の漸化式\ref{eq:LineWISPDP}に従う動的計画法で
+$O(mn)$で
+最大の利得を得られる$m$個の区間を選択できる．
+$OPT(i,j)$は，区間$I_1, \ldots, I_j$から最大$i$個の区間を選ぶときの
+利得の合計の最大値を表す．
+$OPT(m,n)$が求めたい利得の最大値となる．
+\begin{align}
+  \label{eq:LineWISPDP}
+  OPT(i,j) = 
+  \begin{cases}
+    0 & \text{$i = 0$または$j = 0$のとき} \\
+    \max \{
+      OPT(i, j - 1), 
+      P_j + OPT(i - 1, j - 1)
+    \}
+    & \text{それ以外の場合}
+  \end{cases}
+\end{align}
+
+最後に，$OPT(m,n)$において選ばれた区間をトレースバックして求め，
+この区間に含まれる頂点全体を出力して終了する．
+
+このアルゴリズムの計算量は全体で$O(n \log n + nm)$となる．
+これで定理\ref{theo:LineEqualTimelimit}が示された．
+
+
+% Circleについて
+この証明では線分に端の頂点が存在することが重要な役割を果たしているため，
+グラフの形状が閉路の場合にそのまま適用することはできない．

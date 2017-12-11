@@ -82,24 +82,24 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 
 % 巡査協力なしの結果との比較
 
-協力警邏問題についての我々の結果と，
-非協力警邏問題についてのCoeneらの結果を，
+{\patProb}についての我々の結果と，
+{\assignedPatProb}についてのCoeneらの結果を，
 グラフの形ごとに比較すると次のようになる．
 それぞれ\ref{section: line}，\ref{}，\ref{}節で述べる．
 \begin{itemize}
 \item 
 Lineでは，
-非協力警邏問題は%巡査数・利得・{\idletime}がすべて一般の場合であっても
+{\assignedPatProb}は%巡査数・利得・{\idletime}がすべて一般の場合であっても
 動的計画法により多項式時間で解けることが
 示されていた\cite[Theorem~11]{coene2011charlemagne}が，
 その正しさは非協力の設定に強く依存している．
-本稿では協力警邏問題について，
+本稿では{\patProb}について，
 全頂点の{\idletime}が等しい場合にはPであることを示す（定理\ref{theo:LineEqualTimelimit}）．
 \item
 Starでは，
 全頂点の利得と{\idletime}がすべて等しい場合に限っても，
-非協力警邏問題はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
-本稿では，この場合の協力警邏問題はPとなるという興味深い結果を得る（定理＊＊）．
+{\assignedPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
+本稿では，この場合の{\patProb}はPとなるという興味深い結果を得る（定理＊＊）．
 なお利得または{\idletime}を一般にすると，
 巡査が一人であっても（したがって協力・非協力に関わらず）
 NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
@@ -234,7 +234,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 	{\idletime}を$q_i$として，
 		$s$は常に区間$[v_i - q_i/2, v_i + q_i/2]$にいる．
 \end{lemm}
-\red{↑「単独警備」はCoeneらの非協力警邏問題の定義に出て来たものであることを述べる。
+\red{↑「単独警備」はCoeneらの{\assignedPatProb}の定義に出て来たものであることを述べる。
   それを十分うまく述べれば多分、読者が「なるほど、Lineかつ$Q$一定のときは、要するに協力する意味がなくなったから
   簡単になったのだな」と（2.2節の冒頭には書いてあるが、既にこの時点で）
   自然に納得できるように書けるのでは？}
@@ -278,7 +278,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 
 	$m$人の巡査により警邏可能な頂点集合$W$が与えられたとき，
 	\ref{section: line}章の初めで述べたように
-	$W$を警邏する$m$人の巡査による{\orderedrun}$A$が存在する．
+	$W$を警邏する$m$人の巡査による順序保存運行$A$が存在する．
 	$W$の頂点のうち最も左にあるものを$\leftmostpoint$とする．
 \red{$A$名づけるタイミング？}
 
@@ -289,7 +289,7 @@ $a'_1(t) \leq a'_2(t) \leq \cdots \leq a'_m(t)$
 	$W$は警邏されるためである．
 
 	ここで，$\leftmostpoint$に注目する．
-	いま，$A$は{\orderedrun}であり，どの巡査も$\leftmostpoint$より左には進まないので，
+	いま，$A$は順序保存運行であり，どの巡査も$\leftmostpoint$より左には進まないので，
 	一番左側を動く巡査$\leftmostpatroller$以外の巡査が$\leftmostpoint$に存在するときは，
 	$\leftmostpatroller$も$\leftmostpoint$に存在する．
 	よって$\leftmostpoint$は$\leftmostpatroller$により単独警備される．

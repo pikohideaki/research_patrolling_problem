@@ -1,15 +1,17 @@
 \section{{\unit}}
+\label{section: unit}
+
 第1章で述べた通り，{\unit}はStarの特殊な場合とみなせるため，
 定理\ref{theo:StarEqualProfitTimelimit}から
 全点の利得と{\idletime}が等しい場合は
-協力警邏問題を多項式時間で解くことができるが，
-{\unit}の場合は全点の{\idletime}だけが等しければ協力警邏問題を多項式時間で解ける
+{\patProb}を多項式時間で解くことができるが，
+{\unit}の場合は全点の{\idletime}だけが等しければ{\patProb}を多項式時間で解ける
 （定理\ref{theo:UnitEqualTimelimit}）．
 
 {\idletime}が一般の場合については
 多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
-第2章で扱った時刻指定協力警邏問題を再び考える．
-グラフが{\unit}の場合は時刻指定協力警邏問題がNP困難になることを示す
+第2章で扱った時刻指定{\patProb}を再び考える．
+グラフが{\unit}の場合は時刻指定{\patProb}がNP困難になることを示す
 （定理\ref{theo:unit_exacttime_NPhard}）．
 
 
@@ -19,12 +21,12 @@
 \begin{theo}
   \label{theo:UnitEqualTimelimit}
   グラフの形状が{\unit}で全点の{\idletime}が等しい場合，
-  協力警邏問題は（利得，巡査数が一般であっても）多項式時間で解くことができる．
+  {\patProb}は（利得，巡査数が一般であっても）多項式時間で解くことができる．
 \end{theo}
 
 \begin{proof}
   補題\ref{lemm:condition_of_guarding_star}から
-  {\unit}の全点の許容訪問間隔が$Q$のとき，
+  {\unit}の全点の{\idletime}が$Q$のとき，
   点集合$V$の任意の部分集合$W$について
   $$
     \sum_{v \in W} \min(d, Q) = |W|\min(d, Q) \leq mQ
@@ -33,7 +35,7 @@
   が成り立つ．$d$は{\unit}の各辺の長さである．
 
   グラフの形状が{\unit}の場合，
-  全点の許容訪問間隔が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
+  全点の{\idletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
   （利得のより大きい点$v_1$とより小さい点$v_2$があるとき，
   $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる）．
   $|W|\min(d, Q) \leq mQ$を満たす最大の$|W|$は
@@ -45,25 +47,25 @@
 
 
 
-\subsection{{\idletime}が一般の場合：時刻指定協力警邏問題}
+\subsection{{\idletime}が一般の場合：時刻指定{\patProb}}
 
 
 \begin{theo}
   \label{theo:unit_exacttime_NPhard}
   グラフの形状が{\unit}のとき，
-  時刻指定協力警邏問題は巡査が1人で全点の利得が等しくてもNP困難である．
+  時刻指定{\patProb}は巡査が1人で全点の利得が等しくてもNP困難である．
 \end{theo}
 
 % 最大独立集合問題において，
 % 無向グラフが与えられたときに独立点集合で最大のものを求めるが，
 % 間に辺の存在する2頂点の両方を選ぶことはできないという制約を，
-% 協力警邏問題において2頂点のどちらか一方しか警備できないという制約に変換する．
+% {\patProb}において2頂点のどちらか一方しか警備できないという制約に変換する．
 
 \begin{proof}[証明]
   最大独立集合問題からの帰着による．
 
   最大独立集合問題の入力のグラフが$G = (V, E)$のとき，
-  時刻指定協力警邏問題に対して，
+  時刻指定{\patProb}に対して，
   巡査の人数$1$と{\unit}のグラフ$G' = (V', E')$を入力として与える．
   $G'$は以下のように定める．
   $V' = V$とし，全点の利得は$1$，辺の長さはすべて$1$とする．
@@ -84,7 +86,7 @@
   以上のようにして得た$q_i, r_i (i \in \{ 1, \ldots, n\})$から，
   各点$v_i (i \in \{1, \ldots, n\})$の訪問指定時刻を$q_i k + r_i (k \in \Nset)$
   と定めると，
-  時刻指定協力警邏問題の解は$G$の最大独立集合となる．
+  時刻指定{\patProb}の解は$G$の最大独立集合となる．
 
   実際，
   $G'$の任意の2点$v_i$, $v_j$（$i < j$としてよい）に対し，
@@ -129,7 +131,7 @@
 各点の訪問指定時刻といっても訪問間隔$q_i$と剰余$r_i$が与えられる場合について
 NP困難性が示したが，
 各点に訪問間隔$q_i$のみが指定されている問題も考えることができる．
-この訪問間隔指定の協力警邏問題は，
+この訪問間隔指定の{\patProb}は，
 全点警邏可能性判定であってもNP困難であることを示すことができる．
 
 
@@ -137,7 +139,7 @@ NP困難性が示したが，
 \begin{theo}
   \label{theo:NPhard_disjoint_residue_class_problem}
   グラフの形状が{\unit}のとき，
-  訪問間隔指定の協力警邏問題は巡査が1人で全点警邏可能性判定であってもNP困難である．
+  訪問間隔指定の{\patProb}は巡査が1人で全点警邏可能性判定であってもNP困難である．
 \end{theo}
 
 
@@ -156,7 +158,7 @@ NP困難性が示したが，
   NP困難であることが知られている~\cite{kawamura2015simple}．
 
   Disjoint Residue Class Problem の入力が $(m_1, \ldots, m_n)$ のとき，
-  訪問間隔指定協力警邏問題に対して
+  訪問間隔指定{\patProb}に対して
   巡査の人数$1$と$n$点からなる{\unit}のグラフで
   各点の訪問間隔を$q_i = m_i$となるように定め，辺の長さはすべて$1$としたものを
   入力として与えることで
@@ -181,41 +183,19 @@ NP困難性が示したが，
   となる$i, j$が存在するので，
   $v_i, v_j$を両方警備することができず，したがって全点を警備できない．
 
-  % % \decisionpp が Yes ならば Disjoint Residue Class Problem も Yes
-  % 逆に{\decisionpp}の解が存在するとき，
-  % 全点を警備できるのでその警邏において各頂点$v_i$を最初に訪問する時刻を $r_i$ とすると，
-  % 任意の $v_i,v_j \in V$, $k,l \in \Z$ に対し
-  % \begin{equation}
-  %     \label{eq:patrollDisjoint}
-  %     q_i k + r_i \neq q_j l + r_j
-  % \end{equation}
-  % が成り立つ．すると，任意の時刻 $t \in \Z$ に対して
-  % $t \equiv r_i \mod q_i$ となるような $i$ が2つ存在するとすると，
-  % それを $i$, $j$ として
-  % $t \equiv r_i \mod q_i$, $t \equiv r_j \mod q_j$
-  % すなわち，ある整数 $k,l$ が存在して
-  % $t = q_i k + r_i$, $t = q_j l + r_j$
-  % となり，この $k,l$ によって
-  % $q_i k + r_i = q_j l + r_j$ となり，式\ref{eq:patrollDisjoint} に矛盾する．
-  % よって，任意の整数 $t$ に対して $t \equiv r_i \mod q_i$ を満たす
-  % $i$ は高々1つであるような $r_i$ が与えられたので，
-  % {\decisionpp}の解が存在するとき，
-  % Disjoint Residue Class Problemにも解が存在する．
-
-  % 以上よりDisjoint Residue Class Problemを帰着できた．
 \end{proof}
 
 
 
-% \subsubsection{最初の訪問時刻指定，{\interval}}
-% 今，最初の訪問時刻には自由度があり{\interval}だけが指定される問題を考えたが，
+% \subsubsection{最初の訪問時刻指定，{\exactidletime}}
+% 今，最初の訪問時刻には自由度があり{\exactidletime}だけが指定される問題を考えたが，
 % さらに最初の訪問時刻も与えられる問題も考えることができる．
 
 % \begin{theo}
 %     \label{theo:UnitSingleExactStarttime}
 %     グラフの形状が{\unit}で巡査が1人の場合，
-%     最初の訪問時刻と{\interval}が与えられて
-%     最初の訪問時刻からその{\interval}ごとの時刻は必ず訪問しなければならないという問題の場合，
+%     最初の訪問時刻と{\exactidletime}が与えられて
+%     最初の訪問時刻からその{\exactidletime}ごとの時刻は必ず訪問しなければならないという問題の場合，
 %     {\decisionpp}はPである．
 % \end{theo}
 

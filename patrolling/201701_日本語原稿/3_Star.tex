@@ -1,20 +1,21 @@
-
 \section{Star}
+\label{section: star}
+
 グラフの形状がStarの場合については，
 利得か{\idletime}のいずれかが一般であれば，
-協力警邏問題は巡査が1人であってもNP困難であることが分かっている~\cite{coene2011charlemagne}．
-よって，本稿の協力警邏問題については，巡査数が一般であって，
+{\patProb}は巡査が1人であってもNP困難であることが分かっている~\cite{coene2011charlemagne}．
+よって，本稿の{\patProb}については，巡査数が一般であって，
 全点の利得と{\idletime}が等しい場合を調べる．
 
-非協力警邏問題においては，グラフがStarで巡査数が一般の場合は
+{\assignedPatProb}においては，グラフがStarで巡査数が一般の場合は
 利得と{\idletime}がすべて等しくてもNP困難になることが
 Coeneら~\cite{coene2011charlemagne}により示されているが，
-一方で同じ条件における協力警邏問題の場合は次が成り立つ．
+一方で同じ条件における{\patProb}の場合は次が成り立つ．
 
 \begin{theo}
   \label{theo:StarEqualProfitTimelimit}
   グラフの形状がStarで全点の利得と{\idletime}が等しい場合，
-  協力警邏問題は（巡査数が一般であっても）多項式時間で解くことができる．
+  {\patProb}は（巡査数が一般であっても）多項式時間で解くことができる．
 \end{theo}
 
 
@@ -29,7 +30,7 @@ Starの場合には逆に，
 
 \begin{lemm}
   \label{lemm:condition_of_guarding_star}
-  Star上の協力警邏問題で全点の許容訪問間隔が$Q$のとき，
+  Star上の{\patProb}で全点の{\idletime}が$Q$のとき，
   点集合$V$の任意の部分集合$W$について
   $$
     \sum_{v \in W} \min(2d_v, Q) \leq mQ
