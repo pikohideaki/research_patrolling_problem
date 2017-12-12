@@ -127,8 +127,8 @@
 
 \begin{defi}
   $X \subset \Zset \times \Nset$とする．
-  任意の$(t, x), (t', x') \in X$が
-  $|t - t'| \geq |x - x'|$
+  任意の$(t_1, x_1), (t_2, x_2) \in X$が
+  $\abs{x_1 - x_2} \leq \abs{t_1 - t_2}$
   を満たすとき，$X$は運行可能であるという．
 \end{defi}
 
@@ -150,25 +150,26 @@ $X$のすべての元$(t, x)$に対して$a(t) = x$を満たすものが存在�
 
 % これを解くために次の副問題を考える．
 
-% 1周期分だけ取り出して分割可能であることと元のXが分割可能であることが一致することを説明し
+% 1周期分だけ取り出して周期的分割可能であることと元のXが分割可能であることが一致することを説明し
 % アルゴリズムでは無限集合の周期的な分割を与えてYesかNoを答える
 この問題では，
 $X := \{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$
 という無限集合の分割が可能か判定しなければならないが，
 実際には$X$の点は時刻（組$(t, x) \in X$の第1要素）について周期的であるため，
-1周期分の有限部分集合を以下に定義する「周期的に運行可能な集合」に分割できるかどうかさえ
+1周期分の有限部分集合を以下に定義する「周期的に運行可能な」集合に分割できるかどうかさえ
 判定すればよい．
 
 \red{理由を説明}
 
+
+
 \begin{defi}
-  $X \subset \Zset \times \Nset$を有限集合とする．
-  ある正の整数$T$が存在し，
-  任意の$(t, x), (t', x') \in X$が
-  $|t - t'| \geq |x - x'|$
+  $T$を正の整数，$X \subset \Zset \times \Nset$を有限集合とする．
+  任意の$(t_1, x_1), (t_2, x_2) \in X$が
+  $\abs{x_1 - x_2} \leq \abs{t_1 - t_2}$
   かつ
-  $|t + T - t'| \geq |x - x'|$
-  を満たすとき，$X$は周期的に運行可能であるという．
+  $\abs{x_1 - x_2} \leq \abs{T + t_1 - t_2}$
+  を満たすとき，$X$は周期$T$で運行可能であるという．
 \end{defi}
 
 
@@ -178,7 +179,7 @@ $X := \{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$
   始めに
   $T := lcm(q_1, \ldots, q_n)$,
   $X := \{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$,
-  $L((\alpha, \beta)) := \{(t, x) \mid x - \beta \leq |t - \alpha| \}$と記号を定義する．
+  $L((\alpha, \beta)) := \{(t, x) \mid x - \beta \leq \abs{t - \alpha} \}$と記号を定義する．
 
   まず$X$の部分集合$S := \{ (x, t) \in X \mid -T \leq t < 2T \}$を求める．
   初期値を$\mathcal{B} = \{\}$, $B_0 = S$, $B' = S$, $i = 0$とし，
@@ -190,11 +191,12 @@ $X := \{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$
     \item $\mathcal{B} \gets \mathcal{B} \cup \{ B_i \}$.
   \end{enumerate}
 
-  $|\mathcal{B}| > m$ならば分割不可能と答え，
-  そうでないときは分割可能と答えたうえで，
-  $\mathcal{B}$の各元を時刻方向に$[0, T)$に制限したもの
-  $\mathcal{C} := \{ \{ (t, x) \in B \mid 0 \leq t < T \} \mid B \in \mathcal{B} \}$
-  を出力して終了する．
+  $\card{\mathcal{B}} > m$ならば「分割不可能」と答え，
+  そうでないときは「分割可能」と答え終了する．
+  % そうでないときは分割可能と答えたうえで，
+  % $\mathcal{B}$の各元を時刻方向に$[0, T)$に制限したもの
+  % $\mathcal{C} := \{ \{ (t, x) \in B \mid 0 \leq t < T \} \mid B \in \mathcal{B} \}$
+  % を出力して終了する．
 \end{greedyAlgorithmForTimeSpecifiedProblemOnLine}
 
 % 副問題は主問題の判定を行いさらに繰り返し運行可能分割を求める問題なので，

@@ -29,7 +29,7 @@
   {\graphUnit}の全点の{\idletime}が$Q$のとき，
   点集合$V$の任意の部分集合$W$について
   $$
-    \sum_{v \in W} \min(d, Q) = |W|\min(d, Q) \leq mQ
+    \sum_{v \in W} \min(d, Q) = \card{W}\min(d, Q) \leq mQ
     \iff \text{$m$人の巡査により$W$の全点を警邏できる}
   $$
   が成り立つ．$d$は{\graphUnit}の各辺の長さである．
@@ -38,8 +38,8 @@
   全点の{\idletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
   （利得のより大きい点$v_1$とより小さい点$v_2$があるとき，
   $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる）．
-  $|W|\min(d, Q) \leq mQ$を満たす最大の$|W|$は
-  $|W| = \left\lfloor {mQ}/{\min(d, Q)} \right\rfloor$
+  $\card{W}\min(d, Q) \leq mQ$を満たす最大の$\card{W}$は
+  $\card{W} = \left\lfloor {mQ}/{\min(d, Q)} \right\rfloor$
   であり，利得の大きい点から$\lfloor {mQ}/{\min(d, Q)} \rfloor$点を選ぶ計算は
   $O(\lfloor {mQ}/{\min(d, Q)} \rfloor \log n)$となる．
 \end{proof}
@@ -93,7 +93,7 @@
   この両方を警備できるための必要十分条件は，
   2点間の移動時間が$1$以上かかることから，
   訪問しなければならない時刻同士がすべて$1$以上離れていること，すなわち，
-  任意の整数$k, l$に対し$|(k q_i + r_i) - (l q_j + r_j)| \geq 1$
+  任意の整数$k, l$に対し$\abs{(k q_i + r_i) - (l q_j + r_j)} \geq 1$
   が成り立つこととなる．
   $q_i, r_i, q_j, r_j$がすべて整数のとき，これは
   $q_i k + r_i \neq q_j l + r_j$, 
