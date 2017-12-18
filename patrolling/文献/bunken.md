@@ -129,3 +129,40 @@
     * 長さ $L$ の $k$ 個の線分で $V$ を覆えるような最小の $L$ で idle-time $2L$ が最適（利得無し全点）
 * sec.3. Optimal Patrolling Strategy for the Cycle
 
+
+
+#### Strategy Synthesis in Adversarial Patrolling Games
+* sec. 1. Introduction
+    * 状況設定
+        * 侵略者は巡査の動きやその戦略まで知っているが，巡査のランダムな行動選択までは予測できない．
+        * 巡査は1人？
+        * patrolling problem $\mathcal{G}$
+            * nodes $U$
+            * targets $T$
+            * edges $E \subseteq U \times U$
+            * the initial position of the defender $\hat u \in T$
+            * $d: T \to \mathbb{N}$
+        * 巡査
+            * 巡査は1秒毎に1本の辺を渡る．長い辺は途中の警備対象でないノードを挟めば表現できる．
+            * 巡査は前回の選択とは独立にランダムに次の行動を選択する．
+            * 巡査の戦略とは $\sigma : \mathcal{H} \to \Delta(U)$ のこと．
+                $\mathcal{H}$ は空でないノードの列で，$\Delta(U)$ は $U$ 上の確率分布．
+        * 侵略者
+            * 侵略者の戦略とは $\pi: \mathcal{H} \to T \cup \{ \bot\}$
+
+
+#### A Realistic Model of Frequency-Based Multi-Robot Polyline Patrolling
+* sec. 2.
+    * 各巡査の担当する領域への分割を，"negotiation-based approach" で行うものもあるが，本稿では訪問頻度による指標で行う．
+* sec. 3.
+    * 目的
+        * Uniformity. （各警備対象を訪問する頻度をなるべく同程度にする）
+        * Maximal average. （各警備対象を訪問する頻度の平均値を最大化）
+        * Maximal minimum frequency (under-bounded frequency)（警備対象のうち訪問頻度が最小のものを最大化）
+    * 閉路でない線分上で巡査が1人のときは完全なUniformityは実現できない．
+    * 巡査が複数のときはもう少し改善できる．→ FOPアルゴリズム
+* sec. 4.
+    * 実際のロボットで実験
+
+
+

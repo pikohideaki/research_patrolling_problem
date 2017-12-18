@@ -34,7 +34,7 @@
 
 
 
-\newcommand{\kcomment}[1]{{\textcolor{blue}{#1}}}
+
 
 \begin{document}
 
