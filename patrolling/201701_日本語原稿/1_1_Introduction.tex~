@@ -15,24 +15,26 @@
 全巡査の運行を定めた組
 $A = (a _1, \dots, a _m)$をいう．
 運行$A = (a _1, \dots, a _m)$
-が点$v \in U$を{\idletime}$q \geq 0$で警備するとは，
+が点$v \in U$を{\idletime}$q > 0$で警備するとは，
 長さ$q$のどの時間区間にも
 いずれかの巡査が$v$を少くとも一度は訪れる
 （任意の時刻$t \in \Rset$に対して
 巡査$i$と時刻$\tau \in [t, t + q)$が存在し
 $a _i (\tau) = v$）ことをいう．
-\red{（←$q = 0$のときおかしい？）}
+% \red{（←$q = 0$のときおかしい？）}
+\kcomment{［$q = 0$にすることが必要になる箇所はどこですか。］}
+\red{［→$q = 0$の場合は考えないことにします．］}
 
 $U$の有限な部分集合$V$があり，$V$の各点には利得および{\idletime}と呼ばれる非負整数が定まっている．
 運行$A$が点集合$W \subseteq V$を警邏するとは，
 各点$v \in W$に対し$A$が$v$を警備することをいう．
 そのような運行が存在するとき$W$は$m$人により警邏可能であるという．
 
-\begin{cooperativepatrollingproblem}
+\begin{patrollingProblem}
   巡査の人数$m$と距離空間$U$内の点集合$V$および
   $V$の各点の利得と{\idletime}が与えられたとき，
   $m$人の巡査により警邏可能な頂点集合のうち利得の和が最大となるものを求めよ．
-\end{cooperativepatrollingproblem}
+\end{patrollingProblem}
 
 距離空間$U$といっても，$V$の点同士の測地距離のみが重要である．
 そこでこの問題の入力は，
@@ -64,7 +66,7 @@ Coeneら\cite{coene2011charlemagne}は似た問題を扱っているが，
 つまり，各頂点$v \in W$が単独警備される（すなわち
 或る一人の巡査がおり，
 その巡査のみの運行が$\{v\}$を警邏する）ことを要求しているのである．
-対比のため本稿ではこの問題を{\assignedPatProb}と呼ぶことにする
+対比のため本稿ではこの問題を{\patritionedPatProb}と呼ぶことにする
 （\cite{coene2011charlemagne}ではMPLPPと称している）．
 Coeneら\cite{coene2011charlemagne}の諸結果においては，
 この単独警備という限定が，
@@ -91,13 +93,13 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 
 % 巡査協力なしの結果との比較
 {\patProb}についての我々の結果と，
-{\assignedPatProb}についてのCoeneらの結果を，
+{\patritionedPatProb}についてのCoeneらの結果を，
 グラフの形ごとに比較すると次のようになる．
 それぞれ\ref{section: line}，\ref{section: star}，\ref{section: unit}節で述べる．
 \begin{itemize}
   \item 
     グラフが{\graphLine}の場合は，
-    {\assignedPatProb}は動的計画法により多項式時間で解けることが
+    {\patritionedPatProb}は動的計画法により多項式時間で解けることが
     示されていた\cite[Theorem~11]{coene2011charlemagne}が，
     その正しさは非協力の設定に強く依存している．
     本稿では{\patProb}について，
@@ -106,7 +108,7 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
   \item
     グラフが{\graphStar}の場合は，
     全点の利得と{\idletime}が等しい場合に限っても，
-    {\assignedPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
+    {\patritionedPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
     本稿では，この場合の{\patProb}は多項式時間で解けるという興味深い結果を得る（定理＊＊）．
     なお利得または{\idletime}を一般にすると，
     巡査が一人であっても（したがって担当の有無に関わらず）
@@ -122,7 +124,7 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 {\graphLine}と{\graphUnit}については
 {\idletime}が一般の場合については多項式時間アルゴリズムやNP困難性を示すのが難しく未解決である．
 これらの未解決な状況については，
-{\idletime}の代わりに以下に定義する{\exactidletime}を警備の条件とする問題も考えた．
+{\idletime}の代わりに以下に定義する{\exactidletime}に訪問することを警備の条件とする問題も考えた．
 
 \begin{defi}
   運行$A = (a _1, \ldots, a _m)$が
@@ -135,39 +137,20 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 
 {\exactidletime}による{\patProb}は以下のように定義される．
 
-\begin{timeSpecifiedCooperativePatrollingProblem}
+\begin{timeSpecifiedPatrollingProblem}
   巡査の人数$m$と距離空間$U$内の点集合$V$および
   $V$の各点の利得と{\exactidletime}が与えられたとき，
   $m$人の巡査により警邏可能な頂点集合のうち利得の和が最大となるものを求めよ．
-\end{timeSpecifiedCooperativePatrollingProblem}
+\end{timeSpecifiedPatrollingProblem}
 
 判定問題は以下のようになる．
 
-\begin{timeSpecifiedCooperativePatrollingProblemDecision}
+\begin{timeSpecifiedPatrollingProblemDecision}
   巡査の人数$m$と距離空間$U$内の点集合$V$および
   $V$の各点の{\exactidletime}が与えられたとき，
   $m$人の巡査により$V$を警邏可能か判定せよ．
-\end{timeSpecifiedCooperativePatrollingProblemDecision}
+\end{timeSpecifiedPatrollingProblemDecision}
 
 
 {\graphLine}については{\timeSpecifiedPatProbDecision}を解く貪欲アルゴリズムを示す（定理\ref{}）．
-{\graphUnit}については{\timeSpecifiedPatProbDecision}がNP困難であることを示す（定理\ref{}）．
-
-
-
-
-\subsection*{関連研究}
-
-\red{（あまり本筋に関係ない関連研究は、論文冒頭ではなくこの辺に書くのも手）}
-
-% 警邏に関する研究には様々な問題設定があり，
-% 例えば線分や閉路のような交わりの無い1次元的な領域のすべての点を警邏する
-% 塀の警邏(Fence Patrolling)問題~\cite{chen2013fence, czyzowicz2011boundary}や，
-% より一般的なグラフで辺全体ではなく頂点を警備する警邏問題~\cite{coene2011charlemagne}，
-% グラフと巡査が与えられて警邏可能かを判定する問題だけでなく，
-% 塀の警邏問題においてなるべく長い塀を警邏する問題~\cite{czyzowicz2011boundary}や
-% 全体の訪問の待ち時間の最大値を最小化する問題~\cite{chen2013fence}
-% なども考えられている．
-% \red{（加筆予定）}
-
-また，{\graphLine}や{\graphStar}は木の特別な場合である．
+{\graphUnit}については{\timeSpecifiedPatProb}がNP困難であることを示す（定理\ref{}）．
