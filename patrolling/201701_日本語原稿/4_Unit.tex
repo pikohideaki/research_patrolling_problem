@@ -19,165 +19,169 @@
 \subsection{全点の{\idletime}が等しい場合}
 
 \begin{theo}
-  \label{theo:UnitEqualTimelimit}
-  グラフの形状が{\graphUnit}で全点の{\idletime}が等しい場合，
-  {\patProb}は（利得，巡査数が一般であっても）多項式時間で解くことができる．
+\label{theo:UnitEqualTimelimit}
+グラフの形状が{\graphUnit}で全点の{\idletime}が等しい場合，
+{\patProb}は（利得，巡査数が一般であっても）多項式時間で解くことができる．
 \end{theo}
+\begin{proof}[証明]
+{\graphUnit}は{\graphStar}の特殊な場合であるから，
+補題\ref{lemm:condition_of_guarding_star}から
+{\graphUnit}の全点の{\idletime}が$Q$のとき，
+頂点集合$V$の任意の部分集合$W$について
+$$
+  \sum_{v \in W} \min(d, Q) = \card{W}\min(d, Q) \leq mQ
+  \iff \textrm{$W$は$m$人の巡査により警邏可能である}
+$$
+が成り立つ．$d$は{\graphUnit}の各辺の長さである．
 
-\begin{proof}
-  補題\ref{lemm:condition_of_guarding_star}から
-  {\graphUnit}の全点の{\idletime}が$Q$のとき，
-  点集合$V$の任意の部分集合$W$について
-  $$
-    \sum_{v \in W} \min(d, Q) = \card{W}\min(d, Q) \leq mQ
-    \iff \text{$m$人の巡査により$W$の全点を警邏できる}
-  $$
-  が成り立つ．$d$は{\graphUnit}の各辺の長さである．
-
-  グラフの形状が{\graphUnit}の場合，
-  全点の{\idletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
-  （利得のより大きい点$v_1$とより小さい点$v_2$があるとき，
-  $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる）．
-  $\card{W}\min(d, Q) \leq mQ$を満たす最大の$\card{W}$は
-  $\card{W} = \left\lfloor {mQ}/{\min(d, Q)} \right\rfloor$
-  であり，利得の大きい点から$\lfloor {mQ}/{\min(d, Q)} \rfloor$点を選ぶ計算は
-  $O(\lfloor {mQ}/{\min(d, Q)} \rfloor \log n)$となる．
+グラフの形状が{\graphUnit}の場合，
+全点の{\idletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
+（利得のより大きい点$v_1$とより小さい点$v_2$があるとき，
+$v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる）．
+$\card{W}\min(d, Q) \leq mQ$を満たす最大の$\card{W}$は
+$\card{W} = \left\lfloor {mQ}/{\min(d, Q)} \right\rfloor$
+であるので，
+利得の大きい点に$\lfloor {mQ}/{\min(d, Q)} \rfloor$点を選べばよい．
 \end{proof}
 
 
 
 
 \subsection{{\idletime}が一般の場合：{\timeSpecifiedPatProb}}
+第\ref{section: star}章冒頭で述べた通り，
+グラフの形状が{\graphStar}の場合については，
+{\idletime}が一般の場合は
+{\patProb}は巡査が1人であってもNP困難であった~\cite{coene2011charlemagne}．
+このNP困難性の証明は主に{\graphStar}の辺の長さをコストとして扱うことによっている．
+{\graphUnit}は{\graphStar}の辺の長さがすべて等しい場合という特殊な場合であるため，
+この方法によるNP困難性の証明ができない．
+{\graphUnit}で{\idletime}が一般の場合は{\graphLine}のときと同様，
+多項式時間アルゴリズムやNP困難性の証明が難しかったため，
+{\timeSpecifiedPatProb}を代わりに考える．
 
-\ncomment{［ここに説明文］}
 
 \begin{theo}
-  \label{theo:unit_exacidletime_NPhard}
-  グラフの形状が{\graphUnit}のとき，
-  {\timeSpecifiedPatProb}は巡査が1人で全点の利得が等しくてもNP困難である．
+\label{theo:unit_exacidletime_NPhard}
+グラフの形状が{\graphUnit}のとき，
+{\timeSpecifiedPatProb}は巡査が1人で全点の利得が等しくてもNP困難である．
 \end{theo}
-
+\begin{proof}[証明]
 % 最大独立集合問題において，
 % 無向グラフが与えられたときに独立点集合で最大のものを求めるが，
 % 間に辺の存在する2頂点の両方を選ぶことはできないという制約を，
 % {\patProb}において2頂点のどちらか一方しか警備できないという制約に変換する．
+最大独立集合問題からの帰着による．
 
-\begin{proof}[証明]
-  最大独立集合問題からの帰着による．
+\newcommand{\primenum}[2]{p_{(#1,#2)}}
+最大独立集合問題の入力のグラフが$G = (V, E)$のとき，
+頂点集合を$V$，利得をすべて$1$，辺の長さをすべて$1$とした
+{\graphUnit}のグラフ$G'$を考える．
+$G'$の各点の{\exactIdletime}$(q_i, r_i)\ (i \in \{ 1, \ldots, n \})$は次のように定める．
+まず，${}_n C_2$個の相異なる素数$\primenum{i}{j}\ (1 \leq i < j \leq n)$を用意する．
+$i > j$に対して$\primenum{i}{j}$と書くときは$\primenum{j}{i}$を指すことにする．
+$q_i := \prod_{k \in \{ 1, \ldots, i - 1, i + 1, \ldots, n\} } \primenum{i}{k}$
+とする．
+次に，$r_1, \ldots, r_n$を，
+$G$のすべての2点$v_i, v_j (1 \leq i < j \leq n)$に対して，
+$(v_i, v_j) \in E$     ならば $r_i \equiv    r_j \equiv 0 \mod \primenum{i}{j}$,
+$(v_i, v_j) \not\in E$ ならば $r_i \equiv 0, r_j \equiv 1 \mod \primenum{i}{j}$
+を満たすように定める．
+各$r_i$に対して相異なる$n - 1$個の素数
+$\primenum{i}{k}\ (k \neq i)$
+で割ったときの余りが与えられているので，
+中国剰余定理からそのような$r_i$がその$n - 1$個の素数の積$q_i$を法として一意に存在する．
+$0 \leq r_i < q_i$とするとそのような$r_i$の値を定めることができる．
+以上のようにして得られる$G'$を入力として与えたとき
+{\timeSpecifiedPatProb}の解は$G$の最大独立集合となる．
 
-  最大独立集合問題の入力のグラフが$G = (V, E)$のとき，
-  {\timeSpecifiedPatProb}に対して，
-  巡査の人数$1$と{\graphUnit}のグラフ$G' = (V', E')$を入力として与える．
-  $G'$は以下のように定める．
-  $V' = V$とし，全点の利得は$1$，辺の長さはすべて$1$とする．
-  各点の{\exactidletime}は次のように定める．
-  %
-  まず，${}_n C_2$ 個の相異なる素数 $p_{i,j} (1 \leq i < j \leq n)$ を用意し，
-  $q_i := \prod_{k = 1}^{i - 1} p_{1,k} \prod_{k = i + 1}^n p_{k,n}$
-  とする．
-  次に，$r_i (i \in \{1, \ldots, n\})$を，
-  $G$のすべての2点$v_i, v_j (1 \leq i < j \leq n)$に対して，
-  $(v_i, v_j) \in E$     ならば $r_i \equiv    r_j \equiv 0 \mod p_{i,j}$,
-  $(v_i, v_j) \not\in E$ ならば $r_i \equiv 0, r_j \equiv 1 \mod p_{i,j}$,
-  さらに$0 \leq r_i < q_i$
-  を満たすように定める．
-  各$r_i$に対して相異なる$n - 1$個の素数で割ったときの余りが与えられているので，
-  中国剰余定理からそのような$r_i$がその$n - 1$個の素数の積$q_i$を法として一意に存在する．
-  %
-  以上のようにして得た$q_i, r_i (i \in \{ 1, \ldots, n\})$から，
-  各点$v_i (i \in \{1, \ldots, n\})$の{\exactidletime}を$q_i k + r_i (k \in \Nset)$
-  と定めると，
-  {\timeSpecifiedPatProb}の解は$G$の最大独立集合となる．
+実際，
+$G'$の異なる2点$v_i, v_j$の両方を警備できるための必要十分条件は，
+2点間の移動時間が$1$以上かかることから，
+訪問しなければならない時刻同士がすべて$1$以上離れていること，すなわち，
+任意の整数$k, l$に対し$\abs{(k q_i + r_i) - (l q_j + r_j)} \geq 1$
+が成り立つこととなる．
+$q_i, r_i, q_j, r_j$がすべて整数のとき，これは
+$q_i k + r_i \neq q_j l + r_j$, 
+すなわち
+$r_i - r_j \neq q_j l - q_i k$
+が任意の整数$k, l$で成り立つこと同値である．
+これはさらに
+$r_i - r_j \neq gcd(q_i,q_j) n$が任意の整数$n$で成り立つこと，
+つまり$r_i \not\equiv r_j \mod gcd(q_i, q_j)$と同値である．
+$gcd(q_i, q_j) = \primenum{i}{j}$であるから
+$v_i$と$v_j$の両方を警備できる必要十分条件は
+$r_i \not\equiv r_j \mod \primenum{i}{j}$
+となる．
+$r_i$の決め方から，
+\[
+  (v_i, v_j) \in E \iff \text{$G'$の2点$v_i, v_j$を両方警備することができない}
+\]
+が成り立つため，
+$G'$の警邏可能な頂点部分集合であって最大のものを選ぶと$G$の最大独立集合となることがわかる．
 
-  実際，
-  $G'$の任意の2点$v_i$, $v_j$（$i < j$としてよい）に対し，
-  この両方を警備できるための必要十分条件は，
-  2点間の移動時間が$1$以上かかることから，
-  訪問しなければならない時刻同士がすべて$1$以上離れていること，すなわち，
-  任意の整数$k, l$に対し$\abs{(k q_i + r_i) - (l q_j + r_j)} \geq 1$
-  が成り立つこととなる．
-  $q_i, r_i, q_j, r_j$がすべて整数のとき，これは
-  $q_i k + r_i \neq q_j l + r_j$, 
-  すなわち
-  $r_i - r_j \neq q_j l - q_i k$
-  が任意の整数$k, l$で成り立つこと同値である．
-  $gcd(x,y)$を$x$と$y$の最大公約数とすると，
-  $r_i - r_j \neq gcd(q_i,q_j) n$が任意の整数$n$で成り立つこと，
-  つまり$r_i \not\equiv r_j \mod gcd(q_i, q_j) = p_{i,j}$と同値である．
-  よって，
-  $v_i$ と $v_j$ の両方を警備できる必要十分条件は
-  $r_i \not\equiv r_j \mod p_{i, j}$
-  となる．
-  $r_i$の決め方から，
-  \[
-    (v_i, v_j) \in E \iff \text{$G'$の2点$v_i, v_j$を両方警備することができない}
-  \]
-  が成り立つため，
-  $G'$の点部分集合であって同時に警備できない2点のうち少なくとも一方は含まないようなもののうち
-  最大のものを選ぶと，
-  これは$G$の最大独立集合となる．
-
-  最後に，${}_n C_2$ 個の相異なる素数を用意する計算量も確かめる必要がある．
-  $k$ 番目に小さい素数を $P_k$ と書くと，$k \geq 6$ のときは
-  $P_k < k( \ln k + \ln\ln k )$ であることが知られているため~\cite{dusart1999k}，
-  $k( \ln k + \ln\ln k )$ までの自然数を順に素数かどうか判定していくことで
-  $k$ 個以上の素数を得ることができる．
-  ある数が素数であるかどうかを判定する多項式時間アルゴリズムは存在するので~\cite{agrawal2004primes}，
-  ${}_n C_2$ 個の素数の列挙は$n$の多項式時間でできる．
+また，
+$k$番目に小さい素数を$P_k$と書くと，$k \geq 6$のときは
+$P_k < k( \ln k + \ln\ln k )$であり~\cite{dusart1999k}，
+ある数が素数であるかどうかを判定する多項式時間アルゴリズムが存在する~\cite{agrawal2004primes}ので，
+${}_n C_2$個の素数の列挙は$n$の多項式時間でできる．
 \end{proof}
 
 
 
+
+
 定理\ref{theo:unit_exacidletime_NPhard}では，
-各点の{\exactidletime}といっても間隔$q_i$と剰余$r_i$が与えられる場合について
-NP困難性が示したが，
-各点に間隔$q_i$のみが指定されている
-「{\intervalSpecifiedPatProb}」も考えることができる．
-これの全点警邏判定問題を「{\intervalSpecifiedPatProbDecision}」と呼ぶことにする．
+各点の{\exactIdletime}が与えられる場合についてNP困難性が示したが，
+{\exactIdletime}のうち訪問間隔$q_1, \ldots, q_n$のみが指定されている
+以下のような問題も考えることができる．
+訪問間隔
+
+\begin{intervalSpecifiedPatrollingProblemDecision}
+巡査の人数$m$と距離空間$U$内の点集合$V$および
+$q_1, \ldots, q_n$が与えられる．
+$V$の各点$v_i$の警備の条件が{\exactIdletime}$(q_i, r_i)$で定められるとき，
+$m$人の巡査により全点を警邏できるような$r_1, \ldots, r_n$が存在するか判定せよ．
+\end{intervalSpecifiedPatrollingProblemDecision}
+
+グラフの形状が{\graphUnit}の場合の
+{\intervalSpecifiedPatProbDecision}について以下が成り立つ．
 
 \begin{theo}
-  \label{theo:NPhard_disjoint_residue_class_problem}
-  グラフの形状が{\graphUnit}のとき，
-  {\intervalSpecifiedPatProbDecision}は巡査が1人であってもNP困難である．
+\label{theo:NPhard_disjoint_residue_class_problem}
+グラフの形状が{\graphUnit}のとき，
+{\intervalSpecifiedPatProbDecision}は巡査が1人であってもNP困難である．
 \end{theo}
-
-
 \begin{proof}[証明]
-  Disjoint Residue Class Problem~\cite{kawamura2015simple}からの帰着による．
+Disjoint Residue Class Problem~\cite{kawamura2015simple}からの帰着による．
 
-  ある整数の組の集合 $\{ (m_1, r_1), \ldots, (m_n, r_n) \}$ が
-  Disjoint Residue Class であるとは，
-  任意の整数 $x$ に対して $x \equiv r_i \mod m_i$ となるような $i$ が
-  高々1つ存在することと定義される．
-  Disjoint Residue Class Problem とは
-  整数の組 $(m_1, \ldots, m_n)$ が与えられたときに，
-  $\{ (m_1, r_1), \ldots, (m_n, r_n) \}$ が
-  Disjoint Residue Class となるような組 $(r_1, \ldots, r_n)$ が
-  存在するかを判定する問題であり，
-  NP困難であることが知られている~\cite{kawamura2015simple}．
+ある整数の組の集合$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
+Disjoint Residue Class であるとは，
+任意の整数$x$に対して$x \equiv r_i \mod q_i$となるような$i$が
+高々1つ存在することと定義される．
+Disjoint Residue Class Problem とは
+整数の組$(q_1, \ldots, q_n)$が与えられたときに，
+$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
+Disjoint Residue Class となるような整数の組$(r_1, \ldots, r_n)$が
+存在するかを判定する問題であり，
+NP困難であることが知られている~\cite{kawamura2015simple}．
 
-  Disjoint Residue Class Problem の入力が $(m_1, \ldots, m_n)$ のとき，
-  {\intervalSpecifiedPatProb}に対して
-  巡査の人数$1$と$n$点からなる{\graphUnit}のグラフで
-  各点の{\exactinterval}を$q_i = m_i$となるように定め，辺の長さはすべて$1$としたものを
-  入力として与えることで
-  Disjoint Residue Class Problemを解くことができる．
+辺の長さがすべて$1$の{\graphUnit}のグラフ$G'$を考えると，
+巡査は各整数時刻にいずれか1点を訪問できる．
+$G'$の各点$v_i$に{\exactIdletime}$(q_i, r_i)$が指定されているとき，
+巡査1人で$G'$の全点を警備可能であることの必要十分条件は，
+訪問しなければならない時刻の集合族
+$\{ \{ q_i k + r_i \mid k \in \Zset \} \mid i \in \{ 1, \ldots, n \} \}$
+が互いに素であること，
+すなわち，整数の組の集合$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
+Disjoint Residue Class であることである．
 
-  辺の長さが$1$であるから，すべての整数の時刻にいずれかの1点を訪問できる．
-  各頂点$v_i$の最初の訪問時刻\ncomment{［←替える］}を$r_i$とすると，
-  この点を警備するために訪問しなければならない時刻の列は
-  $q_i k + r_i (k \in \Nset)$で与えられるが，
-  全点を警備するためには任意の2点$v_i, v_j \in V$, 任意の整数$k,l$について
-  $q_i k + r_i \neq q_j l + r_j$
-  である必要がある．
-
-  Disjoint Residue Class Problem の解 $(r_1, \ldots, r_n)$ が存在するならば，
-  任意の時刻 $t \in \Zset$ に対して $t \equiv r_i \mod q_i$, 
-  すなわち $t = r_i + q_i k$ となる $k \in \Zset$ が存在するような $i$ は高々1つであり，
-  任意の $k,l \in \Zset$ に対して $q_i k + r_i \neq q_j l + r_j$ が成り立つので，
-  巡査は全点を警備でき，
-  解が存在しなければ
-  あるの整数$x$に対して $x \equiv r_i \mod m_i$, $x \equiv r_j \mod m_j$
-  となる$i, j$が存在するので，
-  $v_i, v_j$を両方警備することができず，したがって全点を警備できない．
+よって，
+Disjoint Residue Class Problem の入力が$(q_1, \ldots, q_n)$のとき，
+巡査の人数$1$と
+$n$点からなる{\graphUnit}のグラフ$G'$で
+各点$v_i$の{\exactInterval}を$q_i$，辺の長さがすべて$1$としたものを
+{\intervalSpecifiedPatProbDecision}の入力として与えると，
+これが警邏可能かどうかにより
+Disjoint Residue Class$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
+存在するかを判定できるので，Disjoint Residue Class Problemを帰着できる．
 \end{proof}

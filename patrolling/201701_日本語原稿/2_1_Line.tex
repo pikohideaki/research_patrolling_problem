@@ -26,9 +26,9 @@ $A'$を考えることができ，$A'$によっても$W$が警邏されるため
 本節では次のことを示す．
 
 \begin{theo}
-  \label{theo:LineEqualTimelimit}
-  グラフの形状が{\graphLine}で全点の{\idletime}が等しい場合，
-  {\patProb}は多項式時間で解くことができる．
+\label{theo:LineEqualTimelimit}
+グラフの形状が{\graphLine}で全点の{\idletime}が等しい場合，
+{\patProb}は多項式時間で解くことができる．
 \end{theo}
 
 この場合については，全点を警備可能か判定する問題ならば
@@ -39,13 +39,10 @@ Collinsら~\ref{}の問題の特殊な場合として既に示されているが
 グラフの形状が{\graphLine}で全点の{\idletime}が等しい場合，
 各巡査が部分集合を担当し独立に往復するという単純な運行によって
 最大利得が得られることを示す．
-
-% \begin{defi}
-%   $V$を頂点集合，$Q$を各頂点の{\idletime}とする．
-%   各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を{\indSectOperation}と呼ぶ．
-%   $m$人の巡査による運行$A$において各巡査が{\indSectOperation}をしているとき，
-%   $A$を単に$m$人の巡査による{\indSectOperation}と呼ぶ．
-% \end{defi}
+$Q$を各頂点の{\idletime}とするとき，
+各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を{\indSectOperation}と呼ぶ．
+また，巡査$m$人の運行$A$において各巡査が{\indSectOperation}をしているとき，
+$A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
 
 
 まず次の補題を示す．
@@ -74,62 +71,60 @@ Collinsら~\ref{}の問題の特殊な場合として既に示されているが
 
 
 \begin{lemm}
- \label{lemm:LineEqualTimelimitIndependentInterval}
-  グラフの形状が{\graphLine}で，全頂点の{\idletime}がすべて等しいとする．
-  頂点集合$V$の任意の部分集合$W$に付いて、
-  $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独立往復運行で警邏できる．
+\label{lemm:LineEqualTimelimitIndependentInterval}
+グラフの形状が{\graphLine}で，全頂点の{\idletime}がすべて等しいとする．
+頂点集合$V$の任意の部分集合$W$に付いて、
+$W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独立往復運行で警邏できる．
 \end{lemm}
 \begin{proof}[証明]
-  \newcommand{\leftmostpoint}{b}  % v以外の記号
-  \newcommand{\newpatroller}{l}
-  \newcommand{\leftmostpatroller}{巡査1}
-  \newcommand{\leftmostpatOpr}{a_1}
+\newcommand{\leftmostpoint}{b}  % v以外の記号
+\newcommand{\newpatroller}{l}
+\newcommand{\leftmostpatroller}{巡査1}
+\newcommand{\leftmostpatOpr}{a_1}
 
-  巡査数$m$に関する帰納法で示す．
-  全点の{\idletime}を$Q$とする．
-  $m = 0$のときは明らかなので，以下$m > 0$とする．
+巡査数$m$に関する帰納法で示す．
+全点の{\idletime}を$Q$とする．
+$m = 0$のときは明らかなので，以下$m > 0$とする．
 
-  $W$は$m$人の巡査により警邏可能であるので，2章始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
-  このような運行を任意に一つ選び
-  $A = (a _1, \ldots, a _m)$
-  とする．
+$W$は$m$人の巡査により警邏可能であるので，2章始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
+このような運行を任意に一つ選び
+$A = (a _1, \ldots, a _m)$
+とする．
 
-  $W$の点のうち最も左にあるものを$\leftmostpoint$とする．
-  まず，各巡査は
-  $\leftmostpoint$より左に存在する時間
-  $\leftmostpoint$で停止するように変換する．
-  このようにしても$W$は警邏されたままであり，
-  また，これによりすべての巡査は
-  区間$[\leftmostpoint, +\infty)$に存在することになる．
+$W$の点のうち最も左にあるものを$\leftmostpoint$とする．
+まず，各巡査は
+$\leftmostpoint$より左に存在する時間
+$\leftmostpoint$で停止するように変換する．
+このようにしても$W$は警邏されたままであり，
+また，これによりすべての巡査は
+区間$[\leftmostpoint, +\infty)$に存在することになる．
 
-  ここで，最も左の巡査$\leftmostpatroller$に注目する．
-  順序保存であることから$\leftmostpoint$が$A$により訪問されるすべての時刻に
-  $\leftmostpatroller$は$\leftmostpoint$を訪問しているので，
-  $\leftmostpoint$は$\leftmostpatOpr$により単独警備されている．
-  %
-  すると，
-  補題\ref{lemm:RangeOfPatrollerOnLine}より，
-  任意の時刻$t \in \Rset$に対し
-  $\leftmostpatOpr(t) \leq \leftmostpoint + Q/2$
-  であるが，
-  %
-  一方，$\leftmostpatOpr$を区間$[b, b + Q/2]$を速さ$1$で往復する運行とすれば
-  この区間に含まれるすべての頂点を警備することができる．
-  実際，$\leftmostpatOpr$がこのような運行であるとき
-  $\leftmostpoint \leq x \leq \leftmostpoint + Q/2$
-  である位置$x$に存在する時刻の間隔の最大値は
-  \[
-    \max( 2(x - \leftmostpoint), 2(\leftmostpoint + Q/2 - x) )
-    \leq 2(\leftmostpoint + Q/2 - \leftmostpoint) = Q
-  \]
-  より，$[\leftmostpoint, \leftmostpoint + Q/2]$に含まれるどの頂点も
-  {\idletime}を超えずに訪問できていることが分かる．
-  % これにより$\leftmostpatroller$の運行は{\indSectOperation}となる．
-  %
-  一方，$W^- := \{ v \in W \mid \leftmostpoint + Q/2 < v \}$は
-  $A$で$\leftmostpatroller$以外の$m - 1$人の巡査により警備されているので，
-  帰納法の仮定から残る$m - 1$人の巡査も{\indSectOperation}に変換することができる．
-  以上により$W$を警邏する$m$人の巡査による{\indSectOperation}が得られた．
+ここで，最も左の巡査$\leftmostpatroller$に注目する．
+順序保存であることから$\leftmostpoint$が$A$により訪問されるすべての時刻に
+$\leftmostpatroller$は$\leftmostpoint$を訪問しているので，
+$\leftmostpoint$は$\leftmostpatOpr$により単独警備されている．
+%
+すると，
+補題\ref{lemm:RangeOfPatrollerOnLine}より，
+任意の時刻$t \in \Rset$に対し
+$\leftmostpatOpr(t) \leq \leftmostpoint + Q/2$
+であるが，
+%
+一方，$\leftmostpatOpr$を区間$[b, b + Q/2]$を速さ$1$で往復する運行とすれば
+この区間に含まれるすべての頂点を警備することができる．
+実際，$\leftmostpatOpr$がこのような運行であるとき
+$\leftmostpoint \leq x \leq \leftmostpoint + Q/2$
+である位置$x$に存在する時刻の間隔の最大値は
+$ \max( 2(x - \leftmostpoint), 2(\leftmostpoint + Q/2 - x) )
+  \leq 2(\leftmostpoint + Q/2 - \leftmostpoint) = Q $
+より，$[\leftmostpoint, \leftmostpoint + Q/2]$に含まれるどの頂点も
+{\idletime}を超えずに訪問できていることが分かる．
+% これにより$\leftmostpatroller$の運行は{\indSectOperation}となる．
+%
+一方，$W^- := \{ v \in W \mid \leftmostpoint + Q/2 < v \}$は
+$A$で$\leftmostpatroller$以外の$m - 1$人の巡査により警備されているので，
+帰納法の仮定から残る$m - 1$人の巡査も{\indSectOperation}に変換することができる．
+以上により$W$を警邏する$m$人の巡査による{\indSectOperation}が得られた．
 \end{proof}
 
 
@@ -142,12 +137,12 @@ $m$人の巡査がそれぞれ担当する$m$個の区間を求めればよい�
 頂点$v_i$を左端とする区間を$I_i := [v_i, v_i + Q/2]$と書く．
 
 まず，
-$n$個の区間$I_i (i = 1,2,\ldots, n)$について
+$n$個の区間$I_1, \ldots, I_n$について
 各区間に含まれる点から得られる利得の合計$P_i := \sum_{v_i \in I_i} p_i$を求める．
-$P_1, \ldots, P_n$は$v_1, v_2, \ldots, v_n$がソートしてあるので$O(n)$で求めることができる．
+$P_1, \ldots, P_n$は$v_1, v_2, \ldots, v_n$がソートしてあるので合計$O(n)$で求めることができる．
 
 あとは$m$個（$m$は巡査の人数）の区間を選び利得の合計を最大化すればよいが，
-以下の漸化式\ref{eq:LineWISPDP}に従う動的計画法で
+以下の漸化式\eqref{eq:LineWISPDP}に従う動的計画法で
 $O(mn)$で
 最大の利得を得られる$m$個の区間を選択できる．
 $OPT(i,j)$は，区間$I_1, \ldots, I_j$から最大$i$個の区間を選ぶときの
@@ -174,5 +169,5 @@ $OPT(m,n)$が全体の利得の最大値となる．
 
 
 % Circleについて
-この証明では線分に端の頂点が存在することが重要な役割を果たしているため，
-グラフの形状が閉路の場合にそのまま適用することはできない．
+% この証明では線分に端の頂点が存在することが重要な役割を果たしているため，
+% グラフの形状が閉路の場合にそのまま適用することはできない．

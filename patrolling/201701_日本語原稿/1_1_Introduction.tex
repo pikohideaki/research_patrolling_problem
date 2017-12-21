@@ -2,7 +2,7 @@
 所与の領域を1人または複数の巡査が動き回り，
 その領域内の指定された場所を十分な頻度で訪れることを
 警邏(patrolling)という\cite{chen2013fence, coene2011charlemagne, czyzowicz2011boundary}．
-
+\ncomment{［警邏問題を代表するにふさわしい文献を］}
 
 本稿では，与えられた距離空間$U$内を速さ$1$以下の巡査$m$人が動きまわることにより，
 集合$V \subseteq U$に属する多くの点に十分な頻度で訪れるという目標を考える．
@@ -12,25 +12,24 @@
 各時刻$t \in \Rset$における位置$a _i (t) \in U$を定めるものであって，
 任意の時刻$s$，$t \in \Rset$に対し$a _i (s)$と$a _i (t)$の距離が$\abs{s - t}$を超えないものをいう．
 巡査$m$人による$U$上の運行とは，
-全巡査の運行を定めた組
-$A = (a _1, \dots, a _m)$をいう．
-運行$A = (a _1, \dots, a _m)$
-が点$v \in U$を{\idletime}$q > 0$で警備するとは，
+全巡査の運行を定めた組$A = (a _1, \dots, a _m)$をいう．
+運行$A = (a _1, \dots, a _m)$が点$v \in U$を{\idletime}$q > 0$で警備するとは，
 長さ$q$のどの時間区間にも
 いずれかの巡査が$v$を少くとも一度は訪れる
 （任意の時刻$t \in \Rset$に対して
-巡査$i$と時刻$\tau \in [t, t + q)$が存在し
-$a _i (\tau) = v$）ことをいう．
+巡査$i$と時刻$\tau \in [t, t + q)$が存在し$a _i (\tau) = v$）
+ことをいう．
 
-$U$の有限な部分集合$V$があり，$V$の各点には利得および{\idletime}と呼ばれる非負整数が定まっている．
+$U$の有限な部分集合$V$があり，$V$の各点には利得および{\idletime}と呼ばれる正整数が定まっている．
 運行$A$が点集合$W \subseteq V$を警邏するとは，
 各点$v \in W$に対し$A$が$v$を警備することをいう．
 そのような運行が存在するとき$W$は$m$人により警邏可能であるという．
 
 \begin{patrollingProblem}
-  巡査の人数$m$と距離空間$U$内の点集合$V$および
-  $V$の各点の利得と{\idletime}が与えられたとき，
-  $m$人の巡査により警邏可能な頂点集合のうち利得の和が最大となるものを求めよ．
+巡査の人数$m \in \Nset$と距離空間$U$内の点集合$V$および
+$V$の各点の利得と{\idletime}が与えられる．
+$m$人の巡査により警邏可能な$V$の部分集合のうち
+利得の和が最大となるものを求めよ．
 \end{patrollingProblem}
 
 距離空間$U$といっても，$V$の点同士の測地距離のみが重要である．
@@ -93,57 +92,59 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 グラフの形ごとに比較すると次のようになる．
 それぞれ\ref{section: line}，\ref{section: star}，\ref{section: unit}節で述べる．
 \begin{itemize}
-  \item 
-    グラフが{\graphLine}の場合は，
-    {\independentPatProb}は動的計画法により多項式時間で解けることが
-    示されていた\cite[Theorem~11]{coene2011charlemagne}が，
-    その正しさは単独警備という設定に強く依存している．
-    本稿では{\patProb}について，
-    全点の{\idletime}が等しい場合には多項式時間で解ける
-    （定理\ref{theo:LineEqualTimelimit}）．
-  \item
-    グラフが{\graphStar}の場合は，
-    全点の利得と{\idletime}が等しい場合に限っても，
-    {\independentPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
-    本稿では，この場合の{\patProb}は多項式時間で解けるという興味深い結果を得る（定理\ref{theo:StarEqualProfitTimelimit}）．
-    なお利得または{\idletime}を一般にすると，
-    巡査が一人であっても（したがって独立かどうかによらず）
-    NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
-  \item 
-    グラフが{\graphUnit}の場合は，
-    {\independentPatProb}では
-    巡査が1人で利得がすべて等しく{\idletime}が一般の場合は
-    多項式時間で解けることが示されていた\cite[Theorem~7]{coene2011charlemagne}\ncomment{［{\independentPatProb}との比較と言っているので書くべきかと思ったが正しい結果でない可能性があるのであとで確認する］}．
-    本稿では全点の{\idletime}が等しい場合は{\patProb}が多項式時間で解けることを示す（定理\ref{theo:UnitEqualTimelimit}）．
-    グラフが{\graphStar}の場合は全点の{\idletime}が等しくても利得が一般だとNP困難になるので，
-    これにより{\graphUnit}は{\graphStar}よりも簡単に解ける場合となっていることが分かる．
+\item 
+  グラフが{\graphLine}の場合は，
+  {\independentPatProb}は動的計画法により多項式時間で解けることが
+  示されていた\cite[Theorem~11]{coene2011charlemagne}が，
+  その正しさは単独警備という設定に強く依存している．
+  本稿では{\patProb}について，
+  全点の{\idletime}が等しい場合には多項式時間で解けることを示す
+  （定理\ref{theo:LineEqualTimelimit}）．
+\item
+  グラフが{\graphStar}の場合は，
+  全点の利得と{\idletime}が等しい場合に限っても，
+  {\independentPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
+  本稿では，この場合の{\patProb}は多項式時間で解けるという興味深い結果を得る（定理\ref{theo:StarEqualProfitTimelimit}）．
+  なお利得または{\idletime}を一般にすると，
+  巡査が一人であっても（したがって独立かどうかによらず）
+  NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
+\item 
+  グラフが{\graphUnit}の場合は，
+  {\independentPatProb}では
+  巡査が1人で利得がすべて等しく{\idletime}が一般の場合は
+  多項式時間で解けることが示されていた\cite[Theorem~7]{coene2011charlemagne}．
+  % \ncomment{［{\independentPatProb}との比較と言っているので書くべきかと思ったが正しい結果でない可能性があるのであとで確認する］}
+  本稿では全点の{\idletime}が等しい場合は{\patProb}が多項式時間で解けることを示す（定理\ref{theo:UnitEqualTimelimit}）．
+  グラフが{\graphStar}の場合は全点の{\idletime}が等しくても利得が一般だとNP困難になるので，
+  これにより{\graphUnit}は{\graphStar}よりも簡単に解ける場合となっていることが分かる．
 \end{itemize}
 
 
 {\graphLine}と{\graphUnit}については
 {\idletime}が一般の場合については多項式時間アルゴリズムやNP困難性を示すのが難しく未解決である．
 これらの未解決な状況については，
-警備の条件を{\idletime}の代わりに{\exactidletime}とする次のような問題を考えた．
+警備の条件を{\idletime}の代わりに{\exactIdletime}とする次のような問題を考えた．
 
 \begin{defi}
-  運行$A = (a _1, \ldots, a _m)$が
-  点$v \in U$を{\exactidletime}$(q, r)$で警備するとは，
-  任意の時刻$t := q k + r (k \in \Zset)$に対し
-  巡査$i$が存在し
-  $a _i (t) = v$
-  であることをいう．
+運行$A = (a _1, \ldots, a _m)$が点$v \in U$を
+{\exactIdletime}$(q, r) \in \Zset \times \Zset$で警備するとは，
+任意の時刻$t := q k + r\ (k \in \Zset)$に対し
+巡査$i$が存在し$a _i (t) = v$であることをいう．
 \end{defi}
 
 \begin{timeSpecifiedPatrollingProblem}
-  巡査の人数$m$と距離空間$U$内の点集合$V$および
-  $V$の各点の利得と{\exactidletime}が与えられたとき，
-  $m$人の巡査により警邏可能な頂点集合のうち利得の和が最大となるものを求めよ．
+巡査の人数$m$と距離空間$U$内の点集合$V$および各点の利得，
+$(q_1, r_1), \ldots, (q_n, r_n)$が与えられる．
+$V$の各点$v_i$の警備の条件が{\exactIdletime}$(q_i, r_i)$で定められるとき，
+$m$人の巡査により警邏可能な$V$の部分集合のうち
+利得の和が最大となるものを求めよ．
 \end{timeSpecifiedPatrollingProblem}
 
 \begin{timeSpecifiedPatrollingProblemDecision}
-  巡査の人数$m$と距離空間$U$内の点集合$V$および
-  $V$の各点の{\exactidletime}が与えられたとき，
-  $m$人の巡査により$V$を警邏可能か判定せよ．
+巡査の人数$m$と距離空間$U$内の点集合$V$および
+$(q_1, r_1), \ldots, (q_n, r_n)$が与えられる．
+$V$の各点$v_i$の警備の条件が{\exactIdletime}$(q_i, r_i)$で定められるとき，
+$m$人の巡査により$V$を警邏可能か判定せよ．
 \end{timeSpecifiedPatrollingProblemDecision}
 
 

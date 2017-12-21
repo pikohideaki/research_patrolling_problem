@@ -15,13 +15,13 @@
 
 また，
 この例では左の巡査は左端の点を{\idletime}ちょうどごとに訪問しているが，
-左端の点の{\idletime}から順に巡査の運行を決定することも難しい次のような例が存在する．
-図\ref{tikz:multiAgentExample2}（中央）の例では，
-左側の巡査は左端の点をあえてより短い周期で訪問することで全点を警邏しているが，
-同じ例について，
+一方，図\ref{tikz:multiAgentExample2}（中央）の例では，
+左側の巡査は左端の点をあえてより短い周期で訪問することで全点を警邏している．
+図\ref{tikz:multiAgentExample2}（中央）と同じ入力に対して，
 図\ref{tikz:multiAgentExample2}（右）のように左の巡査が
 左端の点の{\idletime}ぎりぎりの時間まで右の方へ動き左端へ帰る運行を行うと
 2人の巡査がうまく協力できず全点の警備ができない．
+このように，左端の点の{\idletime}から順に巡査の運行を決定することも難しい例が存在する．
 
 \begin{figure}[htbp]
   \centering
@@ -99,7 +99,7 @@
 
 これらの例は，{\idletime}が異なる場合は巡査の運行を個別に決定するのは難しいということを示唆している．
 しかしながら，この{\idletime}が一般の場合での{\graphLine}上の{\patProb}の困難性を示すこともできなかった．
-そこで，{\idletime}より短い間隔で点を訪問しうることで運行の決定を複雑になる例が存在したことを踏まえて，
+そこで，{\idletime}より短い間隔で点を訪問しうることで運行の決定が複雑になる例が存在したことを踏まえて，
 ここでは1章で定義した{\timeSpecifiedPatProbDecision}という別種の問題を代わりに考える．
 
 
@@ -122,19 +122,19 @@ $S$のすべての元$(t, x)$に対して$a(t) = x$を満たす
 よって，グラフが{\graphLine}の場合の{\timeSpecifiedPatProbDecision}は次のようにも記述できる．
 
 \begin{timeSpecifiedPatrollingProblemOnLine}
-  巡査の人数を表す正の整数$m$
-  と$n$個の自然数の組$(q_i, r_i, x_i)_{ i \in \{ 1, \ldots, n \} }$が与えられる．
-  集合
-  $\{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$
-  を$m$個以下の運行可能集合に分割できるか判定せよ．
+巡査の人数を表す正の整数$m$
+と$n$個の自然数の組$(q_i, r_i, x_i)_{ i \in \{ 1, \ldots, n \} }$が与えられる．
+集合
+$\{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$
+を$m$個以下の運行可能集合に分割できるか判定せよ．
 \end{timeSpecifiedPatrollingProblemOnLine}
 
 \begin{theo}
-  \label{theo:LineTimeSpecifiedGreedy}
-  {\timeSpecifiedPatProbOnLine}は多項式時間で解くことができる．
-  \ncomment{［1章で参照するので追加．位置をあとで考える］}
+\label{theo:LineTimeSpecifiedGreedy}
+{\timeSpecifiedPatProbOnLine}は多項式時間で解くことができる．
 \end{theo}
 
+\begin{proof}[証明]
 グラフが{\graphLine}の場合は順序保存運行を考えることができるのと同様に，
 順序保存（運行可能）分割も考えることができる．
 分割$\mathcal{P} = \{ P_1, \ldots, P_l \}$が順序保存であるとは，
@@ -166,49 +166,44 @@ $P_2 := \{ (t, x) \in X \setminus P_1 \mid L(t, x) \cap X \setminus P_1 = \empty
 最小の順序保存分割$\{ P_1, P_2, \ldots, P_l \}$が得られる．
 これを$\mathfrak{P}(X)$と書くことにする．
 
-{\timeSpecifiedPatProbOnLine}は$\card{\mathfrak{P}(X)} \leq m$が成り立つかを判定すればよい．
+以下では，集合$S \subseteq \Zset \times \Nset$に対して
+$S[a:b) := \{ (t, x) \in S \mid a \leq t < b \}$
+と定義する．
+
+{\timeSpecifiedPatProbOnLine}の判定は$\card{\mathfrak{P}(X)} \leq m$が成り立つかの判定をすればよい．
 $X$は無限集合であるから直接$X$を入力として分割$\mathfrak{P}(X)$を計算することはできないが，
 この問題では$q_1, \ldots, q_n$が整数であることから
-集合$X$は時刻（組$(t, x) \in X$の第1要素）について周期的であるため，
-$X$の1周期分の有限部分集合を$\mathfrak{P}(X)$の一部となるように分割する計算ができれば
-元の分割が可能か判定することができる．
+集合$X$は時刻（組$(t, x) \in X$の第1要素）について周期的である．
+よって，
+$\card{\mathfrak{P}(X)} \leq m$の判定は，
+$T := lcm(q_1, \ldots, q_n)$として，
+$X$の1周期分の有限部分集合$X[0:T)$を$\mathfrak{P}(X)$の一部となるように分割する
+（すなわち，$X[0:T)$を$\{ P_1[0:T), \ldots, P_l[0:T) \}$に分割する）
+し，$l \leq m$かどうか判定をすればよい．
 
-以下では，集合$S$に対して
-$S[a:b) := \{ (t, x) \in S \mid a \leq t < b \}$
-と記号を定義する．
-また，$T := lcm(q_1, \ldots, q_n)$とする．
-以降は$X[0:T)$を
-$\mathfrak{P}(X) = \{ P_1, \ldots, P_l \}$の一部となるように分割する
-（すなわち，$X[0:T)$の分割$\{ P_1[0:T), \ldots, P_l[0:T) \}$を与える）
-のが目的となる．
-
-まず，有限集合$F$の分割$\mathfrak{P}(F)$を与える
+有限集合$F$の分割$\mathfrak{P}(F)$を与える
 {\setPartitionAlgorithm}は次のようになる．
 
 \begin{setPartitionAlgorithmForTimeSpecifiedProblemOnLine}
-  入力の集合を$F$とする．
-  初期値を$\mathcal{P} = \{\}$, $F' = F$とし，
-  $F' \neq \emptyset$である限り1.から3.を繰り返す．
-  \begin{enumerate}
-    \item $P \gets
-      \{ (t, x) \in F' \mid L(t, x) \cap F' = \emptyset \}$
-    \item $\mathcal{P} \gets \mathcal{P} \cup \{ P \}$.
-    \item $F' \gets F' \setminus P$, 
-  \end{enumerate}
-  $\mathcal{P}$を出力する．
-  $\blacksquare$
+入力の集合を$F$とする．
+初期値を$\mathcal{P} = \{\}$, $F' = F$とし，
+$F' \neq \emptyset$である限り1.から3.を繰り返す．
+\begin{enumerate}
+\item $P \gets \{ (t, x) \in F' \mid L(t, x) \cap F' = \emptyset \}$
+\item $\mathcal{P} \gets \mathcal{P} \cup \{ P \}$.
+\item $F' \gets F' \setminus P$, 
+\end{enumerate}
+$\mathcal{P}$を出力する．
+$\blacksquare$
 \end{setPartitionAlgorithmForTimeSpecifiedProblemOnLine}
 
-$X[0:T)$の分割$\{ P_1[0:T), \ldots, P_l[0:T) \}$を計算するには，
-$X$の分割$\mathfrak{P}(X)$を得る際に$X[0:T)$の分割に関係がある
-$X$の点をすべて含むような有限集合を{\setPartitionAlgorithm}に与え，
-出力された分割$\mathcal{P}$から$[0, T)$の範囲を取り出せばよい．
-%
 前述の貪欲な分割の仕方で集合$S$から左端の運行可能集合
 $s' := \{ (t, x) \in S \mid L(t, x) \cap S = \emptyset \}$
 を取り出すときには，
 定義の通り$s'$の任意の点$(t, x)$に対する領域$L(t, x)$に$S$の点が存在しないことのみが$s'$の点の条件である．
-よって，{\setPartitionAlgorithm}に与える入力は
-$\bigcup_{(t, x) \in X[0:T)} L(t, x)$を含む$X$の有限集合であればよく，
-例えば{\graphLine}の両端の点の距離$Y := \abs{x_n - x_1}$として
-$X[-Y: T + Y)$とすれば十分である．
+よって，
+$\bigcup_{(t, x) \in X[0:T)} L(t, x)$を
+{\setPartitionAlgorithm}の入力として与え，
+出力された分割$\mathcal{P}$から$[0, T)$の範囲を取り出せば
+$X[0:T)$の分割$\{ P_1[0:T), \ldots, P_l[0:T) \}$が得られる．
+\end{proof}
