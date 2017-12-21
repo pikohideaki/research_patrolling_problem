@@ -2,19 +2,19 @@
 \label{section: star}
 
 グラフの形状が{\graphStar}の場合については，
-利得か{\idletime}のいずれかが一般であれば，
+利得か{\maxIdletime}のいずれかが一般であれば，
 {\patProb}は巡査が1人であってもNP困難であることが知られている~\cite{coene2011charlemagne}．
 よって，本稿の{\patProb}については，巡査数が一般であって，
-全点の利得と{\idletime}が等しい場合を調べる．
+全点の利得と{\maxIdletime}が等しい場合を調べる．
 
 {\independentPatProb}においては，グラフが{\graphStar}で巡査数が一般の場合は
-利得と{\idletime}がすべて等しくてもNP困難になることが
+利得と{\maxIdletime}がすべて等しくてもNP困難になることが
 Coeneら~\cite{coene2011charlemagne}により示されているが，
 一方で同じ条件における{\patProb}の場合は次が成り立つ．
 
 \begin{theo}
 \label{theo:StarEqualProfitTimelimit}
-グラフの形状が{\graphStar}で全点の利得と{\idletime}が等しい場合，
+グラフの形状が{\graphStar}で全点の利得と{\maxIdletime}が等しい場合，
 {\patProb}は（巡査数が一般であっても）多項式時間で解くことができる．
 \end{theo}
 
@@ -69,7 +69,7 @@ $((s + d_v) - t) + ((t + Q) - (u - d_v)) = 2d_v + (Q - (u - s)) \geq 2d_v$
 \begin{lemm}
 \label{lemm:condition_of_guarding_star}
 グラフの形状が{\graphStar}のときの{\patProb}において，
-全点の{\idletime}が$Q$のとき，
+全点の{\maxIdletime}が$Q$のとき，
 点集合$V$の任意の部分集合$W$について
 $$
 \sum_{v \in W} \min(2d_v, Q) \leq mQ
@@ -116,7 +116,7 @@ $W$の全点を警邏することはできない．
 {\graphStar}の任意の点部分集合$W$が警邏可能であるかを
 $W$の点の隣接辺の長さだけから簡単に計算できることが分かった．
 定理\ref{theo:StarEqualProfitTimelimit}では，
-全点の利得と{\idletime}が等しい場合を考えているので
+全点の利得と{\maxIdletime}が等しい場合を考えているので
 警邏する部分集合としては隣接辺の短い点から順に選べばよく
 （隣接辺のより長い点$v_1$とより短い点$v_2$があるとき，
 $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる），

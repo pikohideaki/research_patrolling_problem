@@ -1,27 +1,27 @@
 
-\subsection{{\idletime}が一般の場合}
+\subsection{{\maxIdletime}が一般の場合}
 \label{subsec:LineDifferentTimelimit}
 
-全点の{\idletime}が等しい場合は
+全点の{\maxIdletime}が等しい場合は
 結局巡査の最適な運行が独立であったため単純になっていたが，
-{\idletime}が一般の場合は，
+{\maxIdletime}が一般の場合は，
 頂点を複数の巡査が訪問して警備する必要がある場合が存在する．
 %
 図\ref{tikz:multiAgentExample2}（左）の例では，
-中央の{\idletime}の短い2つの頂点は2人の巡査に訪問されており，
-また，全点の{\idletime}が等しい場合に反して
+中央の{\maxIdletime}の短い2つの頂点は2人の巡査に訪問されており，
+また，全点の{\maxIdletime}が等しい場合に反して
 各巡査の最適な運行はなんらかの区間の往復であるとは限らないことも分かる．
 
 
 また，
-この例では左の巡査は左端の点を{\idletime}ちょうどごとに訪問しているが，
+この例では左の巡査は左端の点を{\maxIdletime}ちょうどごとに訪問しているが，
 一方，図\ref{tikz:multiAgentExample2}（中央）の例では，
 左側の巡査は左端の点をあえてより短い周期で訪問することで全点を警邏している．
 図\ref{tikz:multiAgentExample2}（中央）と同じ入力に対して，
 図\ref{tikz:multiAgentExample2}（右）のように左の巡査が
-左端の点の{\idletime}ぎりぎりの時間まで右の方へ動き左端へ帰る運行を行うと
+左端の点の{\maxIdletime}ぎりぎりの時間まで右の方へ動き左端へ帰る運行を行うと
 2人の巡査がうまく協力できず全点の警備ができない．
-このように，左端の点の{\idletime}から順に巡査の運行を決定することも難しい例が存在する．
+このように，左端の点の{\maxIdletime}から順に巡査の運行を決定することも難しい例が存在する．
 
 \begin{figure}[htbp]
   \centering
@@ -91,15 +91,15 @@
   \end{tabular}
   \caption{巡査の協力が必要な例．
     横軸を頂点の座標，縦軸を時刻として巡査の軌跡を表す．
-    点の上の数値は{\idletime}を表す．
+    点の上の数値は{\maxIdletime}を表す．
     \ncomment{［あとで図を差し替える］}
     \label{tikz:multiAgentExample2}}
 \end{figure}
 
 
-これらの例は，{\idletime}が異なる場合は巡査の運行を個別に決定するのは難しいということを示唆している．
-しかしながら，この{\idletime}が一般の場合での{\graphLine}上の{\patProb}の困難性を示すこともできなかった．
-そこで，{\idletime}より短い間隔で点を訪問しうることで運行の決定が複雑になる例が存在したことを踏まえて，
+これらの例は，{\maxIdletime}が異なる場合は巡査の運行を個別に決定するのは難しいということを示唆している．
+しかしながら，この{\maxIdletime}が一般の場合での{\graphLine}上の{\patProb}の困難性を示すこともできなかった．
+そこで，{\maxIdletime}より短い間隔で点を訪問しうることで運行の決定が複雑になる例が存在したことを踏まえて，
 ここでは1章で定義した{\timeSpecifiedPatProbDecision}という別種の問題を代わりに考える．
 
 

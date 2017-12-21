@@ -19,7 +19,7 @@ $A'$を考えることができ，$A'$によっても$W$が警邏されるため
 
 
 
-\subsection{全点の{\idletime}が等しい場合}
+\subsection{全点の{\maxIdletime}が等しい場合}
 \label{subsec:LineUnaryTimelimit}
 
 
@@ -27,19 +27,19 @@ $A'$を考えることができ，$A'$によっても$W$が警邏されるため
 
 \begin{theo}
 \label{theo:LineEqualTimelimit}
-グラフの形状が{\graphLine}で全点の{\idletime}が等しい場合，
+グラフの形状が{\graphLine}で全点の{\maxIdletime}が等しい場合，
 {\patProb}は多項式時間で解くことができる．
 \end{theo}
 
 この場合については，全点を警備可能か判定する問題ならば
-Collinsら~\ref{}の問題の特殊な場合として既に示されているが，
-ここでは全点の{\idletime}が等しいという条件のみでも成り立つことを示す．
+Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に示されているが，
+ここでは全点の{\maxIdletime}が等しいという条件のみでも成り立つことを示す．
 
 以降では，
-グラフの形状が{\graphLine}で全点の{\idletime}が等しい場合，
+グラフの形状が{\graphLine}で全点の{\maxIdletime}が等しい場合，
 各巡査が部分集合を担当し独立に往復するという単純な運行によって
 最大利得が得られることを示す．
-$Q$を各頂点の{\idletime}とするとき，
+$Q$を各頂点の{\maxIdletime}とするとき，
 各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を{\indSectOperation}と呼ぶ．
 また，巡査$m$人の運行$A$において各巡査が{\indSectOperation}をしているとき，
 $A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
@@ -50,7 +50,7 @@ $A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
 \begin{lemm}
   \label{lemm:RangeOfPatrollerOnLine}
   頂点$v_i$がある1人の巡査$s$により単独警備されているとき，
-  {\idletime}を$q_i$として，
+  {\maxIdletime}を$q_i$として，
   $s$は常に区間$[v_i - q_i/2, v_i + q_i/2]$にいる．
 \end{lemm}
 \begin{proof}[証明]
@@ -72,7 +72,7 @@ $A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
 
 \begin{lemm}
 \label{lemm:LineEqualTimelimitIndependentInterval}
-グラフの形状が{\graphLine}で，全頂点の{\idletime}がすべて等しいとする．
+グラフの形状が{\graphLine}で，全頂点の{\maxIdletime}がすべて等しいとする．
 頂点集合$V$の任意の部分集合$W$に付いて、
 $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独立往復運行で警邏できる．
 \end{lemm}
@@ -83,7 +83,7 @@ $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独�
 \newcommand{\leftmostpatOpr}{a_1}
 
 巡査数$m$に関する帰納法で示す．
-全点の{\idletime}を$Q$とする．
+全点の{\maxIdletime}を$Q$とする．
 $m = 0$のときは明らかなので，以下$m > 0$とする．
 
 $W$は$m$人の巡査により警邏可能であるので，2章始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
@@ -118,7 +118,7 @@ $\leftmostpoint \leq x \leq \leftmostpoint + Q/2$
 $ \max( 2(x - \leftmostpoint), 2(\leftmostpoint + Q/2 - x) )
   \leq 2(\leftmostpoint + Q/2 - \leftmostpoint) = Q $
 より，$[\leftmostpoint, \leftmostpoint + Q/2]$に含まれるどの頂点も
-{\idletime}を超えずに訪問できていることが分かる．
+{\maxIdletime}を超えずに訪問できていることが分かる．
 % これにより$\leftmostpatroller$の運行は{\indSectOperation}となる．
 %
 一方，$W^- := \{ v \in W \mid \leftmostpoint + Q/2 < v \}$は

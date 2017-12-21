@@ -3,12 +3,12 @@
 
 第1章で述べた通り，{\graphUnit}は{\graphStar}の特殊な場合とみなせるため，
 定理\ref{theo:StarEqualProfitTimelimit}から
-全点の利得と{\idletime}が等しい場合は
+全点の利得と{\maxIdletime}が等しい場合は
 {\patProb}を多項式時間で解くことができるが，
-{\graphUnit}の場合は全点の{\idletime}だけが等しければ{\patProb}を多項式時間で解ける
+{\graphUnit}の場合は全点の{\maxIdletime}だけが等しければ{\patProb}を多項式時間で解ける
 （定理\ref{theo:UnitEqualTimelimit}）．
 
-{\idletime}が一般の場合については
+{\maxIdletime}が一般の場合については
 多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
 第2章で扱った{\timeSpecifiedPatProb}を再び考える．
 グラフが{\graphUnit}の場合は{\timeSpecifiedPatProb}がNP困難になることを示す
@@ -16,17 +16,17 @@
 
 
 
-\subsection{全点の{\idletime}が等しい場合}
+\subsection{全点の{\maxIdletime}が等しい場合}
 
 \begin{theo}
 \label{theo:UnitEqualTimelimit}
-グラフの形状が{\graphUnit}で全点の{\idletime}が等しい場合，
+グラフの形状が{\graphUnit}で全点の{\maxIdletime}が等しい場合，
 {\patProb}は（利得，巡査数が一般であっても）多項式時間で解くことができる．
 \end{theo}
 \begin{proof}[証明]
 {\graphUnit}は{\graphStar}の特殊な場合であるから，
 補題\ref{lemm:condition_of_guarding_star}から
-{\graphUnit}の全点の{\idletime}が$Q$のとき，
+{\graphUnit}の全点の{\maxIdletime}が$Q$のとき，
 頂点集合$V$の任意の部分集合$W$について
 $$
   \sum_{v \in W} \min(d, Q) = \card{W}\min(d, Q) \leq mQ
@@ -35,7 +35,7 @@ $$
 が成り立つ．$d$は{\graphUnit}の各辺の長さである．
 
 グラフの形状が{\graphUnit}の場合，
-全点の{\idletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
+全点の{\maxIdletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
 （利得のより大きい点$v_1$とより小さい点$v_2$があるとき，
 $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる）．
 $\card{W}\min(d, Q) \leq mQ$を満たす最大の$\card{W}$は
@@ -47,15 +47,15 @@ $\card{W} = \left\lfloor {mQ}/{\min(d, Q)} \right\rfloor$
 
 
 
-\subsection{{\idletime}が一般の場合：{\timeSpecifiedPatProb}}
+\subsection{{\maxIdletime}が一般の場合：{\timeSpecifiedPatProb}}
 第\ref{section: star}章冒頭で述べた通り，
 グラフの形状が{\graphStar}の場合については，
-{\idletime}が一般の場合は
+{\maxIdletime}が一般の場合は
 {\patProb}は巡査が1人であってもNP困難であった~\cite{coene2011charlemagne}．
 このNP困難性の証明は主に{\graphStar}の辺の長さをコストとして扱うことによっている．
 {\graphUnit}は{\graphStar}の辺の長さがすべて等しい場合という特殊な場合であるため，
 この方法によるNP困難性の証明ができない．
-{\graphUnit}で{\idletime}が一般の場合は{\graphLine}のときと同様，
+{\graphUnit}で{\maxIdletime}が一般の場合は{\graphLine}のときと同様，
 多項式時間アルゴリズムやNP困難性の証明が難しかったため，
 {\timeSpecifiedPatProb}を代わりに考える．
 
