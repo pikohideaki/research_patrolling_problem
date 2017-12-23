@@ -7,10 +7,21 @@
 
 \usepackage{graphicx}
 
-
 % theorem
 \usepackage{amsmath,amssymb}
 \usepackage{amsthm}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep.5\baselineskip \labelsep1zw
+  \trivlist
+  \item[\hskip\labelsep
+        \textsf{#1}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\renewcommand{\proofname}{証明}
 
 
 % Tikz

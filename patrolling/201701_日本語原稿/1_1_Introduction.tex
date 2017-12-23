@@ -1,5 +1,6 @@
 \section{はじめに}
-所与の領域を1人または複数の巡査が動き回り，
+\label{section: introduction}
+所与の領域を一人または複数の巡査が動き回り，
 その領域内の指定された場所を十分な頻度で訪れることを
 警邏(patrolling)という\cite{chen2013fence, coene2011charlemagne, czyzowicz2011boundary}．
 \ncomment{［警邏問題を代表するにふさわしい文献を］}
@@ -13,14 +14,13 @@
 任意の時刻$s$，$t \in \Rset$に対し$a _i (s)$と$a _i (t)$の距離が$\abs{s - t}$を超えないものをいう．
 巡査$m$人による$U$上の運行とは，
 全巡査の運行を定めた組$A = (a _1, \dots, a _m)$をいう．
-運行$A = (a _1, \dots, a _m)$が点$v \in U$を{\maxIdletime}$q > 0$で警備するとは，
+$U$の有限な部分集合$V$があり，$V$の各点には利得および{\maxIdletime}と呼ばれる正整数が定まっている．
+運行$A = (a _1, \dots, a _m)$が点$v \in V$を{\maxIdletime}$q > 0$で警備するとは，
 長さ$q$のどの時間区間にも
-いずれかの巡査が$v$を少くとも一度は訪れる
+いずれかの巡査が$v$を少なくとも一度は訪れる
 （任意の時刻$t \in \Rset$に対して
 巡査$i$と時刻$\tau \in [t, t + q)$が存在し$a _i (\tau) = v$）
 ことをいう．
-
-$U$の有限な部分集合$V$があり，$V$の各点には利得および{\maxIdletime}と呼ばれる正整数が定まっている．
 運行$A$が点集合$W \subseteq V$を警邏するとは，
 各点$v \in W$に対し$A$が$v$を警備することをいう．
 そのような運行が存在するとき$W$は$m$人により警邏可能であるという．
@@ -81,15 +81,15 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
   \end{center}
 \end{figure}
 {\graphStar}では葉のみに{\maxIdletime}が定められている（中心は警備の対象としない）．
-{\patProb}においては頂点同士の測地距離のみが重要であるため，
-{\graphUnit}は，その各辺の長さを$d$とすると，
-同じ頂点数で辺の長さがすべて$d/2$である{\graphStar}と同一視できることから，
+% {\patProb}においては頂点同士の測地距離のみが重要であるため，
+辺の長さがすべて$d$である{\graphUnit}のグラフは
+同じ頂点数で辺の長さがすべて$d/2$である{\graphStar}のグラフの場合に帰着できることから，
 {\graphUnit}は{\graphStar}の特殊な場合である．
 
 
-{\patProb}についての我々の結果と，
-{\independentPatProb}についてのCoeneらの結果を，
-グラフの形ごとに比較すると次のようになる．
+{\patProb}についての我々の結果を
+Coeneらの{\independentPatProb}についての結果との比較も含めて
+グラフの形ごとにまとめると次のようになる．
 それぞれ\ref{section: line}，\ref{section: star}，\ref{section: unit}節で述べる．
 \begin{itemize}
 \item 
@@ -110,9 +110,9 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
   NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
 \item 
   グラフが{\graphUnit}の場合は，
-  {\independentPatProb}では
-  巡査が1人で利得がすべて等しく{\maxIdletime}が一般の場合は
-  多項式時間で解けることが示されていた\cite[Theorem~7]{coene2011charlemagne}．
+  % {\independentPatProb}では
+  % 巡査が一人で利得がすべて等しく{\maxIdletime}が一般の場合は
+  % 多項式時間で解けることが示されていた\cite[Theorem~7]{coene2011charlemagne}．
   % \ncomment{［{\independentPatProb}との比較と言っているので書くべきかと思ったが正しい結果でない可能性があるのであとで確認する］}
   本稿では全点の{\maxIdletime}が等しい場合は{\patProb}が多項式時間で解けることを示す（定理\ref{theo:UnitEqualTimelimit}）．
   グラフが{\graphStar}の場合は全点の{\maxIdletime}が等しくても利得が一般だとNP困難になるので，
@@ -123,7 +123,7 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 {\graphLine}と{\graphUnit}については
 {\maxIdletime}が一般の場合については多項式時間アルゴリズムやNP困難性を示すのが難しく未解決である．
 これらの未解決な状況については，
-警備の条件を{\maxIdletime}の代わりに{\exactIdletime}とする次のような問題を考えた．
+{\maxIdletime}の代わりに{\exactIdletime}を警備の条件とする次のような問題を考えた．
 
 \begin{defi}
 運行$A = (a _1, \ldots, a _m)$が点$v \in U$を

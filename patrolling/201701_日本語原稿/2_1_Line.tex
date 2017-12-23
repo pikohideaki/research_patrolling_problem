@@ -14,7 +14,7 @@ $a_1(t) \leq a_2(t) \leq \cdots \leq a_m(t)$を満すことである．
 これは，
 ある運行$A$により警邏される集合$W$は，
 巡査の最高速度がすべて同じであることから
-$A$で2人以上の巡査がすれ違うときに代わりに互いに引き返すようにした運行
+$A$で2人の巡査がすれ違うときに代わりに互いの以降の運行を交換し引き返すようにした運行
 $A'$を考えることができ，$A'$によっても$W$が警邏されるためである．
 
 
@@ -28,7 +28,7 @@ $A'$を考えることができ，$A'$によっても$W$が警邏されるため
 \begin{theo}
 \label{theo:LineEqualTimelimit}
 グラフの形状が{\graphLine}で全点の{\maxIdletime}が等しい場合，
-{\patProb}は多項式時間で解くことができる．
+{\patProb}は頂点数$n$と巡査数$m$の多項式時間で解くことができる．
 \end{theo}
 
 この場合については，全点を警備可能か判定する問題ならば
@@ -39,17 +39,15 @@ Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に�
 グラフの形状が{\graphLine}で全点の{\maxIdletime}が等しい場合，
 各巡査が部分集合を担当し独立に往復するという単純な運行によって
 最大利得が得られることを示す．
-$Q$を各頂点の{\maxIdletime}とするとき，
-各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を{\indSectOperation}と呼ぶ．
+以下，各頂点の{\maxIdletime}が$Q$のとき，
+各巡査が$V$のいずれかの頂点を左端とする長さ$Q/2$の区間を往復する運行を{\indSectOperation}と呼ぶことにする．
 また，巡査$m$人の運行$A$において各巡査が{\indSectOperation}をしているとき，
 $A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
 
 
-まず次の補題を示す．
-
 \begin{lemm}
   \label{lemm:RangeOfPatrollerOnLine}
-  頂点$v_i$がある1人の巡査$s$により単独警備されているとき，
+  頂点$v_i$がある一人の巡査$s$により単独警備されているとき，
   {\maxIdletime}を$q_i$として，
   $s$は常に区間$[v_i - q_i/2, v_i + q_i/2]$にいる．
 \end{lemm}
@@ -58,7 +56,7 @@ $A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
   この区間にない或る座標$\vout \notin [v_i - q_i/2, v_i + q_i/2]$を$s$が
   時刻$t_0$に訪問するとする．
   $\vout$と$v_i$の間の移動には
-  少くとも時間$\abs{v_i - \vout} > q _i / 2$を要するから，
+  少なくとも時間$\abs{v_i - \vout} > q _i / 2$を要するから，
   $s$は区間$[t_0 - q _i / 2, t_0 + q _i / 2]$に属する時刻に$v_i$を訪問できない．
   この区間の長さは$
     q_i
@@ -66,13 +64,9 @@ $A$を$m$人の巡査による{\indSectOperation}と呼ぶ．
 \end{proof}
 
 
-
-これにより次の補題が成り立つ．
-
-
 \begin{lemm}
 \label{lemm:LineEqualTimelimitIndependentInterval}
-グラフの形状が{\graphLine}で，全頂点の{\maxIdletime}がすべて等しいとする．
+グラフの形状が{\graphLine}で，全点の{\maxIdletime}が等しいとする．
 頂点集合$V$の任意の部分集合$W$に付いて、
 $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独立往復運行で警邏できる．
 \end{lemm}
@@ -129,19 +123,21 @@ $A$で$\leftmostpatroller$以外の$m - 1$人の巡査により警備されて�
 
 
 補題\ref{lemm:LineEqualTimelimitIndependentInterval}により，
-{\indSectOperation}を行う場合のみを考えればよいため，
-$m$人の巡査がそれぞれ担当する$m$個の区間を求めればよい．
-以下のアルゴリズムにより利得の和が最大となる$m$個の区間を求めることができる．
+{\graphLine}のグラフで全点の{\maxIdletime}が等しい場合の運行は
+{\indSectOperation}のみを考えればよいため，
+$I_1, \ldots, I_n$から
+$m$人の巡査がそれぞれ担当する$m$個の区間のうち利得の合計が最大となるものを求めればよい．
+これは以下のアルゴリズムにより求めることができる．
 
 初めに{\graphLine}上の頂点をソートしておき，左側から順に$v_1, v_2, \ldots, v_n$とする．
 頂点$v_i$を左端とする区間を$I_i := [v_i, v_i + Q/2]$と書く．
 
 まず，
 $n$個の区間$I_1, \ldots, I_n$について
-各区間に含まれる点から得られる利得の合計$P_i := \sum_{v_i \in I_i} p_i$を求める．
+各区間$I_i\ (i \in \{ 1, \ldots, n \}$に含まれる点から得られる利得の合計$P_i := \sum_{v_j \in I_i} p_j$を求める．
 $P_1, \ldots, P_n$は$v_1, v_2, \ldots, v_n$がソートしてあるので合計$O(n)$で求めることができる．
 
-あとは$m$個（$m$は巡査の人数）の区間を選び利得の合計を最大化すればよいが，
+あとは利得の合計が最大になる$m$個の区間を選べばよい．
 以下の漸化式\eqref{eq:LineWISPDP}に従う動的計画法で
 $O(mn)$で
 最大の利得を得られる$m$個の区間を選択できる．

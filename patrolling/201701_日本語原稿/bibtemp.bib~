@@ -72,23 +72,3 @@
   year={2016},
   publisher={INFORMS}
 }
-
-@article{Dumitrescu:2014:CGC:2636805.2636822,
- author = {Dumitrescu, Adrian and T\'{o}th, Csaba D.},
- title = {Computational Geometry Column 59},
- journal = {SIGACT News},
- issue_date = {June 2014},
- volume = {45},
- number = {2},
- month = jun,
- year = {2014},
- issn = {0163-5700},
- pages = {68--72},
- numpages = {5},
- url = {http://doi.acm.org/10.1145/2636805.2636822},
- doi = {10.1145/2636805.2636822},
- acmid = {2636822},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {approximation algorithm, fence patrolling, idle time, mobile agents, runners},
-}

@@ -2,10 +2,11 @@
 \subsection{{\maxIdletime}が一般の場合}
 \label{subsec:LineDifferentTimelimit}
 
-全点の{\maxIdletime}が等しい場合は
-結局巡査の最適な運行が独立であったため単純になっていたが，
+全点の{\maxIdletime}が等しい場合は，
+結局巡査がそれぞれ互いに素な区間を1つずつ担当する運行のみ考えればよいという
+単純な状況になっていたが，
 {\maxIdletime}が一般の場合は，
-頂点を複数の巡査が訪問して警備する必要がある場合が存在する．
+一部の頂点を複数の巡査が訪問して警備する必要がある場合が存在する．
 %
 図\ref{tikz:multiAgentExample2}（左）の例では，
 中央の{\maxIdletime}の短い2つの頂点は2人の巡査に訪問されており，
@@ -21,7 +22,9 @@
 図\ref{tikz:multiAgentExample2}（右）のように左の巡査が
 左端の点の{\maxIdletime}ぎりぎりの時間まで右の方へ動き左端へ帰る運行を行うと
 2人の巡査がうまく協力できず全点の警備ができない．
-このように，左端の点の{\maxIdletime}から順に巡査の運行を決定することも難しい例が存在する．
+このように，
+補題\ref{lemm:LineEqualTimelimitIndependentInterval}のときのように
+左端の点の{\maxIdletime}から順に巡査の運行を決定することも難しい例が存在する．
 
 \begin{figure}[htbp]
   \centering
@@ -104,6 +107,7 @@
 
 
 
+グラフが{\graphLine}の場合の{\timeSpecifiedPatProbDecision}は次のようにも記述できる．
 
 \begin{defi}
   $S \subset \Zset \times \Nset$とする．
@@ -119,7 +123,6 @@
 $S$のすべての元$(t, x)$に対して$a(t) = x$を満たす
 （このとき$a$を運行可能集合$S$に対応する運行と呼ぶ）
 ものが存在することは簡単に示すことができる．
-よって，グラフが{\graphLine}の場合の{\timeSpecifiedPatProbDecision}は次のようにも記述できる．
 
 \begin{timeSpecifiedPatrollingProblemOnLine}
 巡査の人数を表す正の整数$m$
@@ -131,8 +134,9 @@ $\{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$
 
 \begin{theo}
 \label{theo:LineTimeSpecifiedGreedy}
-{\timeSpecifiedPatProbOnLine}は多項式時間で解くことができる．
+{\timeSpecifiedPatProbOnLine}を解く貪欲アルゴリズムが存在する．
 \end{theo}
+
 
 \begin{proof}[証明]
 グラフが{\graphLine}の場合は順序保存運行を考えることができるのと同様に，
@@ -166,7 +170,7 @@ $P_2 := \{ (t, x) \in X \setminus P_1 \mid L(t, x) \cap X \setminus P_1 = \empty
 最小の順序保存分割$\{ P_1, P_2, \ldots, P_l \}$が得られる．
 これを$\mathfrak{P}(X)$と書くことにする．
 
-以下では，集合$S \subseteq \Zset \times \Nset$に対して
+以下では，集合$S \subseteq \Zset \times \Zset$に対して
 $S[a:b) := \{ (t, x) \in S \mid a \leq t < b \}$
 と定義する．
 
@@ -177,15 +181,15 @@ $X$は無限集合であるから直接$X$を入力として分割$\mathfrak{P}(
 よって，
 $\card{\mathfrak{P}(X)} \leq m$の判定は，
 $T := lcm(q_1, \ldots, q_n)$として，
-$X$の1周期分の有限部分集合$X[0:T)$を$\mathfrak{P}(X)$の一部となるように分割する
-（すなわち，$X[0:T)$を$\{ P_1[0:T), \ldots, P_l[0:T) \}$に分割する）
-し，$l \leq m$かどうか判定をすればよい．
+$X$の1周期分の有限部分集合$X[0:T)$を$\mathfrak{P}(X)$の一部となるように
+（すなわち，$X[0:T)$を$\{ P_1[0:T), \ldots, P_l[0:T) \}$に）
+分割し，$l \leq m$かどうか判定をすればよい．
 
 有限集合$F$の分割$\mathfrak{P}(F)$を与える
 {\setPartitionAlgorithm}は次のようになる．
 
 \begin{setPartitionAlgorithmForTimeSpecifiedProblemOnLine}
-入力の集合を$F$とする．
+入力を有限集合$F$とする．
 初期値を$\mathcal{P} = \{\}$, $F' = F$とし，
 $F' \neq \emptyset$である限り1.から3.を繰り返す．
 \begin{enumerate}
@@ -194,7 +198,7 @@ $F' \neq \emptyset$である限り1.から3.を繰り返す．
 \item $F' \gets F' \setminus P$, 
 \end{enumerate}
 $\mathcal{P}$を出力する．
-$\blacksquare$
+% $\blacksquare$
 \end{setPartitionAlgorithmForTimeSpecifiedProblemOnLine}
 
 前述の貪欲な分割の仕方で集合$S$から左端の運行可能集合
