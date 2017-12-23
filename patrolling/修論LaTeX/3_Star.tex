@@ -104,7 +104,7 @@ $(m - \card{W'})Q$人の巡査が先ほどの巡回を行うと，
 
 必要であることを示す．
 $W$が$m$人の巡査により警邏されているとすると，
-補題\ref{lemm:star_cost_of_vertex}より，
+補題~\ref{lemm:star_cost_of_vertex}より，
 各点$v \in W$について，どの長さ$Q$の時間にも
 $\min(2d_v, Q)$の時間は少なくとも一人の巡査が$e_v$上に存在する．
 よって，$W$の全点の警備には時間$Q$あたり合計$\sum_{v \in W} \min(2d_v, Q)$の巡査の時間を要する．
@@ -113,13 +113,13 @@ $\min(2d_v, Q)$の時間は少なくとも一人の巡査が$e_v$上に存在す
 \end{proof}
 
 
-補題\ref{lemm:condition_of_guarding_star}より
+補題~\ref{lemm:condition_of_guarding_star}より
 {\graphStar}の任意の点部分集合$W$が警邏可能であるかを
 $W$の点の隣接辺の長さだけから簡単に計算できることが分かった．
-定理\ref{theo:StarEqualProfitTimelimit}では，
+定理~\ref{theo:StarEqualProfitTimelimit}では，
 全点の利得と{\maxIdletime}が等しい場合を考えているので
 警邏する部分集合としては隣接辺の短い点から順に選べばよく
 （隣接辺のより長い点$v_1$とより短い点$v_2$があるとき，
 $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる），
 警邏できる最大の部分集合を求める計算は点の数を$n$として$O(n \log n)$となる．
-以上から定理\ref{theo:StarEqualProfitTimelimit}が示された．
+以上から定理~\ref{theo:StarEqualProfitTimelimit}が示された．

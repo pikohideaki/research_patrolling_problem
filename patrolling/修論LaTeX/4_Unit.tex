@@ -3,19 +3,19 @@
 
 \ref{section: introduction}節で述べたように
 {\graphUnit}は{\graphStar}の特殊な場合とみなせるため，
-定理\ref{theo:StarEqualProfitTimelimit}から
+定理~\ref{theo:StarEqualProfitTimelimit}から
 全点の利得と{\maxIdletime}が等しい場合は
 {\patProb}を多項式時間で解くことができる．
 ここでは，
 {\graphUnit}で
 全点の{\maxIdletime}が等しい場合の{\patProb}が多項式時間で解ける
-ことを示す（定理\ref{theo:UnitEqualTimelimit}）．
+ことを示す（定理~\ref{theo:UnitEqualTimelimit}）．
 
 {\maxIdletime}が一般の場合については
 多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
 2節で扱った{\timeSpecifiedPatProb}を再び考える．
 グラフが{\graphUnit}の場合は{\timeSpecifiedPatProb}がNP困難になることを示す
-（定理\ref{theo:unit_exacidletime_NPhard}）．
+（定理~\ref{theo:unit_exacidletime_NPhard}）．
 
 
 
@@ -27,17 +27,18 @@
 {\patProb}は（利得，巡査数が一般であっても）
 頂点数$n$の多項式時間で解くことができる．
 \end{theo}
+
 \begin{proof}
 {\graphUnit}は{\graphStar}の特殊な場合であるから，
-補題\ref{lemm:condition_of_guarding_star}から
-{\graphUnit}の全点の{\maxIdletime}が$Q$のとき，
+補題~\ref{lemm:condition_of_guarding_star}から
+{\graphUnit}のグラフの全点の{\maxIdletime}が$Q$のとき，
 頂点集合$V$の任意の部分集合$W$について
 $W$を$m$人の巡査により警邏可能であることの必要十分条件は
+$d$を各辺の長さとして
 \[
   \sum_{v \in W} \min(d, Q) = \card{W}\min(d, Q) \leq mQ
 \]
 である．
-$d$は{\graphUnit}の各辺の長さである．
 
 グラフの形状が{\graphUnit}の場合，
 全点の{\maxIdletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
@@ -52,7 +53,7 @@ $\card{W} = \left\lfloor {mQ}/{\min(d, Q)} \right\rfloor$
 
 
 
-\subsection{{\maxIdletime}が一般の場合：{\timeSpecifiedPatProb}}
+\subsection{{\maxIdletime}が一般の場合}
 \ref{section: star}節冒頭で述べた通り，
 グラフの形状が{\graphStar}の場合については，
 {\maxIdletime}が一般の場合は
@@ -126,7 +127,7 @@ $q _i$と$q _j$の最大公約数は$p _{(i, j)}$なので，
 これはさらに
 $r_i - r_j$が$p _{(i, j)}$の倍数でないこと，
 つまり$r_i \not\equiv r_j \mod p _{(i, j)}$に同値である．
-$r_i$の決め方\eqref{equation: residues}から，
+$r_i$の決め方~\eqref{equation: residues}から，
 これは$(i, j) \notin E$に同値である．
 以上より，
 $(i, j) \in E$と$G'$の2点$i, j$を両方警備することができないこと
@@ -144,7 +145,7 @@ ${}_n C_2$個の素数の列挙は$n$の多項式時間でできる．
 
 
 
-定理\ref{theo:unit_exacidletime_NPhard}では，
+定理~\ref{theo:unit_exacidletime_NPhard}では，
 各点の{\exactIdletime}が与えられる場合についてNP困難性を示したが，
 {\exactIdletime}のうち訪問間隔$q_1, \ldots, q_n$のみが指定されている
 以下のような問題も考えることができる．

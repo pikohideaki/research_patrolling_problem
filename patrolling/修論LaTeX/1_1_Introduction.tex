@@ -2,7 +2,7 @@
 \label{section: introduction}
 所与の領域を一人または複数の巡査が動き回り，
 その領域内の指定された場所を十分な頻度で訪れることを
-警邏(patrolling)という\cite{chen2013fence, coene2011charlemagne, czyzowicz2011boundary}．
+警邏(patrolling)という~\cite{chen2013fence, coene2011charlemagne, czyzowicz2011boundary}．
 \ncomment{［警邏問題を代表するにふさわしい文献を］}
 
 本稿では，与えられた距離空間$U$内を速さ$1$以下の巡査$m$人が動きまわることにより，
@@ -39,11 +39,11 @@ $V$を頂点集合とし辺に非負整数の長さがついた無向グラフ�
 この問題は，巡査が一人かつ
 全点の利得と{\maxIdletime}が等しい場合に限っても，
 ハミルトン路問題からの帰着により
-NP困難である\cite[Theorem~8]{coene2011charlemagne}．
+NP困難である~\cite[Theorem~8]{coene2011charlemagne}．
 そこでグラフの形状を限ったときにどのようになるかを調べる．
 
 一つの頂点が複数の巡査の訪問により警備され得ることに注意されたい．
-例えば図\ref{figure: cooperative}左はそのような運行の例である．
+例えば図~\ref{figure: cooperative}左はそのような運行の例である．
 \begin{figure}
   \begin{center}
     \includegraphics[scale=1.0]{\figdir/cooperative.pdf}
@@ -55,23 +55,23 @@ NP困難である\cite[Theorem~8]{coene2011charlemagne}．
     \label{figure: cooperative}
   \end{center}
 \end{figure}
-Coeneら\cite{coene2011charlemagne}は似た問題を扱っているが，
+Coeneら~\cite{coene2011charlemagne}は似た問題を扱っているが，
 このような協力を許さず，
-図\ref{figure: cooperative}右のように
+図~\ref{figure: cooperative}右のように
 各頂点を専ら一人の巡査が「担当」することを要求している．
 つまり，各頂点$v \in W$が単独警備される（すなわち
 或る一人の巡査がおり，
 その巡査のみの運行が$\{v\}$を警邏する）ことを要求しているのである．
 対比のため本稿ではこの問題を{\independentPatProb}と呼ぶことにする
-（\cite{coene2011charlemagne}ではMPLPPと称している）．
-Coeneら\cite{coene2011charlemagne}の諸結果においては，
+（~\cite{coene2011charlemagne}ではMPLPPと称している）．
+Coeneら~\cite{coene2011charlemagne}の諸結果においては，
 この単独警備という限定が，
 多項式時間算法の設計にも困難性の証明にも重要な役割を果している．
 この限定を外したときの様子を調べるのが本稿の目的である．
 
 本稿ではグラフの形状として
 線分，星と，すべての枝の長さが等しい完全グラフの3種類を扱うこととし
-（図\ref{figure: graph_classes}），
+（図~\ref{figure: graph_classes}），
 以降はそれぞれを {\graphLine}, {\graphStar}, {\graphUnit}と呼ぶ．
 \begin{figure}
   \begin{center}
@@ -90,27 +90,27 @@ Coeneら\cite{coene2011charlemagne}の諸結果においては，
 {\patProb}についての我々の結果を
 Coeneらの{\independentPatProb}についての結果との比較も含めて
 グラフの形ごとにまとめると次のようになる．
-それぞれ\ref{section: line}，\ref{section: star}，\ref{section: unit}節で述べる．
+それぞれ~\ref{section: line}，~\ref{section: star}，~\ref{section: unit}節で述べる．
 \begin{itemize}
 \item 
   グラフが{\graphLine}の場合は，
   {\independentPatProb}は動的計画法により多項式時間で解けることが
-  示されていた\cite[Theorem~11]{coene2011charlemagne}が，
+  示されていた~\cite[Theorem~11]{coene2011charlemagne}が，
   その正しさは単独警備という設定に強く依存している．
   本稿では{\patProb}について，
   全点の{\maxIdletime}が等しい場合には多項式時間で解けることを示す
-  （定理\ref{theo:LineEqualTimelimit}）．
+  （定理~\ref{theo:LineEqualTimelimit}）．
 \item
   グラフが{\graphStar}の場合は，
   全点の利得と{\maxIdletime}が等しい場合に限っても，
-  {\independentPatProb}はNP困難であることが示されていた\cite[Theorem~10]{coene2011charlemagne}．
-  本稿では，この場合の{\patProb}は多項式時間で解けるという興味深い結果を得る（定理\ref{theo:StarEqualProfitTimelimit}）．
+  {\independentPatProb}はNP困難であることが示されていた~\cite[Theorem~10]{coene2011charlemagne}．
+  本稿では，この場合の{\patProb}は多項式時間で解けるという興味深い結果を得る（定理~\ref{theo:StarEqualProfitTimelimit}）．
   なお利得または{\maxIdletime}を一般にすると，
   巡査が一人であっても（したがって独立かどうかによらず）
-  NP困難であることがわかっている\cite[Theorems 5 and 6]{coene2011charlemagne}．
+  NP困難であることがわかっている~\cite[Theorems 5 and 6]{coene2011charlemagne}．
 \item 
   グラフが{\graphUnit}の場合は，
-  本稿では全点の{\maxIdletime}が等しい場合は{\patProb}が多項式時間で解けることを示す（定理\ref{theo:UnitEqualTimelimit}）．
+  本稿では全点の{\maxIdletime}が等しい場合は{\patProb}が多項式時間で解けることを示す（定理~\ref{theo:UnitEqualTimelimit}）．
   グラフが{\graphStar}の場合は全点の{\maxIdletime}が等しくても利得が一般だとNP困難になるので，
   これにより{\graphUnit}は{\graphStar}よりも簡単に解ける場合となっていることが分かる．
 \end{itemize}
@@ -142,5 +142,5 @@ $m$人の巡査により$V$を警邏可能か判定せよ．
 \end{timeSpecifiedPatrollingProblemDecision}
 
 
-{\graphLine}については{\timeSpecifiedPatProbDecision}を解く貪欲アルゴリズムを示す（定理\ref{theo:LineTimeSpecifiedGreedy}）．
-{\graphUnit}については{\timeSpecifiedPatProb}がNP困難であることを示す（定理\ref{theo:unit_exacidletime_NPhard}）．
+{\graphLine}については{\timeSpecifiedPatProbDecision}を解く貪欲アルゴリズムを示す（定理~\ref{theo:LineTimeSpecifiedGreedy}）．
+{\graphUnit}については{\timeSpecifiedPatProb}がNP困難であることを示す（定理~\ref{theo:unit_exacidletime_NPhard}）．

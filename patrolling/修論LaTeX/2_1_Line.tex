@@ -99,7 +99,7 @@ $\leftmostpatroller$は$\leftmostpoint$を訪問しているので，
 $\leftmostpoint$は$\leftmostpatOpr$により単独警備されている．
 %
 すると，
-補題\ref{lemm:RangeOfPatrollerOnLine}より，
+補題~\ref{lemm:RangeOfPatrollerOnLine}より，
 任意の時刻$t \in \Rset$に対し
 $\leftmostpatOpr(t) \leq \leftmostpoint + Q/2$
 であるが，
@@ -122,7 +122,7 @@ $A$で$\leftmostpatroller$以外の$m - 1$人の巡査により警備されて�
 \end{proof}
 
 
-補題\ref{lemm:LineEqualTimelimitIndependentInterval}により，
+補題~\ref{lemm:LineEqualTimelimitIndependentInterval}により，
 {\graphLine}のグラフで全点の{\maxIdletime}が等しい場合の運行は
 {\indSectOperation}のみを考えればよいため，
 $I_1, \ldots, I_n$から
@@ -138,7 +138,7 @@ $n$個の区間$I_1, \ldots, I_n$について
 $P_1, \ldots, P_n$は$v_1, v_2, \ldots, v_n$がソートしてあるので合計$O(n)$で求めることができる．
 
 あとは利得の合計が最大になる$m$個の区間を選べばよい．
-以下の漸化式\eqref{eq:LineWISPDP}に従う動的計画法で
+以下の漸化式~\eqref{eq:LineWISPDP}に従う動的計画法で
 $O(mn)$で
 最大の利得を得られる$m$個の区間を選択できる．
 $OPT(i,j)$は，区間$I_1, \ldots, I_j$から最大$i$個の区間を選ぶときの
@@ -161,7 +161,7 @@ $OPT(m,n)$が全体の利得の最大値となる．
 この区間に含まれる頂点全体を出力して終了する．
 
 このアルゴリズムの計算量は全体で$O(n \log n + nm)$となる．
-これで定理\ref{theo:LineEqualTimelimit}が示された．
+これで定理~\ref{theo:LineEqualTimelimit}が示された．
 
 
 % Circleについて
