@@ -4,32 +4,32 @@
 \newcommand{\ncomment}[1]{{\textcolor{red}{#1}}}
 \newcommand{\kcomment}[1]{{\textcolor{blue}{#1}}}
 
+\definecolor{mygreen}{rgb}{0, 0.55, 0}
+\newcommand{\temporaryname}[1]{\textbf{\textcolor{mygreen}{#1}}}
 
-\newcommand{\independentPatProb}{独立警邏問題}
-\newcommand{\patProb}{《警邏問題》}
-\newcommand{\timeSpecifiedPatProb}{時刻指定警邏問題}
-\newcommand{\timeSpecifiedPatProbDecision}{時刻指定警邏判定問題}
-\newcommand{\timeSpecifiedPatProbOnLine}{時刻指定線分警邏判定問題}
-\newcommand{\setPartitionAlgorithm}{分割アルゴリズム}
-\newcommand{\intervalSpecifiedPatProb}{間隔指定警邏問題}
-\newcommand{\intervalSpecifiedPatProbDecision}{間隔指定警邏判定問題}
-
-\newcommand{\maxIdletime}{《訪問間隔上限》}
-\newcommand{\exactIdletime}{《指定時刻》}
-\newcommand{\exactInterval}{訪問間隔}
-\newcommand{\indSectOperation}{独立往復運行}
-\newcommand{\graphLine}{Line}
-\newcommand{\graphStar}{Star}
-\newcommand{\graphUnit}{Unit}
-
-
-
+% 数学記号
 \newcommand{\Rset}{\mathbf R}
 \newcommand{\Nset}{\mathbf N}
 \newcommand{\Zset}{\mathbf Z}
 \newcommand{\abs}[1]{\lvert{#1}\rvert}
 \newcommand{\card}[1]{\lvert{#1}\rvert}
 
+
+% 警邏問題名称
+\newcommand{\graphLine}{Line}
+\newcommand{\graphStar}{Star}
+\newcommand{\graphUnit}{Unit}
+\newcommand{\maxIdletime}                     {\temporaryname{最大放置時間}}
+\newcommand{\exactIdletime}                   {\temporaryname{指定訪問時刻}}
+\newcommand{\exactInterval}                   {\temporaryname{指定訪問間隔}}
+\newcommand{\patProb}                         {\temporaryname{点警邏問題}}
+\newcommand{\independentPatProb}              {\temporaryname{独立点警邏問題}}
+\newcommand{\timeSpecifiedPatProb}            {\temporaryname{時刻指定警邏問題}}
+\newcommand{\timeSpecifiedPatProbDecision}    {\temporaryname{時刻指定警邏判定問題}}
+\newcommand{\timeSpecifiedPatProbOnLine}      {\temporaryname{時刻指定線分警邏判定問題}}
+\newcommand{\intervalSpecifiedPatProbDecision}{\temporaryname{間隔指定警邏判定問題}}
+\newcommand{\setPartitionAlgorithm}           {\temporaryname{最小運行可能分割アルゴリズム}}
+\newcommand{\indSectOperation}                {\temporaryname{独立往復運行}}
 
 
 %%%%% 定理環境 %%%%%
