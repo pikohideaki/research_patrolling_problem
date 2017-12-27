@@ -1,25 +1,24 @@
-\section{{\graphUnit}}
-\label{section: unit}
+\chapter{{\graphUnit}}
+\label{chapter: unit}
 
-\ref{section: introduction}節で述べたように
+\ref{chapter: introduction}節で述べたように
 {\graphUnit}は{\graphStar}の特殊な場合とみなせるため，
-全点の利得と{\maxIdletime}が等しい場合は
-定理~\ref{theo:StarUnaryProfitAndIdletime}に従う．
-{\patProb}を多項式時間で解くことができる．
+全点の利得と{\maxIdletime}が等しい場合{\patProb}は
+定理\ref{theo:StarUnaryProfitAndIdletime}により多項式時間で解くことができる．
 ここでは，
 {\graphUnit}で
 全点の{\maxIdletime}が等しい場合の{\patProb}が（利得が一般でも）多項式時間で解ける
-ことを示す（定理~\ref{theo:UnitUnaryIdletime}）．
+ことを示す（定理\ref{theo:UnitUnaryIdletime}）．
 
 {\maxIdletime}が一般の場合については
 多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
 2節で扱った{\timeSpecifiedPatProb}を再び考える．
 グラフが{\graphUnit}の場合は{\timeSpecifiedPatProb}がNP困難になることを示す
-（定理~\ref{theo:UnitExacIdletimeNPhard}）．
+（定理\ref{theo:UnitExacIdletimeNPhard}）．
 
 
 
-\subsection{全点の{\maxIdletime}が等しい場合}
+\section{全点の{\maxIdletime}が等しい場合}
 
 \begin{theo}
   \label{theo:UnitUnaryIdletime}
@@ -30,9 +29,9 @@
 
 \begin{proof}
   {\graphUnit}は{\graphStar}の特殊な場合であるから，
-  補題~\ref{lemm:StarConditionOfGuarding}から
+  補題\ref{lemm:StarConditionOfGuarding}から
   {\graphUnit}のグラフの全点の{\maxIdletime}が$Q$のとき，
-  頂点集合$V$の任意の部分集合$W$について
+  点集合$V$の任意の部分集合$W$について
   $W$を$m$人の巡査により警邏可能であることの必要十分条件は
   $d$を各辺の長さとして
   \[
@@ -53,11 +52,11 @@
 
 
 
-\subsection{{\maxIdletime}が一般の場合}
-\ref{section: star}節冒頭で述べた通り，
+\section{{\maxIdletime}が一般の場合}
+\ref{chapter: star}節冒頭で述べた通り，
 グラフが{\graphStar}の場合については，
 {\maxIdletime}が一般の場合は
-{\patProb}は巡査が一人であってもNP困難であった~\cite[Theorem~6]{coene2011charlemagne}．
+{\patProb}は巡査が一人であってもNP困難であった\cite[Theorem~6]{coene2011charlemagne}．
 このNP困難性の証明では
 辺の長さが異なる{\graphStar}のグラフを用いていた．
 {\graphUnit}は{\graphStar}の辺の長さがすべて等しい場合であるため，
@@ -76,24 +75,26 @@
 \begin{proof}
   % 最大独立集合問題において，
   % 無向グラフが与えられたときに独立点集合で最大のものを求めるが，
-  % 間に辺の存在する2頂点の両方を選ぶことはできないという制約を，
-  % {\patProb}において2頂点のどちらか一方しか警備できないという制約に変換する．
+  % 間に辺の存在する2点の両方を選ぶことはできないという制約を，
+  % {\patProb}において2点のどちらか一方しか警備できないという制約に変換する．
   最大独立集合問題からの帰着による．
 
-  最大独立集合問題は，与えられた無向グラフ$G(V, E)$に対して，頂点集合$V$の部分集合$W$のうち$W$内の頂点間に辺が存在しないようなもの（独立集合）で大きさが最大のものを求める問題である．
+  最大独立集合問題は，与えられた無向グラフ$G = (V, E)$に対して，
+  点集合$V$の部分集合$W$のうち$W$内の点間に辺が存在しないようなもの（独立集合）
+  で大きさが最大のものを求める問題である．
 
   \newcommand{\primenum}[2]{p_{(#1,#2)}}
   最大独立集合問題の入力として
-  頂点集合$[n] = \{1, \ldots, n\}$，
+  点集合$[n] = \{1, \ldots, n\}$，
   辺集合$E$のグラフ$G$が与えられたとする．
-  同じ頂点集合$[n]$をもち，利得をすべて$1$，辺の長さをすべて$1$とした
+  同じ点集合$[n]$をもち，利得をすべて$1$，辺の長さをすべて$1$とした
   {\graphUnit}のグラフ$G'$を考える．
   $G'$の各点$i \in [n]$の{\exactIdletime}$(q_i, r_i)$を次のように定める．
   まず，$n(n - 1)/2$個の相異なる素数$\primenum{i}{j}\ (1 \leq i < j \leq n)$を用意する．
   $i > j$に対して$\primenum{i}{j}$と書くときは$\primenum{j}{i}$を指すことにする．
   各$i \in [n]$について，
   \begin{equation}
-    q_i = \prod_{k \in [n] \setminus \{i\}} \primenum{i}{k}
+    q_i = \prod_{j \in [n] \setminus \{i\}} \primenum{i}{j}
   \end{equation}
   とし，
   $r _i$をすべての$j \in [n] \setminus \{i\}$に対して
@@ -109,11 +110,10 @@
     \pmod{p _{(i, j)}}
   \end{equation}
   そのような$r _i$は
-  中国剰余定理より（$q _i$の剰余として一意に）存在する~\cite{}．
+  中国剰余定理より（$q _i$の剰余として一意に）存在する\cite{}．
   % 以上で得られた$G'$と$(q _i, r _i) _{i \in [n]}$に対する
   % {\timeSpecifiedPatProb}の解は$G$の最大独立集合となる．
 
-  % 実際，
   $G'$の異なる2点$i, j$の間の移動には時間$1$を要することから，
   その両方を警備できるためには，
   訪問すべき時刻同士がすべて$1$以上離れていること，すなわち
@@ -128,17 +128,17 @@
   これはさらに
   $r_i - r_j$が$p _{(i, j)}$の倍数でないこと，
   つまり$r_i \not\equiv r_j \mod p _{(i, j)}$に同値である．
-  $r_i$の決め方~\eqref{equation: residues}から，
+  $r_i$の決め方\eqref{equation: residues}から，
   これは$(i, j) \notin E$に同値である．
   以上より，
   $(i, j) \in E$と$G'$の2点$i, j$を両方警備することができないこと
   が同値となるため，
-  $G'$の最大の警邏可能頂点集合は$G$の最大独立集合となることがわかる．
+  $G'$の最大の警邏可能点集合は$G$の最大独立集合となることがわかる．
 
   また，
   $k$番目に小さい素数を$P_k$と書くと，$k \geq 6$のときは
-  $P_k < k( \ln k + \ln\ln k )$であり~\cite{dusart1999k}，
-  或る数が素数であるかどうかを判定する多項式時間アルゴリズムが存在する~\cite{agrawal2004primes}ので，
+  $P_k < k( \ln k + \ln\ln k )$であり\cite{dusart1999k}，
+  或る数が素数であるかどうかを判定する多項式時間アルゴリズムが存在する\cite{agrawal2004primes}ので，
   $n(n - 1)/2$個の素数の列挙は$n$の多項式時間でできる．
 \end{proof}
 
@@ -146,7 +146,7 @@
 
 
 
-定理~\ref{theo:UnitExacIdletimeNPhard}では，
+定理\ref{theo:UnitExacIdletimeNPhard}では，
 各点の{\exactIdletime}が与えられる場合についてNP困難性を示したが，
 {\exactIdletime}のうち訪問間隔$q_1, \ldots, q_n$のみが指定されている
 次のような問題も考えることができる．
@@ -161,7 +161,7 @@
 
 グラフが{\graphUnit}の場合，
 {\intervalSpecifiedPatProbDecision}は
-巡査が一人であってもNP困難であることが示されている~\cite{kawamura2015simple}．
+巡査が一人であってもNP困難であることが示されている\cite{kawamura2015simple}．
 
 % \begin{theo}
 % \label{theo:NPhard_disjoint_residue_class_problem}
@@ -169,7 +169,7 @@
 % {\intervalSpecifiedPatProbDecision}は巡査が一人であってもNP困難である．
 % \end{theo}
 % \begin{proof}
-% Disjoint Residue Class Problem~\cite{kawamura2015simple}からの帰着による．
+% Disjoint Residue Class Problem\cite{kawamura2015simple}からの帰着による．
 
 % ある整数の組の集合$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
 % Disjoint Residue Class であるとは，
@@ -180,7 +180,7 @@
 % $\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
 % Disjoint Residue Class となるような整数の組$(r_1, \ldots, r_n)$が
 % 存在するかを判定する問題であり，
-% NP困難であることが知られている~\cite{kawamura2015simple}．
+% NP困難であることが知られている\cite{kawamura2015simple}．
 
 % 辺の長さがすべて$1$の{\graphUnit}のグラフ$G'$を考えると，
 % 巡査は各整数時刻にいずれか1点を訪問できる．

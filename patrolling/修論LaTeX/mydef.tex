@@ -4,8 +4,8 @@
 \newcommand{\ncomment}[1]{{\textcolor{red}{#1}}}
 \newcommand{\kcomment}[1]{{\textcolor{blue}{#1}}}
 
-\definecolor{mygreen}{rgb}{0, 0.55, 0}
-\newcommand{\temporaryname}[1]{\textbf{\textcolor{mygreen}{#1}}}
+% \definecolor{mygreen}{rgb}{0, 0.55, 0}
+\newcommand{\temporaryname}[1]{\textbf{\color[rgb]{0, 0.55, 0}{#1}}}
 
 % 数学記号
 \newcommand{\Rset}{\mathbf R}
@@ -14,12 +14,13 @@
 \newcommand{\abs}[1]{\lvert{#1}\rvert}
 \newcommand{\card}[1]{\lvert{#1}\rvert}
 
+\newcommand{\defword}[1]{\textbf{#1}}
 
 % 警邏問題名称
 \newcommand{\graphLine}{Line}
 \newcommand{\graphStar}{Star}
 \newcommand{\graphUnit}{Unit}
-\newcommand{\maxIdletime}                     {\temporaryname{最大放置時間}}
+\newcommand{\maxIdletime}                     {\temporaryname{放置限度}}
 \newcommand{\exactIdletime}                   {\temporaryname{指定訪問時刻}}
 \newcommand{\exactInterval}                   {\temporaryname{指定訪問間隔}}
 \newcommand{\patProb}                         {\temporaryname{点警邏問題}}

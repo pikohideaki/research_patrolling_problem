@@ -1,26 +1,26 @@
-\section{{\graphLine}}
-\label{section: line}
+\chapter{{\graphLine}}
+\label{chapter: line}
 
 グラフが{\graphLine}の場合，
-グラフの全体（頂点と辺）を実直線上におくことができる．
-本節では，頂点の名前$v_1, v_2, \ldots, v_n$はその位置の実数値も表すことにする．
+グラフの全体（点と辺）を実直線上におくことができる．
+本節では，点の名前$v_1, v_2, \ldots, v_n$はその位置の実数値も表すことにする．
 
-{\graphLine}の場合には順序保存運行という特別な運行を考えることができる．
-運行$A = (a_1, \ldots, a_m)$が順序保存であるとは，
+{\graphLine}における巡査$m$人の運行$A = (a_1, \ldots, a_m)$が
 任意の時刻$t \in \Rset$で
-$a_1(t) \leq a_2(t) \leq \cdots \leq a_m(t)$であることである．
-巡査$m$人で警邏可能な任意の頂点集合$W$に対して，
-巡査$m$人の順序保存運行が存在して$W$はこれにより警邏される．
+$a_1(t) \leq a_2(t) \leq \cdots \leq a_m(t)$を満すとき，
+$A$は順序保存であるという．
+巡査$m$人で警邏可能な任意の点集合$W$は，
+或る巡査$m$人の順序保存運行により警邏される．
 これは，
-点集合$W$がある運行$A$により警邏されるならば，
-$A$で二人の巡査がすれ違うときに
-代わりに互いの以降の運行を交換し引き返すようにした運行$A'$
+$W$がある運行により警邏されるならば，
+その運行で二人の巡査がすれ違うときに
+代わりに互いの以降の運行を交換し引き返すようにした運行
 （巡査の速さの上限がすべて等しいため
 巡査が互いの運行を一部だけ交換することができる）
 によっても$W$が警邏されるためである．
 
 
-\subsection{全点の{\maxIdletime}が等しい場合}
+\section{全点の{\maxIdletime}が等しい場合}
 \label{subsec:LineUnaryIdletime}
 
 
@@ -33,7 +33,7 @@ $A$で二人の巡査がすれ違うときに
 \end{theo}
 
 この場合については，全点を警備可能か判定する問題ならば
-Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に示されている．
+Collinsら\cite{collins2013optimal}の問題の特殊な場合として既に示されている．
 \ncomment{［Collinsらの結果についてここでもう少し詳しく書く？］}
 これに対して定理\ref{theo:LineUnaryIdletime}は
 利得最大化問題である{\patProb}が多項式時間で解けるという主張である．
@@ -46,7 +46,7 @@ Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に�
 \begin{defi}
   \label{defi:independentSectionOperation}
   グラフが{\graphLine}で全点の{\maxIdletime}を$Q$とする．
-  頂点$v_1, \ldots, v_n$を左端とする長さ$Q/2$の区間を
+  点$v_1, \ldots, v_n$を左端とする長さ$Q/2$の区間を
   それぞれ$S_1, \ldots, S_n$と書く（すなわち，$S_i = [v_i, v_i + Q/2]$）．
   運行$A = (a_1, \ldots, a_m)$が{\indSectOperation}であるとは，
   各$a_i\ (i \in \{ 1, \ldots, m \})$が
@@ -57,7 +57,7 @@ Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に�
 
 \begin{lemm}
   \label{lemm:RangeOfPatrollerOnLine}
-  頂点$v_i$がある一人の巡査$s$により単独警備されているとき，
+  点$v_i$がある一人の巡査$s$により単独警備されているとき，
   {\maxIdletime}を$q_i$として，
   $s$は常に区間$[v_i - q_i/2, v_i + q_i/2]$にいる．
 \end{lemm}
@@ -76,12 +76,12 @@ Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に�
 \begin{lemm}
   \label{lemm:LineUnaryIdletimeIndependentInterval}
   グラフが{\graphLine}で全点の{\maxIdletime}が等しいとする．
-  頂点集合$V$の任意の部分集合$W$について，
+  点集合$V$の任意の部分集合$W$について，
   $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独立往復運行で警邏可能である．
 \end{lemm}
 
 \begin{proof}
-  \newcommand{\leftmostpoint}{y}  % v以外の記号
+  \newcommand{\leftmostpoint}{b}  % v以外の記号
   \newcommand{\leftmostpatroller}{巡査1}
 
   巡査数$m$に関する帰納法で示す．
@@ -107,16 +107,16 @@ Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に�
   {\leftmostpatroller}は$\leftmostpoint$を訪問しているので，
   $\leftmostpoint$は$a_1$により単独警備されている．
   %
-  補題~\ref{lemm:RangeOfPatrollerOnLine}より，
+  補題\ref{lemm:RangeOfPatrollerOnLine}より，
   任意の時刻$t \in \Rset$に対し
   $a_1(t) \leq \leftmostpoint + Q/2$
   である．
   %
-  一方，{\leftmostpatroller}が区間$[b, b + Q/2]$を速さ$1$で往復する運行$a_1'$を行うと，
-  この区間に含まれるすべての点を警備することができる．
-  実際，運行が$a_1'$とすると{\leftmostpatroller}
+  一方，{\leftmostpatroller}が区間$[\leftmostpoint, \leftmostpoint + Q/2]$を速さ$1$で往復する運行$a_1'$を行うと，
+  $a_1'$はこの区間に含まれるすべての点を警備する．
+  実際，
   $\leftmostpoint \leq x \leq \leftmostpoint + Q/2$
-  である位置$x$に存在する時刻の間隔の最大値は
+  である位置$x$が運行$a_1'$により訪問される間隔の最大値は
   $ \max( 2(x - \leftmostpoint), 2(\leftmostpoint + Q/2 - x) )
     \leq 2(\leftmostpoint + Q/2 - \leftmostpoint) = Q $
   より，$[\leftmostpoint, \leftmostpoint + Q/2]$に含まれるどの点も
@@ -129,7 +129,7 @@ Collinsら~\cite{collins2013optimal}の問題の特殊な場合として既に�
 \end{proof}
 
 
-補題~\ref{lemm:LineUnaryIdletimeIndependentInterval}により，
+補題\ref{lemm:LineUnaryIdletimeIndependentInterval}により，
 {\graphLine}のグラフで全点の{\maxIdletime}が等しい場合は
 {\indSectOperation}のみを考えればよい．
 よって，$S_1, \ldots, S_n$から
@@ -137,42 +137,43 @@ $m$人の巡査がそれぞれ担当する重複のない$m$個の区間のう�
 利得の合計が最大となるものを求めればよい．
 これは以下のアルゴリズムにより求めることができる．
 
-初めに{\graphLine}上の頂点をソートしておき，左側から順に$v_1, v_2, \ldots, v_n$とする．
+初めに{\graphLine}上の点をソートしておき，左側から順に$v_1, v_2, \ldots, v_n$とする．
 $n$個の区間$S_1, \ldots, S_n$について
-各区間$S_i\ (i \in \{ 1, \ldots, n \}$に含まれる点から得られる利得の合計
-$P_i := \sum_{v_j \in S_i} p_j$
-を求める．
+各区間$S_i\ (i \in \{ 1, \ldots, n \})$に含まれる点から得られる利得の合計
+を求め$P_i := \sum_{v_j \in S_i} p_j$と書く．
+%
+各区間$S_i\ (i \in \{ 1, \ldots, n \})$について，
+$S_i$と重複部分のない区間の添え字のうち$i$未満で最大のもの（存在しない場合は$0$）を求め，
+$h_1, \ldots, h_n$と書く．
 $v_1, v_2, \ldots, v_n$がソートしてあるので
-$P_1, \ldots, P_n$は
-合計$O(n)$で求めることができる．
+$P_1, \ldots, P_n$や$h_1, \ldots, h_n$は合計$O(n)$で求めることができる．
+%
 次に利得の合計が最大になる重複のない$m$個の区間を選ぶ（$m$は巡査数）．
-漸化式~\eqref{eq:LineWISPDP}に従う動的計画法で
+漸化式\eqref{eq:LineWISPDP}に従う動的計画法で
 $O(mn)$で
 最大の利得を得られる$m$個の区間を選択できる．
-$OPT(i,j)$は，区間$S_1, \ldots, S_j$から最大$i$個の重複のない区間を選ぶときの
+$OPT(k, l)$は，区間$S_1, \ldots, S_l$から最大$k$個の重複のない区間を選ぶときの
 利得の合計の最大値を表す．
-$OPT(m,n)$が全体の利得の最大値となる．
+$OPT(m, n)$が全体の利得の最大値となる．
 \begin{align}
   \label{eq:LineWISPDP}
-  OPT(i,j) = 
+  OPT(k, l) = 
   \begin{cases}
-    0 & \text{$i = 0$または$j = 0$のとき} \\
+    0 & \text{$k = 0$または$l = 0$のとき} \\
     \max \{
-      OPT(i, j - 1), 
-      P_j + OPT(i - 1, h_j)
+      OPT(k, l - 1), 
+      P_l + OPT(k - 1, h_l)
     \}
     & \text{それ以外の場合}
   \end{cases}
 \end{align}
-$h_j$は$S_j$と重複部分のない区間の添え字のうち$j$未満で最大のものを表し，
-最初に$h_1, \ldots, h_n$を合計$O(n)$で計算できる．
-最後に，$OPT(m,n)$において選ばれた区間をトレースバックして求め，
-この区間に含まれる頂点全体を出力して終了する．
+最後に，$OPT(m, n)$において選ばれた区間をトレースバックして求め，
+この区間に含まれる点全体を出力して終了する．
 
 このアルゴリズムの計算量は全体で$O(n \log n + nm)$となる．
-これで定理~\ref{theo:LineUnaryIdletime}が示された．$\square$
+これで定理\ref{theo:LineUnaryIdletime}が示された．
 
 
 % Circleについて
-% この証明では線分に端の頂点が存在することが重要な役割を果たしているため，
+% この証明では線分に端の点が存在することが重要な役割を果たしているため，
 % グラフが閉路の場合にそのまま適用することはできない．

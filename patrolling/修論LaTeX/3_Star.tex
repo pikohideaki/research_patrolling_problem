@@ -1,10 +1,10 @@
-\section{{\graphStar}}
-\label{section: star}
+\chapter{{\graphStar}}
+\label{chapter: star}
 
 グラフが{\graphStar}の場合については，
 利得か{\maxIdletime}のいずれかが一般であれば，
 {\patProb}は巡査が一人であってもNP困難であることが
-知られている~\cite[Theorem~5 and 6]{coene2011charlemagne}．
+知られている\cite[Theorem~5 and 6]{coene2011charlemagne}．
 よってここでは，巡査数が一般であって，
 全点の利得と{\maxIdletime}が等しい場合を調べる．
 
@@ -17,17 +17,17 @@
 
 {\independentPatProb}においては，グラフが{\graphStar}で巡査数が一般の場合は
 利得と{\maxIdletime}がすべて等しくてもNP困難になることが
-Coeneらにより示されている~\cite[Theorem~10]{coene2011charlemagne}．
+Coeneらにより示されている\cite[Theorem~10]{coene2011charlemagne}．
 {\graphLine}の場合では協力の発生によって複雑な運行による警邏が発生した状況から考えると，
 単独警備の条件を外した{\patProb}の方が簡単に解けるというのは意外な結果に思われる．
 これは，
 {\graphStar}の場合，
 {\independentPatProb}では
-単独警備の条件のためにうまく頂点集合を分割しなければならないことが難しさを生みNP困難になるのに対し，
+単独警備の条件のためにうまく点集合を分割しなければならないことが難しさを生みNP困難になるのに対し，
 {\patProb}では単独警備の条件が無いことで
-後述の定理~\ref{lemm:StarConditionOfGuarding}の証明中に述べる単純な運行が可能となるためである．
+後述の定理\ref{lemm:StarConditionOfGuarding}の証明中に述べる単純な運行が可能となるためである．
 
-本節では，{\graphStar}の頂点$v$に隣接する辺を$e_v$, その長さを$d_v$と書く．
+本節では，{\graphStar}の点$v$に隣接する辺を$e_v$, その長さを$d_v$と書く．
 
 \begin{lemm}
   \label{lemm:StarCostOfVertex}
@@ -68,6 +68,7 @@ Coeneらにより示されている~\cite[Theorem~10]{coene2011charlemagne}．
           より$2d_v$以上となる．
           \label{enum:firstInterval}
         \item $[t + Q - d_v, t + Q)$に1回以上訪問されるときも\ref{enum:firstInterval}と同様．
+        \qedhere
       \end{inparaenum}
     \end{enumerate}
   \end{enumerate}
@@ -77,7 +78,7 @@ Coeneらにより示されている~\cite[Theorem~10]{coene2011charlemagne}．
 \begin{lemm}
   \label{lemm:StarConditionOfGuarding}
   グラフが{\graphStar}で全点の{\maxIdletime}が$Q$のとき，
-  頂点集合$V$の部分集合$W$が
+  点集合$V$の部分集合$W$が
   $m$人の巡査により警邏可能であるには，
   \begin{equation}
     \label{equation: star bound}
@@ -89,13 +90,13 @@ Coeneらにより示されている~\cite[Theorem~10]{coene2011charlemagne}．
 \begin{proof}
   十分であることを示す．
   \eqref{equation: star bound}が成り立つとき，
-  $m$人の巡査の運行を次のように定めれば$W$の全点を警邏可能である．
-  $W' := \{ v \in W \mid 2d_v \geq Q \}$とする．
-  まず，$\card{W'}$人の巡査が$W'$の各点に一人ずつ停止しこれを警備する．
-  残りの$m - \card{W'}$人の巡査は，
+  $m$人の巡査の運行$(a_1, \ldots, a_m)$を次のように定めれば$W$の全点を警邏可能である．
+  $W' := \{ v \in W \mid 2d_v \geq Q \}$，$l := m - \card{W'}$とする．
+  まず，$\card{W'}$人の巡査$s_{l + 1}, \ldots, s_m$は
+  $W'$の各点に一人ずつ停止しこれを警備する．
+  巡査$s_1, \ldots, s_l$は
   速さ$1$で動きながら$W \setminus W'$の全点をちょうど1度ずつ訪問する巡回を繰り返す．
-  このとき，$W'$の警備にあたっていない$m - \card{W'}$人の巡査のうち巡査$i$は
-  巡査$1$より時間$(i - 1)Q$遅れて同じ運行を行うようにする
+  このとき，巡査$s_i$は巡査$s_1$より時間$(i - 1)Q$遅れて同じ運行を行うようにする
   （すなわち，$a_i(t) = a_1(t - (i - 1)Q)$となるように運行を定める）．
   中心点と点$v$の1回の往復には$2d_v$の時間を要するので，
   一人の巡査がある点から出発し速さ1で$W \setminus W'$の全点を1度ずつ訪問して最初の点に戻ってくるのにかかる時間は$\sum_{v \in W \setminus W'} 2d_v$である．
@@ -104,12 +105,12 @@ Coeneらにより示されている~\cite[Theorem~10]{coene2011charlemagne}．
   \leq (m - \card{W'})Q$
   よりこの時間は$(m - \card{W'})Q$以下となるので
   $(m - \card{W'})Q$人の巡査が先ほどの巡回を行うと，
-  どの点も時間$Q$以上放置されない．
+  $W \setminus W'$のどの点も時間$Q$以上放置されない．
   これにより$W$の全点が警備される．
 
   必要であることを示す．
   $W$が$m$人の巡査により警邏されているとすると，
-  補題~\ref{lemm:StarCostOfVertex}より，
+  補題\ref{lemm:StarCostOfVertex}より，
   各点$v \in W$について，どの長さ$Q$の時間にも
   $\min(2d_v, Q)$の時間は少なくとも一人の巡査が$e_v$上に存在する．
   よって，$W$の全点の警備には時間$Q$あたり合計$\sum_{v \in W} \min(2d_v, Q)$の巡査の時間を要する．
@@ -118,13 +119,13 @@ Coeneらにより示されている~\cite[Theorem~10]{coene2011charlemagne}．
 \end{proof}
 
 
-補題~\ref{lemm:StarConditionOfGuarding}より
+補題\ref{lemm:StarConditionOfGuarding}より
 {\graphStar}の任意の点部分集合$W$が警邏可能であるかを
 $W$の点の隣接辺の長さだけから簡単に計算できることが分かった．
-定理~\ref{theo:StarUnaryProfitAndIdletime}では，
+定理\ref{theo:StarUnaryProfitAndIdletime}では，
 全点の利得と{\maxIdletime}が等しい場合を考えているので
 警邏する部分集合としては隣接辺の短い点から順に選べばよく
 （隣接辺のより長い点$v_1$とより短い点$v_2$があるとき，
 $v_1$を警備して$v_2$を警備しない運行は常に$v_1$を警備する代わりに$v_2$を警備する運行に変換できる），
 警邏可能な最大の部分集合を求める計算は点の数を$n$として$O(n \log n)$となる．
-以上から定理~\ref{theo:StarUnaryProfitAndIdletime}が示された．
+以上から定理\ref{theo:StarUnaryProfitAndIdletime}が示された．
