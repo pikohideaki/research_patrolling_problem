@@ -27,49 +27,50 @@ Coeneらにより示されている\cite[Theorem~10]{coene2011charlemagne}．
 {\patProb}では単独警備の条件が無いことで
 後述の定理\ref{lemm:StarConditionOfGuarding}の証明中に述べる単純な運行が可能となるためである．
 
-図\ref{figure: graph_classes}，\ref{figure: stars}で注意したように
-{\graphStar}の中心は警備すべき点ではないが，
-本節では中心と点$v$を結ぶ辺（両端点を含む）を$e_v$，その長さを$d_v$と書く．
+本節では，{\graphStar}の点$v$に隣接する辺（中心と$v$の間の辺）を$e_v$, その長さを$d_v$と書く．
 
 \begin{lemm}
   \label{lemm:StarCostOfVertex}
-  {\graphStar}において，
-  {\maxIdletime}$q$の
-  点$v$が警備されているならば，任意の時刻$t \in \Rset$に対し，
-  長さの和が$\min(2d_v, q)$であるような互いに交わらない有限個の時刻区間の合併$J \subseteq [t, t + q)$が存在し，
-  $J$に属するすべての時刻において少なくとも一人の巡査が辺$e_v$上にいる．
+  地図が{\graphStar}で全点の{\maxIdletime}が$q$のとき，
+  点$v$が警備されているならば，どの長さ$q$の時間にも
+  $\min(2d_v, q)$の時間は少なくとも一人の巡査が$e_v$上に存在する．
 \end{lemm}
 
 \begin{proof}
-  もし$2d_v > q$ならば，常に$e _v$上に巡査が存在する．
-  何故なら，もし$e_v$上に巡査がいない時刻$\tau$があれば，
-  長さ$2d_v$の時刻区間$(\tau - d _v, \tau + d _v)$にわたって$v$が放置され，
-  仮定に反するからである．
-  よって$J =[t, t + q)$とすればよい．
-  以下では$2d_v \leq q$とする．
-
-  警備の条件から$v$は時刻区間$[t, t + q)$に少なくとも1回訪問される．
-  もしその訪問時刻のうち$[t + d_v, t + q - d_v)$に属するもの$\tau$があれば，
-  長さ$2 d _v$の時刻区間$J = [\tau - d _v, \tau + d _v]$にわたって
-  巡査は辺$e_v$上におり，これは$[t, t + q)$に含まれる．
-
-  そうでないとき，$v$は
-  $[t, t + d_v)$か$[t + q - d_v, t + q)$に少なくとも1回訪問される．
-  \begin{inparaenum}[(i)]
-    \item $[t, t + d_v)$に訪問されるとき，
-      $[t, t + d_v)$に属する最後の訪問時刻を$\tau$とすると，
-      点$v$の警備の条件と場合分けの条件から$\tau$の次の訪問時刻$\sigma$は
-      $t + q - d_v < \sigma \leq \tau + q$を満たす．
-      $\tau$と$\sigma$それぞれの前後$d_v$の時間のうち$[t, t + q)$に含まれる
-      時刻区間$J = [t, \tau + d_v] \cup [\sigma - d_v, t + q)$にわたって巡査は辺$e_v$に存在し，
-      その長さは
-      $q - \max(0, (\sigma - d_v) - (\tau + d_v))
-        = \min(q, q - \sigma + \tau + 2d_v)
-        \geq 2d_v$．
-      \label{enum:firstInterval}
-    \item $[t + q - d_v, t + q)$に1回以上訪問されるときも\ref{enum:firstInterval}と同様．
-    \qedhere
-  \end{inparaenum}
+  以下の場合分けによる．
+  \begin{enumerate}
+  \item $2d_v \geq q$のとき，
+    もし$v$の隣接辺$e_v$上に巡査が存在しない時刻$\tau$があるとすると，
+    $v$を訪問した$\tau$以前で最後の時刻と$\tau$以後で最初の時刻の間隔は$2d_v \geq q$より長いため，
+    $v$が警備されていることに反する．
+  \item $2d_v < q$のとき，
+    長さ$q$の時間区間$[t, t + q)$を任意に選ぶ．
+    警備の条件から$v$は$[t, t + q)$に少なくとも1回訪問されるが，
+    その時刻によって以下の場合を考える．
+    \begin{enumerate}
+    \item $[t + d_v, t + q - d_v)$に1回以上訪問されるとき，
+      その訪問時刻を任意に1つ選び$\tau$とすると
+      $\tau$の前後の合計$2d_v$の時間は
+      巡査は辺$e_v$上に存在し，これは$[t, t + q)$に含まれる．
+    \item $[t + d_v, t + q - d_v)$に1回も訪問されないときは，
+      $[t, t + d_v)$か$[t + q - d_v, t + q)$に少なくとも1回訪問される．
+      \begin{inparaenum}[(i)]
+        \item $[t, t + d_v)$に1回以上訪問されるとき，
+          $[t, t + d_v)$に含まれる最後の訪問時刻を$\tau$とすると，
+          点$v$の警備の条件と場合分けの条件から$\tau$の次の訪問時刻$\sigma$は
+          $t + q - d_v < \sigma \leq \tau + q$を満たす．
+          $\tau$と$\sigma$それぞれの前後$d_v$の時間のうち$[t, t + q)$に含まれる
+          $[t, \tau + d_v], [\sigma - d_v, t + q)$には巡査が辺$e_v$に存在し，
+          その時間の合計は
+          $((\tau + d_v) - t) + ((t + q) - (\sigma - d_v))
+            = 2d_v + (q - (\sigma - \tau))
+            \geq 2d_v$より$2d_v$以上となる．
+          \label{enum:firstInterval}
+        \item $[t + q - d_v, t + q)$に1回以上訪問されるときも\ref{enum:firstInterval}と同様．
+        \qedhere
+      \end{inparaenum}
+    \end{enumerate}
+  \end{enumerate}
 \end{proof}
 
 
