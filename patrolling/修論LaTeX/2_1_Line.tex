@@ -20,7 +20,7 @@ $W$がある運行により警邏されるならば，
 
 
 \section{全点の{\maxIdletime}が等しい場合}
-\label{subsec:LineUnaryIdletimePolyTimeSolvable}
+\label{section:LineUnaryIdletimePolyTimeSolvable}
 
 
 本節では次のことを示す．
@@ -32,18 +32,19 @@ $W$がある運行により警邏されるならば，
 \end{theo}
 
 これに関し，
-Collinsら\cite{collins2013optimal}が次の問題（ここでは線分放置時間最小化問題と呼ぶ）を考えた．
-線分放置時間最小化問題では，
-巡査数$m$と線分$C$といくつかの区間
-$V_1, \ldots, V_n\ (V_i \subseteq C,\ i \in \{1,\ldots, n\})$%
-が与えられる．
-$C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点を訪問する．
-放置される時間が最大の点の放置時間が最小になるようにするとき，その最小値を求める問題である．
-線分放置時間最小化問題は
-多項式時間で解けることが示されている\cite[Theorem 2.1]{collins2013optimal}ので，
-線分放置時間最小化問題で$V_1, \ldots, V_n$が一点集合の場合から，
+Collinsら\cite{collins2013optimal}は次の問題を考えた．
+\begin{quote}
+  巡査数$m$と線分$C$といくつかの区間
+  $V_1, \ldots, V_n\ (V_i \subseteq C,\ i \in \{1,\ldots, n\})$%
+  が与えられる．
+  $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点を訪問する．
+  放置される時間が最大の点の放置時間が最小になるようにするとき，その最小値を求めよ．
+\end{quote}
+この問題は
+多項式時間で解けることが示されている\cite[Theorem~2.1]{collins2013optimal}ので，
+$V_1, \ldots, V_n$として一点集合を与えることにより，
 地図が{\graphLine}で全点の{\maxIdletime}が等しい場合で
-全点を警備可能か判定する問題は多項式時間で解くことができることが分かる．
+全点を警邏可能か判定する問題は多項式時間で解くことができることが分かる．
 
 これに対し，定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}は
 利得最大化問題である{\patProb}が多項式時間で解けるという主張である．
@@ -66,7 +67,7 @@ $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点
 
 \begin{lemm}
   \label{lemm:RangeOfPatrollerOnLine}
-  点$v$がある一人の巡査$s$により単独警備されているとき，
+  点$v$がある一人の巡査$s$により単独警邏されているとき，
   {\maxIdletime}を$q$として，
   $s$は常に区間$[v - q/2, v + q/2]$にいる．
 \end{lemm}
@@ -78,7 +79,7 @@ $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点
   少なくとも時間$\abs{v - \vout} > q / 2$を要するから，
   $s$は区間$[t_0 - q / 2, t_0 + q / 2]$に属する時刻に$v$を訪問できない．
   この区間の長さは$q$であるので，
-  $s$が$v$を単独警備していることに反する．
+  $s$が$v$を単独警邏していることに反する．
 \end{proof}
 
 
@@ -86,7 +87,7 @@ $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点
   \label{lemm:LineUnaryIdletimeIndependentInterval}
   地図$(U, V)$が{\graphLine}で全点の{\maxIdletime}が等しいとする．
   $V$の任意の部分集合$W$について，
-  $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による独立往復運行で警邏可能である．
+  $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による{\indSectOperation}で警邏可能である．
 \end{lemm}
 
 \begin{proof}
@@ -113,14 +114,14 @@ $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点
   ここで，$A$で最も左を運行する{\leftmostpatroller}に注目する．
   順序保存であることから$\leftmostpoint$が$A$により訪問されるすべての時刻に
   {\leftmostpatroller}は$\leftmostpoint$を訪問しているので，
-  $\leftmostpoint$は$a_1$により単独警備されている．
+  $\leftmostpoint$は$a_1$により単独警邏されている．
   %
   補題\ref{lemm:RangeOfPatrollerOnLine}より，
   任意の時刻$t \in \Rset$に対し
   $a_1(t) \leq \leftmostpoint + q/2$である．
   %
   一方，{\leftmostpatroller}が区間$[\leftmostpoint, \leftmostpoint + q/2]$を速さ$1$で往復する運行$a_1'$を行うと，
-  $a_1'$はこの区間に含まれるすべての点を警備する．
+  $a_1'$はこの区間に含まれるすべての点を警邏する．
   実際，
   $\leftmostpoint \leq x \leq \leftmostpoint + q/2$である位置$x$が
   運行$a_1'$により訪問される間隔の最大値は
@@ -128,9 +129,10 @@ $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点
     \leq 2(\leftmostpoint + q/2 - \leftmostpoint) = q$より，
     $[\leftmostpoint, \leftmostpoint + q/2]$に含まれるどの点も
   {\maxIdletime}を超えずに訪問できていることが分かる．
+  よって，$a_1$で警邏できていた点はすべて$a_1'$で警邏できている．
 
   また，$W^- := \{ v \in W \mid \leftmostpoint + q/2 < v \}$は
-  $A$で{\leftmostpatroller}以外の$m - 1$人の巡査により警備されているので，
+  $A$で{\leftmostpatroller}以外の$m - 1$人の巡査により警邏されているので，
   帰納法の仮定から残る$m - 1$人の巡査も{\indSectOperation}に変換することができる．
   以上により$W$を警邏する$m$人の巡査による{\indSectOperation}が得られた．
 \end{proof}
@@ -179,6 +181,9 @@ $OPT(m, n)$が全体の利得の最大値となる．
 このアルゴリズムの計算量は全体で$O(n \log n + nm)$となる．
 これで定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}が示された．
 
+なお，
+\ref{section:LineUnaryIdletimePolyTimeSolvable}節の冒頭で上げた
+Collinsらの問題でも{\indSectOperation}は最適となることが示されている\cite[Theorem 2.1]{collins2013optimal}．
 
 % Circleについて
 % この証明では線分に端の点が存在することが重要な役割を果たしているため，

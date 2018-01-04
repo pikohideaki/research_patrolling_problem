@@ -1,5 +1,8 @@
 \chapter{はじめに}
 \label{chapter: introduction}
+
+\section{問題設定}
+\label{section: problemDefinition}
 所与の領域を一人または複数の巡査が動き回り，
 その領域内の指定された場所を十分な頻度で訪れることを
 警邏（patrolling）という\cite{
@@ -25,14 +28,14 @@ $U$はその頂点および辺上の点のみからなるとしてよい．
 全巡査の運行を定めた組$A = (a _1, \dots, a _m)$をいう．
 $V$の各頂点には利得および{\maxIdletime}と呼ばれる正整数が定まっている．
 点$v \in V$の{\maxIdletime}が$q$であるとき，
-巡査達が運行$A = (a _1, \dots, a _m)$で点$v$を\defword{警備}するとは，
+巡査達が運行$A = (a _1, \dots, a _m)$で点$v$を\defword{警邏}するとは，
 長さ$q$のどの時間にも
 いずれかの巡査が$v$を少なくとも一度は訪れる
 （任意の時刻$t \in \Rset$に対して
 巡査$i$と時刻$\tau \in [t, t + q)$が存在し$a _i (\tau) = v$）
 ことをいう．
 巡査達が運行$A$により点集合$W \subseteq V$を\defword{警邏}するとは，
-各点$v \in W$に対し巡査達が運行$A$で$v$を警備することをいう．
+各点$v \in W$に対し巡査達が運行$A$で$v$を警邏することをいう．
 そのような運行が存在するとき$W$は$m$人により\defword{警邏可能}であるという．
 
 \begin{patrollingProblem}
@@ -42,15 +45,15 @@ $V$の各頂点には利得および{\maxIdletime}と呼ばれる正整数が定
   利得の和が最大となるものを求めよ．
 \end{patrollingProblem}
 
-一つの点を複数の巡査の訪問により警備し得ることに注意されたい．
+一つの点を複数の巡査の訪問により警邏し得ることに注意されたい．
 例えば図\ref{figure: cooperative}左はそのような運行の例である．
 \begin{figure}
   \centering
   \includegraphics[scale=1.0]{\figdir/cooperative.pdf}
   \caption{図の上部に描かれている四点からなる{\graphLine}の地図の全点を警邏する二つの運行．
     点と辺に書かれた数は，それぞれ{\maxIdletime}と距離である．
-    左図の運行では二人の巡査が協力して中央の二点を間隔$2$で警備している．
-    これを禁じ，各点がいずれかの巡査により単独警備されることを求める場合は，
+    左図の運行では二人の巡査が協力して中央の二点を警邏している．
+    これを禁じ，各点がいずれかの巡査により単独警邏されることを求める場合は，
     右図のように三人の巡査を要する．}
   \label{figure: cooperative}
 \end{figure}
@@ -58,13 +61,13 @@ Coeneら\cite{coene2011charlemagne}は似た問題を扱っているが，
 このような協力を許さず，
 図\ref{figure: cooperative}右のように
 各点を専ら一人の巡査が「担当」することを要求している．
-つまり，各点$v \in W$が\defword{単独警備}される（すなわち
+つまり，各点$v \in W$が\defword{単独警邏}される（すなわち
 或る一人の巡査がおり，
-その巡査のみの運行が$v$を警備する）ことを要求しているのである．
+その巡査のみの運行が$v$を警邏する）ことを要求しているのである．
 対比のため本稿ではこの問題を{\independentPatProb}と呼ぶことにする
 （\cite{coene2011charlemagne}ではMPLPPと称している）．
 Coeneら\cite{coene2011charlemagne}の諸結果においては，
-この単独警備という限定が，
+この単独警邏という限定が，
 多項式時間算法の設計にも困難性の証明にも重要な役割を果している．
 この限定を外したときの様子を調べるのが本稿の目的である．
 
@@ -81,13 +84,13 @@ NP困難である\cite[Theorem~8]{coene2011charlemagne}．
   \includegraphics[scale=1.0]{\figdir/graph_classes.pdf}
   \caption{本論文では
     {\graphLine}（左），{\graphStar}（中），{\graphUnit}（右，但し各辺の長さが等しい）を扱う．
-    {\graphStar}は葉のみを警備の対象とする（中央の点は移動の途中で使うのみであり，{\maxIdletime}は定められていない）．}
+    {\graphStar}は葉のみを警邏の対象とする（中央の点は移動の途中で使うのみであり，{\maxIdletime}は定められていない）．}
   \label{figure: graph_classes}
 \end{figure}
 このうち{\graphStar}では
 各葉$v$のみに{\maxIdletime}（と中心からの距離$d _v$）が定められている．
 つまり厳密には，
-警備の対象となる頂点集合$V$は葉のみであり，
+警邏の対象となる頂点集合$V$は葉のみであり，
 その二点$u$，$v \in V$間の距離が
 和$d _u + d _v$の形で表されるという性質を満す完全グラフと考えてよいのであるが（図\ref{figure: stars}），
 \begin{figure}
@@ -110,7 +113,7 @@ Coeneらの{\independentPatProb}についての結果との比較も含めて
   {\graphLine}の
   {\independentPatProb}は動的計画法により多項式時間で解けることが
   示されていた\cite[Theorem~11]{coene2011charlemagne}が，
-  その正しさは単独警備という設定に強く依存している．
+  その正しさは単独警邏という設定に強く依存している．
   本稿では{\patProb}について，
   全点の{\maxIdletime}が等しい場合には多項式時間で解けることを示す
   （定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}）．
@@ -134,16 +137,17 @@ Coeneらの{\independentPatProb}についての結果との比較も含めて
 {\graphLine}や{\graphUnit}については，
 全点の{\maxIdletime}が等しい場合には上述のように多項式時間で解けるが，
 {\maxIdletime}が一般の場合には多項式時間アルゴリズムを見つけることができなかった．
-{\graphStar}の{\patProb}は上述の通りNP困難なので\cite{coene2011charlemagne}，
+{\graphStar}の{\patProb}は上述の通りNP困難なので\cite[Theorems 5 and 6]{coene2011charlemagne}，
 {\graphLine}や{\graphUnit}についても
 NP困難ではないかと予想したが，これも示すことができなかった．
 これらの未解決な場合については，
-警備ではなく定時訪問を目指す次のような問題を考えた．
+警邏ではなく定時訪問を目指す次のような問題を考えた．
 
 運行$A = (a _1, \ldots, a _m)$が点$v \in U$を
-{\exactTime}$(q, r) \in \Nset \times \Nset$に\defword{定時訪問}するとは，
+{\exactTime}$(q, r) \in \Zset_{>0} \times \Zset_{\geq 0}$に\defword{定時訪問}するとは，
 任意の時刻$t := q k + r\ (k \in \Zset)$に対し
 巡査$i$が存在し$a _i (t) = v$であることをいう．
+$\Zset_{>0}$は正の整数，$\Zset_{\geq 0}$は非負整数の集合とする．
 
 \begin{timeSpecifiedPatrollingProblem}
   巡査の人数$m$と地図$(U, V)$および$V$の各点の{\exactTime}と利得が与えられる．
