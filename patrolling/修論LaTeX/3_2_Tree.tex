@@ -1,0 +1,35 @@
+\section*{木の場合}
+
+{\graphStar}を一般化した地図の形状として木を考えることができる．
+本節ではこれを{\graphTree}と呼び，地図が{\graphTree}の場合の{\patProb}について考える．
+{\graphTree}では各葉$v$のみに{\maxIdletime}が定められているとする．
+
+地図が{\graphTree}の場合，{\patProb}は，
+{\graphTree}の特殊な場合である{\graphStar}の場合の結果から，
+利得が一般の場合や{\maxIdletime}が一般の場合は巡査が一人であってもNP困難である．
+よって以降は，全点の利得と{\maxIdletime}が等しい場合を考える．
+
+地図が{\graphTree}で巡査が一人の場合，{\patProb}は多項式時間で解けることが
+示されている
+\cite[Corollary 3]{coene2011charlemagne}
+（Coeneら\cite{coene2011charlemagne}の{\independentPatProb}についての結果だが，
+巡査が一人の場合は{\patProb}と同じ問題となる）．
+そこで，我々は巡査数が一般の場合を調べたい．
+なお，
+Coeneら\cite{coene2011charlemagne}の{\independentPatProb}では，
+地図が{\graphTree}で巡査数が一般の場合はNP困難である．
+
+\ncomment{加筆}
+
+まず例として，図\ref{fig: }\ncomment{［図追加］}のような
+2つの星の中心どうしが一本の橋で結ばれた木について考える．
+この例では，2つの星はそれぞれ全点警邏に2人の巡査を要する
+（補題\ref{lemm:StarConditionOfGuarding}）が，
+木全体を図\ref{fig: }のように巡回すると3人の巡査で全点を警邏できる．
+
+
+
+
+\ncomment{加筆}
+
+地図が{\graphTree}の場合も多項式時間アルゴリズムが存在すると予想しているが，未解決である．

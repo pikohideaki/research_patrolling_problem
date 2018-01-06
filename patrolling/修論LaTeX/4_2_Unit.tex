@@ -1,5 +1,5 @@
 \section{{\maxIdletime}が一般の場合}
-\ref{chapter: star}節冒頭で述べた通り，
+\ref{chapter: star}章冒頭で述べた通り，
 地図が{\graphStar}の場合については，
 {\maxIdletime}が一般の場合は
 {\patProb}は巡査が一人であってもNP困難であった\cite[Theorem~6]{coene2011charlemagne}．
@@ -14,7 +14,7 @@
 
 地図$(U, V)$が{\graphUnit}で
 各点$v_i \in V$の{\exactTime}が$(q_i, r_i)$のとき，
-巡査が一人で$V$の全点を定時訪問可能であるかどうかは次のように多項式時間で判定できる．
+巡査一人で$V$の全点を定時訪問可能かどうかは次のように多項式時間で判定できる．
 %
 辺の長さを$d$とすると，
 $V$の異なる2点$i, j$の間の移動には時間$d$を要することから，
@@ -31,12 +31,11 @@ $\abs{(r_i' - r_j')}$，%
 $\abs{(r_i' - r_j') + g}$，%
 $\abs{(r_i' - r_j') - g}$
 のいずれも$d$以上となることに等しい．
+%
+全点を定時訪問可能かどうかは，この条件を$V$のすべての2点について確かめればよい．
 
-全点を定時訪問可能かどうかは，以上を$V$のすべての2点について調べればよい．
-
-
-\ncomment{［巡査が複数の場合の全点定時訪問判定は？］}
-
+全点を定時訪問可能か判定する問題は多項式時間で解けるのに対し，
+{\timeSpecifiedPatProb}では次が成り立つ．
 
 
 \begin{theo}
@@ -82,8 +81,6 @@ $\abs{(r_i' - r_j') - g}$
   \end{equation}
   そのような$r _i$は
   中国剰余定理より（$q _i$の剰余として一意に）存在する．
-  % 以上で得られた$M$と$(q _i, r _i) _{i \in [n]}$に対する
-  % {\timeSpecifiedPatProb}の解は$G$の最大独立集合となる．
 
   $M$の異なる2点$v_i, v_j$の間の移動には時間$1$を要することから，
   その両方を定時訪問できるためには，
@@ -104,7 +101,6 @@ $\abs{(r_i' - r_j') - g}$
   また，
   $k$番目に小さい素数を$P_k$と書くと，$k \geq 6$について
   $P_k < k( \ln k + \ln\ln k )$が成り立つ\cite{dusart1999k}ので，
-  % 或る数が素数であるかどうかを判定する多項式時間アルゴリズムが存在する\cite{agrawal2004primes}ので，
   $n(n - 1)/2$個の素数の列挙は$n$の多項式時間でできる．
 \end{proof}
 
@@ -113,8 +109,8 @@ $\abs{(r_i' - r_j') - g}$
 % 定期訪問
 
 定理\ref{theo:UnitExacIdletimeNPhard}では，
-各点の{\exactTime}$((q_1, r_1), \ldots, (q_n, r_n))$が与えられる場合についてNP困難性を示したが，
-$(r_1, \ldots, r_n)$は与えられず$(q_1, \ldots, q_n)$のみが指定されている
+各点を{\exactTime}$((q_1, r_1), \ldots, (q_n, r_n))$に訪問せねばならないという{\timeSpecifiedPatProb}がNP困難であることを示したが，
+$(r_1, \ldots, r_n)$は与えられず$(q_1, \ldots, q_n)$のみが指定される
 次のような問題も考えることができる．
 
 \begin{intervalSpecifiedPatrollingProblemDecision}
@@ -126,57 +122,21 @@ $(r_1, \ldots, r_n)$は与えられず$(q_1, \ldots, q_n)$のみが指定され�
   $v$を{\exactTime}$(q, r)$で定時訪問することである．
 \end{intervalSpecifiedPatrollingProblemDecision}
 
-CampbellとHardinは
-地図が{\graphUnit}の場合の
-{\intervalSpecifiedPatProbDecision}（\cite{campbell2005vehicle}ではDVMPDと称している）
-に相当する問題について調べており，
-これがNP困難であることを示しており\cite[Theorem~4]{campbell2005vehicle}，
+巡査が一人の場合の{\timeSpecifiedPatProbDecision}では
+各点を訪問すべき時刻は完全に定められていたため，
+全点を警邏可能かどうかは
+任意の2点の両方を警邏可能であるかを判断するだけで十分であった．
+一方，
+{\intervalSpecifiedPatProbDecision}では
+各点を訪問すべき時刻は間隔のみしか定められておらず，
+全点を
+より難しい問題と思われる．
+\ncomment{［編集中］}
+実際，
+地図が{\graphUnit}で二点間距離が$1$の場合の
+{\intervalSpecifiedPatProbDecision}は
+CampbellとHardin\cite{campbell2005vehicle}の問題
+（DVMPDと称している）と同じ問題となり，
+これはNP困難であることが示されている\cite[Theorem~4]{campbell2005vehicle}．
 さらに，河村と添島が
 巡査が一人の場合であってもNP困難であることを示している\cite[Theorem~20]{kawamura2015simple}．
-
-% 地図が{\graphUnit}で巡査が一人の場合，
-% {\timeSpecifiedPatProbDecision}は多項式時間で解けたが，
-% 各点の訪問時刻を完全に指定するのではなく間隔のみを指定するように自由度を増した
-% {\intervalSpecifiedPatProbDecision}はNP困難になる．
-
-
-
-% \begin{theo}
-% \label{theo:NPhard_disjoint_residue_class_problem}
-% グラフが{\graphUnit}のとき，
-% {\intervalSpecifiedPatProbDecision}は巡査が一人であってもNP困難である．
-% \end{theo}
-% \begin{proof}
-% Disjoint Residue Class Problem\cite{kawamura2015simple}からの帰着による．
-
-% ある整数の組の集合$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
-% Disjoint Residue Class であるとは，
-% 任意の整数$x$に対して$x \equiv r_i \mod q_i$となるような$i$が
-% 高々1つ存在することと定義される．
-% Disjoint Residue Class Problem とは
-% 整数の組$(q_1, \ldots, q_n)$が与えられたときに，
-% $\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
-% Disjoint Residue Class となるような整数の組$(r_1, \ldots, r_n)$が
-% 存在するかを判定する問題であり，
-% NP困難であることが知られている\cite{kawamura2015simple}．
-
-% 辺の長さがすべて$1$の{\graphUnit}のグラフ$M$を考えると，
-% 巡査は各整数時刻にいずれか1点を訪問できる．
-% $M$の各点$v_i$に{\exactTime}$(q_i, r_i)$が指定されているとき，
-% 巡査一人で$M$の全点を警邏可能であることの必要十分条件は，
-% 訪問しなければならない時刻の集合族
-% $\{ \{ q_i k + r_i \mid k \in \Zset \} \mid i \in \{ 1, \ldots, n \} \}$
-% が互いに素であること，
-% すなわち，整数の組の集合$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
-% Disjoint Residue Class であることである．
-
-% よって，
-% Disjoint Residue Class Problem の入力が$(q_1, \ldots, q_n)$のとき，
-% 巡査の人数$1$と
-% $n$点からなる{\graphUnit}のグラフ$M$で
-% 各点$v_i$の{\exactInterval}を$q_i$，辺の長さがすべて$1$としたものを
-% {\intervalSpecifiedPatProbDecision}の入力として与えると，
-% これが警邏可能かどうかにより
-% Disjoint Residue Class$\{ (q_1, r_1), \ldots, (q_n, r_n) \}$が
-% 存在するかを判定できるので，Disjoint Residue Class Problemを帰着できる．
-% \end{proof}

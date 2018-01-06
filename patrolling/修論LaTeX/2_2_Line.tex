@@ -102,7 +102,7 @@ $2$人の巡査がうまく協力できず全点の警邏ができない．
 しかしながら，
 地図が{\graphLine}で{\maxIdletime}が一般の場合での{\patProb}の困難性を示すこともできなかった．
 そこで，{\maxIdletime}より短い間隔で点を訪問しうることで運行の決定が複雑になる例が存在したことを踏まえて，
-ここでは1節で定義した{\timeSpecifiedPatProbDecision}という別種の問題を代わりに考える．
+ここでは\ref{chapter: introduction}章で定義した{\timeSpecifiedPatProbDecision}という別種の問題を代わりに考える．
 
 
 
@@ -123,6 +123,7 @@ $S$のすべての元$(t, x)$に対して$a(t) = x$を満たす
 （このとき$a$を運行可能集合$S$に対応する運行と呼ぶ）
 ものが存在することは簡単に示される．
 
+\ncomment{［見出しを立てなくてもよい］}
 \begin{timeSpecifiedPatrollingProblemOnLine}
   正の整数$m$と
   $n$個の自然数の組$(q_i, r_i, x_i)_{ i \in \{ 1, \ldots, n \} }$が与えられる．
@@ -135,7 +136,7 @@ $S$のすべての元$(t, x)$に対して$a(t) = x$を満たす
 {\timeSpecifiedPatProbOnLine}は以下に示す貪欲アルゴリズムにより解くことができる．
 
 まず，地図が{\graphLine}の場合は順序保存運行を考えることができるのと同様に，
-順序保存（運行可能）分割も考えることができる．
+順序保存（運行可能）分割を考えることができる．
 分割$\mathcal{P} = \{ P_1, \ldots, P_h \}$が順序保存であるとは，
 $\mathcal{P}$に対応する運行$A = (a_1, \ldots, a_h)$であって
 順序保存なものが存在すること，

@@ -2,7 +2,7 @@
 \label{chapter: line}
 
 地図$(U, V)$が{\graphLine}の場合，$U$を実直線としてよい．
-本節では，点$v_1, v_2, \ldots, v_n$の位置は実数値とする．
+本章では，点$v_1, v_2, \ldots, v_n$の位置は実数値とする．
 
 {\graphLine}における巡査$m$人の運行$A = (a_1, \ldots, a_m)$が
 任意の時刻$t \in \Rset$で
@@ -20,7 +20,7 @@ $W$がある運行により警邏されるならば，
 
 
 \section{全点の{\maxIdletime}が等しい場合}
-\label{section:LineUnaryIdletimePolyTimeSolvable}
+\label{section:LineUnaryIdletime}
 
 
 本節では次のことを示す．
@@ -38,7 +38,9 @@ Collinsら\cite{collins2013optimal}は次の問題を考えた．
   $V_1, \ldots, V_n\ (V_i \subseteq C,\ i \in \{1,\ldots, n\})$%
   が与えられる．
   $C$上を速さ$1$以下で動く$m$人の巡査が$\bigcup_{i = 1}^n V_i$の点を訪問する．
-  放置される時間が最大の点の放置時間が最小になるようにするとき，その最小値を求めよ．
+  $V_1, \ldots, V_n$に含まれる点のうち，
+  放置される時間が最大の点の放置時間が最小になるようにするとき，
+  その最小値を求めよ．
 \end{quote}
 この問題は
 多項式時間で解けることが示されている\cite[Theorem~2.1]{collins2013optimal}ので，
@@ -99,7 +101,7 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
   $m = 0$のときは明らかなので，以下$m > 0$とする．
 
   $W$は$m$人の巡査により警邏可能であるので，
-  2節始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
+  \ref{chapter: line}章始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
   このような運行を任意に一つ選び
   $A = (a_1, \ldots, a_m)$とする．
 
@@ -182,8 +184,9 @@ $OPT(m, n)$が全体の利得の最大値となる．
 これで定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}が示された．
 
 なお，
-\ref{section:LineUnaryIdletimePolyTimeSolvable}節の冒頭で上げた
-Collinsらの問題でも{\indSectOperation}は最適となることが示されている\cite[Theorem 2.1]{collins2013optimal}．
+\ref{section:LineUnaryIdletime}節の冒頭で上げた
+Collinsらの問題で最適と示されている戦略は，上で述べた
+{\indSectOperation}を拡張したものになっている\cite[Theorem 2.1]{collins2013optimal}．
 
 % Circleについて
 % この証明では線分に端の点が存在することが重要な役割を果たしているため，
