@@ -22,7 +22,8 @@ $U$はその頂点および辺上の点のみからなるとしてよい．
 
 地図$(U, V)$における
 巡査$i \in \{1, \ldots, m\}$の\defword{運行}$a _i \colon \Rset \to U$とは，
-各時刻$t \in \Rset$における位置$a _i (t) \in U$を定めるものであって，
+各時刻$t \in \Rset$における位置$a _i (t) \in U$を定める函数であって，
+移動の速さが$1$以下であるもの，すなわち
 任意の時刻$s$，$t \in \Rset$に対し$a _i (s)$と$a _i (t)$の距離が$\abs{s - t}$を超えないものをいう．
 巡査$m$人による\defword{運行}とは，
 全巡査の運行を定めた組$A = (a _1, \dots, a _m)$をいう．
@@ -64,7 +65,7 @@ Coeneら\cite{coene2011charlemagne}は似た問題を扱っているが，
 つまり，各点$v \in W$が\defword{単独警邏}される（すなわち
 或る一人の巡査がおり，
 その巡査のみの運行が$v$を警邏する）ことを要求しているのである．
-対比のため本稿ではこの問題を{\independentPatProb}と呼ぶことにする
+対比のため本稿ではこの問題を\defword{\independentPatProb}と呼ぶことにする
 （\cite{coene2011charlemagne}ではMPLPPと称している）．
 Coeneら\cite{coene2011charlemagne}の諸結果においては，
 この単独警邏という限定が，
@@ -163,4 +164,8 @@ NP困難ではないかと予想したが，これも示すことができなか
 {\graphUnit}については{\timeSpecifiedPatProb}がNP困難であることを示す（定理\ref{theo:UnitExacIdletimeNPhard}）．
 
 
-本論文は，電子情報通信学会○○\cite{}及び△△◆◆□□\cite{}で発表した内容を含む．
+本論文は，
+2017年電子情報通信学会総合大会\cite{ieice}%
+及び
+Japan Conference on Discrete and Computational Geometry, Graphs, and Games 2017\cite{jcdcggg}%
+で発表した内容を含む．

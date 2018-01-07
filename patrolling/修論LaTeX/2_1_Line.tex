@@ -64,6 +64,7 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
   各$a_i\ (i \in \{ 1, \ldots, m \})$が
   $S_1, \ldots, S_n$のいずれかを往復する運行であって，
   $a_1, \ldots, a_m$の往復区間が互いに重複していないことである．
+  \kcomment{［←これだと$V$が空のときには独立往復運行が存在しないということになり色々おかしくなる．］}
 \end{defi}
 
 
@@ -88,8 +89,8 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
 \begin{lemm}
   \label{lemm:LineUnaryIdletimeIndependentInterval}
   地図$(U, V)$が{\graphLine}で全点の{\maxIdletime}が等しいとする．
-  $V$の任意の部分集合$W$について，
-  $W$が巡査$m$人により警邏可能ならば$W$は巡査$m$人による{\sepSectPatroll}で警邏可能である．
+  集合$W \subseteq V$が巡査$m$人により警邏可能ならば，
+  $W$は巡査$m$人による或る{\sepSectPatroll}で警邏される．
 \end{lemm}
 
 \begin{proof}
@@ -100,20 +101,33 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
   全点の{\maxIdletime}を$q$とする．
   $m = 0$のときは明らかなので，以下$m > 0$とする．
 
-  $W$は$m$人の巡査により警邏可能であるので，
-  \ref{chapter: line}章始めの議論により$W$を警邏する$m$人の巡査による順序保存運行が存在する．
-  このような運行を任意に一つ選び
-  $A = (a_1, \ldots, a_m)$とする．
+  \ref{chapter: line}章始めの議論により，
+  $W$は或る順序保存運行$A = (a_1, \ldots, a_m)$により警邏される．
 
-  $W$の点のうち最も左にあるものを$\leftmostpoint$とする．
-  まず，各巡査は
+  $W$の点のうち最も左にあるものを$\leftmostpoint$とする\kcomment{［←$W$が空だと困る．］}．
+
+  所望の独立往復運行$(a' _1, \dots, a' _m)$を次のように作る．
+  まず
+  区間$[\leftmostpoint, \leftmostpoint + q/2]$を速さ$1$で休まず往復する運行を
+  $a' _1$とする．
+  $a_1'$はこの区間に属するすべての点を警邏する．
+  実際，
+  位置$x \in [u, u + q/2]$を
+  運行$a_1'$が訪れる間隔の最大値は
+  $ \max( 2(x - \leftmostpoint), 2(\leftmostpoint + q/2 - x) )
+    \leq 2(\leftmostpoint + q/2 - \leftmostpoint) = q$である．
+  $W$の点のうち$a' _1$によって警邏されないもの，
+  すなわち$u + q / 2$よりも右にあるものの全体を$W ^-$とする．
+
+  各巡査は
   $\leftmostpoint$より左に存在する時間
-  $\leftmostpoint$で停止するように変換する．
+  $\leftmostpoint$で停止するように変換する\kcomment{［←このように曖昧な書き方はよくない。$A$にこの変換を施し，それを改めて$A$と呼ぶことにしたのがわかるように書く。］}．
   このようにしても$W$は警邏されたままであり，
   またこれによりすべての巡査は
-  区間$[\leftmostpoint, +\infty)$に存在することになる．
-
-  ここで，$A$で最も左を運行する{\leftmostpatroller}に注目する．
+  区間$[\leftmostpoint, +\infty)$にいる
+  % 存在する\kcomment{［←このように、特に「$\exists$」の意味を表すわけでなく単に「在る」「居る」と言いたいだけなのに「存在」「可能」などと言うのは良くない。］}
+  ことになる．
+  ここで，$A$で最も左にいる{\leftmostpatroller}に注目する．
   順序保存であることから$\leftmostpoint$が$A$により訪問されるすべての時刻に
   {\leftmostpatroller}は$\leftmostpoint$を訪問しているので，
   $\leftmostpoint$は$a_1$により単独警邏されている．
@@ -121,24 +135,14 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
   補題\ref{lemm:RangeOfPatrollerOnLine}より，
   任意の時刻$t \in \Rset$に対し
   $a_1(t) \leq \leftmostpoint + q/2$である．
-  %
-  一方，{\leftmostpatroller}が区間$[\leftmostpoint, \leftmostpoint + q/2]$を速さ$1$で往復する運行$a_1'$を行うと，
-  $a_1'$はこの区間に含まれるすべての点を警邏する．
-  実際，
-  $\leftmostpoint \leq x \leq \leftmostpoint + q/2$である位置$x$が
-  運行$a_1'$により訪問される間隔の最大値は
-  $ \max( 2(x - \leftmostpoint), 2(\leftmostpoint + q/2 - x) )
-    \leq 2(\leftmostpoint + q/2 - \leftmostpoint) = q$より，
-    $[\leftmostpoint, \leftmostpoint + q/2]$に含まれるどの点も
-  {\maxIdletime}を超えずに訪問できていることが分かる．
-  よって，$V$の点のうち$a_1$が訪問することがあるものはすべて$a_1'$により警邏される．
+  \kcomment{［←補題\ref{lemm:RangeOfPatrollerOnLine}はよそで使っていないなら、
+      ここに展開して整理した方が良いのでは。］}
+  よって，$W ^-$の点を$a _1$が訪れることはない．
 
-  また，$W^- := \{ v \in W \mid \leftmostpoint + q/2 < v \}$は
-  $A$で{\leftmostpatroller}以外の$m - 1$人の巡査により警邏されている．
-  ゆえに帰納法の仮定から$W ^-$は，
-  残る$m - 1$人の巡査の{\sepSectPatroll}より警邏される．
-  この運行と$a' _1$を合せると，
-  $W$を警邏する{\sepSectPatroll}が得られる．
+  したがって$W ^-$は$(a _2, \ldots, a _m)$により警邏され，
+  ゆえに帰納法の仮定から，或る独立往復運行$(a' _2, \ldots, a' _m)$により警邏される．
+  これに$a' _1$を加えた$(a' _1, a' _2, \dots, a' _m)$は
+  $W$を警邏する{\sepSectPatroll}である\kcomment{［←この最後の文が正しくなるように「独立往復運行」を定義しないといけない］}．
 \end{proof}
 
 
@@ -152,12 +156,9 @@ $m$人の巡査がそれぞれ担当する重複のない$m$個の区間のう�
 これは以下のアルゴリズムにより求めることができる．
 
 初めに{\graphLine}上の点をソートしておき，左側から順に$v_1, v_2, \ldots, v_n$とする．
-$n$個の区間$S_1, \ldots, S_n$について
-各区間$S_i\ (i \in \{ 1, \ldots, n \})$に含まれる点から得られる利得の合計
+各区間$S_i$（$i \in \{ 1, \ldots, n \}$）に属する点の利得の和
 $P_i := \sum_{v_j \in S_i} p_j$を求める．
-%
-各区間$S_i\ (i \in \{ 1, \ldots, n \})$について，
-$S_i$と重複部分のない区間の添え字のうち$i$未満で最大のもの
+また$S_i$と重複部分のない区間の添え字のうち$i$未満で最大のもの
 （存在しない場合は$0$とする）を求め，$h_i$と書く．
 $v_1, \ldots, v_n$がソートしてあるので
 $P_1, \ldots, P_n$と$h_1, \ldots, h_n$を合計$O(n)$で求めることができる．
