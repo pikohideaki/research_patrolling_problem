@@ -17,7 +17,7 @@
 
 
 
-![tree_memo_001.jpeg](./figures/tree_memo_001.jpeg)
+![tree_memo_001.jpeg](../figures/tree_memo_001.jpeg)
 
 #### 2017/10/10
 * 星2つの中心同士が1本の橋で結ばれた図形をまず考える．

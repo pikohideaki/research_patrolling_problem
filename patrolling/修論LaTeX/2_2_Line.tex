@@ -105,35 +105,30 @@ $2$人の巡査がうまく協力できず全点の警邏ができない．
 ここでは\ref{chapter: introduction}章で定義した{\timeSpecifiedPatProbDecision}という別種の問題を代わりに考える．
 
 
-
-地図が{\graphLine}の場合の{\timeSpecifiedPatProbDecision}は次のようにも記述できる．
-
-\begin{defi}
-  $S \subset \Zset \times \Zset$とする．
-  任意の$(t_1, x_1), (t_2, x_2) \in S$が
-  $\abs{x_1 - x_2} \leq \abs{t_1 - t_2}$を満たすとき，
-  $S$は\defword{運行可能}であるという．
-  また，分割$\{ P_1, \ldots, P_h \}$が\defword{運行可能}であるとは，
-  $P_1, \ldots, P_h$がそれぞれ運行可能集合であることである．
-\end{defi}
-
+地図が{\graphLine}の場合の{\timeSpecifiedPatProbDecision}は，
+正の整数$m$と
+$n$個の自然数の組$(q_i, r_i, x_i)_{ i \in \{ 1, \ldots, n \} }$が与えられたとき，
+集合
+$\{ (q_i k + r_i, x_i) \mid k \in \Zset, i \in \{1, \ldots, n\} \}$を
+$m$個以下の運行可能集合に分割できるか判定する問題と言い換えることができる．
+%
+ただし，
+集合$S \subset \Zset \times \Zset$が\defword{運行可能}であるとは，
+任意の$(t_1, x_1), (t_2, x_2) \in S$が
+$\abs{x_1 - x_2} \leq \abs{t_1 - t_2}$を満たすことであり，
+分割$\{ P_1, \ldots, P_h \}$が\defword{運行可能}であるとは，
+$P_1, \ldots, P_h$がそれぞれ運行可能であることと定義する．
+\ncomment{［運行可能分割の説明の図］}
+%
 任意の運行可能集合$S$に対して，
 {\graphLine}上の巡査の運行$a$であって，
 $S$のすべての元$(t, x)$に対して$a(t) = x$を満たす
 （このとき$a$を運行可能集合$S$に対応する運行と呼ぶ）
-ものが存在することは簡単に示される．
-
-\ncomment{［見出しを立てなくてもよい］}
-\begin{timeSpecifiedPatrollingProblemOnLine}
-  正の整数$m$と
-  $n$個の自然数の組$(q_i, r_i, x_i)_{ i \in \{ 1, \ldots, n \} }$が与えられる．
-  集合
-  $\{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$を
-  $m$個以下の運行可能集合に分割できるか判定せよ．
-\end{timeSpecifiedPatrollingProblemOnLine}
+ものが存在することは簡単に示すことができる．
 
 
-{\timeSpecifiedPatProbOnLine}は以下に示す貪欲アルゴリズムにより解くことができる．
+
+地図が{\graphLine}の場合の{\timeSpecifiedPatProbDecision}は以下に示す貪欲アルゴリズムにより解くことができる．
 
 まず，地図が{\graphLine}の場合は順序保存運行を考えることができるのと同様に，
 順序保存（運行可能）分割を考えることができる．
@@ -150,11 +145,12 @@ $\mathcal{P}$に対応する運行$A = (a_1, \ldots, a_h)$であって
 として，
 任意の$P_i\ (i \in \{ 1 \ldots, h \})$について，
 領域$\bigcup_{(t, x) \in P_i} L(t, x)$に
-$P_j\ (i < j)$の点が存在しないことと定義される．
+$P_j\ (i < j)$の点が存在しないことと定義する．
+\ncomment{［$L$の説明の図］}
 
 \newcommand{\minpart}{\mathfrak{P}}
 
-$X := \{ (q_i k + r_i, x_i) \mid i \in \{1, \ldots, n\}, k \in \Zset \}$の
+$X := \{ (q_i k + r_i, x_i) \mid k \in \Zset, i \in \{1, \ldots, n\} \}$の
 任意の順序保存分割のうち一番左の集合は順序保存分割の定義から
 $\minpart_1 := \{ (t, x) \in X \mid L(t, x) \cap X = \emptyset \}$の
 部分集合となる．
@@ -168,7 +164,7 @@ $\minpart_2 :=
 このように，集合$X$の左側から貪欲に運行可能集合を取り出していく操作を再帰的に繰り返すと，
 最小の順序保存分割$\{ \minpart_1, \minpart_2, \ldots, \minpart_h \}$が得られる．
 これを$\minpart(X)$と書くことにする．
-{\timeSpecifiedPatProbOnLine}の判定は$\card{\minpart(X)} \leq m$が成り立つかの判定をすればよい．
+全点を定時訪問可能かどうかは$\card{\minpart(X)} \leq m$が成り立つか判定すればよい．
 
 \newcommand{\subsegment}[3]{{#1}_{[#2:#3)}}
 以下では，集合$S \subseteq \Zset \times \Zset$に対して
@@ -200,13 +196,16 @@ $X$を$\minpart(X)$へ分割するときと「同じ条件で」$\subsegment{X}{
 （すなわち，$\subsegment{X}{0}{T}$を
 $\{ \subsegment{\minpart_1}{0}{T}, \ldots, \subsegment{\minpart_h}{0}{T} \}$%
 に分割する）には，
-$X' := \{ (t, x) \in X \mid
-  (t', x') \in \subsegment{X}{0}{T} \ \textrm{が存在して}\ (t, x) \in L(t', x') \}$%
+\[
+  X' := \{ (t, x) \in X \mid
+    (t', x') \in \subsegment{X}{0}{T} \ \textrm{が存在して}\ (t, x) \in L(t', x') \}
+\]
 として$\minpart(X')$を求めればよい．
+
 以下の
 有限集合$F$の分割$\minpart(F)$を与える{\setPartitionAlgorithm}
-の入力として$X'$を与えればよい．
-あとは，出力された分割$\mathcal{P}$の各要素を$[0:T)$に制限すれば
+の入力として$X'$を与え，
+出力された分割$\mathcal{P}$の各要素を$[0:T)$に制限すれば
 $\subsegment{X}{0}{T}$の分割$\{ \subsegment{\minpart_1}{0}{T}, \ldots, \subsegment{\minpart_h}{0}{T} \}$が得られる．
 
 \begin{setPartitionAlgorithmForTimeSpecifiedProblemOnLine}

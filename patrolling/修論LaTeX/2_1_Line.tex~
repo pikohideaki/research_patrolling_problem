@@ -134,11 +134,9 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
   よって，$V$の点のうち$a_1$が訪問することがあるものはすべて$a_1'$により警邏される．
 
   また，$W^- := \{ v \in W \mid \leftmostpoint + q/2 < v \}$は
-  $A$で{\leftmostpatroller}以外の$m - 1$人の巡査により警邏されている．
-  ゆえに帰納法の仮定から$W ^-$は，
-  残る$m - 1$人の巡査の{\sepSectPatroll}より警邏される．
-  この運行と$a' _1$を合せると，
-  $W$を警邏する{\sepSectPatroll}が得られる．
+  $A$で{\leftmostpatroller}以外の$m - 1$人の巡査により警邏されているので，
+  帰納法の仮定から残る$m - 1$人の巡査も{\sepSectPatroll}に変換することができる．
+  以上により$W$を警邏する$m$人の巡査による{\sepSectPatroll}が得られた．
 \end{proof}
 
 

@@ -1,35 +1,89 @@
 \section*{木の場合}
 
+\ncomment{［編集中］}
+
+
 {\graphStar}を一般化した地図の形状として木を考えることができる．
-本節ではこれを{\graphTree}と呼び，地図が{\graphTree}の場合の{\patProb}について考える．
-{\graphTree}では各葉$v$のみに{\maxIdletime}が定められているとする．
+{\graphStar}のときと同様，木の各葉のみに{\maxIdletime}が定められているとする．
+長さが$0$の辺を許せば，任意の木はその葉どうしの距離を保ったまま二分木に変換できるので，
+本節では二分木の地図を{\graphTree}と呼び，
+{\graphTree}の場合の{\patProb}について考える．
 
-地図が{\graphTree}の場合，{\patProb}は，
-{\graphTree}の特殊な場合である{\graphStar}の場合の結果から，
-利得が一般の場合や{\maxIdletime}が一般の場合は巡査が一人であってもNP困難である．
-よって以降は，全点の利得と{\maxIdletime}が等しい場合を考える．
+Coeneら\cite{coene2011charlemagne}は{\independentPatProb}を地図が{\graphTree}の場合について調べている．
+{\independentPatProb}においては，巡査が一人かつ全点の利得と{\maxIdletime}が等しい場合は，地図が{\graphTree}であっても多項式時間で解ける\cite[Corollary~3]{coene2011charlemagne}のに対し，
+巡査数，利得，{\maxIdletime}のいずれか一つでも一般の場合は{\graphStar}であってもNP困難である\cite[Theorems 5, 6 and 10]{coene2011charlemagne}．
+巡査が一人の場合は{\patProb}と{\independentPatProb}は同じ問題であるから，
+{\graphTree}で全点の利得と{\maxIdletime}が等しいときは多項式時間で解くことができ，
+利得か{\maxIdletime}のいずれかが一般の場合はNP困難であることは直ちに分かる．
+一方，巡査数が一般で全点の利得と{\maxIdletime}が等しい場合は，
+{\patProb}では
+地図が{\graphStar}のとき多項式時間で解けるので，{\graphTree}でどうなるかは未解決である．
 
-地図が{\graphTree}で巡査が一人の場合，{\patProb}は多項式時間で解けることが
-示されている
-\cite[Corollary 3]{coene2011charlemagne}
-（Coeneら\cite{coene2011charlemagne}の{\independentPatProb}についての結果だが，
-巡査が一人の場合は{\patProb}と同じ問題となる）．
-そこで，我々は巡査数が一般の場合を調べたい．
-なお，
-Coeneら\cite{coene2011charlemagne}の{\independentPatProb}では，
-地図が{\graphTree}で巡査数が一般の場合はNP困難である．
+\newcommand{\separatedPatroll}{左右独立運行}
+\newcommand{\cooperativePatroll}{全員協力運行}
 
-\ncomment{加筆}
+我々はまず，星ではない二分木の例として
+図\ref{fig: }\ncomment{［図追加］}のような例を考えた．
+図\ref{fig:}の例では，2点からなる2つの星の中心どうしが一本の橋で結ばれている．
+ここで，この{\graphTree}の地図の全点警邏に必要な最小の巡査数を考えてみる．
+%
+まず，左右の星を独立に{\graphStar}に対する最適戦略で警邏する運行が考えられる．これを\defword{\separatedPatroll}と呼ぶことにする．
+補題\ref{lemm:StarConditionOfGuarding}から
+星それぞれは全点警邏に2人，合計$4$人の巡査を要することが分かる．
+%
+一方，
+図\ref{fig: }のような巡回を繰り返す運行を
+$3$人の巡査が{\maxIdletime}$10$ずつずれて行うと全点を警邏できる．
+このように巡査全員が全体を一度ずつ訪問する巡回を繰り返す運行を\defword{\cooperativePatroll}と呼ぶことにする．
+図\ref{fig: }の例には存在しないが，隣接辺が$q/2$より長い点が存在する場合は{\cooperativePatroll}では巡査が一人停止して担当するものとする．
 
-まず例として，図\ref{fig: }\ncomment{［図追加］}のような
-2つの星の中心どうしが一本の橋で結ばれた木について考える．
-この例では，2つの星はそれぞれ全点警邏に2人の巡査を要する
-（補題\ref{lemm:StarConditionOfGuarding}）が，
-木全体を図\ref{fig: }のように巡回すると3人の巡査で全点を警邏できる．
+この例で仮に橋の長さが$10$などとしてみると，
+全員が全体を巡回する2つ目の戦略で$3$人の巡査では全点警邏ができなくなり，
+巡査$4$人による{\separatedPatroll}が最小人数の運行となる．
+このように，橋の長さによっては橋を渡るべきかどうかが変わる．
+
+より一般に2つの星とその中心間を結ぶ長さ$b$の橋からなる{\graphTree}の地図$T$について考える．
+左右の星の点集合をそれぞれ$L, R$とする．
+全点の{\maxIdletime}を$q$とする．
+また，以下では$S_V := \sum_{v \in V} \min(2d_v, q)$と書くことにする．
+\newcommand{\lrceil}[1]{\lceil{#1}\rceil}
+
+{\separatedPatroll}では，補題\ref{lemm:StarConditionOfGuarding}より，
+星$L$の全点警邏に$\lrceil{S_L / q}$人，
+星$R$の全点警邏に$\lrceil{S_R / q}$人の巡査を要する．
+全員協力運行では$T$全点の警邏に
+$\lrceil{( 2b + S_{L \cup R} ) / q}
+ = \lrceil{( 2b + S_L + S_R ) / q}$%
+人の巡査を要する．
+よって，$T$は多くとも
+$\min(
+        \lrceil{( 2b + S_L + S_R ) / q},
+        \lrceil{S_L / q} + \lrceil{S_R / q} )$%
+の巡査で警邏できる．
+
+$T$の左右の星はそのままで橋の長さだけ短くした{\graphTree}を$T'$とすると，
+$T'$の警邏に必要な最小巡査数は明らかに$T$の警邏に必要な最小巡査数以下となる（橋に存在する時間が同じになるような運行を考えればよい）．
+$T$の橋の長さを$0$にしたものを$T'$とすると，$T'$全体は点集合が$L \cup R$の{\graphStar}となり，全点警邏には$\lrceil{(S_L + S_R) / q}$人の巡査が必要である．
+よって，$T$の警邏には少なくとも$\lrceil{(S_L + S_R) / q}$人の巡査が必要である．
+
+以上より，$T$全点の警邏に必要な巡査の最小数を$m_{\rm min}$と書くと，
+\[
+  \lrceil{(S_L + S_R) / q}
+    \leq m_{\rm min}
+    \leq \min(
+        \lrceil{( 2b + S_L + S_R ) / q},
+        \lrceil{S_L / q} + \lrceil{S_R / q} )
+\]
+となる．
+我々は
+$m_{\rm min} = \min(
+        \lrceil{( 2b + S_L + S_R ) / q},
+        \lrceil{S_L / q} + \lrceil{S_R / q} )$，
+即ち，{\separatedPatroll}と{\cooperativePatroll}のいずれかが最適であると予想しているが，これを示すことはできていない．
 
 
-
-
-\ncomment{加筆}
-
-地図が{\graphTree}の場合も多項式時間アルゴリズムが存在すると予想しているが，未解決である．
+% \begin{itemize}
+%   \item 運行の帰着で示すのが難しそう（仮説の運行は複数人の動きを同時に決めているので）．
+%   \item 1度も橋を渡らない運行では左右独立運行が最適．
+%   \item 全点警邏可能かどうかの判定すら多項式時間でできるか未解決
+% \end{itemize}
