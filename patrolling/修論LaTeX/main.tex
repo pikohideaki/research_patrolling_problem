@@ -5,23 +5,16 @@
 
 \usepackage{graphicx}
 
+\usepackage[noadjust]{cite}
+\renewcommand{\citeleft}{\inhibitglue ［}
+\renewcommand{\citeright}{］\inhibitglue }
+\renewcommand{\citepunct}{，\<}
+\renewcommand{\citemid}{，}
+\renewcommand{\citedash}{～}
+\makeatletter\renewcommand{\@biblabel}[1]{\citeleft#1\citeright}\makeatother
 
-% theorem
-\usepackage{amsmath,amssymb}
-\usepackage{amsthm}
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep.5\baselineskip \labelsep1zw
-  \trivlist
-  \item[\hskip\labelsep
-        \textsf{#1}]\ignorespaces
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-\makeatother
-\renewcommand{\proofname}{証明}
-
+\usepackage[bold]{otf}
+\usepackage[scaled]{helvet}
 
 % Tikz
 \usepackage[dvipdfmx,svgnames]{xcolor}
@@ -46,7 +39,7 @@
     }
   \end{center}
   \thispagestyle{empty}  % ページ番号消去
-  \clearpage
+  \cleardoublepage
 
   \frontmatter
   \tableofcontents

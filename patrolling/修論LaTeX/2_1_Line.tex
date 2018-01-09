@@ -1,21 +1,19 @@
 \chapter{{\graphLine}}
 \label{chapter: line}
 
-地図$(U, V)$が{\graphLine}の場合，$U$を実直線としてよい．
-本章では，$V$の各点の位置は実数値とする．
+地図$(U, V)$が{\graphLine}の場合，$U$を実直線$\Rset$としてよい．
 
 {\graphLine}における巡査$m$人の運行$A = (a_1, \ldots, a_m)$が
 任意の時刻$t \in \Rset$で
 $a_1(t) \leq a_2(t) \leq \cdots \leq a_m(t)$を満すとき，
 $A$は\defword{順序保存}であるという．
-巡査$m$人で警邏可能な任意の点集合$W$は，
-或る巡査$m$人の順序保存運行により警邏される．
+点集合$W \subseteq V$が或る運行により警邏されるならば，
+同人数の順序保存運行により警邏される．
 これは，
-$W$がある運行により警邏されるならば，
-その運行で二人の巡査がすれ違うときに
+もとの運行で二人の巡査がすれ違うときに
 代わりに互いの以降の運行を交換し引き返すようにした運行
 （巡査の速さの上限がすべて等しいため
-巡査が互いの運行を一部だけ交換することができる）
+互いの運行を一部だけ交換することができる）
 によっても$W$が警邏されるためである．
 
 
@@ -45,8 +43,8 @@ Collinsら\cite{collins2013optimal}は次の問題を考えた．
 この問題は
 多項式時間で解けることが示されている\cite[Theorem~2.1]{collins2013optimal}．
 $V_1, \ldots, V_n$として一点集合を与えることにより，
-地図が{\graphLine}で全点の{\maxIdletime}が等しい場合は
-全点を警邏可能か判定する問題を多項式時間で解くことができることが分かる．
+地図が{\graphLine}で全点の{\maxIdletime}が等しい場合は，
+全点を警邏する運行があるか判定する問題を多項式時間で解くことができることが分かる．
 
 これに対し，定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}は
 利得最大化問題である{\patProb}が多項式時間で解けるという主張である．
@@ -58,55 +56,50 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
 
 \begin{defi}
   \label{defi:independentSectionOperation}
-  地図$(U, V)$が{\graphLine}で全点の{\maxIdletime}が$q$とする．
-  点$v_i \in V$を左端とする長さ$q/2$の区間$[v_i, v_i + q/2]$を$S_i$と書く．
+  地図$(\Rset, V)$が{\graphLine}で全点の{\maxIdletime}が$q$とする．
+  $V$のうち最も右にある点（存在しなければ$0$）を$v_n$として，
+  $n + m$個の区間$S_1, \ldots, S_{n + m}$を
+  \begin{equation}
+    \label{equation: candidate segments}
+    S_i
+    =
+    \begin{cases}
+      [v_i, v_i + q/2] & \text{$1 \leq i \leq n $のとき} \\
+      [v_n + iq, v_n + (i + 1/2)q] & \text{$n + 1 \leq i \leq n + m$のとき}
+    \end{cases}
+  \end{equation}
+  と定義する．
   運行$A = (a_1, \ldots, a_m)$が\defword{\sepSectPatroll}であるとは，
   各$a_i\ (i \in \{ 1, \ldots, m \})$が
-  $S_1, \ldots, S_n$のいずれかを往復する運行であって，
+  $S_1, \ldots, S_{n + m}$のいずれかを速さ$1$で往復する運行であって，
   $a_1, \ldots, a_m$の往復区間が互いに重複していないことである．
-  \kcomment{［←これだと$V$が空のときには独立往復運行が存在しないということになり色々おかしくなる．］}
 \end{defi}
 
 
 \begin{lemm}
-  \label{lemm:RangeOfPatrollerOnLine}
-  点$v$がある一人の巡査$s$により単独警邏されているとき，
-  {\maxIdletime}を$q$として，
-  $s$は常に区間$[v - q/2, v + q/2]$にいる．
-\end{lemm}
-\begin{proof}
-  \newcommand{\vout}{v_{\mathrm{out}}}
-  この区間にない或る位置$\vout \notin [v - q/2, v + q/2]$を$s$が
-  時刻$t_0$に訪問するとする．
-  $\vout$と$v$の間の移動には
-  少なくとも時間$\abs{v - \vout} > q / 2$を要するから，
-  $s$は区間$[t_0 - q / 2, t_0 + q / 2]$に属する時刻に$v$を訪問できない．
-  この区間の長さは$q$であるので，
-  $s$が$v$を単独警邏していることに反する．
-\end{proof}
-
-
-\begin{lemm}
   \label{lemm:LineUnaryIdletimeIndependentInterval}
-  地図$(U, V)$が{\graphLine}で全点の{\maxIdletime}が等しいとする．
-  集合$W \subseteq V$が巡査$m$人により警邏可能ならば，
-  $W$は巡査$m$人による或る{\sepSectPatroll}で警邏される．
+  地図$(\Rset, V)$が{\graphLine}で全点の{\maxIdletime}が等しいとする．
+  集合$W \subseteq V$が或る運行により警邏されるならば，
+  $W$は同人数の巡査による或る{\sepSectPatroll}で警邏される．
 \end{lemm}
 
 \begin{proof}
   \newcommand{\leftmostpoint}{u}  % v以外の記号
   \newcommand{\leftmostpatroller}{巡査1}
 
-  巡査数$m$に関する帰納法で示す．
+  巡査の人数$m$に関する帰納法で示す．
   全点の{\maxIdletime}を$q$とする．
   $m = 0$のときは明らかなので，以下$m > 0$とする．
 
-  \ref{chapter: line}章始めの議論により，
-  $W$は或る順序保存運行$A = (a_1, \ldots, a_m)$により警邏される．
+  $W = \emptyset$のとき，$v_n$を$V$のうち最も右にある点として，
+  巡査$i\ (i \in \{ 1, \ldots, m \})$は
+  区間$[v_n + iq, v_n + (i + 1/2)q]$を速さ$1$で往復するとする．
+  これは{\sepSectPatroll}になっている．
 
-  $W$の点のうち最も左にあるものを$\leftmostpoint$とする\kcomment{［←$W$が空だと困る．］}．
+  以下では$W \neq \emptyset$とし，
+  $W$の点のうち最も左にあるものを$\leftmostpoint$とする．
 
-  所望の独立往復運行$(a' _1, \dots, a' _m)$を次のように作る．
+  所望の{\sepSectPatroll}$(a' _1, \dots, a' _m)$を次のように作る．
   まず
   区間$[\leftmostpoint, \leftmostpoint + q/2]$を速さ$1$で休まず往復する運行を
   $a' _1$とする．
@@ -119,69 +112,63 @@ $V_1, \ldots, V_n$として一点集合を与えることにより，
   $W$の点のうち$a' _1$によって警邏されないもの，
   すなわち$u + q / 2$よりも右にあるものの全体を$W ^-$とする．
 
-  各巡査は
-  $\leftmostpoint$より左に存在する時間
-  $\leftmostpoint$で停止するように変換する\kcomment{［←このように曖昧な書き方はよくない。$A$にこの変換を施し，それを改めて$A$と呼ぶことにしたのがわかるように書く。］}．
-  このようにしても$W$は警邏されたままであり，
-  またこれによりすべての巡査は
-  区間$[\leftmostpoint, +\infty)$にいる
-  % 存在する\kcomment{［←このように、特に「$\exists$」の意味を表すわけでなく単に「在る」「居る」と言いたいだけなのに「存在」「可能」などと言うのは良くない。］}
-  ことになる．
-  ここで，$A$で最も左にいる{\leftmostpatroller}に注目する．
-  順序保存であることから$\leftmostpoint$が$A$により訪問されるすべての時刻に
-  {\leftmostpatroller}は$\leftmostpoint$を訪問しているので，
-  $\leftmostpoint$は$a_1$により単独警邏されている．
-  %
-  補題\ref{lemm:RangeOfPatrollerOnLine}より，
-  任意の時刻$t \in \Rset$に対し
-  $a_1(t) \leq \leftmostpoint + q/2$である．
-  \kcomment{［←補題\ref{lemm:RangeOfPatrollerOnLine}はよそで使っていないなら、
-      ここに展開して整理した方が良いのでは。］}
-  よって，$W ^-$の点を$a _1$が訪れることはない．
+  \ref{chapter: line}章始めの議論により
+  $W$は或る順序保存運行$A = (a_1, \ldots, a_m)$により警邏される．
+  すると，$a_1$は任意の時刻$t$で$a_1(t) \leq u + q/2$を満たす．
+  \newcommand{\vout}{v_{\mathrm{out}}}
+  なぜならば，もし
+  或る位置$\vout > u + q/2$と時刻$t_0$があって$a_1(t_0) = \vout$であるとする．
+  $\vout$と$u$の間の移動には
+  少なくとも時間$\abs{u - \vout} > q / 2$を要するから，
+  巡査$1$は区間$[t_0 - q / 2, t_0 + q / 2]$に属する時刻に$u$を訪問できない．
+  この区間の長さは$q$であり，
+  順序保存運行であるから他の巡査もこの時間に$u$を訪問しないので，
+  $u$が警邏されていることに反する．
+  よって，$W ^-$の点を巡査$1$が訪れることはない．
 
   したがって$W ^-$は$(a _2, \ldots, a _m)$により警邏され，
-  ゆえに帰納法の仮定から，或る独立往復運行$(a' _2, \ldots, a' _m)$により警邏される．
+  ゆえに帰納法の仮定から，或る{\sepSectPatroll}$(a' _2, \ldots, a' _m)$により警邏される．
   これに$a' _1$を加えた$(a' _1, a' _2, \dots, a' _m)$は
-  $W$を警邏する{\sepSectPatroll}である\kcomment{［←この最後の文が正しくなるように「独立往復運行」を定義しないといけない］}．
+  $W$を警邏する{\sepSectPatroll}である．
 \end{proof}
 
 
 補題\ref{lemm:LineUnaryIdletimeIndependentInterval}により，
-地図$(U, V)$が{\graphLine}で全点の{\maxIdletime}が等しい場合は
+地図$(\Rset, V)$が{\graphLine}で全点の{\maxIdletime}が等しい場合は
 {\sepSectPatroll}のみを考えればよい．
 よって，
-区間$S_1, \ldots, S_n\ (S_i := [v_i, v_i + q/2], v_i \in V)$から
+式\eqref{equation: candidate segments}のように定義される
+区間$S_1, \ldots, S_{n + m}$から
 $m$人の巡査がそれぞれ担当する重複のない$m$個の区間のうち
 利得の合計が最大となるものを求め，それらに含まれる点を求めればよい．
 これは以下のアルゴリズムにより求めることができる．
 
 初めに{\graphLine}上の点をソートしておき，左側から順に$v_1, v_2, \ldots, v_n$とする．
-各区間$S_i$（$i \in \{ 1, \ldots, n \}$）に属する点の利得の和
-$P_i := \sum_{v_j \in S_i} p_j$を求める．
-また$S_i$と重複部分のない区間の添え字のうち$i$未満で最大のもの
+各区間$S_i$（$i \in \{ 1, \ldots, n + m \}$）に属する点の利得の和
+$P_i := \sum_{v_j \in S_i} p_j$を求める（$i > n$に対しては$P_i = 0$である）．
+$S_i$と重複部分のない区間の添え字のうち$i$未満で最大のもの
 （存在しない場合は$0$とする）を求め，$h_i$と書く．
 $v_1, \ldots, v_n$がソートしてあるので
 $P_1, \ldots, P_n$と$h_1, \ldots, h_n$を合計$O(n)$で求めることができる．
 %
 次に，漸化式\eqref{eq:LineWISPDP}に従う動的計画法で
 利得の合計が最大となる重複のない$m$個の区間を選ぶ（$m$は巡査数）．
-$OPT(k, l)$は，区間$S_1, \ldots, S_l$から最大$k$個の重複のない区間を選ぶときの
+$\mathit{OPT}(k, l)$は，区間$S_1, \ldots, S_l$から最大$k$個の重複のない区間を選ぶときの
 利得の合計の最大値を表す．
-$OPT(m, n)$が全体の利得の最大値となる．
+$\mathit{OPT}(m, n + m)$が全体の利得の最大値となる．
 \begin{align}
   \label{eq:LineWISPDP}
-  OPT(k, l) = 
+  \mathit{OPT}(k, l) = 
   \begin{cases}
     0 & \text{$k = 0$または$l = 0$のとき} \\
     \max \{
-      OPT(k, l - 1), 
-      P_l + OPT(k - 1, h_l)
+      \mathit{OPT}(k, l - 1), 
+      P_l + \mathit{OPT}(k - 1, h_l)
     \}
     & \text{それ以外の場合}
   \end{cases}
 \end{align}
-最後に，$OPT(m, n)$において選ばれた区間をトレースバックして求め，
-この区間に含まれる点全体を出力して終了する．
+最後に，選ばれた$m$個の区間に含まれる点全体を出力して終了する．
 
 このアルゴリズムの計算量は全体で$O(n \log n + nm)$となる．
 これで定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}が示された．

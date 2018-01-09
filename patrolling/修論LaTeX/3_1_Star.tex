@@ -5,41 +5,46 @@
 利得か{\maxIdletime}のいずれかが一般であれば，
 {\patProb}は巡査が一人であってもNP困難であることが
 知られている\cite[Theorems 5 and 6]{coene2011charlemagne}．
-よってここでは，巡査数が一般であって
-全点の利得と{\maxIdletime}が等しい場合についての次のことを示す．
+よってここでは，
+全点の利得と{\maxIdletime}が等しい場合について次のことを示す．
 
 \begin{theo}
   \label{theo:StarUnaryProfitAndIdletime}
   地図が{\graphStar}で全点の利得と{\maxIdletime}が等しい場合，
-  {\patProb}は（巡査数が一般であっても）
+  {\patProb}は（巡査の人数が一般であっても）
   多項式時間で解くことができる．
 \end{theo}
 
-{\independentPatProb}においては，地図が{\graphStar}で巡査数が一般の場合は
+{\independentPatProb}においては，地図が{\graphStar}で巡査の人数が一般の場合は
 利得と{\maxIdletime}がすべて等しくてもNP困難になることが
 Coeneらにより示されている\cite[Theorem~10]{coene2011charlemagne}．
-{\graphLine}の場合では複雑な協力による警邏があり得たこと（\ref{section:LineArbitraryIdletime}節）から考えると，
-単独警邏の条件を外した{\patProb}の方が簡単に解けるというのは意外な結果に思われる．
+{\graphLine}の場合では複雑な協力による警邏があり得たこと
+（\ref{section:LineArbitraryIdletime}節）から考えると，
+協力を許した方が簡単に解けるというのは意外な結果に思われる．
 これは，
 {\graphStar}の場合，
 {\independentPatProb}では
-単独警邏の条件のためにうまく点集合を分割しなければならないことが難しさを生みNP困難になるのに対し，
-{\patProb}では単独警邏の条件が無いことで
-後述の定理\ref{lemm:StarConditionOfGuarding}の証明中に述べる単純な運行が可能となるためである．
+うまく点集合を分割しなければならないことが難しさを生みNP困難になるのに対し，
+{\patProb}では
+後述の補題\ref{lemm:StarConditionOfGuarding}の証明中に述べる
+単純な運行が可能となるためである．
 
 図\ref{figure: graph_classes}，\ref{figure: stars}で注意したように
 {\graphStar}の中心は警邏すべき点ではないが，
-本章では中心と点$v$を結ぶ辺（両端点を含む）を$e_v$，その長さを$d_v$と書く．
+本章では中心と点$v$を結ぶ辺（端点のうち中心は含まず$v$のみを含む）を$e_v$，
+その長さを$d_v$と書く．
 なお，中心も警邏すべき点である場合を考えるには，
 $d_v = 0$であるような点$v$を追加すればよい．
+また，$d_v = 0$のときは$e_v$は一点$v$とする．
 
 \begin{lemm}
   \label{lemm:StarCostOfVertex}
   {\graphStar}において，
   {\maxIdletime}$q$の
   点$v$が警邏されているならば，任意の時刻$t \in \Rset$に対し，
-  長さの和が$\min(2d_v, q)$であるような互いに交わらない有限個の時刻区間の合併$J \subseteq [t, t + q)$が存在し，
-  $J$に属するすべての時刻において少なくとも一人の巡査が辺$e_v$上にいる．
+  長さの和が$\min(2d_v, q)$であるような
+  互いに交わらない有限個の時刻区間の合併$J \subseteq [t, t + q)$が存在し，
+  $J$に属するすべての時刻において少なくとも一人の巡査が辺$e_v$または$v$上にいる．
 \end{lemm}
 
 \begin{proof}
@@ -52,7 +57,7 @@ $d_v = 0$であるような点$v$を追加すればよい．
 
   警邏の条件から$v$は時刻区間$[t, t + q)$に少なくとも1回訪問される．
   もしその訪問時刻のうち$[t + d_v, t + q - d_v)$に属するもの$\tau$があれば，
-  長さ$2 d _v$の時刻区間$J = [\tau - d _v, \tau + d _v]$にわたって
+  長さ$2 d _v$の時刻区間$J = (\tau - d _v, \tau + d _v)$にわたって
   巡査は辺$e_v$上におり，これは$[t, t + q)$に含まれる．
 
   そうでないとき，$v$は
@@ -63,13 +68,14 @@ $d_v = 0$であるような点$v$を追加すればよい．
       点$v$の警邏の条件と場合分けの条件から$\tau$の次の訪問時刻$\sigma$は
       $t + q - d_v < \sigma \leq \tau + q$を満たす．
       $\tau$と$\sigma$それぞれの前後$d_v$の時間のうち$[t, t + q)$に含まれる
-      時刻区間$J = [t, \tau + d_v] \cup [\sigma - d_v, t + q)$にわたって巡査は辺$e_v$に存在し，
+      時刻区間$J = [t, \tau + d_v) \cup (\sigma - d_v, t + q)$%
+      にわたって巡査は辺$e_v$に存在し，
       その長さは
       $q - \max(0, (\sigma - d_v) - (\tau + d_v))
         = \min(q, q - \sigma + \tau + 2d_v)
         \geq 2d_v$．
       \label{enum:firstInterval}
-    \item $[t + q - d_v, t + q)$に1回以上訪問されるときも\ref{enum:firstInterval}と同様．
+    \item $[t + q - d_v, t + q)$に1回以上訪問されるときも(\ref{enum:firstInterval})と同様．
     \qedhere
   \end{inparaenum}
 \end{proof}
@@ -78,8 +84,7 @@ $d_v = 0$であるような点$v$を追加すればよい．
 \begin{lemm}
   \label{lemm:StarConditionOfGuarding}
   地図が{\graphStar}で全点の{\maxIdletime}が$q$のとき，
-  点集合$V$の部分集合$W$が
-  $m$人の巡査により警邏可能であるには，
+  点集合$V$の部分集合$W$を警邏する$m$人の運行が存在するには，
   \begin{equation}
     \label{equation: star bound}
     \sum_{v \in W} \min(2d_v, q) \leq mq
@@ -90,40 +95,39 @@ $d_v = 0$であるような点$v$を追加すればよい．
 \begin{proof}
   十分であることを示す．
   \eqref{equation: star bound}が成り立つとき，
-  $m$人の巡査の運行$(a_1, \ldots, a_m)$を次のように定めれば$W$の全点を警邏可能である．
-  $W' := \{ v \in W \mid 2d_v \geq q \}$，$l := m - \card{W'}$とする．
-  まず，$\card{W'}$人の巡査$s_{l + 1}, \ldots, s_m$は
-  $W'$の各点に一人ずつ停止しこれを警邏する．
-  巡査$s_1, \ldots, s_l$は
-  速さ$1$で動きながら$W \setminus W'$の全点をちょうど1度ずつ訪問する巡回を繰り返す．
-  このとき，巡査$s_i$は巡査$s_1$より時間$(i - 1)q$遅れて同じ運行を行うようにする
-  （すなわち，$a_i(t) = a_1(t - (i - 1)q)$となるように運行を定める）．
+  $m$人の巡査の運行$(a_1, \ldots, a_m)$を次のように定めれば$W$の全点が警邏される．
+  $W' := \{ v \in W \mid 2d_v > q \}$，$l := m - \card{W \setminus W'}$とする．
+  巡査$1$は中心から出発して速さ$1$で動きながら$W'$の全点をちょうど1度ずつ訪問し中心に戻るという巡回を繰り返す．
   中心点と点$v$の1回の往復には$2d_v$の時間を要するので，
-  一人の巡査がある点から出発し速さ1で$W \setminus W'$の全点を1度ずつ訪問して最初の点に戻ってくるのにかかる時間は$\sum_{v \in W \setminus W'} 2d_v$である．
-  この時間は
-  $\sum_{v \in W \setminus W'} 2d_v
-    = \sum_{v \in W} \min(2d_v, q) - \card{W'}q
-    \leq (m - \card{W'})q$より$(m - \card{W'})q$以下となるので
-  $(m - \card{W'})q$人の巡査が先ほどの巡回を行うと，
-  $W \setminus W'$のどの点も時間$q$以上放置されない．
+  1回の巡回にかかる時間は
+  $\sum_{v \in W'} 2d_v
+    = \sum_{v \in W} \min(2d_v, q) - \card{W \setminus W'}q
+    \leq (m - \card{W \setminus W'})q = lq$%
+  より$lq$以下となる．
+  巡査$i\ (i \in \{ 2, 3, \ldots, l \})$は巡査$1$より時間$(i - 1)q$遅れて
+  同じ運行を行うようにする
+  （すなわち，$a_i(t) = a_1(t - (i - 1)q)$となるように運行を定める）．
+  $a_1, \ldots, a_l$により$W'$の各点は時間$q$以上放置されることなく訪問される．
+  $W \setminus W'$の各点は巡査$(l + 1), \ldots, m$が一人ずつ停止しこれを警邏する．
   これにより$W$の全点が警邏される．
 
   必要であることを示す．
   $W$が$m$人の巡査により警邏されているとすると，
   補題\ref{lemm:StarCostOfVertex}より，
-  各点$v \in W$について，どの長さ$q$の時間にも
-  $\min(2d_v, q)$の時間は少なくとも一人の巡査が$e_v$上に存在する．
-  よって，$W$の全点の警邏には時間$q$あたり合計$\sum_{v \in W} \min(2d_v, q)$の巡査の時間を要する．
-  巡査は同時に2つ以上の辺上には存在できないので，
+  各点$v \in W$について，
+  どの長さ$q$の時刻区間$[t, t + q)$にも合計$\min(2d_v, q)$の時間は
+  いずれかの巡査が$e_v$上に存在し，
+  その時間の合計は$\sum_{v \in W} \min(2d_v, q)$である．
+  $m$人の巡査は各時刻$\tau \in [t, t + q)$に高々1つの辺に存在するので，
   全点警邏しているならば\eqref{equation: star bound}が成り立つ．
 \end{proof}
 
 
 補題\ref{lemm:StarConditionOfGuarding}より
-{\graphStar}の任意の点部分集合$W$が警邏可能であるかを
+{\graphStar}の任意の点集合$W$が警邏できるか否かを
 $W$の点の隣接辺の長さだけから簡単に計算できることが分かった．
-定理\ref{theo:StarUnaryProfitAndIdletime}では，
-全点の利得と{\maxIdletime}が等しい場合を考えているので
+定理\ref{theo:StarUnaryProfitAndIdletime}では
+全点の利得と{\maxIdletime}が等しい場合を考えているので，
 警邏する部分集合としては隣接辺の短い点から順に選べばよい
 （2点$v, w$について，$d_v > d_w$ならば，
 $w$を警邏せず$v$を警邏する運行は$v$を警邏せず$w$を警邏する運行に必ず変換できる）．

@@ -6,17 +6,18 @@
 所与の領域を一人または複数の巡査が動き回り，
 その領域内の指定された場所を十分な頻度で訪れることを
 警邏（patrolling）という\cite{
-  Dumitrescu:2014:CGC:2636805.2636822,
+  40021287065,
   chen2013fence,
   coene2011charlemagne,
-  czyzowicz2011boundary}．
+  czyzowicz2011boundary,
+  Dumitrescu:2014:CGC:2636805.2636822}．
 \ncomment{［文献追加］}
 
-本稿では，与えられた距離空間$U$内を巡査$m$人が速さ$1$以下で動きまわることにより，
+本論文では，与えられた距離空間$U$内を巡査$m$人が速さ$1$以下で動きまわることにより，
 有限集合$V \subseteq U$に属する点を十分な頻度で訪れるという目標を考える．
 距離空間$U$といっても，
-$V$の点どうしを結ぶ最短路以外を巡査が歩むことは無駄であるから，
-$V$を頂点集合とし，辺に長さのついたグラフを考え，
+$V$の点どうしを結ぶ最短路以外を歩むことは無駄であるから，
+$V$を頂点集合として辺に長さのついたグラフを考え，
 $U$はその頂点および辺上の点のみからなるとしてよい．
 このような空間と点集合の組$(U, V)$を\defword{地図}と呼ぶ．
 
@@ -27,7 +28,7 @@ $U$はその頂点および辺上の点のみからなるとしてよい．
 任意の時刻$s$，$t \in \Rset$に対し$a _i (s)$と$a _i (t)$の距離が$\abs{s - t}$を超えないものをいう．
 巡査$m$人による\defword{運行}とは，
 全巡査の運行を定めた組$A = (a _1, \dots, a _m)$をいう．
-$V$の各頂点には利得および{\maxIdletime}と呼ばれる正整数が定まっている．
+$V$の各頂点には\defword{利得}および\defword{{\maxIdletime}}と呼ばれる正整数が定まっている．
 点$v \in V$の{\maxIdletime}が$q$であるとき，
 巡査達が運行$A = (a _1, \dots, a _m)$で点$v$を\defword{警邏}するとは，
 長さ$q$のどの時間にも
@@ -35,14 +36,13 @@ $V$の各頂点には利得および{\maxIdletime}と呼ばれる正整数が定
 （任意の時刻$t \in \Rset$に対して
 巡査$i$と時刻$\tau \in [t, t + q)$が存在し$a _i (\tau) = v$）
 ことをいう．
-巡査達が運行$A$により点集合$W \subseteq V$を\defword{警邏}するとは，
-各点$v \in W$に対し巡査達が運行$A$で$v$を警邏することをいう．
-そのような運行が存在するとき$W$は$m$人により\defword{警邏可能}であるという．
+巡査が運行$A$により集合$W \subseteq V$に属するすべての点を警邏するとき，
+巡査は$A$により$W$を\defword{警邏}するという．
 
 \begin{patrollingProblem}
   巡査の人数$m \in \Nset$と地図$(U, V)$および
-  その各頂点の利得と{\maxIdletime}が与えられる．
-  $m$人の巡査により警邏可能な頂点集合のうち
+  $V$の各点の利得と{\maxIdletime}が与えられる．
+  $m$人の巡査の運行により全点を警邏できる$V$の部分集合のうち
   利得の和が最大となるものを求めよ．
 \end{patrollingProblem}
 
@@ -51,57 +51,62 @@ $V$の各頂点には利得および{\maxIdletime}と呼ばれる正整数が定
 \begin{figure}
   \centering
   \includegraphics[scale=1.0]{\figdir/cooperative.pdf}
-  \caption{図の上部に描かれている四点からなる{\graphLine}の地図の全点を警邏する二つの運行．
+  \caption{図の上部に描かれた地図において，四つの点すべてを警邏する二つの運行．
     点と辺に書かれた数は，それぞれ{\maxIdletime}と距離である．
     左図の運行では二人の巡査が協力して中央の二点を警邏している．
-    これを禁じ，各点がいずれかの巡査により単独警邏されることを求める場合は，
+    これを禁じ，各点をいずれかの巡査が単独で警邏することを求めると，
     右図のように三人の巡査を要する．}
   \label{figure: cooperative}
 \end{figure}
 Coeneら\cite{coene2011charlemagne}は似た問題を扱っているが，
 このような協力を許さず，
 図\ref{figure: cooperative}右のように
-各点を専ら一人の巡査が「担当」することを要求している．
-つまり，各点$v \in W$が\defword{単独警邏}される（すなわち
-或る一人の巡査がおり，
-その巡査のみの運行が$v$を警邏する）ことを要求しているのである．
+各点$v \in W$に対して一人の巡査がおり，
+その巡査のみの運行が$v$を警邏することを要求している．
 対比のため本稿ではこの問題を\defword{\independentPatProb}と呼ぶことにする
 （\cite{coene2011charlemagne}ではMPLPPと称している）．
-Coeneら\cite{coene2011charlemagne}の諸結果においては，
-この単独警邏という限定が，
-多項式時間算法の設計にも困難性の証明にも重要な役割を果している．
+Coeneら\cite{coene2011charlemagne}の諸結果においては
+この限定が，
+多項式時間算法の設計にも困難性の証明にも使われた．
 この限定を外したときの様子を調べるのが本稿の目的である．
 
 {\patProb}は，巡査が一人かつ
 全点の利得と{\maxIdletime}が等しい場合に限っても，
 ハミルトン路問題からの帰着により
 NP困難である\cite[Theorem~8]{coene2011charlemagne}．
-そこで本稿では入力される地図を限定する．
-具体的には線分（{\graphLine}），星（{\graphStar}），
-すべての辺の長さが等しい完全グラフ（{\graphUnit}）を扱う
+そこで本稿では入力される地図を次のそれぞれの形状に限定する
 （図\ref{figure: graph_classes}）．
 \begin{figure}
   \centering
   \includegraphics[scale=1.0]{\figdir/graph_classes.pdf}
   \caption{本論文では
     {\graphLine}（左），{\graphStar}（中），{\graphUnit}（右，但し各辺の長さが等しい）を扱う．
-    {\graphStar}は葉のみを警邏の対象とする（中央の点は移動の途中で使うのみであり，{\maxIdletime}は定められていない）．}
+    {\graphStar}は葉のみを警邏の対象とする（中心は移動の途中で使うのみであり，
+    {\maxIdletime}は定められていない）．}
   \label{figure: graph_classes}
 \end{figure}
-このうち{\graphStar}では
-各葉$v$のみに{\maxIdletime}（と中心からの距離$d _v$）が定められている．
-つまり厳密には，
-警邏の対象となる頂点集合$V$は葉のみであり，
-その二点$u$，$v \in V$間の距離が
-和$d _u + d _v$の形で表されるという性質を満す完全グラフと考えてよいのであるが（図\ref{figure: stars}），
+\begin{description}
+\item[{\graphLine}]
+  $U$は直線である．
+\item[{\graphStar}]
+  $U$は\defword{中心}と呼ばれる一点を
+  各点$v \in V$へ結ぶ辺のみからなる．
+\item[{\graphUnit}]
+  $V$の各二点間に辺があり，その長さはすべて等しい．
+\end{description}
+このうち{\graphLine}や{\graphStar}では，
+$U$は警邏すべき対象である$V$の点どうしを結ぶ最短路以外の部分を含んでいるが，
+{\graphLine}では$V$の全点の外側にある部分を歩むことは無駄であるし，
+{\graphStar}も$V$上の完全グラフに適切に辺の長さを定めたものとみることができるので
+（図\ref{figure: stars}），
 \begin{figure}
   \centering
   \includegraphics[scale=1.0]{\figdir/stars.pdf}
   \caption{左図の{\graphStar}は，各二点間に右図のような距離を定める．}
   \label{figure: stars}
 \end{figure}
-以下では便宜上図\ref{figure: graph_classes}や図\ref{figure: stars}左のような形状で図示・説明を行う．
-こう考えると各辺の長さが$d$の{\graphUnit}は，
+地図は冒頭で述べたように$V$上のグラフとして与えられると考えて差支えない．
+なお，このように考えると各辺の長さが$d$の{\graphUnit}は，
 中心から各頂点への距離が$d/2$の{\graphStar}と同じであるから，
 {\graphUnit}は{\graphStar}の特殊な場合である．
 
@@ -113,9 +118,8 @@ Coeneらの{\independentPatProb}についての結果との比較も含めて
 \item 
   {\graphLine}の
   {\independentPatProb}は動的計画法により多項式時間で解けることが
-  示されていた\cite[Theorem~11]{coene2011charlemagne}が，
-  その正しさは単独警邏という設定に強く依存している．
-  本稿では{\patProb}について，
+  示されていた\cite[Theorem~11]{coene2011charlemagne}．
+  本稿では複数人が一点を警邏することを認めた{\patProb}について，
   全点の{\maxIdletime}が等しい場合には多項式時間で解けることを示す
   （定理\ref{theo:LineUnaryIdletimePolyTimeSolvable}）．
 \item
@@ -131,8 +135,9 @@ Coeneらの{\independentPatProb}についての結果との比較も含めて
   {\graphUnit}については，
   本稿では全点の{\maxIdletime}が等しい場合は{\patProb}が多項式時間で解けることを示す
   （定理\ref{theo:UnitUnaryIdletime}）．
-  地図が{\graphStar}の場合は全点の{\maxIdletime}が等しくても利得が一般だとNP困難になるので，
-  これにより{\graphUnit}は{\graphStar}よりも簡単に解ける場合となっていることが分かる．
+  地図が{\graphStar}の場合は
+  巡査が一人で全点の{\maxIdletime}が等しくても利得が一般だとNP困難になるので，
+  {\graphUnit}は{\graphStar}よりも簡単に解ける形状と言える．
 \end{itemize}
 
 {\graphLine}や{\graphUnit}については，
@@ -144,19 +149,21 @@ NP困難ではないかと予想したが，これも示すことができなか
 これらの未解決な場合については，
 警邏ではなく定時訪問を目指す次のような問題を考えた．
 %
-運行$A = (a _1, \ldots, a _m)$が点$v \in U$を
-{\exactTime}$(q, r)\ (q \in \Nset, r \in \{ 0, 1, \ldots, q - 1 \})$%
-に\defword{定時訪問}するとは，
+点$v \in V$の{\exactTime}が
+$(q, r)\ (q \in \Nset, r \in \{ 0, 1, \ldots, q - 1 \})$%
+であるとき，
+巡査達が運行$A = (a _1, \ldots, a _m)$で点$v$を\defword{定時訪問}するとは，
 任意の時刻$t := q k + r\ (k \in \Zset)$に対し
 巡査$i$が存在し$a _i (t) = v$であることをいう．
 
 \begin{timeSpecifiedPatrollingProblem}
-  巡査の人数$m$と地図$(U, V)$および$V$の各点の{\exactTime}と利得が与えられる．
-  $m$人の巡査により全点を定時訪問可能な$V$の部分集合のうち
+  巡査の人数$m \in \Nset$と地図$(U, V)$および
+  $V$の各点の利得と{\exactTime}が与えられる．
+  $m$人の巡査の運行により全点を定時訪問できる$V$の部分集合のうち
   利得の和が最大となるものを求めよ．
 \end{timeSpecifiedPatrollingProblem}
 
-また，利得最大化ではなく全点を定時訪問可能か判定する問題を{\timeSpecifiedPatProbDecision}と呼ぶ．
+また，利得最大化ではなく全点を定時訪問できるか否かを判定する問題を{\timeSpecifiedPatProbDecision}と呼ぶ．
 
 
 {\graphLine}については{\timeSpecifiedPatProbDecision}を解く貪欲アルゴリズムを

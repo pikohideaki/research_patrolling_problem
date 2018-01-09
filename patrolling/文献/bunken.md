@@ -38,17 +38,6 @@
             * 最適戦略は領域の形状と巡査の人数による
             * TSP cyclic 戦略がほとんどの場合最適だが，動的な環境の場合や巨大グラフの場合，長い辺が存在する場合などに問題がある．
 
-+ Finding Optimal Routes for Multi-Robot Patrolling in Generic Graphs
-    * abst
-        * 複数の環境について理論的な分析とシミュレーション結果を与える．
-        * cyclic-based strategies がほとんどの場合優れる．巡査人数が多く偏ったグラフでは partitioning strategies が優れる．
-        * グラフの形状と巡査の人数が戦略を決定するのに重要．
-    * sec. 1
-        * 複数人の巡査による最適戦略を求めるのはNP困難なので，4つの戦略を調べる．
-    * sec. 4 cyclic-based strategies
-        * TSPの解から巡回する順番を決定
-        * NP困難なので最小全域木による近似
-
 + Theoretical Analysis of the Multi-agent Patrolling Problem
     * sec.2. The patrolling task
         * $n$ 点からなるグラフ $G = (V, E)$
@@ -162,35 +151,3 @@
     * 判定 / idle-time最小化 を閉路で
     * $\textrm{idle-time} \geq 1/\sum v_i$
     * 戦略 $\mathcal{A}_1$：速さに比例した長さを警備．速さがすべて同じなら最適．
-
-+ Boundary Patrolling by mobile Agents with Distinct Maximum speed.
-    * $k$-mobile agents on cycle with unit length
-    * each agents has its own max-speed
-    * idle-time 最小化 / 判定
-    * 2,3,4人の巡査で最適解
-
-+ Frequency-Based Multi-Robot Fence Patrolling
-    * 線分上の警邏
-    * 巡査は複数
-
-+ Vehicle minimization for periodic deliveries
-    * PLPPの論文からの引用，訪問間隔指定問題
-    * 巡査数最小化
-
-+ Fence patrolling by mobile agents with distinct speeds
-
-+ \cite{Dumitrescu:2014:CGC:2636805.2636822}
-    * グラフ上の警邏について、線分や閉路の全体を警備する設定を中心に現状をまとめている。
-
-+ Simple strategies versus optimal schedules in multi-agent patrolling
-    * 線分を警邏
-        * 異なる速度の複数人の巡査で
-        * 線分上のすべての点を単位時間 $T$ ごとに一度は訪問
-        * なるべく長い線分を警邏する戦略が知りたい
-    * 閉路を警邏
-        * 閉路上を一方向に進むことができる複数人の巡査で警邏
-    * 一点を警備
-        * 巡査 $1, \ldots, k$ は時間 $a_i$ 以上に一度この点を警備できる．
-
-+ GORAIN2015712
-    * 巡査数最小化

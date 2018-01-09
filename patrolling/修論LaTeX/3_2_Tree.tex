@@ -1,8 +1,5 @@
 \section*{木の場合}
 
-\ncomment{［編集中］}
-
-
 {\graphStar}を一般化した地図の形状として木を考えることができる．
 {\graphStar}のときと同様，木の各葉のみに{\maxIdletime}が定められているとする．
 長さが$0$の辺を許せば，任意の木はその葉どうしの距離を保ったまま二分木に変換できるので，
@@ -49,24 +46,25 @@ $3$人の巡査が{\maxIdletime}$10$ずつずれて行うと全点を警邏で�
 \newcommand{\lrceil}[1]{\lceil{#1}\rceil}
 
 {\separatedPatroll}では，補題\ref{lemm:StarConditionOfGuarding}より，
-星$L$の全点警邏に$\lrceil{S_L / q}$人，
-星$R$の全点警邏に$\lrceil{S_R / q}$人の巡査を要する．
+左の星の全点警邏に$\lrceil{S_L / q}$人，
+右の星の全点警邏に$\lrceil{S_R / q}$人の巡査を要する．
 全員協力運行では$T$全点の警邏に
 $\lrceil{( 2b + S_{L \cup R} ) / q}
  = \lrceil{( 2b + S_L + S_R ) / q}$%
 人の巡査を要する．
 よって，$T$は多くとも
 $\min(
-        \lrceil{( 2b + S_L + S_R ) / q},
-        \lrceil{S_L / q} + \lrceil{S_R / q} )$%
+  \lrceil{( 2b + S_L + S_R ) / q},
+  \lrceil{S_L / q} + \lrceil{S_R / q} )$%
 の巡査で警邏できる．
 
-$T$の左右の星はそのままで橋の長さだけ短くした{\graphTree}を$T'$とすると，
-$T'$の警邏に必要な最小巡査数は明らかに$T$の警邏に必要な最小巡査数以下となる（橋に存在する時間が同じになるような運行を考えればよい）．
-$T$の橋の長さを$0$にしたものを$T'$とすると，$T'$全体は点集合が$L \cup R$の{\graphStar}となり，全点警邏には$\lrceil{(S_L + S_R) / q}$人の巡査が必要である．
-よって，$T$の警邏には少なくとも$\lrceil{(S_L + S_R) / q}$人の巡査が必要である．
+$T$の橋の長さを$0$にした地図を$T'$とすると，
+$T'$全体は点集合が$L \cup R$の{\graphStar}となり，
+全点警邏には$\lrceil{(S_L + S_R) / q}$人の巡査が必要である．
+$T'$の全点警邏に必要な最小巡査数は明らかに$T$の全点警邏に必要な最小巡査数以下となるので，
+$T$の警邏には少なくとも$\lrceil{(S_L + S_R) / q}$人の巡査が必要である．
 
-以上より，$T$全点の警邏に必要な巡査の最小数を$m_{\rm min}$と書くと，
+以上より，$T$の全点警邏に必要な巡査の最小数を$m_{\rm min}$と書くと，
 \[
   \lrceil{(S_L + S_R) / q}
     \leq m_{\rm min}
@@ -79,8 +77,7 @@ $T$の橋の長さを$0$にしたものを$T'$とすると，$T'$全体は点集
 $m_{\rm min} = \min(
         \lrceil{( 2b + S_L + S_R ) / q},
         \lrceil{S_L / q} + \lrceil{S_R / q} )$，
-即ち，{\separatedPatroll}と{\cooperativePatroll}のいずれかが最適であると予想しているが，これを示すことはできていない．
-
+即ち，{\separatedPatroll}か{\cooperativePatroll}のいずれかは最適であると予想しているが，これを示すことはできていない．
 
 % \begin{itemize}
 %   \item 運行の帰着で示すのが難しそう（仮説の運行は複数人の動きを同時に決めているので）．

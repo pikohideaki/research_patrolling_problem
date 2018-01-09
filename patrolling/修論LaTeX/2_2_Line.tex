@@ -164,7 +164,8 @@ $\minpart_2 :=
 このように，集合$X$の左側から貪欲に運行可能集合を取り出していく操作を再帰的に繰り返すと，
 最小の順序保存分割$\{ \minpart_1, \minpart_2, \ldots, \minpart_h \}$が得られる．
 これを$\minpart(X)$と書くことにする．
-全点を定時訪問可能かどうかは$\card{\minpart(X)} \leq m$が成り立つか判定すればよい．
+全点を定時訪問する運行があるかどうか知るには，
+$\card{\minpart(X)} \leq m$が成り立つか判定すればよい．
 
 \newcommand{\subsegment}[3]{{#1}_{[#2:#3)}}
 以下では，集合$S \subseteq \Zset \times \Zset$に対して
@@ -212,8 +213,8 @@ $\subsegment{X}{0}{T}$の分割$\{ \subsegment{\minpart_1}{0}{T}, \ldots, \subse
   入力を有限集合$F$とする．
   初期値を$\mathcal{P} = \{\}$, $F' = F$とし，
   $F' \neq \emptyset$である限り
-  次の\ref{item:alg_step_first}から\ref{item:alg_step_last}を繰り返す．
-  \begin{enumerate}
+  次の(\ref{item:alg_step_first})から(\ref{item:alg_step_last})を繰り返す．
+  \begin{enumerate}[(i)]
   \item \label{item:alg_step_first}
     $P \gets \{ (t, x) \in F' \mid L(t, x) \cap F' = \emptyset \}$
   \item

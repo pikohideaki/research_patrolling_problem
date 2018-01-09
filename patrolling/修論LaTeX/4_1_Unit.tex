@@ -19,6 +19,7 @@
 
 
 \section{全点の{\maxIdletime}が等しい場合}
+\label{section: UnitUnaryIdletime}
 
 \begin{theo}
   \label{theo:UnitUnaryIdletime}
@@ -28,28 +29,22 @@
 \end{theo}
 
 \begin{proof}
+  {\maxIdletime}を$q$とし，各辺の長さを$d$とする．
   {\graphUnit}は{\graphStar}の特殊な場合であるから，
-  補題\ref{lemm:StarConditionOfGuarding}から
-  {\graphUnit}の地図$(U, V)$の$V$の全点の{\maxIdletime}が$q$のとき，
-  点集合$V$の任意の部分集合$W$について
-  $W$を$m$人の巡査により警邏可能であることの必要十分条件は
-  $d$を各辺の長さとして
-  \[
-    \sum_{v \in W} \min(d, q) = \card{W}\min(d, q) \leq mq
-  \]
-  である．
-
-  地図が{\graphUnit}の場合，
-  全点の{\maxIdletime}が等しいならば警邏する部分集合$W$は利得の大きい点から選べばよい
-  （2点$v, w$について，$w$より$v$の方が利得が大きい場合，
-  $w$を警邏せず$v$を警邏する運行は$v$を警邏せず$w$を警邏する運行に必ず変換できる）．
-  $\card{W}\min(d, q) \leq mq$を満たす最大の$\card{W}$は
-  $\card{W} = \left\lfloor {mq}/{\min(d, q)} \right\rfloor$であるので，
-  利得の最も大きい$\lfloor {mq}/{\min(d, q)} \rfloor$点を選べばよい．
+  補題\ref{lemm:StarConditionOfGuarding}が適用できる．
+  すなわち頂点集合$W$が$m$人で警邏できるためには，
+  式\eqref{equation: star bound}が$d _v = d / 2$で成立つこと，
+  つまり$W$に属する点の個数$\card{W}$が
+  \begin{equation}
+    \card{W} \cdot \min (d, q) \leq m q
+  \end{equation}
+  を満すことが必要十分である．
+  したがって，利得の大きい順に
+  $\lfloor m q / \min (d, q) \rfloor$個の点を選んだものが最適の$W$である．
 \end{proof}
 
 {\graphStar}で全点の{\maxIdletime}が等しい場合は，
-警邏可能な点の最大数が式\eqref{equation: star bound}で与えられることから，
+警邏できる点の最大数が式\eqref{equation: star bound}で与えられることから，
 利得が等しい場合は枝の短いものから選べばよく（定理\ref{theo:StarUnaryProfitAndIdletime}），
 枝の長さが等しい場合は利得の大きいものから選べばよい（定理\ref{theo:UnitUnaryIdletime}）
 というようにまとめることができる．

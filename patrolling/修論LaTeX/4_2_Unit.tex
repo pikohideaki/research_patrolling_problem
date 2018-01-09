@@ -1,4 +1,6 @@
 \section{{\maxIdletime}が一般の場合}
+\label{section: UnitArbitraryIdletime}
+
 \ref{chapter: star}章冒頭で述べた通り，
 地図が{\graphStar}の場合については，
 {\maxIdletime}が一般の場合は
@@ -14,7 +16,7 @@
 
 地図$(U, V)$が{\graphUnit}で
 各点$v_i \in V$の{\exactTime}が$(q_i, r_i)$のとき，
-巡査一人で$V$の全点を定時訪問可能かどうかは次のように多項式時間で判定できる．
+巡査一人で$V$の全点を定時訪問できるかどうかは次のように多項式時間で判定できる．
 %
 辺の長さを$d$とすると，
 $V$の異なる2点$i, j$の間の移動には時間$d$を要することから，
@@ -96,7 +98,7 @@ $\abs{(r_i' - r_j') - g}$%
   以上より，
   $(i, j) \in E$と$M$の2点$i, j$を両方定時訪問することができないこと
   が同値となるため，
-  $M$の最大の警邏可能点集合は$G$の最大独立集合となることがわかる．
+  $M$の最大の警邏可能な点部分集合は$G$の最大独立集合となることがわかる．
 
   また，
   $k$番目に小さい素数を$P_k$と書くと，$k \geq 6$について
@@ -104,39 +106,44 @@ $\abs{(r_i' - r_j') - g}$%
   $n(n - 1)/2$個の素数の列挙は$n$の多項式時間でできる．
 \end{proof}
 
+なお，
+地図が{\graphUnit}で巡査が一人かつ全点の利得が等しい場合，
+全点を定時訪問可能か判定する問題は本節冒頭で示した通り多項式時間で解けるので，
+定時訪問可能な部分集合であって大きさが$N$以上のものが存在するか判定せよ，
+という問題であれば
+NP完全である．
 
 
-% 定期訪問
+
+
+\section*{定期訪問の場合}
 
 定理\ref{theo:UnitExacIdletimeNPhard}では，
-各点を{\exactTime}$((q_1, r_1), \ldots, (q_n, r_n))$に訪問せねばならないという{\timeSpecifiedPatProb}がNP困難であることを示したが，
-$(r_1, \ldots, r_n)$は与えられず$(q_1, \ldots, q_n)$のみが指定される
+点$v_1, \ldots, v_n$を{\exactTime}$(q_1, r_1), \ldots, (q_n, r_n)$に訪問せねばならないという{\timeSpecifiedPatProb}がNP困難であることを示したが，
+$r_1, \ldots, r_n$は与えられず$q_1, \ldots, q_n$のみが指定される
 次のような問題も考えることができる．
 
 \begin{intervalSpecifiedPatrollingProblemDecision}
   巡査の人数$m$と地図$(U, V)$および
   各点の{\exactInterval}$(q_1, \ldots, q_n)$が与えられる．
-  $m$人の巡査により$V$の全点を定期訪問可能か判定せよ．
+  $m$人の巡査により$V$の全点を定期訪問できるか判定せよ．
   ただし，点$v$を\defword{\exactInterval}$q$で\defword{定期訪問}するとは，
   非負整数$r\ (0 \leq r < q)$が存在して
   $v$を{\exactTime}$(q, r)$で定時訪問することである．
 \end{intervalSpecifiedPatrollingProblemDecision}
 
 巡査が一人の場合の{\timeSpecifiedPatProbDecision}では
-各点を訪問すべき時刻は完全に定められていたため，
-全点を警邏可能かどうかは
-任意の2点の両方を警邏可能であるかを判断するだけで十分であった．
+各点を訪問すべき時刻が完全に定められていたため，
+全点を警邏できるかどうかは
+任意の2点の両方を警邏できるかを判断すれば必要十分であった．
 一方，
 {\intervalSpecifiedPatProbDecision}では
-各点を訪問すべき時刻は間隔のみしか定められておらず，
-全点を
-より難しい問題と思われる．
-\ncomment{［編集中］}
+各点を訪問すべき時刻は間隔のみしか定められていないため，
+同様の判断の仕方ができない．
 実際，
 地図が{\graphUnit}で二点間距離が$1$の場合の
 {\intervalSpecifiedPatProbDecision}は
-CampbellとHardin\cite{campbell2005vehicle}の問題
-（DVMPDと称している）と同じ問題となり，
-これはNP困難であることが示されている\cite[Theorem~4]{campbell2005vehicle}．
-さらに，河村と添島が
-巡査が一人の場合であってもNP困難であることを示している\cite[Theorem~20]{kawamura2015simple}．
+CampbellとHardin\cite{campbell2005vehicle}がDVMPDと呼んでいる問題と同じものであり，
+巡査が一人であってもNP困難である\cite[Theorem~4]{campbell2005vehicle}．
+% 河村と添島も
+% 巡査が一人の場合であってもNP困難であることを示している\cite[Theorem~20]{kawamura2015simple}．

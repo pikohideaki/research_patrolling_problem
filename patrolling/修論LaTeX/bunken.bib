@@ -3,7 +3,8 @@
   author={Kawamura, Akitoshi and Noshiro, Hideaki},
   title={Multi-agent Cooperative Patrolling of Designated Points on Graphs},
   booktitle={Proceedings of the 20th Japan Conference on Discrete and Computational Geometry, Graphs, and Games (JCDCGGG 2017)},
-  year={2017}
+  year={2017},
+  url={http://www.jcdcgg.u-tokai.ac.jp/JCDCG3_2017_abstracts.pdf}
 }
 
 @inproceedings{ieice,
@@ -17,7 +18,7 @@
 @article{40021287065,
   author="河村彰星",
   title="最適の警邏に関する諸問題（最適化技法の最先端と今後の展開）",
-  journal="数理解析研究所講究録^",
+  journal="数理解析研究所講究録",
   ISSN="1880-2818",
   publisher="京都大学数理解析研究所",
   year="2017",
@@ -29,6 +30,7 @@
   DOI="",
 }
 
+* 巡査数最小化
 @article{GORAIN2015712,
   title="Approximation algorithm for sweep coverage on graph",
   journal="Information Processing Letters",
@@ -62,6 +64,7 @@
 
 
 + A realistic model of frequency-based multi-robot polyline patrolling
+  * bunken.md
 @inproceedings{elmaliach2008realistic,
   title={A realistic model of frequency-based multi-robot polyline patrolling},
   author={Elmaliach, Yehuda and Shiloni, Asaf and Kaminka, Gal A},
@@ -72,6 +75,7 @@
 }
 
 + A survey on multi-robot patrolling algorithms
+  * bunken.md
 @article{portugal2011survey,
   title={A survey on multi-robot patrolling algorithms},
   author={Portugal, David and Rocha, Rui},
@@ -116,6 +120,11 @@
 }
 
 + Boundary patrolling by mobile agents with distinct maximal speeds
+  * 塀の警邏
+  * $k$-mobile agents on cycle with unit length
+  * each agents has its own max-speed
+  * idle-time 最小化 / 判定
+  * 2,3,4人の巡査で最適解
 @inproceedings{czyzowicz2011boundary,
   title={Boundary Patrolling by Mobile Agents with Distinct Maximal Speeds.},
   author={Czyzowicz, Jurek and Gasieniec, Leszek and Kosowski, Adrian and Kranakis, Evangelos},
@@ -138,6 +147,7 @@
 }
 
 + Computational Geometry Column 59
+  * グラフ上の警邏について、線分や閉路の全体を警備する設定を中心に現状をまとめている。
 @article{Dumitrescu:2014:CGC:2636805.2636822,
   author={Dumitrescu, Adrian and T\'{o}th, Csaba D.},
   title={Computational Geometry Column 59},
@@ -190,6 +200,7 @@
 }
 
 + Distance-constrained scheduling and its applications to real-time systems
+  * 
 @article{han1996distance,
   title={Distance-constrained scheduling and its applications to real-time systems},
   author={Han, Ching-Chih and Lin, Kwei-Jay and Hou, Chao-Ju},
@@ -242,6 +253,15 @@
 }
 
 + Finding Optimal Routes for Multi-Robot Patrolling in Generic Graphs
+  * abst
+      * 複数の環境について理論的な分析とシミュレーション結果を与える．
+      * cyclic-based strategies がほとんどの場合優れる．巡査人数が多く偏ったグラフでは partitioning strategies が優れる．
+      * グラフの形状と巡査の人数が戦略を決定するのに重要．
+  * sec. 1
+      * 複数人の巡査による最適戦略を求めるのはNP困難なので，4つの戦略を調べる．
+  * sec. 4 cyclic-based strategies
+      * TSPの解から巡回する順番を決定
+      * NP困難なので最小全域木による近似
 @inproceedings{portugal2014finding,
   title={Finding optimal routes for multi-robot patrolling in generic graphs},
   author={Portugal, David and Pippin, Charles and Rocha, Rui P and Christensen, Henrik},
@@ -252,6 +272,8 @@
 }
 
 + Frequency-Based Multi-Robot Fence Patrolling
+  * 線分上の警邏
+  * 巡査は複数
 @article{elmaliach2008frequency,
   title={Frequency-based multi-robot fence patrolling},
   author={Elmaliach, Yehuda and Shiloni, Asaf and Kaminka, Gal A},
@@ -262,6 +284,7 @@
 }
 
 + Minimizing service and operation costs of periodic scheduling
+  * 機械の定期的な整備
 @article{bar2002minimizing,
   title={Minimizing service and operation costs of periodic scheduling},
   author={Bar-Noy, Amotz and Bhatia, Randeep and Naor, Joseph and Schieber, Baruch},
@@ -284,6 +307,7 @@
 }
 
 + Multi-agent Patrolling An Empirical Analysis of Alternative Architectures
+  * bunken.md
 @inproceedings{machado2002multi,
   title={Multi-agent patrolling: An empirical analysis of alternative architectures},
   author={Machado, Aydano and Ramalho, Geber and Zucker, Jean-Daniel and Drogoul, Alexis},
@@ -306,6 +330,7 @@
 }
 
 + On Fence Patrolling by Mobile Agents
+  * bunken.md
 @article{dumitrescu2014fence,
   title={On fence patrolling by mobile agents},
   author={Dumitrescu, Adrian and Ghosh, Anirban and T{\'o}th, Csaba D},
@@ -330,6 +355,7 @@
 }
 
 + Optimal Patrolling of Fragmented Boundaries
+  * bunken.md
 @inproceedings{collins2013optimal,
   title={Optimal patrolling of fragmented boundaries},
   author={Collins, Andrew and Czyzowicz, Jurek and Gasieniec, Leszek and Kosowski, Adrian and Kranakis, Evangelos and Krizanc, Danny and Martin, Russell and Morales Ponce, Oscar},
@@ -459,6 +485,14 @@
 }
 
 + Simple strategies versus optimal schedules in multi-agent patrolling
+  * 線分を警邏
+    * 異なる速度の複数人の巡査で
+    * 線分上のすべての点を単位時間 $T$ ごとに一度は訪問
+    * なるべく長い線分を警邏する戦略が知りたい
+  * 閉路を警邏
+    * 閉路上を一方向に進むことができる複数人の巡査で警邏
+  * 一点を警備
+    * 巡査 $1, \ldots, k$ は時間 $a_i$ 以上に一度この点を警備できる．
 @inproceedings{kawamura2015simple,
   title={Simple strategies versus optimal schedules in multi-agent patrolling},
   author={Kawamura, Akitoshi and Soejima, Makoto},
@@ -469,6 +503,7 @@
 }
 
 + Strategy Synthesis in Adversarial Patrolling Games
+  * bunken.md
 @article{brazdil2015strategy,
   title={Strategy synthesis in adversarial patrolling games},
   author={Br{\'a}zdil, Tom{\'a}{\v{s}} and Hlin{\v{e}}n{\`y}, Petr and Ku{\v{c}}era, Anton{\'\i}n and {\v{R}}eh{\'a}k, Vojt{\v{e}}ch and Abaffy, Mat{\'u}{\v{s}}},
@@ -522,6 +557,7 @@
 }
 
 + Theoretical Analysis of the Multi-agent Patrolling Problem
+  * bunken.md
 @inproceedings{chevaleyre2004theoretical,
   title={Theoretical analysis of the multi-agent patrolling problem},
   author={Chevaleyre, Yann},
@@ -532,7 +568,8 @@
 }
 
 + Vehicle minimization for periodic deliveries
-Unitの場合の定期訪問問題，定時訪問問題について
+  * PLPPの論文から
+  * Unitの場合の定期訪問問題，定時訪問問題について
 @article{campbell2005vehicle,
   title={Vehicle minimization for periodic deliveries},
   author={Campbell, Ann Melissa and Hardin, Jill R},
@@ -555,3 +592,71 @@ Unitの場合の定期訪問問題，定時訪問問題について
   year={2017},
   publisher={Springer}
 }
+
+* Scheduling algorithms for multiprogramming in a hard-real-time environment
+  * plppの論文から
+  * 
+@article{liu1973scheduling,
+  title={Scheduling algorithms for multiprogramming in a hard-real-time environment},
+  author={Liu, Chung Laung and Layland, James W},
+  journal={Journal of the ACM (JACM)},
+  volume={20},
+  number={1},
+  pages={46--61},
+  year={1973},
+  publisher={ACM}
+}
+
++ Computational complexity of art gallery problems
+@article{lee1986computational,
+  title={Computational complexity of art gallery problems},
+  author={Lee, D and Lin, Arthurk},
+  journal={IEEE Transactions on Information Theory},
+  volume={32},
+  number={2},
+  pages={276--282},
+  year={1986},
+  publisher={IEEE}
+}
+
++ Multi-agent patrolling with reinforcement learning
+  * 
+@inproceedings{santana2004multi,
+  title={Multi-agent patrolling with reinforcement learning},
+  author={Santana, Hugo and Ramalho, Geber and Corruble, Vincent and Ratitch, Bohdana},
+  booktitle={Proceedings of the Third International Joint Conference on Autonomous Agents and Multiagent Systems-Volume 3},
+  pages={1122--1129},
+  year={2004},
+  organization={IEEE Computer Society}
+}
+
+
++ Balancing profits and costs
+  + plppの論文から
+  + 地図がtreeの場合？
+@article{coene2013balancing,
+  title={Balancing profits and costs on trees},
+  author={Coene, Sofie and Filippi, Carlo and Spieksma, Frits CR and Stevanato, Elisa},
+  journal={Networks},
+  volume={61},
+  number={3},
+  pages={200--211},
+  year={2013},
+  publisher={Wiley Online Library}
+}
+
++ Profit-based latency problems on the line
+  + plppの論文から
+@article{coene2008profit,
+  title={Profit-based latency problems on the line},
+  author={Coene, Sofie and Spieksma, Frits CR},
+  journal={Operations Research Letters},
+  volume={36},
+  number={3},
+  pages={333--337},
+  year={2008},
+  publisher={Elsevier}
+}
+
+
+

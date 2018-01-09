@@ -33,20 +33,28 @@
 \newcommand{\timeSpecifiedPatProbDecision}    {\temporaryname{定時訪問判定問題}}
 \newcommand{\intervalSpecifiedPatProbDecision}{\temporaryname{定期訪問判定問題}}
 \newcommand{\setPartitionAlgorithm}           {\temporaryname{最小運行可能分割アルゴリズム}}
-\newcommand{\sepSectPatroll}                {\temporaryname{独立往復運行}}
+\newcommand{\sepSectPatroll}                  {\temporaryname{独立往復運行}}
 
 
 %%%%% 定理環境 %%%%%
-\theoremstyle{definition}
+\usepackage{amsmath,amssymb,amsthm}
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep.5\baselineskip \labelsep1zw
+  \trivlist
+  \item[\hskip\labelsep
+        \textsf{#1}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\renewcommand{\proofname}{証明}
+\newtheoremstyle{jthm}{.5\baselineskip}{.5\baselineskip}{\normalfont}{0zw}{\headfont}{}{1zw}{\thmname{#1}\thmnumber{#2}\thmnote{【#3】\inhibitglue}}
+\theoremstyle{jthm}
 \newtheorem {theo}          {定理}[chapter]
 \newtheorem {defi}[theo]    {定義}
-\newtheorem {prop}[theo]    {命題}
 \newtheorem {lemm}[theo]    {補題}
-\newtheorem {coro}[theo]    {系} % corollary
-\newtheorem {conj}[theo]    {予想} % conjecture
-\newtheorem*{rema}          {Remark}
-\newtheorem*{exam}          {例}
-\newtheorem*{property}      {性質}
 
 \newtheorem*{patrollingProblem}{{\patProb}}
 \newtheorem*{timeSpecifiedPatrollingProblem}{{\timeSpecifiedPatProb}}
