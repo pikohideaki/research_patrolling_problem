@@ -3,17 +3,17 @@
 
 \ref{chapter: introduction}章で述べたように
 {\graphUnit}は{\graphStar}の特殊な場合とみなせるため，
-全点の利得と{\maxIdletime}が等しい場合，{\patProb}は
+全点の利得と{\maxIdletime}が等しい場合，{\PPProfit}は
 定理\ref{theo:StarUnaryProfitAndIdletime}により多項式時間で解くことができる．
 ここでは，
 {\graphUnit}で
-全点の{\maxIdletime}が等しい場合の{\patProb}が（利得が異なっていても）多項式時間で解ける
+全点の{\maxIdletime}が等しい場合の{\PPProfit}が（利得が異なっていても）多項式時間で解ける
 ことを示す（定理\ref{theo:UnitUnaryIdletime}）．
 
 {\maxIdletime}が一般の場合については
 多項式時間アルゴリズムやNP困難性を示すのが難しかったため，
-\ref{chapter: line}章で扱った{\timeSpecifiedPatProb}を再び考える．
-地図が{\graphUnit}の場合は{\timeSpecifiedPatProb}がNP困難になることを示す
+\ref{chapter: line}章で扱った{\timeSpecifiedPPProfit}を再び考える．
+地図が{\graphUnit}の場合は{\timeSpecifiedPPProfit}がNP困難になることを示す
 （定理\ref{theo:UnitExacIdletimeNPhard}）．
 
 
@@ -24,7 +24,7 @@
 \begin{theo}
   \label{theo:UnitUnaryIdletime}
   地図が{\graphUnit}で全点の{\maxIdletime}が等しい場合，
-  {\patProb}は（利得，巡査数が一般であっても）
+  {\PPProfit}は（利得，巡査数が一般であっても）
   多項式時間で解くことができる．
 \end{theo}
 
@@ -32,7 +32,7 @@
   {\maxIdletime}を$q$とし，各辺の長さを$d$とする．
   {\graphUnit}は{\graphStar}の特殊な場合であるから，
   補題\ref{lemm:StarConditionOfGuarding}が適用できる．
-  すなわち頂点集合$W$が$m$人で警邏できるためには，
+  すなわち点集合$W$が$m$人で警邏できるためには，
   式\eqref{equation: star bound}が$d _v = d / 2$で成立つこと，
   つまり$W$に属する点の個数$\card{W}$が
   \begin{equation}

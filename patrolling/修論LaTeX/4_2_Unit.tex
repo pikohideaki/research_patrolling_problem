@@ -4,14 +4,14 @@
 \ref{chapter: star}章冒頭で述べた通り，
 地図が{\graphStar}の場合については，
 {\maxIdletime}が一般の場合は
-{\patProb}は巡査が一人であってもNP困難であった\cite[Theorem~6]{coene2011charlemagne}．
+{\PPProfit}は巡査が一人であってもNP困難であった\cite[Theorem~6]{coene2011charlemagne}．
 このNP困難性の証明では
 辺の長さが異なる{\graphStar}の地図を用いていた．
 {\graphUnit}は{\graphStar}の辺の長さがすべて等しい場合であるため，
 この方法によるNP困難性の証明ができない．
 {\graphUnit}で{\maxIdletime}が一般の場合は
 多項式時間アルゴリズムやNP困難性の証明が難しかったため，
-{\graphLine}のときのように{\timeSpecifiedPatProb}を代わりに考える．
+{\graphLine}のときのように{\timeSpecifiedPPProfit}を代わりに考える．
 
 
 地図$(U, V)$が{\graphUnit}で
@@ -21,7 +21,7 @@
 辺の長さを$d$とすると，
 $V$の異なる2点$i, j$の間の移動には時間$d$を要することから，
 その両方を定時訪問できるためには，
-訪問すべき時刻同士がすべて$d$以上離れていること，すなわち
+訪問すべき時刻どうしがすべて$d$以上離れていること，すなわち
 任意の整数$k, l$に対して$\abs{(q_i k + r_i) - (q_j l + r_j)} \geq d$%
 が成り立つことが必要十分である．
 $g$を$q_i$と$q_j$の最大公約数として，
@@ -29,27 +29,27 @@ $g$を$q_i$と$q_j$の最大公約数として，
 $\abs{(r_i - r_j) + gn} \geq d$%
 が成り立つことに等しいので，
 $r_i, r_j$をそれぞれ$g$で割った余りを$r_i', r_j'$として
-$\abs{(r_i' - r_j')}$，
-$\abs{(r_i' - r_j') + g}$，
-$\abs{(r_i' - r_j') - g}$%
+$\abs{r_i' - r_j'}$，
+$\abs{r_i' - r_j' + g}$，
+$\abs{r_i' - r_j' - g}$%
 のいずれも$d$以上となることに等しい．
 %
 全点を定時訪問可能かどうかは，この条件を$V$のすべての2点について確かめればよい．
 
 全点を定時訪問可能か判定する問題は多項式時間で解けるのに対し，
-{\timeSpecifiedPatProb}では次が成り立つ．
+{\timeSpecifiedPPProfit}では次が成り立つ．
 
 
 \begin{theo}
   \label{theo:UnitExacIdletimeNPhard}
   地図が{\graphUnit}のとき，
-  {\timeSpecifiedPatProb}は巡査が一人で全点の利得が等しい場合であってもNP困難である．
+  {\timeSpecifiedPPProfit}は巡査が一人で全点の利得が等しい場合であってもNP困難である．
 \end{theo}
 \begin{proof}
   % 最大独立集合問題において，
   % 無向グラフが与えられたときに独立点集合で最大のものを求めるが，
   % 間に辺の存在する2点の両方を選ぶことはできないという制約を，
-  % {\patProb}において2点のどちらか一方しか警邏できないという制約に変換する．
+  % {\PPProfit}において2点のどちらか一方しか警邏できないという制約に変換する．
   NP困難であることが知られている最大独立集合問題からの帰着による．
   最大独立集合問題は，無向グラフが与えられたとき，
   どの二点間にも辺が存在しないような頂点集合（独立集合）のうち
@@ -61,10 +61,10 @@ $\abs{(r_i' - r_j') - g}$%
   辺集合$E$のグラフ$G$が与えられたとする．
   同じ大きさの点集合$V$をもち，利得をすべて$1$，辺の長さをすべて$1$とした
   {\graphUnit}の地図$M = (U, V)$を考える．
-  各点$i \in V$の{\exactTime}$(q_i, r_i)$を次のように定める．
+  各点$v_i \in V$の{\exactTime}$(q_i, r_i)$を次のように定める．
   まず，$n(n - 1)/2$個の相異なる素数$\primenum{i}{j}\ (1 \leq i < j \leq n)$を用意する．
   $i > j$に対して$\primenum{i}{j}$と書くときは$\primenum{j}{i}$を指すことにする．
-  各$i \in V$について，
+  各$i \in [n]$について，
   \begin{equation}
     q_i = \prod_{j \in [n] \setminus \{i\}} \primenum{i}{j}
   \end{equation}
@@ -84,7 +84,7 @@ $\abs{(r_i' - r_j') - g}$%
   そのような$r _i$は
   中国剰余定理より（$q _i$の剰余として一意に）存在する．
 
-  $V$の異なる2点$i, j$の間の移動には時間$1$を要することから，
+  $V$の異なる2点$v_i, v_j$の間の移動には時間$1$を要することから，
   その両方を定時訪問できるためには，
   $q_i$と$q_j$の最大公約数$\primenum{i}{j}$について
   $\abs{(r_i - r_j) + \primenum{i}{j} k} \geq 1$%
@@ -96,7 +96,7 @@ $\abs{(r_i' - r_j') - g}$%
   $r_i$の決め方\eqref{equation: residues}から，
   これは$(i, j) \notin E$に同値である．
   以上より，
-  $(i, j) \in E$と$M$の2点$i, j$を両方定時訪問することができないこと
+  $(i, j) \in E$と$M$の2点$v_i, v_j$を両方定時訪問することができないこと
   が同値となるため，
   $M$の最大の警邏可能な点部分集合は$G$の最大独立集合となることがわかる．
 
@@ -107,11 +107,10 @@ $\abs{(r_i' - r_j') - g}$%
 \end{proof}
 
 なお，
-地図が{\graphUnit}で巡査が一人かつ全点の利得が等しい場合，
+地図が{\graphUnit}で巡査が一人かつ全点の利得が等しい場合は
 全点を定時訪問可能か判定する問題は本節冒頭で示した通り多項式時間で解けるので，
-定時訪問可能な部分集合であって大きさが$N$以上のものが存在するか判定せよ，
-という問題であれば
-NP完全である．
+整数$N$が与えられたとき定時訪問可能な部分集合であって大きさが$N$以上のものが存在するか判定する問題はNPに属する．
+この問題は定理\ref{theo:UnitExacIdletimeNPhard}よりNP困難なのでNP完全である．
 
 
 
@@ -119,30 +118,30 @@ NP完全である．
 \section*{定期訪問の場合}
 
 定理\ref{theo:UnitExacIdletimeNPhard}では，
-点$v_1, \ldots, v_n$を{\exactTime}$(q_1, r_1), \ldots, (q_n, r_n)$に訪問せねばならないという{\timeSpecifiedPatProb}がNP困難であることを示したが，
+点$v_1, \ldots, v_n$を{\exactTime}$(q_1, r_1), \ldots, (q_n, r_n)$に訪問せねばならないという{\timeSpecifiedPPProfit}がNP困難であることを示したが，
 $r_1, \ldots, r_n$は与えられず$q_1, \ldots, q_n$のみが指定される
 次のような問題も考えることができる．
 
-\begin{intervalSpecifiedPatrollingProblemDecision}
+\begin{intervalSpecifiedPatrollingProblem}
   巡査の人数$m$と地図$(U, V)$および
   各点の{\exactInterval}$(q_1, \ldots, q_n)$が与えられる．
   $m$人の巡査により$V$の全点を定期訪問できるか判定せよ．
   ただし，点$v$を\defword{\exactInterval}$q$で\defword{定期訪問}するとは，
   非負整数$r\ (0 \leq r < q)$が存在して
   $v$を{\exactTime}$(q, r)$で定時訪問することである．
-\end{intervalSpecifiedPatrollingProblemDecision}
+\end{intervalSpecifiedPatrollingProblem}
 
-巡査が一人の場合の{\timeSpecifiedPatProbDecision}では
+巡査が一人の場合の{\timeSpecifiedPP}では
 各点を訪問すべき時刻が完全に定められていたため，
 全点を警邏できるかどうかは
 任意の2点の両方を警邏できるかを判断すれば必要十分であった．
 一方，
-{\intervalSpecifiedPatProbDecision}では
+{\intervalSpecifiedPP}では
 各点を訪問すべき時刻は間隔のみしか定められていないため，
 同様の判断の仕方ができない．
 実際，
 地図が{\graphUnit}で二点間距離が$1$の場合の
-{\intervalSpecifiedPatProbDecision}は
+{\intervalSpecifiedPP}は
 CampbellとHardin\cite{campbell2005vehicle}がDVMPDと呼んでいる問題と同じものであり，
 巡査が一人であってもNP困難である\cite[Theorem~4]{campbell2005vehicle}．
 % 河村と添島も

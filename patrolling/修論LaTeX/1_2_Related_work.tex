@@ -1,0 +1,211 @@
+\section{関連研究}
+\label{section: relatedWorks}
+
+警邏に関する問題には様々なものが考えられている．
+警邏問題に似ているがその由来する現実の状況は全く異なる場合もあり，
+% モデル化としては警邏の問題と似ているが
+% 警邏とは異なる現実の問題を想定している研究もあり，
+機械の定期的な保守・整備\cite{ANILY199827, bar2002minimizing}，
+「周期的スケジューリング問題(periodic scheduling problem)」\cite{sgall2009periodic}，
+配達\cite{campbell2005vehicle}，
+「周期的な待ち時間の問題(periodic latency problem)」\cite{coene2011charlemagne}
+など，様々な名称で論じられている．
+
+
+警邏という目的に限っても，その問題設定には様々なものがある．
+
+
+{\PPProfit}はグラフの頂点を警邏する問題といえるが，
+グラフの辺を警邏する問題もある\cite{yanovski2003distributed}．
+% \cite{yanovski2003distributed}では無向グラフのすべての辺上の点をなるべく同じ頻度で訪問することを目標としている．
+%
+グラフの辺を警邏する問題に関連して，グラフの形状を限ったものとして
+「塀の警邏問題(fence patrolling problem)」\cite{
+    czyzowicz2011boundary,
+    dumitrescu2014fence,
+    elmaliach2008realistic,
+    collins2013optimal}%
+がある
+（「境界の警邏問題(boundary patrolling problem)」とも呼ばれている）．
+塀の警邏問題では線分や閉路で表される塀に沿って巡査が動く．
+塀全体の点に対する訪問の待ち時間の最大値を最小化するもの\cite{dumitrescu2014fence, elmaliach2008realistic}，
+平均値を最小化するもの\cite{elmaliach2008realistic}，
+全点の訪問頻度をなるべく同程度にするもの\cite{elmaliach2008frequency}，
+塀の任意の点をある時間以上放置せずに訪問する条件の下で
+なるべく長い塀を警邏するもの\cite{czyzowicz2011boundary}など，
+様々な目標が考えられている．
+%
+塀の警邏については巡査の速さの最大値が異なる場合も考えられている
+\cite{czyzowicz2011boundary, czyzowicz2016fence, kawamura2015fence}が，
+任意の巡査数に対する最適な運行は分かっていない．
+%
+塀のすべての点を警邏対象とするのではなく，
+塀に含まれる有限個の区間の合併のみを警邏対象とするという拡張もある\cite{collins2013optimal}．
+特にこの問題は，各区間を一点集合とすると
+{\PPProfit}の{\graphLine}の場合と似た問題になり，関係が深い．
+%
+以上はいずれも，塀の点の訪問とは点で表される巡査がその位置を通ることであった．
+これに対し，Czyzowiczら\cite{czyzowicz2014patrolling}は
+巡査が一点より広い視野を有し，その範囲内の点はすべて訪問されているとするという拡張について調べている．
+
+
+
+%%% 美術館問題
+警邏とは呼べないが，
+部屋の内部を監視するという目的の
+美術館問題\cite{lee1986computational}という問題もある．
+美術館問題では，
+部屋にいくつかの防犯カメラを設置し全体を監視するという目標を考える．
+部屋が多角形$P$（内部を含む）で表されるとき，
+防犯カメラの位置を表す点集合$G$であって
+$P$の任意の点が$G$のいずれかの点から見えるようなもののうち
+最小のものを求めるという問題である．
+点$p \in P$が点$g \in G$から見えるとは，
+$p$と$g$を結ぶ線分の全体が$P$に含まれることである．
+美術館問題はNP困難であることが知られている\cite{lee1986computational}．
+%
+動かない防犯カメラの位置を決める問題でさえNP困難であることからも，
+二次元の領域を動く巡査の最適な運行は望みがたく，
+巡査の動く領域をグラフに制限する・
+視野を制限する・巡査の人数が少ない場合を考えるなど，
+なんらかの制約を設ける必要があると予想される．
+
+Machadoら\cite{machado2002multi}は，
+障害物を含む二次元平面で表される領域を``skeltonization"によりグラフにし，
+グラフの頂点を警邏する問題としてモデル化している．
+Machadoら\cite{machado2002multi}は，
+辺の長さはすべて$1$・
+巡査の視野はその存在する位置の一点・
+すべての頂点は同じ優先度とするなどの制約を設け，
+頂点の放置時間の最大値を最小化するなどいくつかの目標について
+ヒューリスティックな巡査の運行戦略をいくつか考え計算機実験により比較している．
+%
+グラフの頂点を警邏する問題を扱っている点で{\PPProfit}と関係が深いが，
+我々は巡査の最適な運行を求める問題の計算量クラスを理論的に調べることを目的としている点で異なる．
+
+
+警邏の問題を侵略者の動きまで含めてゲーム理論的に考察している研究もある\cite{
+    Alpern2016,
+    alpern2011patrolling,
+    brazdil2015strategy,
+    fomin2008annotated,
+    garrec2016continuous,
+    papadaki2016patrolling}．
+    % alpern2017security,
+Br{\'a}zdilら\cite{brazdil2015strategy}の問題では，
+あるグラフ$G = (V, E)$の上を巡査一人と侵略者一人が動く状況を考える．
+$T \subseteq V$が定められており，
+侵略者は$T$の点を訪問し，その点によって決まっている時間滞在することを目指すが，
+点に巡査が存在するときに侵略者も同時にその点を訪問することはできない．
+巡査は単位時間に一つ辺を渡るが，どの辺を選択し渡るかは前回の選択とは独立に確率的に決まる．
+巡査の戦略とは訪問する点の列に対する確率のことである．
+侵略者は巡査の位置や戦略まで知っているが，
+次にどの辺を選択し移動するか予知することはできない．
+%
+{\PPProfit}では，点$v$は{\maxIdletime}の条件さえ満たしていれば警邏されるとしており
+具体的な侵略者のことは考えていないので，
+決定論的に定めた巡査の運行を知る侵略者に対応されてしまう可能性がある．
+Br{\'a}zdilら\cite{brazdil2015strategy}の問題では巡査が確率的に動くので
+そのような弱点が補われているともいえる．
+
+% 巡査がその近傍の情報から各々の判断で運行を決定するという戦略も考えられており\cite{santana2004multi}，
+% {\PPProfit}では，警邏対象の環境が与えられたときに最適な巡査の運行を最初に決定してしまって巡査がその通りに動くという中央集権的な運行の決定の仕方の弱点を補うことができると思われる．
+
+
+
+
+
+% これまで挙げた警邏の問題では，
+% 複数の巡査の速さの異なる場合，
+% 巡査が確率的に動く場合，
+% 巡査が視野を持つ場合など，
+% 複雑な設定を考えているときには代わりに巡査は一人とする，領域を制限するなど，
+% 他の部分を簡単にするかまたは
+% 厳密解を諦め近似や計算機実験を行うことが多いことが分かる．
+
+
+{\PPProfit}にはいくつかの拡張が考えられる．
+%
+{\PPProfit}は，非常に単純な図形についてさえNP困難性が示されていたり（\cite[Theorems 5 and 6]{coene2011charlemagne}），
+多項式時間アルゴリズムを示すことができていない場合（地図が{\graphLine}で巡査が複数の場合など）が存在する
+ように，
+複雑な問題設定である．
+よって，{\PPProfit}に対して問題設定の拡張を考えること自体はできても
+厳密な最適解を得る効率的なアルゴリズムは望みがたい．
+
+例えば，巡査の速さの最大値が異なるという拡張が考えられるが，
+塀（線分）の警邏で巡査の速さの最大値が異なる場合に
+複雑な運行が生じる例があることが知られており\cite[Theorem~1]{kawamura2015fence}，
+任意の巡査数に対する最適な運行は分かっていないことからも，
+最適解を得るのは難しいと予想される．
+
+\newcommand{\patProbWithDuration}{{滞在時間付き{\PPProfit}}}
+%
+{\PPProfit}ではある点を訪問するには通過する（時間$0$滞在する）だけでよいとしているが，各点を訪問するには時間$s \geq 0$滞在しなければならないという
+拡張も考えられる．
+この条件を追加した問題を\defword{{\patProbWithDuration}}と呼ぶ．
+Coeneら\cite{coene2011charlemagne}はこの問題が，
+すべての点が同じ位置にあり巡査が一人であっても
+{\PP}がNP困難であることを示している\cite[Theorem~3]{coene2011charlemagne}．
+%
+このように{\patProbWithDuration}は一見
+{\PPProfit}を非常に難しくする拡張に思われるが，
+実は，{\patProbWithDuration}は次のように{\PPProfit}に帰着することができる．
+{\patProbWithDuration}の入力を
+地図$M = (U, V)$と
+$V$の各点$v_i\ (i \in \{ 1, \ldots, n \})$の必要滞在時間$s_i \geq 0$とする．
+各$v_i\ (i \in \{ 1, \ldots, n \})$について，
+$v_i$から長さ$s_i/2$の辺$e_i \not\subseteq U$を伸ばした先の点を$v_i'$とする．
+ただし$v_i' \notin U$とする．
+$V' = \{ v_1', \ldots, v_n' \}$，
+$U' = U \cup \bigcup_{i \in \{ 1, \ldots n \}} e_i$とする．
+{\PPProfit}に地図$M' = (U', V')$を入力として与え，
+得られた$V'$の部分集合と同じ添え字の点からなる$V$の部分集合を答えればよい．
+%
+$U'$の点$v_i'$を訪問するには長さ$s_i/2$の辺$e_i$を通らねばならず$v_i$と$v_i'$の間の往復には$s_i$の時間を要するので，
+$v_i$に時間$s_i$滞在するのと同じ状況を作ることができる．
+利得がある場合でも同様である．
+
+上の帰着では，
+すべての点が同じ位置にある地図で滞在時間が付いたものは{\graphStar}に変換される．
+{\PPProfit}は{\graphStar}の地図の場合は
+巡査が一人でもNP困難である\cite[Theorem~10]{coene2011charlemagne}%
+ことから，
+{\patProbWithDuration}で全点が同じ位置にある場合はNP困難であることは確かめられる．
+%
+また，{\graphLine}の地図で滞在時間が付いたものは
+% 図\ref{fig: }のような
+{\graphTree}に変換される．
+地図が{\graphTree}で巡査が一人かつ全点の利得と{\maxIdletime}が等しい場合は
+{\PPProfit}は多項式時間で解ける\cite[Corollary~3]{coene2011charlemagne}ので，
+地図が{\graphLine}で巡査が一人かつ全点の利得と{\maxIdletime}が等しい場合は
+{\patProbWithDuration}は多項式時間で解ける．
+
+{\patProbWithDuration}は%所要時間を考えられるので
+周期的スケジューリング問題(periodic scheduling problem)%
+\cite{baruah1990preemptive, jeffay1991non, liu1973scheduling}とも関係が深い．
+LiuとLayland\cite{liu1973scheduling}の問題は，
+地図が{\graphUnit}で二点間距離が$1$であり巡査が一人である場合の
+滞在時間付きの{\intervalSpecifiedPP}と同じである．
+{\intervalSpecifiedPP}は\ref{section: UnitArbitraryIdletime}節の後ろで定義する．
+
+
+
+我々は{\PPProfit}を地図が
+{\graphLine}, {\graphStar}, {\graphUnit}%
+の場合について調べたが，
+これらはCoeneら\cite{coene2011charlemagne}が
+{\independentPP}で
+扱っていた形状の一部である．
+Coeneら\cite{coene2011charlemagne}はさらに
+地図がCircle（閉路），{\graphTree}（木）の場合についても調べている．
+Circleは{\graphLine}を，{\graphTree}は{\graphLine}，{\graphStar}，{\graphUnit}を
+それぞれ特殊な場合として含んでいる．
+%
+地図が{\graphLine}のときの{\patProbWithDuration}は
+地図が{\graphTree}のときの{\PPProfit}に帰着されることや，
+一般のグラフの警邏をするときに
+最小全域木を代わりに警邏するという近似が考えられている\cite{chevaleyre2004theoretical}ことからも，
+{\graphTree}は重要である．
+地図が{\graphTree}の場合の{\PPProfit}については\ref{chapter: star}章の後ろで言及する．
+

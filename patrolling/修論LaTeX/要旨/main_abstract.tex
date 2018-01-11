@@ -1,29 +1,5 @@
 \documentclass[a4paper,12pt]{jsarticle}
 
-\usepackage{enumerate}
-
-\usepackage{graphicx}
-
-
-% theorem
-\usepackage{amsmath,amssymb}
-\usepackage{amsthm}
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep.5\baselineskip \labelsep1zw
-  \trivlist
-  \item[\hskip\labelsep
-        \textsf{#1}]\ignorespaces
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-\makeatother
-
-
-\input{../mydef.tex}
-
-
 \begin{document}
 
   \begin{center}
@@ -43,14 +19,7 @@
   \end{flushright} 
   \vspace{30pt}
 
-  ［最終変更日時：
-  {\the\year/\the\month/\the\day\ {\the\hour} 時{\the\minute}分}］
-
-  ここに要旨を書く。
-
-
-
-
+  \input{body.tex}
 
   \thispagestyle{empty}  % ページ番号消去
 

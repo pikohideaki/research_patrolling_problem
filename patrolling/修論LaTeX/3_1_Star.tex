@@ -3,7 +3,7 @@
 
 地図が{\graphStar}の場合については，
 利得か{\maxIdletime}のいずれかが一般であれば，
-{\patProb}は巡査が一人であってもNP困難であることが
+{\PPProfit}は巡査が一人であってもNP困難であることが
 知られている\cite[Theorems 5 and 6]{coene2011charlemagne}．
 よってここでは，
 全点の利得と{\maxIdletime}が等しい場合について次のことを示す．
@@ -11,11 +11,11 @@
 \begin{theo}
   \label{theo:StarUnaryProfitAndIdletime}
   地図が{\graphStar}で全点の利得と{\maxIdletime}が等しい場合，
-  {\patProb}は（巡査の人数が一般であっても）
+  {\PPProfit}は（巡査の人数が一般であっても）
   多項式時間で解くことができる．
 \end{theo}
 
-{\independentPatProb}においては，地図が{\graphStar}で巡査の人数が一般の場合は
+{\independentPP}においては，地図が{\graphStar}で巡査の人数が一般の場合は
 利得と{\maxIdletime}がすべて等しくてもNP困難になることが
 Coeneらにより示されている\cite[Theorem~10]{coene2011charlemagne}．
 {\graphLine}の場合では複雑な協力による警邏があり得たこと
@@ -23,9 +23,9 @@ Coeneらにより示されている\cite[Theorem~10]{coene2011charlemagne}．
 協力を許した方が簡単に解けるというのは意外な結果に思われる．
 これは，
 {\graphStar}の場合，
-{\independentPatProb}では
+{\independentPP}では
 うまく点集合を分割しなければならないことが難しさを生みNP困難になるのに対し，
-{\patProb}では
+{\PPProfit}では
 後述の補題\ref{lemm:StarConditionOfGuarding}の証明中に述べる
 単純な運行が可能となるためである．
 
@@ -44,7 +44,7 @@ $d_v = 0$であるような点$v$を追加すればよい．
   点$v$が警邏されているならば，任意の時刻$t \in \Rset$に対し，
   長さの和が$\min(2d_v, q)$であるような
   互いに交わらない有限個の時刻区間の合併$J \subseteq [t, t + q)$が存在し，
-  $J$に属するすべての時刻において少なくとも一人の巡査が辺$e_v$または$v$上にいる．
+  $J$に属するすべての時刻において少なくとも一人の巡査が辺$e_v$上にいる．
 \end{lemm}
 
 \begin{proof}
@@ -118,7 +118,7 @@ $d_v = 0$であるような点$v$を追加すればよい．
   どの長さ$q$の時刻区間$[t, t + q)$にも合計$\min(2d_v, q)$の時間は
   いずれかの巡査が$e_v$上に存在し，
   その時間の合計は$\sum_{v \in W} \min(2d_v, q)$である．
-  $m$人の巡査は各時刻$\tau \in [t, t + q)$に高々1つの辺に存在するので，
+  $m$人の巡査は各時刻$\tau \in [t, t + q)$に高々一つの辺に存在するので，
   全点警邏しているならば\eqref{equation: star bound}が成り立つ．
 \end{proof}
 

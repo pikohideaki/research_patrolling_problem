@@ -21,19 +21,16 @@
 \newcommand{\graphStar}{Star}
 \newcommand{\graphUnit}{Unit}
 \newcommand{\graphTree}{Tree}
-\newcommand{\maxIdletime}                     {放置限度}
-\newcommand{\exactTime}                       {\temporaryname{指定訪問時刻}}
-\newcommand{\exactInterval}                   {\temporaryname{指定訪問間隔}}
-\newcommand{\patProb}                         {警邏問題}
-% \newcommand{\patProb}                         {点警邏問題\kcomment{［点でないものは殆ど扱わないので、「点」を強調する必要はないんでは。］}}
-
-\newcommand{\independentPatProb}              {独立警邏問題}
-% \newcommand{\independentPatProb}              {独立点警邏問題\kcomment{［これは「独立」＋「点警邏（警護する対象が点である）」＋「問題」という意味だと思いますが、この文では点でない問題はあまり扱わないので、「点」を強調しないでよいのではないか。「独立点」が後で出てくる「独立集合問題」とは違う意味で使われているのも、できれば避けたい。］}}
-\newcommand{\timeSpecifiedPatProb}            {定時訪問問題}
-\newcommand{\timeSpecifiedPatProbDecision}    {\temporaryname{定時訪問判定問題}}
-\newcommand{\intervalSpecifiedPatProbDecision}{\temporaryname{定期訪問判定問題}}
-\newcommand{\setPartitionAlgorithm}           {\temporaryname{最小運行可能分割アルゴリズム}}
-\newcommand{\sepSectPatroll}                  {\temporaryname{独立往復運行}}
+\newcommand{\maxIdletime}   {放置限度}
+\newcommand{\exactTime}     {指定訪問時刻}
+\newcommand{\exactInterval} {指定訪問間隔}
+\newcommand{\PP}                    {全点警邏問題}
+\newcommand{\PPProfit}              {警邏問題}
+\newcommand{\independentPP}         {独立警邏問題}
+\newcommand{\timeSpecifiedPP}       {全点定時訪問問題}
+\newcommand{\timeSpecifiedPPProfit} {定時訪問問題}
+\newcommand{\intervalSpecifiedPP}   {全点定期訪問問題}
+\newcommand{\setPartAlgo}{最小運行可能分割アルゴリズム}
 
 
 %%%%% 定理環境 %%%%%
@@ -52,12 +49,11 @@
 \renewcommand{\proofname}{証明}
 \newtheoremstyle{jthm}{.5\baselineskip}{.5\baselineskip}{\normalfont}{0zw}{\headfont}{}{1zw}{\thmname{#1}\thmnumber{#2}\thmnote{【#3】\inhibitglue}}
 \theoremstyle{jthm}
-\newtheorem {theo}          {定理}[chapter]
-\newtheorem {defi}[theo]    {定義}
-\newtheorem {lemm}[theo]    {補題}
+\newtheorem {theo}      {定理}[chapter]
+\newtheorem {defi}[theo]{定義}
+\newtheorem {lemm}[theo]{補題}
 
-\newtheorem*{patrollingProblem}{{\patProb}}
-\newtheorem*{timeSpecifiedPatrollingProblem}{{\timeSpecifiedPatProb}}
-\newtheorem*{timeSpecifiedPatrollingProblemDecision}{{\timeSpecifiedPatProbDecision}}
-\newtheorem*{setPartitionAlgorithmForTimeSpecifiedProblemOnLine}{{\setPartitionAlgorithm}}
-\newtheorem*{intervalSpecifiedPatrollingProblemDecision}{{\intervalSpecifiedPatProbDecision}}
+\newtheorem*{patrollingProblem}{{\PPProfit}}
+\newtheorem*{timeSpecifiedPatrollingProblem}{{\timeSpecifiedPPProfit}}
+\newtheorem*{intervalSpecifiedPatrollingProblem}{{\intervalSpecifiedPP}}
+\newtheorem*{setPartitionAlgorithm}{{\setPartAlgo}}

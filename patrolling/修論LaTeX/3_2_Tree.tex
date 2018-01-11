@@ -4,24 +4,37 @@
 {\graphStar}のときと同様，木の各葉のみに{\maxIdletime}が定められているとする．
 長さが$0$の辺を許せば，任意の木はその葉どうしの距離を保ったまま二分木に変換できるので，
 本節では二分木の地図を{\graphTree}と呼び，
-{\graphTree}の場合の{\patProb}について考える．
+{\graphTree}の場合の{\PPProfit}について考える．
 
-Coeneら\cite{coene2011charlemagne}は{\independentPatProb}を地図が{\graphTree}の場合について調べている．
-{\independentPatProb}においては，巡査が一人かつ全点の利得と{\maxIdletime}が等しい場合は，地図が{\graphTree}であっても多項式時間で解ける\cite[Corollary~3]{coene2011charlemagne}のに対し，
+Coeneら\cite{coene2011charlemagne}は{\independentPP}を地図が{\graphTree}の場合について調べている．
+{\independentPP}においては，巡査が一人かつ全点の利得と{\maxIdletime}が等しい場合は，地図が{\graphTree}であっても多項式時間で解ける\cite[Corollary~3]{coene2011charlemagne}のに対し，
 巡査数，利得，{\maxIdletime}のいずれか一つでも一般の場合は{\graphStar}であってもNP困難である\cite[Theorems 5, 6 and 10]{coene2011charlemagne}．
-巡査が一人の場合は{\patProb}と{\independentPatProb}は同じ問題であるから，
+巡査が一人の場合は{\PPProfit}と{\independentPP}は同じ問題であるから，
 {\graphTree}で全点の利得と{\maxIdletime}が等しいときは多項式時間で解くことができ，
 利得か{\maxIdletime}のいずれかが一般の場合はNP困難であることは直ちに分かる．
 一方，巡査数が一般で全点の利得と{\maxIdletime}が等しい場合は，
-{\patProb}では
+{\PPProfit}では
 地図が{\graphStar}のとき多項式時間で解けるので，{\graphTree}でどうなるかは未解決である．
 
 \newcommand{\separatedPatroll}{左右独立運行}
 \newcommand{\cooperativePatroll}{全員協力運行}
 
+
 我々はまず，星ではない二分木の例として
-図\ref{fig: }\ncomment{［図追加］}のような例を考えた．
-図\ref{fig:}の例では，2点からなる2つの星の中心どうしが一本の橋で結ばれている．
+図\ref{figure: twoStarsTree}左のような例を考えた．
+\begin{figure}
+  \centering
+  \includegraphics[scale=1.0]{\figdir/tree.pdf}
+  \caption{
+    $2$点からなる星二つを橋でつないだ木．
+    点と辺に書かれた数は，それぞれ{\maxIdletime}と距離である．
+    右図のような順路で周回を行うとき
+    1周にかかる時間は$30$であり，
+    $3$人の巡査が時間$10$ずつずれてこの周回を行うと
+    各点はちょうど時間$10$ごとに訪問される．}
+  \label{figure: twoStarsTree}
+\end{figure}
+図\ref{figure: twoStarsTree}左の例では，2点からなる二つの星の中心どうしが一本の橋で結ばれている．
 ここで，この{\graphTree}の地図の全点警邏に必要な最小の巡査数を考えてみる．
 %
 まず，左右の星を独立に{\graphStar}に対する最適戦略で警邏する運行が考えられる．これを\defword{\separatedPatroll}と呼ぶことにする．
@@ -29,17 +42,17 @@ Coeneら\cite{coene2011charlemagne}は{\independentPatProb}を地図が{\graphTr
 星それぞれは全点警邏に2人，合計$4$人の巡査を要することが分かる．
 %
 一方，
-図\ref{fig: }のような巡回を繰り返す運行を
+図\ref{figure: twoStarsTree}右のような巡回を繰り返す運行を
 $3$人の巡査が{\maxIdletime}$10$ずつずれて行うと全点を警邏できる．
 このように巡査全員が全体を一度ずつ訪問する巡回を繰り返す運行を\defword{\cooperativePatroll}と呼ぶことにする．
-図\ref{fig: }の例には存在しないが，隣接辺が$q/2$より長い点が存在する場合は{\cooperativePatroll}では巡査が一人停止して担当するものとする．
+図\ref{figure: twoStarsTree}左の例には存在しないが，隣接辺が$q/2$より長い点が存在する場合は{\cooperativePatroll}では巡査が一人停止して担当するものとする．
 
 この例で仮に橋の長さが$10$などとしてみると，
-全員が全体を巡回する2つ目の戦略で$3$人の巡査では全点警邏ができなくなり，
+全員が全体を巡回する二つ目の戦略で$3$人の巡査では全点警邏ができなくなり，
 巡査$4$人による{\separatedPatroll}が最小人数の運行となる．
 このように，橋の長さによっては橋を渡るべきかどうかが変わる．
 
-より一般に2つの星とその中心間を結ぶ長さ$b$の橋からなる{\graphTree}の地図$T$について考える．
+より一般に二つの星とその中心間を結ぶ長さ$b$の橋からなる{\graphTree}の地図$T$について考える．
 左右の星の点集合をそれぞれ$L, R$とする．
 全点の{\maxIdletime}を$q$とする．
 また，以下では$S_V := \sum_{v \in V} \min(2d_v, q)$と書くことにする．
