@@ -11,10 +11,10 @@ Coeneら\cite{coene2011charlemagne}は{\independentPP}を地図が{\graphTree}�
 巡査数，利得，{\maxIdletime}のいずれか一つでも一般の場合は{\graphStar}であってもNP困難である\cite[Theorems 5, 6 and 10]{coene2011charlemagne}．
 巡査が一人の場合は{\PPProfit}と{\independentPP}は同じ問題であるから，
 {\graphTree}で全点の利得と{\maxIdletime}が等しいときは多項式時間で解くことができ，
-利得か{\maxIdletime}のいずれかが一般の場合はNP困難であることは直ちに分かる．
-一方，巡査数が一般で全点の利得と{\maxIdletime}が等しい場合は，
+利得か{\maxIdletime}のいずれかが一般の場合はNP困難であることは直ちにいえる．
+しかし，巡査数が一般で全点の利得と{\maxIdletime}が等しい場合は，
 {\PPProfit}では
-地図が{\graphStar}のとき多項式時間で解けるので，{\graphTree}でどうなるかは未解決である．
+地図が{\graphStar}のときは多項式時間で解けるので，{\graphTree}でどうなるかは未解決である．
 
 \newcommand{\separatedPatroll}{左右独立運行}
 \newcommand{\cooperativePatroll}{全員協力運行}
@@ -28,10 +28,14 @@ Coeneら\cite{coene2011charlemagne}は{\independentPP}を地図が{\graphTree}�
   \caption{
     $2$点からなる星二つを橋でつないだ木．
     点と辺に書かれた数は，それぞれ{\maxIdletime}と距離である．
-    右図のような順路で周回を行うとき
+    それぞれの星は補題\ref{lemm:StarConditionOfGuarding}から
+    全点警邏に二人ずつの巡査を要する．
+    一方，図のような順路の周回を行うとき
     1周にかかる時間は$30$であり，
     $3$人の巡査が時間$10$ずつずれてこの周回を行うと
-    各点はちょうど時間$10$ごとに訪問される．}
+    各点はちょうど時間$10$ごとに訪問される．
+    よって，この例では全員協力運行の方が少ない人数で全点を警邏できる．
+  }
   \label{figure: twoStarsTree}
 \end{figure}
 図\ref{figure: twoStarsTree}左の例では，2点からなる二つの星の中心どうしが一本の橋で結ばれている．
@@ -48,9 +52,9 @@ $3$人の巡査が{\maxIdletime}$10$ずつずれて行うと全点を警邏で�
 図\ref{figure: twoStarsTree}左の例には存在しないが，隣接辺が$q/2$より長い点が存在する場合は{\cooperativePatroll}では巡査が一人停止して担当するものとする．
 
 この例で仮に橋の長さが$10$などとしてみると，
-全員が全体を巡回する二つ目の戦略で$3$人の巡査では全点警邏ができなくなり，
+全員協力運行では$3$人の巡査では全点警邏ができなくなり，
 巡査$4$人による{\separatedPatroll}が最小人数の運行となる．
-このように，橋の長さによっては橋を渡るべきかどうかが変わる．
+このように，橋の長さによって橋を渡るべきかどうかが変わる．
 
 より一般に二つの星とその中心間を結ぶ長さ$b$の橋からなる{\graphTree}の地図$T$について考える．
 左右の星の点集合をそれぞれ$L, R$とする．
@@ -91,6 +95,10 @@ $m_{\rm min} = \min(
         \lrceil{( 2b + S_L + S_R ) / q},
         \lrceil{S_L / q} + \lrceil{S_R / q} )$，
 即ち，{\separatedPatroll}か{\cooperativePatroll}のいずれかは最適であると予想しているが，これを示すことはできていない．
+
+なお，図\ref{figure: twoStarsTree}の例では
+$\lrceil{(S_L + S_R) / q} = 3$であるので
+全員協力運行は最小人数で全点警邏を行う戦略であることが分かる．
 
 % \begin{itemize}
 %   \item 運行の帰着で示すのが難しそう（仮説の運行は複数人の動きを同時に決めているので）．

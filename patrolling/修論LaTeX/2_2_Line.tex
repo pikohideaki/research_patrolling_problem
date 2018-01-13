@@ -7,17 +7,17 @@
 {\maxIdletime}が一般の場合は，
 一部の点を複数の巡査が訪問して警邏する必要がある場合が存在する．
 %
-図\ref{tikz:multiAgentExample2}（左）の例では，
+図\ref{figure: complex_move_on_Line}左の例では，
 中央の{\maxIdletime}の短い二つの点は$2$人の巡査に訪問されており，
 また，全点の{\maxIdletime}が等しい場合に反して
 各巡査の最適な運行はなんらかの区間の往復であるとは限らないことも分かる．
 %
 また，
 この例では左の巡査は左端の点を{\maxIdletime}ちょうどの間隔で訪問しているが，
-一方，図\ref{tikz:multiAgentExample2}（中央）の例では，
+一方，図\ref{figure: complex_move_on_Line}中央の例では，
 左側の巡査は左端の点をあえてより短い周期で訪問することで全点を警邏している．
-図\ref{tikz:multiAgentExample2}（中央）と同じ入力に対して，
-図\ref{tikz:multiAgentExample2}（右）のように左の巡査が
+図\ref{figure: complex_move_on_Line}中央と同じ入力に対して，
+図\ref{figure: complex_move_on_Line}右のように左の巡査が
 左端の点の{\maxIdletime}ぎりぎりの時間まで右の方へ動き左端へ帰る運行を行うと
 $2$人の巡査がうまく協力できず全点の警邏ができない．
 このように，
@@ -26,89 +26,32 @@ $2$人の巡査がうまく協力できず全点の警邏ができない．
 
 \begin{figure}[htbp]
   \centering
-  \begin{tabular}{ccc}
-  \begin{minipage}{0.32\hsize}
-    \centering
-    \begin{tikzpicture}
-      \draw [help lines,thin,step=5mm] (0,-5.0) grid (3.5,0);
-      \draw[thick] (0,0) -- (3.5,0) node [below] {};
-      \draw[thick, ->] (0,0) -- (0,-5.5) node [left] {$t$};
-      \fill ( 0   , 0) coordinate (c1) circle (2pt) node [above] {10};
-      \fill ( 1.5 , 0) coordinate (c2) circle (2pt) node [above] {2};
-      \fill ( 2.0 , 0) coordinate (c3) circle (2pt) node [above] {2};
-      \fill ( 3.5 , 0) coordinate (c5) circle (2pt) node [above] {10};
-      \draw[very thick,- ] ( 1.0, 0  )--(   0,-1.0);
-      \draw[very thick,- ] (   0,-1.0)--( 2.0,-3.0);
-      \draw[very thick,- ] ( 2.0,-3.0)--( 1.5,-3.5);
-      \draw[very thick,- ] ( 1.5,-3.5)--( 2.0,-4.0);
-      \draw[very thick,->] ( 2.0,-4.0)--( 1.0,-5.0);
-      \draw[very thick,- ] ( 2.0, 0  )--( 1.5,-0.5);
-      \draw[very thick,- ] ( 1.5,-0.5)--( 2.0,-1.0);
-      \draw[very thick,- ] ( 2.0,-1.0)--( 1.5,-1.5);
-      \draw[very thick,- ] ( 1.5,-1.5)--( 3.5,-3.5);
-      \draw[very thick,->] ( 3.5,-3.5)--( 2.0,-5.0);
-    \end{tikzpicture}
-  \end{minipage}
-  \begin{minipage}{0.32\hsize}
-    \centering
-    \begin{tikzpicture}
-      \draw [help lines,thin,step=5mm] (0,-4.5) grid (2.5,0);
-      \draw[thick] (0,0) -- (2.5,0) node [below] {};
-      \draw[thick, ->] (0,0) -- (0,-5) node [left] {$t$};
-      \fill ( 0   , 0) coordinate (c1) circle (2pt) node [above] {8};
-      \fill ( 1   , 0) coordinate (c2) circle (2pt) node [above] {2};
-      \fill ( 1.5 , 0) coordinate (c3) circle (2pt) node [above] {2};
-      \fill ( 1.75, 0) coordinate (c4) circle (2pt) node [above] {3};
-      \fill ( 2.5 , 0) coordinate (c5) circle (2pt) node [above] {6};
-      \draw[very thick,- ] ( 0  , 0  )--( 1.5,-1.5);
-      \draw[very thick,- ] ( 1.5,-1.5)--( 0  ,-3  );
-      \draw[very thick,->] ( 0  ,-3  )--( 1.5,-4.5);
-      \draw[very thick,- ] ( 1  , 0  )--( 2.5,-1.5);
-      \draw[very thick,- ] ( 2.5,-1.5)--( 1  ,-3  );
-      \draw[very thick,->] ( 1  ,-3  )--( 2.5,-4.5);
-    \end{tikzpicture}
-  \end{minipage}
-  \begin{minipage}{0.32\hsize}
-    \centering
-    \begin{tikzpicture}
-      \draw [help lines,thin,step=5mm] (0,-4) grid (2.5,0);
-      \draw[thick] (0,0) -- (2.5,0) node [below] {};
-      \draw[thick, ->] (0,0) -- (0,-5) node [left] {$t$};
-      \fill ( 0   , 0) coordinate (c1) circle (2pt) node [above] {8};
-      \fill ( 1   , 0) coordinate (c2) circle (2pt) node [above] {2};
-      \fill ( 1.5 , 0) coordinate (c3) circle (2pt) node [above] {2};
-      \fill ( 1.75, 0) coordinate (c4) circle (2pt) node [above] {3};
-      \fill ( 2.5 , 0) coordinate (c5) circle (2pt) node [above] {6};
-      \draw[very thick,red,<->] (1.75,-0.75)--(1.75,-2.25);
-      \draw[very thick,- ] ( 0  , 0  )--( 1.5,-1.5);
-      \draw[very thick,- ] ( 1.5,-1.5)--( 1  ,-2  );
-      \draw[very thick,- ] ( 1  ,-2  )--( 1.5,-2.5);
-      \draw[very thick,->] ( 1.5,-2.5)--( 0  ,-4  );
-      \draw[very thick,- ] ( 1  , 0  )--( 2.5,-1.5);
-      \draw[very thick,- ] ( 2.5,-1.5)--( 2.5,-2.5);
-      \draw[very thick,->] ( 2.5,-2.5)--( 1  ,-4  );
-    \end{tikzpicture}
-  \end{minipage}
-  \end{tabular}
+  \includegraphics[scale=0.9]{\figdir/complex_move_on_Line.pdf}
   \caption{巡査の協力が必要な例．
-    横軸を点の座標，縦軸を時刻として巡査の軌跡を表す．
-    点の上の数値は{\maxIdletime}を表す．
-    % \ncomment{［あとで図を差し替える］}
-    \label{tikz:multiAgentExample2}}
+    横軸を点の位置，縦軸を時刻として巡査の軌跡を表す．
+    点と辺に書かれた数は，それぞれ{\maxIdletime}と距離である．
+    左図の運行では二人の巡査が協力して中央の二点を警邏している．
+    中央の図の運行では巡査$1$は左端の{\maxIdletime}が$16$の点を間隔$12$で訪問しており，二人の協力により全点が警邏されている．
+    一方，右図の運行では巡査$1$は左端の点を{\maxIdletime}$16$ぎりぎりの時間まで右の方へ動き
+    中央の二点を訪問しているが，
+    この場合二人の巡査の協力がうまくいかず，
+    右端の点の訪問間隔が{\maxIdletime}$12$を超えてしまう．
+    \label{figure: complex_move_on_Line}}
 \end{figure}
 
 
 これらの例は，{\maxIdletime}が異なる場合は巡査の運行を個別に決定するのは難しいということを示唆している．
 しかしながら，
 地図が{\graphLine}で{\maxIdletime}が一般の場合での{\PPProfit}の困難性を示すこともできなかった．
-そこで，{\maxIdletime}より短い間隔で点を訪問しうることで運行の決定が複雑になる例が存在したことを踏まえて，
+そこで，図\ref{figure: complex_move_on_Line}中央のように
+{\maxIdletime}より短い間隔で点を訪問しうることで運行の決定が複雑になる例が存在したことを踏まえて，
 ここでは\ref{chapter: introduction}章で定義した別種の問題，{\timeSpecifiedPP}を代わりに考える．
 
 
 地図が{\graphLine}の場合の{\timeSpecifiedPP}は，
 正の整数$m$と
 $n$個の自然数の組$(q_i, r_i, x_i)_{ i \in \{ 1, \ldots, n \} }$が与えられたとき，
-集合
+\defword{時刻・位置集合}%
 $\{ (q_i k + r_i, x_i) \mid k \in \Zset, i \in \{1, \ldots, n\} \}$を
 $m$個以下の運行可能集合に分割できるか判定する問題と言い換えることができる．
 %
@@ -118,7 +61,6 @@ $m$個以下の運行可能集合に分割できるか判定する問題と言�
 $\abs{x_1 - x_2} \leq \abs{t_1 - t_2}$を満たすことであり，
 分割$\{ P_1, \ldots, P_h \}$が\defword{運行可能}であるとは，
 $P_1, \ldots, P_h$がそれぞれ運行可能であることと定義する．
-% \ncomment{［運行可能分割の説明の図］}
 %
 任意の運行可能集合$S$に対して，
 {\graphLine}上の巡査の運行$a$であって，
@@ -144,9 +86,40 @@ $\mathcal{P}$に対応する運行$A = (a_1, \ldots, a_h)$であって
 任意の$P_i\ (i \in \{ 1 \ldots, h \})$について，
 領域$\bigcup_{(t, x) \in P_i} L(t, x)$に
 $P_j\ (i < j)$の点が存在しないことと定義する．
-% \ncomment{［$L$の説明の図］}
 
+\newcommand{\subsegment}[3]{{#1}_{[#2:#3)}}
 \newcommand{\minpart}{\mathfrak{P}}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=1.0]{\figdir/time_specified_Line.pdf}
+  \caption{
+    3つの図はいずれも上部に描かれた地図に対して定まる
+    時刻・位置集合を平面に描いたもの．
+    左図の時刻・位置集合$X_1$に対しては，
+    $\minpart(X_1)$における一番左の集合$\minpart_1$を曲線で囲って示している．
+    左側の濃い領域は$\bigcup_{(t, x) \in \minpart_1} L(t, x)$を表し，
+    この中には$X_1$の点が含まれていないが，
+    そうなるように$\minpart_1$を定め
+    左側から$X_1$を分割していくことで
+    最小の運行可能分割$\minpart(X_1)$が得られる．
+    中央・右図の時刻・位置集合$X_2$に対しては，
+    $\minpart(X_2)$は中央図のように三つの集合からなるが，
+    右図のように$X_2$の1周期分を分割すると
+    $\minpart(\subsegment{X_2}{0}{4})$は二つの集合に分割されてしまう．
+    $X_2$に対しては，
+    $\minpart(X_2) = \{ \minpart_1, \minpart_2, \minpart_3 \}$%
+    の一部であるような分割
+    $\{ \subsegment{\minpart_1}{0}{4},
+        \subsegment{\minpart_2}{0}{4},
+        \subsegment{\minpart_3}{0}{4} \}$%
+    と，
+    $\minpart(\subsegment{X_2}{0}{4})$%
+    は異なることが分かる．
+  }
+  \label{figure: time_specified_Line}
+\end{figure}
+
 
 $X := \{ (q_i k + r_i, x_i) \mid k \in \Zset, i \in \{1, \ldots, n\} \}$の
 任意の順序保存分割のうち一番左の集合は順序保存分割の定義から
@@ -165,7 +138,6 @@ $\minpart_2 :=
 全点を定時訪問する運行が存在するには，
 $\card{\minpart(X)} \leq m$が成り立つことが必要十分である．
 
-\newcommand{\subsegment}[3]{{#1}_{[#2:#3)}}
 以下では，集合$S \subseteq \Zset \times \Zset$に対して
 $\subsegment{S}{a}{b} := \{ (t, x) \in S \mid a \leq t < b \}$と定義する．
 
@@ -187,12 +159,12 @@ $\subsegment{X}{0}{T}$の運行可能分割
 $\{ \subsegment{\minpart_1}{0}{T}, \ldots, \subsegment{\minpart_h}{0}{T} \}$を計算すれば十分である．
 
 ここで，$\minpart(\subsegment{X}{0}{T})$と$\minpart(X)$の大きさは
-必ずしも一致しないことに注意する必要がある．
+必ずしも一致しないことに注意する必要がある（図\ref{figure: time_specified_Line}）．
 前述の貪欲な分割の仕方で集合$S$から左端の運行可能集合
 $s' := \{ (t, x) \in S \mid L(t, x) \cap S = \emptyset \}$を取り出すとき，
 $s'$の点$(t, x)$の条件は領域$L(t, x)$に$S$の点が存在しないことである．
 $X$の分割$\minpart(X) = \{ \minpart_1, \ldots, \minpart_h \}$%
-の部分となるような$\subsegment{X}{0}{T}$の分割
+の一部となるような$\subsegment{X}{0}{T}$の分割
 $\{ \subsegment{\minpart_1}{0}{T}, \ldots, \subsegment{\minpart_h}{0}{T} \}$
 を得るには，
 $\subsegment{X}{0}{T}$のいずれかの点$(t, x)$に対して
@@ -216,7 +188,7 @@ $\{ (t, x) \in X \mid -W \leq t \leq T + W \}$%
 $V = \{ x_1, \ldots, x_n \}$とし，
 $x_i \in V$の{\exactTime}を$(q_i, r_i)$とする．
 
-$W = \max(V) - \min(V)$を計算する．
+$W = \max(V) - \min(V)$を計算し，
 %
 \[
   F = \{ (q_i k + r_i, x_i) \mid
@@ -224,8 +196,8 @@ $W = \max(V) - \min(V)$を計算する．
     k \in \Zset, -W \leq q_i k + r_i < T + W \}
 \]
 を求める．
-{\setPartAlgo}の入力として$F$を与え，
-出力$\mathcal{P}$について$\card{\mathcal{P}} \leq m$であるかどうかを判定する．
+次に示す{\setPartAlgo}の入力として$F$を与え，
+出力$\minpart(F)$について$\card{\minpart(F)} \leq m$であるかどうかを判定する．
 
 \begin{setPartitionAlgorithm}
   入力を有限集合$S$とする．
